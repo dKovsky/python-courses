@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 17: Робота з Excel (openpyxl)</title>
+
+  <link rel="icon" type="image/png" href="../favicon.ico">
+
+  <!-- Highlight.js -->
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+
+<body class="dark">
+<div class="page-wrapper">
+
+  <nav id="nav-local" class="local">
+    <a href="#1">1. Вступ</a>
+    <a href="#2">2. Встановлення openpyxl</a>
+    <a href="#3">3. Створення Excel файлу</a>
+    <a href="#4">4. Читання Excel файлу</a>
+    <a href="#5">5. Дані від користувача</a>
+    <div class="resizer"></div>
+  </nav>
+
+  <main id="content">
+
+    <h1>Заняття 17: Робота з Excel файлами (openpyxl)</h1>
+
+    <section id="1">
+      <h2>1. Вступ</h2>
+      <p>
+        <strong>openpyxl</strong> — це бібліотека Python для роботи з Excel файлами
+        формату <code>.xlsx</code>.
+      </p>
+      <p>Вона дозволяє:</p>
+      <ul>
+        <li>створювати Excel файли</li>
+        <li>читати дані з таблиць</li>
+        <li>записувати рядки та клітинки</li>
+      </ul>
+    </section>
+
+    <section id="2">
+      <h2>2. Встановлення openpyxl</h2>
+      <p>Встановіть бібліотеку через pip:</p>
+
+      <script>
+        createCodeBlock(String.raw`
+pip install openpyxl
+`, document.querySelector('[id="2"]'));
+      </script>
+    </section>
+
+    <section id="3">
+      <h2>3. Створення Excel файлу</h2>
+      <p>Створимо Excel файл та запишемо в нього дані:</p>
+
+      <script>
+        createCodeBlock(String.raw`
+from openpyxl import Workbook
+
+# Створюємо книгу
+wb = Workbook()
+
+# Отримуємо активний лист
+ws = wb.active
+ws.title = "Users"
+
+# Запис заголовків
+ws.append(["Ім'я", "Вік", "Місто"])
+
+# Запис даних
+ws.append(["Аня", 16, "Київ"])
+ws.append(["Богдан", 17, "Львів"])
+
+# Збереження файлу
+wb.save("users.xlsx")
+
+print("Файл users.xlsx створено")
+`, document.querySelector('[id="3"]'));
+      </script>
+    </section>
+
+    <section id="4">
+      <h2>4. Читання Excel файлу</h2>
+      <p>Зчитаємо дані з Excel файлу:</p>
+
+      <script>
+        createCodeBlock(String.raw`
+from openpyxl import load_workbook
+
+# Завантажуємо файл
+wb = load_workbook("users.xlsx")
+
+# Отримуємо лист
+ws = wb.active
+
+# Читання рядків
+for row in ws.iter_rows(values_only=True):
+    print(row)
+`, document.querySelector('[id="4"]'));
+      </script>
+    </section>
+
+    <section id="5">
+      <h2>5. Дані від користувача</h2>
+      <p>Додамо новий рядок у Excel з даних користувача:</p>
+
+      <script>
+        createCodeBlock(String.raw`
+from openpyxl import load_workbook
+
+name = input("Введіть ім'я: ")
+age = input("Введіть вік: ")
+city = input("Введіть місто: ")
+
+wb = load_workbook("users.xlsx")
+ws = wb.active
+
+ws.append([name, age, city])
+
+wb.save("users.xlsx")
+
+print("Дані додано до users.xlsx")
+`, document.querySelector('[id="5"]'));
+      </script>
+    </section>
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

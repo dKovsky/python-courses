@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 14 — Oracle Database</title>
+
+  <!-- Highlight.js -->
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+
+  <!-- Main styles -->
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+
+<body class="dark">
+<div class="page-wrapper">
+
+  <!-- Local navigation -->
+  <nav id="nav-local" class="local">
+    <a href="#env">1. Підготовка середовища</a>
+    <a href="#connect">2. Підключення до Oracle DB</a>
+    <a href="#insert">3. INSERT у таблицю</a>
+    <a href="#binding">4. Bind variables</a>
+    <div class="resizer"></div>
+  </nav>
+
+  <main id="content">
+
+    <h1>Заняття 14: Oracle Database</h1>
+
+    <!-- ======================= -->
+    <section id="env">
+      <h2>1. Підготовка середовища</h2>
+      <p>
+        Для роботи з Oracle використовується офіційний Python-драйвер
+        <code>python-oracledb</code>.
+      </p>
+
+      <script>
+        createCodeBlock(String.raw`
+pip install oracledb
+        `, document.querySelector('#env'));
+      </script>
+    </section>
+
+    <!-- ======================= -->
+    <section id="connect">
+      <h2>2. Підключення до Oracle DB</h2>
+      <p>
+        Створення підключення, виконання SQL-запиту та читання метаданих.
+      </p>
+
+      <script>
+        createCodeBlock(String.raw`
+import oracledb
+
+USER = 'user'
+PASSWORD = 'password'
+DSN = 'ip:port/service_name'
+
+conn = oracledb.connect(
+    user=USER,
+    password=PASSWORD,
+    dsn=DSN
+)
+
+cur = conn.cursor()
+
+cur.execute("""
+select rownum,
+       sysdate - level + 1 as created_date
+from dual
+connect by level <= 5
+""")
+
+rows = cur.fetchall()
+for row in rows:
+    print(row)
+
+# Отримання назв стовпців
+columns = [col[0] for col in cur.description]
+print(columns)
+
+cur.close()
+conn.close()
+        `, document.querySelector('#connect'));
+      </script>
+    </section>
+
+    <!-- ======================= -->
+    <section id="insert">
+      <h2>3. INSERT у таблицю</h2>
+      <p>
+        Вставка кількох рядків за один виклик за допомогою
+        <code>executemany()</code>.
+      </p>
+
+      <script>
+        createCodeBlock(String.raw`
+insert_sql = """
+INSERT INTO people (id, name, gender)
+VALUES (:1, :2, :3)
+"""
+
+data = [
+    (1, 'Alice Johnson', 'Female'),
+    (2, 'Bob Smith', 'Male'),
+    (3, 'Charlie Brown', 'Male'),
+    (4, 'Diana Prince', 'Female')
+]
+
+cursor.executemany(insert_sql, data)
+conn.commit()
+
+print(f"{cursor.rowcount} rows inserted")
+        `, document.querySelector('#insert'));
+      </script>
+    </section>
+
+    <!-- ======================= -->
+    <section id="binding">
+      <h2>4. Bind variables (зв’язування змінних)</h2>
+
+      <p>
+        Bind variables — рекомендований спосіб передачі параметрів у SQL-запитах
+        Oracle. Значення передаються окремо від SQL-коду.
+      </p>
+
+      <ul>
+        <li>Захист від SQL-інʼєкцій</li>
+        <li>Кешування планів виконання</li>
+        <li>Краща продуктивність</li>
+      </ul>
+
+      <script>
+        createCodeBlock(String.raw`
+sql = """
+select id, name
+from people
+where id = :id
+"""
+
+cur = conn.cursor()
+
+# Позиційна привʼязка
+cur.execute(sql, (1,))
+print(cur.fetchall())
+
+# Іменована привʼязка (keyword arguments)
+cur.execute(sql, id=1)
+print(cur.fetchall())
+
+# Іменована привʼязка (словник)
+cur.execute(sql, {'id': 1})
+print(cur.fetchall())
+        `, document.querySelector('#binding'));
+      </script>
+    </section>
+
+  </main>
+
+  <!-- Global navigation -->
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

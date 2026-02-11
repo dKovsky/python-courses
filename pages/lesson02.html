@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 2: Списки</title>
+
+  <!-- Default Highlight.js CSS -->
+  <link id="highlight-css" rel="stylesheet"
+    href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+
+<body class="dark"> <!-- Default to dark theme -->
+  <div class="page-wrapper">
+
+    <nav id="nav-local" class="local">
+      <a href="#1">Створення списку</a>
+      <a href="#2">Доступ до елементів списку</a>
+      <a href="#3">Зміна елементів списку</a>
+      <a href="#4">Додавання елементів до списку</a>
+      <a href="#5">Видалення елементів зі списку</a>
+      <a href="#6">Перевірка наявності елемента в списку</a>
+      <a href="#7">Ітерація по елементах списку</a>
+      <a href="#8">Спискові вирази (List Comprehensions)</a>
+      <a href="#9">Сортування списку</a>
+      <a href="#10">Підсумок</a>
+      <a href="#11">Зрізи (Slicing) списку</a>
+      <div class="resizer"></div>
+    </nav>
+
+
+    <main id="content">
+      <!-- <div class="theme"> -->
+        <!-- Themes Switcher -->
+        <!-- <div id="theme-container"></div> -->
+
+      <!-- </div> -->
+
+
+
+
+
+
+
+  <h1>Заняття 2: Списки</h1>
+
+  <p>Список в Python — це впорядкована змінна колекція елементів, яка може містити різноманітні типи даних. Списки дозволяють змінювати їх елементи, додавати, видаляти і змінювати їх порядок.</p>
+
+        <section id="1">
+  <h2>Створення списку</h2>
+  <p>Списки створюються за допомогою квадратних дужок <code>[]</code> і можуть містити елементи будь-якого типу.</p>
+          <script>
+          createCodeBlock(String.raw`
+my_list = [1, 2, 3, 4, 5]
+print(my_list)  # Виведе: [1, 2, 3, 4, 5]
+
+## Порожній список
+empty_list = []
+print(empty_list)  # Виведе: []`, document.querySelector('[id="1"]'));
+        </script>
+        </section>
+
+                <section id="2">
+  <h2>Доступ до елементів списку</h2>
+  <p>Елементи списку можна отримувати за допомогою індексації, де індексація починається з 0.</p>
+        <script>
+          createCodeBlock(String.raw`
+my_list = [10, 20, 30, 40, 50]
+
+## Доступ до елементів за індексом
+print(my_list[0])  # Виведе: 10
+print(my_list[2])  # Виведе: 30
+
+## Негативні індекси для доступу з кінця
+print(my_list[-1])  # Виведе: 50
+print(my_list[-2])  # Виведе: 40`, document.querySelector('[id="2"]'));
+        </script>
+</section>
+
+                <section id="3">
+  <h2>Зміна елементів списку</h2>
+  <p>Елементи списку можна змінювати безпосередньо за допомогою індексації.</p>
+        <script>
+createCodeBlock(String.raw`
+my_list = [10, 20, 30, 40, 50]
+my_list[1] = 25
+print(my_list)  # Виведе: [10, 25, 30, 40, 50]
+`, document.querySelector('[id="3"]'));
+        </script>
+</section>
+
+                <section id="4">
+  <h2>Додавання елементів до списку</h2>
+  <p>Для додавання елементів до списку можна використовувати методи <code>append()</code>, <code>insert()</code> або оператор <code>+=</code>.</p>
+        <script>
+createCodeBlock(String.raw`
+my_list = [1, 2, 3]
+
+## Додавання елемента в кінець списку
+my_list.append(4)
+print(my_list)  # Виведе: [1, 2, 3, 4]
+
+## Додавання елемента в конкретну позицію
+my_list.insert(1, 10)
+print(my_list)  # Виведе: [1, 10, 2, 3, 4]
+
+## Додавання кількох елементів
+my_list += [5, 6]
+print(my_list)  # Виведе: [1, 10, 2, 3, 4, 5, 6]`, document.querySelector('[id="4"]'));
+        </script>
+</section>
+
+                <section id="5">
+  <h2>Видалення елементів зі списку</h2>
+  <p>Для видалення елементів можна використовувати методи <code>remove()</code>, <code>pop()</code> або оператор <code>del</code>.</p>
+          <script>
+createCodeBlock(String.raw`
+my_list = [1, 2, 3, 4, 5]
+
+## Видалення конкретного елемента
+my_list.remove(3)
+print(my_list)  # Виведе: [1, 2, 4, 5]
+
+## Видалення елемента за індексом
+removed_element = my_list.pop(2)
+print(my_list)  # Виведе: [1, 2, 5]
+print(removed_element)  # Виведе: 4
+
+## Видалення елемента за допомогою del
+del my_list[1]
+print(my_list)  # Виведе: [1, 5]
+`, document.querySelector('[id="5"]'));
+        </script>
+</section>
+
+                <section id="6">
+  <h2>Перевірка наявності елемента в списку</h2>
+  <p>Для перевірки наявності елемента в списку можна використовувати оператор <code>in</code>.</p> 
+           <script>
+createCodeBlock(String.raw`
+my_list = [10, 20, 30, 40, 50]
+
+print(30 in my_list)  # Виведе: True
+print(60 in my_list)  # Виведе: False
+`, document.querySelector('[id="6"]'));
+        </script>
+</section>
+
+<section id="7">
+  <h2>Ітерація по елементах списку</h2>
+  <p>Для перебору елементів списку можна використовувати цикл <code>for</code>.</p>
+            <script>
+createCodeBlock(String.raw`
+my_list = [10, 20, 30, 40, 50]
+
+for item in my_list:
+  print(item)
+# Виведе:
+# 10
+# 20
+# 30
+# 40
+# 50
+`, document.querySelector('[id="7"]'));
+        </script>
+</section>
+
+<section id="8">
+  <h2>Спискові вирази (List Comprehensions)</h2>
+  <p>Спискові вирази дозволяють створювати нові списки на основі вже існуючих, при цьому вони мають компактний вигляд.</p>
+            <script>
+createCodeBlock(String.raw`
+## Створення списку з квадратів чисел
+squares = [x**2 for x in range(1, 6)]
+print(squares)  # Виведе: [1, 4, 9, 16, 25]
+`, document.querySelector('[id="8"]'));
+        </script>
+</section>
+
+<section id="9">
+  <h2>Сортування списку</h2>
+  <p>Список можна сортувати за допомогою методу <code>sort()</code> або функції <code>sorted()</code>.</p>
+            <script>
+createCodeBlock(String.raw`
+my_list = [3, 1, 4, 2, 5]
+
+## Сортування списку
+my_list.sort()
+print(my_list)  # Виведе: [1, 2, 3, 4, 5]
+
+## Використання sorted() для отримання нового відсортованого списку
+sorted_list = sorted(my_list, reverse=True)
+print(sorted_list)  # Виведе: [5, 4, 3, 2, 1]
+`, document.querySelector('[id="9"]'));
+        </script>
+</section>
+
+<section id="10">
+  <h2>Підсумок</h2>
+  <ul>
+      <li>Списки — це впорядковані колекції, які можуть містити елементи різних типів.</li>
+      <li>Вони підтримують додавання, видалення, доступ до елементів, а також ітерацію.</li>
+      <li>Списки можна змінювати (вони змінні), і вони забезпечують зручний інтерфейс для роботи з даними.</li>
+  </ul>
+
+  </section>
+
+
+  <section id="11">
+  <h2>Зрізи (Slicing) списку</h2>
+  <p>Зрізи дозволяють отримувати частину списку за допомогою індексації. Для цього використовуються дві крапки <code>:</code> між індексами.</p>
+            <script>
+createCodeBlock(String.raw`
+my_list = [10, 20, 30, 40, 50]
+
+# Отримання підсписку з індексів від 1 до 3 (не включаючи 4)
+subset = my_list[1:4]
+print(subset)  # Виведе: [20, 30, 40]
+
+# Зріз з початку списку до індексу 3 (не включаючи)
+subset = my_list[:3]
+print(subset)  # Виведе: [10, 20, 30]
+
+# Зріз з індексу 2 до кінця списку
+subset = my_list[2:]
+print(subset)  # Виведе: [30, 40, 50]
+
+# Зріз зі зміщенням кроків
+subset = my_list[::2]
+print(subset)  # Виведе: [10, 30, 50]
+`, document.querySelector('[id="11"]'));
+           </script>
+</section>
+    </main>
+
+    <!-- Navigation global -->
+    <nav id="nav-global" class="global"></nav>
+
+    <script src="..\themes.js"></script>
+    <script src="..\pages.js"></script>
+</body>
+
+</html>

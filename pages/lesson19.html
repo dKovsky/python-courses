@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 19: Outlook (pywin32)</title>
+
+  <!-- Default Highlight.js CSS -->
+  <link id="highlight-css" rel="stylesheet"
+    href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+
+<body class="dark"> <!-- Default to dark theme -->
+  <div class="page-wrapper">
+
+    <nav id="nav-local" class="local">
+
+    <a href="#1">1. Підготовка середовища</a>
+    <a href="#2">2. Створення та надсилання листа</a>
+    <a href="#3">3. Добавлення вкладення</a>
+    <a href="#4">4. Перегляд доступних аккаунтів</a>
+    <a href="#5">5. Відправка від заданого аккаунта з доступних</a>
+      <div class="resizer"></div>
+    </nav>
+
+    <main id="content">
+      <!-- <div class="theme"> -->
+        <!-- Themes Switcher -->
+        <!-- <div id="theme-container"></div> -->
+
+      <!-- </div> -->
+
+
+
+
+
+
+  <h1>Заняття 19: Outlook (pywin32)</h1>
+
+  <section id="1">
+    <h2>1. Підготовка середовища</h2>
+    <p>Для роботи з Outlook через Python необхідно встановити бібліотеку pywin32:</p>
+    <script>
+      createCodeBlock(String.raw`pip install pywin32`, document.querySelector('[id="1"]'));
+    </script>
+    <p>Також слід переконатися, що встановлений Microsoft Outlook.</p>
+  </section>
+
+  <section id="2">
+    <h2>2. Створення та надсилання листа</h2>
+    <script>
+      createCodeBlock(String.raw`
+import win32com.client
+
+# Створюємо об'єкт Outlook
+outlook = win32com.client.Dispatch("Outlook.Application")
+
+# Створюємо новий лист
+mail = outlook.CreateItem(0)
+
+# Вказуємо деталі листа
+mail.To = "отримувач@example.com;отримувач2@example.com"
+mail.Subject = "Тестовий лист"
+mail.Body = "Це тестовий лист, надісланий через Python."
+
+
+# Надсилаємо лист
+mail.Send()
+`, document.querySelector('[id="2"]'));
+    </script>
+  </section>
+
+<section id="3">
+  <h2>3. Добавлення вкладення</h2>
+  <script>
+    createCodeBlock(String.raw`
+import win32com.client
+
+# Створюємо об'єкт Outlook
+outlook = win32com.client.Dispatch("Outlook.Application")
+
+# Створюємо новий лист
+mail = outlook.CreateItem(0)
+
+# Вказуємо деталі листа
+mail.To = "отримувач@example.com;отримувач2@example.com"
+mail.Subject = "Тестовий лист"
+mail.Body = "Це тестовий лист, надісланий через Python."
+
+# Додаємо вкладення
+attachment_path = r"C:\шлях\до\файлу.txt"  # Замініть на ваш шлях
+mail.Attachments.Add(attachment_path)
+
+# Надсилаємо лист
+mail.Send()
+`, document.querySelector('[id="3"]'));
+    </script>
+</section>
+
+
+<section id="4">
+  <h2>4. Перегляд доступних аккаунтів</h2>
+  <script>
+    createCodeBlock(String.raw`
+for account in outlook.Session.Accounts:
+    print(account.DisplayName)
+`, document.querySelector('[id="4"]'));
+    </script>
+</section>
+
+
+<section id="5">
+  <h2>5. Відправка від заданого аккаунта з доступних</h2>
+  <script>
+    createCodeBlock(String.raw`
+import win32com.client as win32
+outlook = win32.Dispatch('outlook.application')
+mail = outlook.CreateItem(0)
+mail.To = 'FriendMail@domain.com.ua'
+mail.Subject = 'Message subject'
+mail.Body = 'Message body'
+
+# To attach a file to the email (optional):
+attachment  = r"C:\path\to\some\file.png"
+mail.Attachments.Add(attachment)
+
+# Specify the account to use
+account_to_use = 'MyMail@domain.com.ua'  # Replace with the desired account email
+for account in outlook.Session.Accounts:
+    if account.DisplayName == account_to_use:
+        mail._oleobj_.Invoke(*(64209, 0, 8, 0, account))  # Set the SendUsingAccount property
+        break
+
+# Send the email
+mail.Send()
+`, document.querySelector('[id="5"]'));
+    </script>
+      </section>
+    </main>
+
+    <!-- Navigation global -->
+    <nav id="nav-global" class="global"></nav>
+
+    <script src="..\themes.js"></script>
+    <script src="..\pages.js"></script>
+</body>
+
+</html>

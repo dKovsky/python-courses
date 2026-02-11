@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 3: Робота з файлами (TXT)</title>
+
+  <!-- Default Highlight.js CSS -->
+  <link id="highlight-css" rel="stylesheet"
+    href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+
+<body class="dark"> <!-- Default to dark theme -->
+  <div class="page-wrapper">
+
+  <nav id="nav-local" class="local">
+    <a href="#1">1. Вступ</a>
+    <a href="#2">2. Відкриття та запис файлу</a>
+    <a href="#3">3. Читання файлу</a>
+    <div class="resizer"></div>
+  </nav>
+
+
+    <main id="content">
+      <!-- <div class="theme"> -->
+        <!-- Themes Switcher -->
+        <!-- <div id="theme-container"></div> -->
+
+      <!-- </div> -->
+
+
+
+
+
+  
+  <main id="content">
+
+    <h1>Заняття 3: Робота з файлами (TXT)</h1>
+
+    <section id="1">
+      <h2>1. Вступ</h2>
+      <p>У цьому уроці ми навчимося створювати текстові файли, записувати в них дані та читати їх назад. 
+      Для цього будемо використовувати прості конструкції Python: <code>open</code>, <code>write</code>, <code>read</code>, <code>input</code> та <code>print</code>.</p>
+    </section>
+
+    <section id="2">
+      <h2>2. Відкриття та запис файлу</h2>
+      <p>Спочатку відкриємо файл у режимі запису (<code>w</code>) і запишемо туди дані користувача:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Введення імені файлу
+file_name = input("Введіть ім'я файлу (наприклад, data.txt): ")
+
+# Відкриваємо файл для запису
+file = open(file_name, mode='w', encoding='utf-8')
+
+# Введення даних користувача
+name = input("Введіть ваше ім'я: ")
+age = input("Введіть ваш вік: ")
+
+# Записуємо дані у файл
+file.write("Ім'я: " + name + "\n")
+file.write("Вік: " + age + "\n")
+
+# Закриваємо файл
+file.close()
+
+print("Дані успішно записані у файл", file_name)
+        `, document.querySelector('[id="2"]'));
+      </script>
+    </section>
+
+    <section id="3">
+      <h2>3. Читання файлу</h2>
+      <p>Тепер відкриємо файл для читання і виведемо його вміст:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Відкриваємо файл для читання
+file = open(file_name, mode='r', encoding='utf-8')
+
+# Читаємо весь вміст файлу
+content = file.read()
+
+# Виводимо вміст
+print("\nВміст файлу:")
+print(content)
+
+# Закриваємо файл
+file.close()
+        `, document.querySelector('[id="3"]'));
+      </script>
+    </section>
+
+  </main>
+
+    <!-- Navigation global -->
+    <nav id="nav-global" class="global"></nav>
+
+    <script src="..\themes.js"></script>
+    <script src="..\pages.js"></script>
+</body>
+
+</html>

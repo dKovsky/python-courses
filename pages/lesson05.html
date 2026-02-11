@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 5: Цикли в Python</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div class="page-wrapper">
+
+  <nav id="nav-local" class="local">
+    <a href="#1">1. Вступ</a>
+    <a href="#2">2. Цикл for</a>
+    <a href="#3">3. Цикл while</a>
+    <div class="resizer"></div>
+  </nav>
+
+  <main id="content">
+
+    <h1>Заняття 5: Цикли в Python</h1>
+
+    <section id="1">
+      <h2>1. Вступ</h2>
+      <p>Цикли дозволяють повторювати блок коду кілька разів. У Python є два основні типи циклів:</p>
+      <ul>
+        <li><code>for</code> – для ітерацій по елементах або числовому діапазону;</li>
+        <li><code>while</code> – виконується, поки умова є істинною.</li>
+      </ul>
+    </section>
+
+    <section id="2">
+      <h2>2. Цикл for</h2>
+      <p>Приклад циклу <code>for</code>, який виводить числа від 1 до 5:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Виведення чисел від 1 до 5
+for i in range(1, 6):
+    print("Число:", i)
+
+# Введення кількості повторень від користувача
+n = int(input("Скільки разів вивести привіт? "))
+
+for i in range(n):
+    print("Привіт!", i+1)
+        `, document.querySelector('[id="2"]'));
+      </script>
+    </section>
+
+    <section id="3">
+      <h2>3. Цикл while</h2>
+      <p>Приклад циклу <code>while</code>, який повторює дію поки користувач не введе "стоп":</p>
+      <script>
+        createCodeBlock(String.raw`
+# Цикл while з умовою
+text = ""
+while text.lower() != "стоп":
+    text = input("Введіть щось (або 'стоп' щоб завершити): ")
+    print("Ви ввели:", text)
+
+# Приклад підрахунку чисел від 1 до 5
+i = 1
+while i <= 5:
+    print("Число:", i)
+    i += 1
+        `, document.querySelector('[id="3"]'));
+      </script>
+    </section>
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

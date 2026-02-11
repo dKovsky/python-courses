@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 7: Модуль os</title>
+
+  <!-- Default Highlight.js CSS -->
+  <link id="highlight-css" rel="stylesheet"
+    href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+
+<body class="dark"> <!-- Default to dark theme -->
+  <div class="page-wrapper">
+
+    <nav id="nav-local" class="local">
+    <a href="#1">1. Імпорт модуля</a>
+    <a href="#2">2. Отримання абсолютного шляху до Python-скрипту та шляху до директорії проекту</a>
+    <a href="#3">3. Перевірка поточної робочої директорії</a>
+    <a href="#4">4. Перевірка наявності файлів та директорій</a>
+    <a href="#5">5. Зчитування файлів з кореневої папки та підпапках.</a>
+      <div class="resizer"></div>
+    </nav>
+
+
+    <main id="content">
+      <!-- <div class="theme"> -->
+        <!-- Themes Switcher -->
+        <!-- <div id="theme-container"></div> -->
+
+      <!-- </div> -->
+
+
+
+
+
+  <h1>Заняття 7: Модуль os</h1>
+
+  <section id="1">
+    <h2>1. Імпорт модуля</h2>
+    <p>Модуль <code>os</code> дає доступ до функцій операційної системи, таких як маніпулювання файлами, робота з директоріями, а також доступ до інформації про середовище виконання.</p>
+    <p>Для використання модуля потрібно його імпортувати:</p>
+    <script>
+      createCodeBlock(String.raw`import os`, document.querySelector('[id="1"]'));
+    </script>
+    <p>Зауважте, що модуль називається oracledb.</p>
+  </section>
+
+
+  <section id="2">
+    <h2>2. Отримання абсолютного шляху до Python-скрипту та шляху до директорії проекту</h2>
+
+    <script>
+      createCodeBlock(String.raw`
+import os
+
+filepath_of_python_script = os.path.abspath(__file__)
+print(filepath_of_python_script)
+
+project_dir = os.path.dirname(filepath_of_python_script)
+print(project_dir)
+
+`, document.querySelector('[id="2"]'));
+    </script>
+
+  </section>
+
+<section id="3">
+    <h2>3. Перевірка поточної робочої директорії</h2>
+
+    <script>
+      createCodeBlock(String.raw`
+import os
+current_directory = os.getcwd()
+print(current_directory)
+`, document.querySelector('[id="3"]'));
+    </script>
+
+  </section>
+ 
+ 
+
+  <section id="4">
+    <h2>4. Перевірка наявності файлів та директорій</h2>
+
+    <script>
+      createCodeBlock(String.raw`
+import os
+
+file_exists = os.path.exists(r'D:\myfile.txt')
+print(file_exists)
+
+folder_exists = os.path.exists(r'C:\Users')
+print(folder_exists)
+
+`, document.querySelector('[id="4"]'));
+    </script>
+
+  </section>
+
+  <section id="5">
+    <h2>5. Зчитування файлів з кореневої папки та підпапках.</h2>
+
+    <script>
+      createCodeBlock(String.raw`
+import os
+
+# Визначаємо шлях до папки
+folder = r"C:\Users\dmytr\Desktop\testing\my folder"
+
+# Список для збереження файлів, які знаходяться лише в кореневій папці (змінна folder)
+files = []
+
+# Перевіряємо наявність файлів лише в кореневій папці
+for f in os.listdir(folder):
+    # Виводимо ім'я файлу
+    print(f)
+    
+    # Формуємо повний шлях до файлу
+    full_path = os.path.join(folder, f)
+    
+    # Виводимо повний шлях файлу
+    print(full_path)
+    
+    # Якщо це файл (не директорія), додаємо його у список
+    if os.path.isfile(full_path):
+        files.append(full_path)
+
+# Виводимо всі файли, що знайдені у кореневій папці
+print(f'{files = }')
+print(*files, sep='\n')
+
+# Список для збереження файлів, що знаходяться у підпапках
+files2 = []
+
+# Використовуємо os.walk для рекурсивного обходу всіх підпапок
+for root, dirs, filenames in os.walk(folder):
+    # Перебираємо всі файли у поточній директорії
+    for filename in filenames:
+        # Формуємо повний шлях до файлу і додаємо у список
+        files2.append(os.path.join(root, filename))
+
+# Виводимо всі файли, що знайдені у підпапках
+print(f'{files2 = }')
+print(*files2, sep='\n')
+
+
+`, document.querySelector('[id="5"]'));
+    </script>
+
+      </section>
+    </main>
+
+    <!-- Navigation global -->
+    <nav id="nav-global" class="global"></nav>
+
+    <script src="..\themes.js"></script>
+    <script src="..\pages.js"></script>
+</body>
+
+</html>

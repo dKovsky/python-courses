@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 20: SFTP (paramiko)</title>
+
+  <!-- Default Highlight.js CSS -->
+  <link id="highlight-css" rel="stylesheet"
+    href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+
+<body class="dark"> <!-- Default to dark theme -->
+  <div class="page-wrapper">
+
+    <nav id="nav-local" class="local">
+    <a href="#1">1. Що таке SFTP?</a>
+    <a href="#2">2. Встановлення бібліотеки</a>
+    <a href="#3">3. Підключення до сервера через SFTP</a>
+    <a href="#4">4. Завантаження файлу на сервер</a>
+      <div class="resizer"></div>
+    </nav>
+
+
+    <main id="content">
+      <!-- <div class="theme"> -->
+        <!-- Themes Switcher -->
+        <!-- <div id="theme-container"></div> -->
+
+      <!-- </div> -->
+
+
+
+
+
+
+  <h1>Заняття 20: SFTP (paramiko)</h1>
+
+  <section id="1">
+    <h2>1. Що таке SFTP?</h2>
+    <p>
+      SFTP (Secure File Transfer Protocol) — це протокол безпечної передачі файлів, який працює поверх SSH. Він дозволяє:
+    </p>
+    <ul>
+      <li>завантажувати файли на сервер</li>
+      <li>завантажувати файли із сервера</li>
+      <li>створювати, перейменовувати та видаляти файли та папки</li>
+    </ul>
+    
+    <h3>Чому paramiko?</h3>
+    <p>
+      Бібліотека <code>paramiko</code> дозволяє працювати з SFTP через SSH, що підходить для автоматизації завантаження файлів, резервного копіювання та віддаленого адміністрування.
+    </p>
+  </section>
+  
+
+  <section id="2">
+    <h2>2. Встановлення бібліотеки</h2>
+      <p>
+        Якщо <code>paramiko</code> ще не встановлено, виконайте команду: 
+      </p>
+
+    <script>
+      createCodeBlock(String.raw`
+pip install paramiko
+
+
+`, document.querySelector('[id="2"]'));
+    </script>
+
+  </section>
+ 
+ 
+  <section id="3">
+    <h2>3. Підключення до сервера через SFTP</h2>
+
+    <script>
+      createCodeBlock(String.raw`
+
+
+import paramiko
+
+
+# Define connection details
+host = "fishka.com"
+port = 2022
+username = "your_user"
+password = "your_pass"
+
+
+# Create SSH client
+client = paramiko.SSHClient()
+
+# Load system host keys and allow unknown hosts
+client.load_system_host_keys()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+try:
+    # Connect to the SFTP server
+    client.connect(host, port=port, username=username, password=password)
+
+    # Open SFTP session
+    sftp = client.open_sftp()
+
+    # Your code (e.g., list files)
+    print("Connected successfully!")
+    
+
+    # Close the SFTP session
+    sftp.close()
+
+except Exception as e:
+    print(f"An error occurred: {e}")
+
+finally:
+    # Close the SSH connection
+    client.close()
+
+ 
+`, document.querySelector('[id="3"]'));
+</script>
+
+</section>
+
+
+<section id="4">
+  <h2>4. Завантаження файлу на сервер</h2>
+
+  <script>
+    createCodeBlock(String.raw`
+
+
+import paramiko
+
+def send_to_sftp(file):
+
+  # Define connection details
+  host = "fishka.com"
+  port = 2022
+  username = "your_user"
+  password = "your_pass"
+ 
+ 
+  # Create SSH client
+  client = paramiko.SSHClient()
+
+  # Load system host keys and allow unknown hosts
+  client.load_system_host_keys()
+  client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+  try:
+      # Connect to the SFTP server
+      client.connect(host, port=port, username=username, password=password)
+
+      # Open SFTP session
+      sftp = client.open_sftp()
+
+      # Your code (e.g., list files)
+      print("Connected successfully!")
+     
+      dir = '/folder/subfolder/input'
+     
+      local_file = file  # Local file
+      remote_dir = dir  # Remote directory
+      remote_file = f"{remote_dir}/{os.path.basename(local_file)}"  # Full remote path
+     
+      # Ensure the local file exists
+      if not os.path.exists(local_file):
+          raise FileNotFoundError(f"Local file not found: {local_file}")
+     
+      # Upload file
+      # Upload file with correct path
+      sftp.put(local_file, remote_file)
+      print(f"File {local_file} uploaded successfully to {remote_file}")
+
+      # Close the SFTP session
+      sftp.close()
+
+  except Exception as e:
+      print(f"An error occurred: {e}")
+
+  finally:
+      # Close the SSH connection
+      client.close()
+
+
+`, document.querySelector('[id="4"]'));
+</script>
+
+      </section>
+    </main>
+
+    <!-- Navigation global -->
+    <nav id="nav-global" class="global"></nav>
+
+    <script src="..\themes.js"></script>
+    <script src="..\pages.js"></script>
+</body>
+
+</html>

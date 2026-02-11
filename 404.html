@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Сторінку не знайдено</title>
+
+  <link rel="icon" type="image/png" href="python_18894.ico">
+  <link rel="stylesheet" href="assets/css/mystyle.css">
+
+  <style>
+    body.dark {
+      background-color: #0f1117;
+      color: #e0e0e0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .error-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .error-box {
+      max-width: 520px;
+    }
+
+    .error-code {
+      font-size: 96px;
+      font-weight: 700;
+      color: #58a6ff;
+      margin-bottom: 10px;
+    }
+
+    .error-title {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .error-text {
+      color: #9aa4b2;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .error-box img {
+      max-width: 100%;
+      margin: 25px 0;
+      opacity: 0.85;
+    }
+
+    .error-actions a {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 6px;
+      background-color: #58a6ff;
+      color: #0f1117;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+    }
+
+    .error-actions a:hover {
+      background-color: #79c0ff;
+    }
+  </style>
+</head>
+
+<body class="dark">
+  <div class="error-wrapper">
+    <div class="error-box">
+
+      <div class="error-code">404</div>
+      <div class="error-title">Сторінку не знайдено</div>
+
+      <p class="error-text">
+        Схоже, що посилання некоректне або сторінку було переміщено.
+        Перевір URL або повернись на головну сторінку курсу.
+      </p>
+
+      <img src="images/home/404.webp" alt="Page not found">
+
+      <div class="error-actions">
+        <a href="index.html">На головну</a>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
