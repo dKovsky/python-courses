@@ -133,6 +133,57 @@ nav.global a.active {
     font-weight: 600;
 }
 
+/* Grouped sections inside the global navbar (Заняття, Вправи, Завдання, Тести) */
+nav.global .nav-group-title {
+    margin: 18px 0 4px 0;
+    padding: 0 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #bbbbbb;
+    /* muted so it reads as a label, not a link */
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav.global .nav-group-title:hover {
+    color: #ffffff;
+}
+
+nav.global .nav-group-title::after {
+    content: "▾";
+    font-size: 10px;
+    margin-left: 8px;
+    transition: transform 0.15s ease;
+}
+
+nav.global .nav-group-title.collapsed::after {
+    transform: rotate(-90deg);
+}
+
+nav.global .nav-group-title:first-of-type {
+    margin-top: 4px;
+}
+
+nav.global .nav-group {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+nav.global .nav-group.collapsed {
+    display: none;
+}
+
+nav.global .nav-group:first-child {
+    border-top: none;
+}
+
 .container {
     text-align: center;
     /* Center the content */
