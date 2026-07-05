@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 16: Робота з CSV файлами</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+
+<body class="dark">
+<div class="page-wrapper">
+
+  <nav id="nav-local" class="local">
+    <a href="#1">1. Що таке CSV</a>
+    <a href="#2">2. Запис у CSV файл</a>
+    <a href="#3">3. Читання CSV файлу</a>
+    <a href="#4">4. Дані від користувача</a>
+    <div class="resizer"></div>
+  </nav>
+
+  <main id="content">
+
+    <h1>Заняття 16: Робота з CSV файлами</h1>
+
+    <section id="1">
+      <h2>1. Що таке CSV</h2>
+      <p>
+        CSV (Comma-Separated Values) — це текстовий формат для збереження табличних даних.  
+        Кожен рядок — це запис, а значення розділені комами.
+      </p>
+      <p>Для роботи з CSV у Python використовується стандартний модуль <code>csv</code>.</p>
+    </section>
+
+    <section id="2">
+      <h2>2. Запис у CSV файл</h2>
+      <p>Створимо CSV файл і запишемо в нього дані:</p>
+
+      <script>
+        createCodeBlock(String.raw`
+import csv
+
+with open("data.csv", mode="w", encoding="utf-8", newline="") as file:
+    writer = csv.writer(file)
+
+    # Заголовки
+    writer.writerow(["ім'я", "вік", "місто"])
+
+    # Дані
+    writer.writerow(["Аня", 16, "Київ"])
+    writer.writerow(["Богдан", 17, "Львів"])
+
+print("CSV файл створено")
+`, document.querySelector('[id="2"]'));
+      </script>
+    </section>
+
+    <section id="3">
+      <h2>3. Читання CSV файлу</h2>
+      <p>Зчитаємо дані з CSV файлу та виведемо їх:</p>
+
+      <script>
+        createCodeBlock(String.raw`
+import csv
+
+with open("data.csv", mode="r", encoding="utf-8") as file:
+    reader = csv.reader(file)
+
+    for row in reader:
+        print(row)
+`, document.querySelector('[id="3"]'));
+      </script>
+    </section>
+
+    <section id="4">
+      <h2>4. Дані від користувача</h2>
+      <p>Запишемо дані, введені користувачем, у CSV файл:</p>
+
+      <script>
+        createCodeBlock(String.raw`
+import csv
+
+name = input("Введіть ім'я: ")
+age = input("Введіть вік: ")
+city = input("Введіть місто: ")
+
+with open("users.csv", mode="a", encoding="utf-8", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow([name, age, city])
+
+print("Дані додано до users.csv")
+`, document.querySelector('[id="4"]'));
+      </script>
+    </section>
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

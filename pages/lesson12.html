@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 12: Дата і час</title>
+
+  <!-- Default Highlight.js CSS -->
+  <link id="highlight-css" rel="stylesheet"
+    href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+
+<body class="dark"> <!-- Default to dark theme -->
+  <div class="page-wrapper">
+
+    <nav id="nav-local" class="local">
+    <a href="#1">1. Імпорт модуля</a>
+    <a href="#2">2. Отримання поточної дати та часу</a>
+    <a href="#3">3. Створення власних дат та часу</a>
+    <a href="#4">4. Форматування дат (strftime)</a>
+    <a href="#5">5. Перетворення рядка в дату (strptime)</a>
+    <a href="#6">6. Операції з датами (timedelta)</a>
+      <div class="resizer"></div>
+    </nav>
+
+
+    <main id="content">
+      <!-- <div class="theme"> -->
+        <!-- Themes Switcher -->
+        <!-- <div id="theme-container"></div> -->
+
+      <!-- </div> -->
+
+
+  <h1>Заняття 12: Дата і час</h1>
+
+  <section id="1">
+    <h2>1. Імпорт модуля</h2>
+    <p>Для роботи з датами та часом у Python використовується вбудований модуль <code>datetime</code>. Його не потрібно встановлювати окремо.</p>
+    <p>Імпортуйте модуль наступним чином:</p>
+    <script>
+      createCodeBlock(String.raw`import datetime`, document.querySelector('[id="1"]'));
+    </script>
+  </section>
+
+  <section id="2">
+    <h2>2. Отримання поточної дати та часу</h2>
+
+    <script>
+      createCodeBlock(String.raw`
+import datetime
+
+now = datetime.datetime.now()  # Дата і час зараз
+today = datetime.date.today()  # Тільки дата
+print(now)   # 2025-03-17 14:30:25.123456
+print(today) # 2025-03-17
+
+`, document.querySelector('[id="2"]'));
+    </script>
+
+  </section>
+ 
+ 
+
+  <section id="3">
+    <h2>3. Створення власних дат та часу</h2>
+
+    <script>
+      createCodeBlock(String.raw`
+import datetime
+
+my_date = datetime.date(2023, 12, 31)  # Рік, місяць, день
+my_time = datetime.time(14, 30, 15)  # Година, хвилина, секунда
+my_datetime = datetime.datetime(2023, 12, 31, 14, 30, 15)  # Дата + час
+
+print(my_date)      # 2023-12-31
+print(my_time)      # 14:30:15
+print(my_datetime)  # 2023-12-31 14:30:15
+
+`, document.querySelector('[id="3"]'));
+    </script>
+
+  </section>
+
+  <section id="4">
+    <h2>4. Форматування дат (strftime)</h2>
+    <p>Основні коди форматування:</p>
+    <ul>
+      <li><code>%Y</code> – рік (2025)</li>
+      <li><code>%y</code> – рік (дві цифри, 25)</li>
+      <li><code>%m</code> – місяць (03)</li>
+      <li><code>%B</code> – повна назва місяця (March)</li>
+      <li><code>%b</code> – скорочена назва місяця (Mar)</li>
+      <li><code>%d</code> – день (17)</li>
+      <li><code>%j</code> – день у році (076)</li>
+      <li><code>%H</code> – години (24-годинний формат, 14)</li>
+      <li><code>%I</code> – години (12-годинний формат, 02)</li>
+      <li><code>%p</code> – AM/PM</li>
+      <li><code>%M</code> – хвилини (30)</li>
+      <li><code>%S</code> – секунди (45)</li>
+      <li><code>%f</code> – мікросекунди (123456)</li>
+      <li><code>%A</code> – повна назва дня тижня (Monday)</li>
+      <li><code>%a</code> – скорочена назва дня тижня (Mon)</li>
+      <li><code>%w</code> – день тижня (0 - неділя, 6 - субота)</li>
+      <li><code>%U</code> – номер тижня в році (перший день тижня – неділя)</li>
+      <li><code>%W</code> – номер тижня в році (перший день тижня – понеділок)</li>
+      <li><code>%c</code> – повний формат дати та часу (Mon Mar 17 14:30:45 2025)</li>
+      <li><code>%x</code> – локальний формат дати (03/17/25 для США)</li>
+      <li><code>%X</code> – локальний формат часу (14:30:45)</li>
+      <li><code>%%</code> – знак %</li>
+    </ul>
+
+    <script>
+      createCodeBlock(String.raw`
+import datetime
+now = datetime.datetime.now()
+formatted = now.strftime("%Y-%m-%d %H:%M:%S")  # Формат YYYY-MM-DD HH:MM:SS
+print(formatted)  # Наприклад: 2025-03-17 14:30:25
+
+`, document.querySelector('[id="4"]'));
+    </script>
+
+  </section>
+
+  <section id="5">
+    <h2>5. Перетворення рядка в дату (strptime)</h2>
+
+    <script>
+      createCodeBlock(String.raw`
+import datetime
+date_string = "17-03-2025 14:30"
+date_object = datetime.datetime.strptime(date_string, "%d-%m-%Y %H:%M")
+print(date_object)  # 2025-03-17 14:30:00
+`, document.querySelector('[id="5"]'));
+    </script>
+
+  </section>
+
+
+  <section id="6">
+    <h2>6. Операції з датами (timedelta)</h2>
+
+    <script>
+      createCodeBlock(String.raw`
+from datetime import timedelta
+
+today = datetime.date.today()
+tomorrow = today + timedelta(days=1)  # Додаємо 1 день
+yesterday = today - timedelta(days=1)  # Віднімаємо 1 день
+
+print(tomorrow)   # 2025-03-18
+print(yesterday)  # 2025-03-16
+
+# Різниця між датами
+delta = tomorrow - yesterday
+print(delta.days)  # 2 дні
+`, document.querySelector('[id="6"]'));
+    </script>
+
+      </section>
+    </main>
+
+    <!-- Navigation global -->
+    <nav id="nav-global" class="global"></nav>
+
+    <script src="..\themes.js"></script>
+    <script src="..\pages.js"></script>
+</body>
+
+</html>

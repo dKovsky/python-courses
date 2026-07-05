@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 15: SQL Server та PostgreSQL</title>
+
+  <!-- Default Highlight.js CSS -->
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+
+<body class="dark"> <!-- Default to dark theme -->
+  <div class="page-wrapper">
+
+    <nav id="nav-local" class="local">
+
+      <a href="#1">1. Підготовка середовища</a>
+      <a href="#2">2. Перегляд встановлених драйверів</a>
+      <a href="#3">3. Створення підключення до SQL SERVER бд</a>
+      <a href="#4">4. Параметризовані запити (SQL SERVER)</a>
+      <a href="#5">5. Підготовка середовища (PostgreSQL)</a>
+<a href="#6">6. Створення підключення до PostgreSQL</a>
+<a href="#7">7. Параметризовані запити (PostgreSQL)</a>
+      <div class="resizer"></div>
+    </nav>
+
+    <main id="content">
+      <!-- <div class="theme"> -->
+        <!-- Themes Switcher -->
+        <!-- <div id="theme-container"></div> -->
+
+      <!-- </div> -->
+
+
+
+
+
+
+      <h1>Заняття 15: SQL Server та PostgreSQL</h1>
+
+      <section id="1">
+        <h2>1. Підготовка середовища</h2>
+        <p>Встановіть pyodbc за допомогою pip:</p>
+        <script>
+          createCodeBlock(String.raw`pip install pyodbc`, document.querySelector('[id="1"]'));
+        </script>
+        <p>Для того, щоб працювати з конкретним джерелом даних, потрібен відповідний драйвер.</p>
+        <p>Документація: <a href="https://github.com/mkleehammer/pyodbc" target="_blank">pyodbc на GitHub</a>.</p>
+        <p>Завантажити SQL SERVER драйвер:
+          <a href="https://learn.microsoft.com/en-us/sql/connect/odbc/windows/release-notes-odbc-sql-server-windows?view=sql-server-ver16"
+            target="_blank">
+            Microsoft ODBC Driver for SQL Server
+          </a>.
+        </p>
+      </section>
+
+      <section id="2">
+        <h2>2. Перегляд встановлених драйверів</h2>
+
+        <script>
+          createCodeBlock(String.raw`
+import pyodbc
+
+# Перегляд встановлених драйверів
+drivers = [driver for driver in pyodbc.drivers()]
+print('drivers:')
+print(*drivers, sep='\n')
+
+`, document.querySelector('[id="2"]'));
+        </script>
+
+      </section>
+
+
+      <section id="3">
+        <h2>3. Створення підключення до SQL SERVER бд</h2>
+
+        <script>
+          createCodeBlock(String.raw`
+import pyodbc
+
+SERVER = 'DESKTOP-ARIOGLA'
+DATABASE='mydb'
+DRIVER = '{ODBC Driver 18 for SQL Server}'
+
+connectionString = f'DRIVER={DRIVER};SERVER={SERVER};DATABASE={DATABASE};Trusted_Connection=yes;TrustServerCertificate=yes'
+
+with pyodbc.connect(connectionString) as conn:
+    with conn.cursor() as cur:
+        rows = cur.execute("select 1, 'value1' union all select 2, 'value2' union all select 3, 'value3'").fetchall()
+        print('Rows count:', len(rows))
+        print(*[col[0] for col in cur.description], sep='\n')
+        print(*rows[:10], sep='\n')
+
+`, document.querySelector('[id="3"]'));
+        </script>
+
+      </section>
+
+
+      <section id="4">
+        <h3>4. Параметризовані запити (SQL SERVER)</h3>
+        <p>Щоб уникнути SQL-ін'єкцій, використовуйте параметризовані запити:</p>
+
+        <script>
+          createCodeBlock(String.raw`
+import pyodbc
+
+SERVER = 'DESKTOP-ARIOGLA'
+DATABASE='mydb'
+DRIVER = '{ODBC Driver 18 for SQL Server}'
+
+data = [1, 3]
+
+placeholders = ", ".join('?' * len(data))
+
+SQL = f'''
+WITH
+    tbl AS (
+    SELECT 1 col1, 'value1' col2 UNION ALL
+    SELECT 2 col1, 'value2' col2 UNION ALL
+    SELECT 2 col1, 'myvalue2' col2 UNION ALL
+    SELECT 3 col1, 'value3' col2
+)
+SELECT *
+FROM tbl
+WHERE col1 IN ({placeholders})
+'''
+
+print(SQL)
+
+connectionString = f'DRIVER={DRIVER};SERVER={SERVER};DATABASE={DATABASE};Trusted_Connection=yes;TrustServerCertificate=yes'
+
+with pyodbc.connect(connectionString) as conn:
+  with conn.cursor() as cur:
+      cur.execute(SQL, data)
+      rows = cur.fetchall()
+      print('Rows count:', len(rows))
+      print(*[col[0] for col in cur.description], sep='\n')
+      print(*rows[:10], sep='\n')
+
+`, document.querySelector('[id="4"]'));
+        </script>
+
+        <script>
+          createCodeBlock(String.raw`
+import pyodbc
+
+SERVER = 'DESKTOP-ARIOGLA'
+DATABASE='mydb'
+DRIVER = '{ODBC Driver 18 for SQL Server}'
+SQL = '''
+with
+  tbl as (
+  select 1 col1, 'value1' col2 union all
+  select 2 col1, 'value2' col2 union all
+  select 2 col1, 'myvalue2' col2 union all
+  select 3 col1, 'value3' col2
+)
+select *
+from tbl
+where col1 = ?
+and col2 = ?
+'''
+
+connectionString = f'DRIVER={DRIVER};SERVER={SERVER};DATABASE={DATABASE};Trusted_Connection=yes;TrustServerCertificate=yes'
+
+with pyodbc.connect(connectionString) as conn:
+  with conn.cursor() as cur:
+      cur.execute(SQL, (2, 'myvalue2'))
+      rows = cur.fetchall()
+      print('Rows count:', len(rows))
+      print(*[col[0] for col in cur.description], sep='\n')
+      print(*rows[:10], sep='\n')
+
+`, document.querySelector('[id="4"]'));
+        </script>
+
+
+
+
+        <script>
+          createCodeBlock(String.raw`
+import pyodbc
+
+SERVER = 'DESKTOP-ARIOGLA'
+DATABASE='mydb'
+DRIVER = '{ODBC Driver 18 for SQL Server}'
+SQL = '''
+with
+  tbl as (
+  select 1 col1, 'value1' col2 union all
+  select 2 col1, 'value2' col2 union all
+  select 3 col1, 'value3' col2
+)
+select *
+from tbl
+where col1 = ?
+'''
+
+connectionString = f'DRIVER={DRIVER};SERVER={SERVER};DATABASE={DATABASE};Trusted_Connection=yes;TrustServerCertificate=yes'
+
+with pyodbc.connect(connectionString) as conn:
+with conn.cursor() as cur:
+    cur.execute(SQL, (2, ))
+    rows = cur.fetchall()
+    print('Rows count:', len(rows))
+    print(*[col[0] for col in cur.description], sep='\n')
+    print(*rows[:10], sep='\n')
+
+`, document.querySelector('[id="4"]'));
+        </script>
+
+      </section>
+
+
+      <section id="5">
+  <h2>5. Підготовка середовища (PostgreSQL)</h2>
+  <p>
+    Для роботи з PostgreSQL у Python найчастіше використовується бібліотека
+    <code>psycopg2</code>.
+  </p>
+
+  <script>
+    createCodeBlock(String.raw`
+pip install psycopg2-binary
+`, document.querySelector('[id="5"]'));
+  </script>
+
+  <p>
+    Документація:
+    <a href="https://www.psycopg.org/docs/" target="_blank">psycopg2</a>
+  </p>
+</section>
+
+<section id="6">
+  <h2>6. Створення підключення до PostgreSQL</h2>
+
+  <script>
+    createCodeBlock(String.raw`
+import psycopg2
+
+HOST = "localhost"
+PORT = 5432
+DATABASE = "mydb"
+USER = "postgres"
+PASSWORD = "password"
+
+with psycopg2.connect(
+    host=HOST,
+    port=PORT,
+    dbname=DATABASE,
+    user=USER,
+    password=PASSWORD
+) as conn:
+    with conn.cursor() as cur:
+        cur.execute("""
+            SELECT 1 AS id, 'value1' AS name
+            UNION ALL
+            SELECT 2, 'value2'
+            UNION ALL
+            SELECT 3, 'value3'
+        """)
+        rows = cur.fetchall()
+
+        print("Rows count:", len(rows))
+        for row in rows:
+            print(row)
+`, document.querySelector('[id="6"]'));
+  </script>
+
+  <p>
+    <strong>Зверніть увагу:</strong>  
+    PostgreSQL використовує <code>%s</code> для параметрів, а не <code>?</code>.
+  </p>
+</section>
+
+<section id="7">
+  <h2>7. Параметризовані запити (PostgreSQL)</h2>
+  <p>
+    Для безпечної роботи з даними використовуйте параметризовані запити.
+  </p>
+
+  <script>
+    createCodeBlock(String.raw`
+import psycopg2
+
+HOST = "localhost"
+PORT = 5432
+DATABASE = "mydb"
+USER = "postgres"
+PASSWORD = "password"
+
+SQL = """
+WITH tbl AS (
+    SELECT 1 AS col1, 'value1' AS col2 UNION ALL
+    SELECT 2, 'value2' UNION ALL
+    SELECT 2, 'myvalue2' UNION ALL
+    SELECT 3, 'value3'
+)
+SELECT *
+FROM tbl
+WHERE col1 = %s AND col2 = %s
+"""
+
+params = (2, 'myvalue2')
+
+with psycopg2.connect(
+    host=HOST,
+    port=PORT,
+    dbname=DATABASE,
+    user=USER,
+    password=PASSWORD
+) as conn:
+    with conn.cursor() as cur:
+        cur.execute(SQL, params)
+        rows = cur.fetchall()
+
+        print("Rows count:", len(rows))
+        for row in rows:
+            print(row)
+`, document.querySelector('[id="7"]'));
+  </script>
+</section>
+
+
+
+    </main>
+
+    <!-- Navigation global -->
+    <nav id="nav-global" class="global"></nav>
+
+    <script src="..\themes.js"></script>
+    <script src="..\pages.js"></script>
+</body>
+
+</html>

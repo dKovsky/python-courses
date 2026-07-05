@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заняття 18: pandas</title>
+
+  <link rel="icon" type="image/png" href="../favicon.ico">
+
+  <!-- Highlight.js -->
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+
+<body class="dark">
+<div class="page-wrapper">
+
+  <nav id="nav-local" class="local">
+    <a href="#1">1. Вступ</a>
+    <a href="#2">2. Встановлення pandas</a>
+    <a href="#3">3. Створення DataFrame</a>
+    <a href="#4">4. Читання CSV</a>
+    <a href="#5">5. Робота з даними</a>
+    <a href="#6">6. Збереження у файл</a>
+    <div class="resizer"></div>
+  </nav>
+
+  <main id="content">
+
+    <h1>Заняття 18: pandas</h1>
+
+    <section id="1">
+      <h2>1. Вступ</h2>
+      <p>
+        <strong>pandas</strong> — це потужна бібліотека Python для роботи з табличними даними.
+        Вона часто використовується для аналізу даних, роботи з CSV, Excel, базами даних.
+      </p>
+      <p>Основний обʼєкт у pandas — <code>DataFrame</code>.</p>
+    </section>
+
+    <section id="2">
+      <h2>2. Встановлення pandas</h2>
+      <p>Встановіть pandas за допомогою pip:</p>
+
+      <script>
+        createCodeBlock(String.raw`
+pip install pandas
+`, document.querySelector('[id="2"]'));
+      </script>
+    </section>
+
+    <section id="3">
+      <h2>3. Створення DataFrame</h2>
+      <p>Створимо таблицю з даних у коді:</p>
+
+      <script>
+        createCodeBlock(String.raw`
+import pandas as pd
+
+data = {
+    "Ім'я": ["Аня", "Богдан", "Олег"],
+    "Вік": [16, 17, 18],
+    "Місто": ["Київ", "Львів", "Одеса"]
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+`, document.querySelector('[id="3"]'));
+      </script>
+    </section>
+
+    <section id="4">
+      <h2>4. Читання CSV файлу</h2>
+      <p>Зчитаємо дані з CSV файлу у DataFrame:</p>
+
+      <script>
+        createCodeBlock(String.raw`
+import pandas as pd
+
+df = pd.read_csv("data.csv", encoding="utf-8")
+
+print(df)
+`, document.querySelector('[id="4"]'));
+      </script>
+    </section>
+
+    <section id="5">
+      <h2>5. Робота з даними</h2>
+      <p>Отримання окремих стовпців і фільтрація:</p>
+
+      <script>
+        createCodeBlock(String.raw`
+# Вивід одного стовпця
+print(df["Ім'я"])
+
+# Фільтрація за умовою
+adults = df[df["Вік"] >= 18]
+print(adults)
+
+# Підрахунок кількості рядків
+print("Кількість рядків:", len(df))
+`, document.querySelector('[id="5"]'));
+      </script>
+    </section>
+
+    <section id="6">
+      <h2>6. Збереження у файл</h2>
+      <p>Збережемо DataFrame у CSV та Excel:</p>
+
+      <script>
+        createCodeBlock(String.raw`
+# Збереження у CSV
+df.to_csv("output.csv", index=False, encoding="utf-8")
+
+# Збереження у Excel
+df.to_excel("output.xlsx", index=False)
+
+print("Файли збережено")
+`, document.querySelector('[id="6"]'));
+      </script>
+    </section>
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

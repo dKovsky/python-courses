@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 9: Словники</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div class="page-wrapper">
+
+  <nav id="nav-local" class="local">
+    <a href="#1">1. Вступ</a>
+    <a href="#2">2. Створення словника</a>
+    <a href="#3">3. Додавання та доступ до даних</a>
+    <a href="#4">4. Цикл по словнику</a>
+    <div class="resizer"></div>
+  </nav>
+
+  <main id="content">
+
+    <h1>Заняття 9: Словники</h1>
+
+    <section id="1">
+      <h2>1. Вступ</h2>
+      <p>Словник — це структура даних, яка зберігає інформацію у вигляді <strong>ключ: значення</strong>.  
+      Ключі у словнику унікальні, а значення можуть бути будь-якими даними.</p>
+    </section>
+
+    <section id="2">
+      <h2>2. Створення словника</h2>
+      <p>Приклад простого словника з даними про людину:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Створення словника
+person = {
+    "ім'я": "Аня",
+    "вік": 16,
+    "місто": "Київ"
+}
+
+print(person)
+        `, document.querySelector('[id="2"]'));
+      </script>
+    </section>
+
+    <section id="3">
+      <h2>3. Додавання та доступ до даних</h2>
+      <p>Ми можемо додавати нові пари ключ-значення та отримувати дані за ключем:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Додавання нового ключа
+person["хобі"] = "Малювання"
+
+# Отримання значення за ключем
+print("Ім'я:", person["ім'я"])
+print("Хобі:", person["хобі"])
+
+# Введення нового ключа від користувача
+key = input("Введіть ключ: ")
+value = input("Введіть значення: ")
+person[key] = value
+
+print("Оновлений словник:", person)
+        `, document.querySelector('[id="3"]'));
+      </script>
+    </section>
+
+    <section id="4">
+      <h2>4. Цикл по словнику</h2>
+      <p>Можна перебирати ключі і значення у циклі:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Перебір ключів і значень
+for key, value in person.items():
+    print(key + ":", value)
+        `, document.querySelector('[id="4"]'));
+      </script>
+    </section>
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

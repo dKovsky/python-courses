@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 10: Робота з JSON файлами</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div class="page-wrapper">
+
+  <nav id="nav-local" class="local">
+    <a href="#1">1. Вступ</a>
+    <a href="#2">2. Запис словника у JSON</a>
+    <a href="#3">3. Читання JSON файлу</a>
+    <a href="#4">4. Введення даних користувача</a>
+    <div class="resizer"></div>
+  </nav>
+
+  <main id="content">
+
+    <h1>Заняття 10: Робота з JSON файлами</h1>
+
+    <section id="1">
+      <h2>1. Вступ</h2>
+      <p>JSON (JavaScript Object Notation) — це популярний формат для збереження структурованих даних.  
+      У Python ми можемо зберігати словники у JSON файли та зчитувати їх назад за допомогою модуля <code>json</code>.</p>
+    </section>
+
+    <section id="2">
+      <h2>2. Запис словника у JSON</h2>
+      <p>Приклад збереження словника у файл <code>data.json</code>:</p>
+      <script>
+        createCodeBlock(String.raw`
+import json
+
+# Створюємо словник
+person = {
+    "ім'я": "Аня",
+    "вік": 16,
+    "місто": "Київ"
+}
+
+# Відкриваємо файл для запису
+with open("data.json", mode='w', encoding='utf-8') as file:
+    json.dump(person, file, ensure_ascii=False, indent=4)
+
+print("Словник збережено у файлі data.json")
+        `, document.querySelector('[id="2"]'));
+      </script>
+    </section>
+
+    <section id="3">
+      <h2>3. Читання JSON файлу</h2>
+      <p>Тепер зчитаємо дані з файлу і виведемо на екран:</p>
+      <script>
+        createCodeBlock(String.raw`
+import json
+
+# Відкриваємо файл для читання
+with open("data.json", mode='r', encoding='utf-8') as file:
+    data = json.load(file)
+
+print("Дані з JSON файлу:")
+print(data)
+        `, document.querySelector('[id="3"]'));
+      </script>
+    </section>
+
+    <section id="4">
+      <h2>4. Введення даних користувача</h2>
+      <p>Можемо зібрати дані від користувача і зберегти у JSON:</p>
+      <script>
+        createCodeBlock(String.raw`
+import json
+
+name = input("Введіть ваше ім'я: ")
+age = input("Введіть ваш вік: ")
+city = input("Введіть ваше місто: ")
+
+person = {
+    "ім'я": name,
+    "вік": age,
+    "місто": city
+}
+
+with open("user_data.json", mode='w', encoding='utf-8') as file:
+    json.dump(person, file, ensure_ascii=False, indent=4)
+
+print("Дані користувача збережено у файлі user_data.json")
+        `, document.querySelector('[id="4"]'));
+      </script>
+    </section>
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

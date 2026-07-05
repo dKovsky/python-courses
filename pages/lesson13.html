@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 13: Кортежі</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div class="page-wrapper">
+
+  <nav id="nav-local" class="local">
+    <a href="#1">1. Вступ</a>
+    <a href="#2">2. Створення кортежу</a>
+    <a href="#3">3. Доступ до елементів</a>
+    <a href="#4">4. Кортеж і функції</a>
+    <div class="resizer"></div>
+  </nav>
+
+  <main id="content">
+
+    <h1>Заняття 13: Кортежі (tuple) в Python</h1>
+
+    <section id="1">
+      <h2>1. Вступ</h2>
+      <p>
+        Кортеж (<code>tuple</code>) — це структура даних, схожа на список,  
+        але <strong>її не можна змінювати</strong> після створення.
+        Кортежі часто використовують для зберігання фіксованих даних.
+      </p>
+    </section>
+
+    <section id="2">
+      <h2>2. Створення кортежу</h2>
+      <p>Приклади створення кортежів:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Простий кортеж
+numbers = (1, 2, 3, 4)
+
+# Кортеж з рядків
+fruits = ("яблуко", "банан", "груша")
+
+# Кортеж з одного елемента
+one_item = (10,)
+
+print(numbers)
+print(fruits)
+print(one_item)
+        `, document.querySelector('[id="2"]'));
+      </script>
+    </section>
+
+    <section id="3">
+      <h2>3. Доступ до елементів</h2>
+      <p>Елементи кортежу доступні за індексом:</p>
+      <script>
+        createCodeBlock(String.raw`
+colors = ("червоний", "зелений", "синій")
+
+print(colors[0])   # перший елемент
+print(colors[1])   # другий елемент
+
+# Отримання даних від користувача
+index = int(input("Введіть індекс (0-2): "))
+print("Елемент:", colors[index])
+        `, document.querySelector('[id="3"]'));
+      </script>
+    </section>
+
+    <section id="4">
+      <h2>4. Кортеж і функції</h2>
+      <p>Функція може повертати кілька значень у вигляді кортежу:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Функція повертає кортеж
+def get_user():
+    name = input("Введіть ім'я: ")
+    age = input("Введіть вік: ")
+    return name, age
+
+user = get_user()
+
+print("Ім'я:", user[0])
+print("Вік:", user[1])
+        `, document.querySelector('[id="4"]'));
+      </script>
+    </section>
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

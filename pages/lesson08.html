@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 8: Функції в Python</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div class="page-wrapper">
+
+  <nav id="nav-local" class="local">
+    <a href="#1">1. Вступ</a>
+    <a href="#2">2. Створення функції</a>
+    <a href="#3">3. Функція з параметрами</a>
+    <a href="#4">4. Функція з результатом</a>
+    <div class="resizer"></div>
+  </nav>
+
+  <main id="content">
+
+    <h1>Заняття 8: Функції в Python</h1>
+
+    <section id="1">
+      <h2>1. Вступ</h2>
+      <p>Функції дозволяють об'єднувати код в окремі блоки, які можна викликати кілька разів.  
+      Це зручно, щоб уникнути повторення коду.</p>
+    </section>
+
+    <section id="2">
+      <h2>2. Створення функції</h2>
+      <p>Приклад простої функції без параметрів:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Оголошення функції
+def say_hello():
+    print("Привіт! Це моя перша функція.")
+
+# Виклик функції
+say_hello()
+say_hello()  # можемо викликати скільки завгодно разів
+        `, document.querySelector('[id="2"]'));
+      </script>
+    </section>
+
+    <section id="3">
+      <h2>3. Функція з параметрами</h2>
+      <p>Функції можуть приймати дані для обробки:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Функція з параметром
+def greet(name):
+    print("Привіт,", name + "!")
+
+# Виклик функції з різними аргументами
+greet("Аня")
+greet("Богдан")
+        `, document.querySelector('[id="3"]'));
+      </script>
+    </section>
+
+    <section id="4">
+      <h2>4. Функція з результатом</h2>
+      <p>Функція може повертати значення за допомогою <code>return</code>:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Функція, яка повертає суму двох чисел
+def add_numbers(a, b):
+    return a + b
+
+x = int(input("Введіть перше число: "))
+y = int(input("Введіть друге число: "))
+
+result = add_numbers(x, y)
+print("Сума чисел:", result)
+        `, document.querySelector('[id="4"]'));
+      </script>
+    </section>
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

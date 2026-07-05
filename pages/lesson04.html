@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 4: Булевий тип та if</title>
+
+  <!-- Default Highlight.js CSS -->
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+
+<body class="dark"> <!-- Default to dark theme -->
+  <div class="page-wrapper">
+
+    <nav id="nav-local" class="local">
+      <a href="#1">1. Створення булівських значень</a>
+      <a href="#2">2. Операції з булівськими значеннями</a>
+      <a href="#3">3. Перетворення в булевий тип</a>
+      <a href="#4">4. Використання булівських значень в умовах</a>
+      <a href="#5">5. Приклади використання if, elif, else</a>
+      <a href="#6">6. Підсумок</a>
+      <div class="resizer"></div>
+    </nav>
+
+
+    <main id="content">
+      <!-- <div class="theme"> -->
+        <!-- Themes Switcher -->
+        <!-- <div id="theme-container"></div> -->
+
+      <!-- </div> -->
+
+
+      <h1>Заняття 4: Булевий тип та if</h1>
+      <p>Булівські типи в Python використовуються для зберігання значень, які можуть бути тільки двох можливих
+        варіантів: <code>True</code> або <code>False</code>. Вони є основою для логічних операцій та умовних
+        конструкцій.</p>
+
+          <section id="1">
+      <h2>1. Створення булівських значень</h2>
+      <p>Булівські значення можна створювати за допомогою ключових слів <code>True</code> і <code>False</code>.</p>
+    <script>
+      createCodeBlock(String.raw`
+a = True
+b = False
+
+print(a)  # Виведе: True
+print(b)  # Виведе: False
+`, document.querySelector('[id="1"]'));
+    </script>
+  </section>
+
+            <section id="2">
+
+      <h2>2. Операції з булівськими значеннями</h2>
+      <p>Булівські значення зазвичай використовуються для порівняння та логічних операцій.</p>
+    <script>
+      createCodeBlock(String.raw`
+a = True
+b = False
+
+# Логічні операції
+print(a and b)  # Виведе: False (AND)
+print(a or b)   # Виведе: True (OR)
+print(not a)    # Виведе: False (NOT)
+
+# Порівняння
+x = 5
+y = 10
+
+print(x == y)   # Виведе: False (рівність)
+print(x != y)   # Виведе: True (не рівність)
+print(x < y)    # Виведе: True (менше)
+print(x > y)    # Виведе: False (більше)
+`, document.querySelector('[id="2"]'));
+    </script>
+</section>
+
+  <section id="3">
+      <h2>3. Перетворення в булевий тип</h2>
+      <p>В Python можна перетворювати різні типи в булеві значення за допомогою функції <code>bool()</code>.</p>
+      <p><strong>Значення, які дають <code>False</code>:</strong> <code>None</code>, <code>0</code>, порожні контейнери
+        (наприклад, порожні списки <code>[]</code>, порожні рядки <code>""</code>, порожні множини <code>set()</code>).
+      </p>
+      <p><strong>Інші значення дають <code>True</code>.</strong></p>
+    <script>
+      createCodeBlock(String.raw`
+print(bool(0))       # Виведе: False
+print(bool(""))      # Виведе: False
+print(bool([]))      # Виведе: False
+print(bool(1))       # Виведе: True
+print(bool("Hello")) # Виведе: True
+print(bool([1, 2]))  # Виведе: True
+`, document.querySelector('[id="3"]'));
+    </script>
+</section>
+
+  <section id="4">
+      <h2>4. Використання булівських значень в умовах</h2>
+      </section>
+      <section id="4.1">
+      <p>Булівські значення широко використовуються для перевірки умов у конструкціях <code>if</code> і
+        <code>while</code>.</p>
+    <script>
+      createCodeBlock(String.raw`
+is_raining = True
+
+if is_raining:
+  print("Не забувай парасольку!")  # Виведе: Не забувай парасольку!
+else:
+  print("Погода гарна!")  # Якщо is_raining == False, виведе: Погода гарна!
+`, document.querySelector('[id="4.1"]'));
+    </script>
+    </section>
+
+          <section id="4.2">
+    <p>Можна додавати кілька умов за допомогою <code>elif</code>:</p>
+  <script>
+    createCodeBlock(String.raw`
+temperature = 15
+
+if temperature > 25:
+    print("Дуже тепло!")
+elif temperature > 15:
+    print("Приємна погода")
+elif temperature > 5:
+    print("Трохи прохолодно")
+else:
+    print("Холодно, одягайся тепліше")
+`, document.querySelector('[id="4.2"]'));
+  </script>
+  </section>
+</section>
+
+<section id="5">
+  <h2>5. Приклади використання if, elif, else</h2>
+  <p>Ще один практичний приклад – визначення категорії віку:</p>
+  <script>
+    createCodeBlock(String.raw`
+age = 17
+
+if age < 13:
+    print("Дитина")
+elif age < 18:
+    print("Підліток")
+elif age < 65:
+    print("Дорослий")
+else:
+    print("Літня людина")
+`, document.querySelector('[id="5"]'));
+  </script>
+
+  <p>Ці приклади показують, як Python перевіряє умови зверху вниз і виконує тільки перший блок, який є правдивим (<code>True</code>).</p>
+</section>
+
+  <section id="6">
+      <h2>6. Підсумок</h2>
+      <ul>
+        <li>Булівські значення можуть бути лише <code>True</code> або <code>False</code>.</li>
+        <li>Вони використовуються для порівнянь, логічних операцій та в умовних конструкціях.</li>
+        <li>Булівські значення можуть бути отримані з будь-якого типу за допомогою функції <code>bool()</code>.</li>
+      </ul>
+
+
+
+
+      </section>
+    </main>
+
+    <!-- Navigation global -->
+    <nav id="nav-global" class="global"></nav>
+
+    <script src="..\themes.js"></script>
+    <script src="..\pages.js"></script>
+</body>
+
+</html>

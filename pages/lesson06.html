@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 6: Обробка помилок (Exceptions)</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div class="page-wrapper">
+
+  <nav id="nav-local" class="local">
+    <a href="#1">1. Вступ</a>
+    <a href="#2">2. try / except</a>
+    <a href="#3">3. Приклад з числами</a>
+    <div class="resizer"></div>
+  </nav>
+
+  <main id="content">
+
+    <h1>Заняття 6: Обробка помилок (Exceptions)</h1>
+
+    <section id="1">
+      <h2>1. Вступ</h2>
+      <p>Обробка помилок дозволяє уникати аварійного завершення програми, якщо трапляється помилка. 
+      У Python для цього використовують конструкцію <code>try / except</code>.</p>
+    </section>
+
+    <section id="2">
+      <h2>2. try / except</h2>
+      <p>Синтаксис простий:</p>
+      <script>
+        createCodeBlock(String.raw`
+try:
+    # код, який може викликати помилку
+    x = int(input("Введіть число: "))
+    print("Ваше число:", x)
+except ValueError:
+    # код, який виконується при помилці
+    print("Це не число! Спробуйте ще раз.")
+        `, document.querySelector('[id="2"]'));
+      </script>
+      <p>Якщо користувач введе щось нечислове, програма не зупиниться, а виведе повідомлення.</p>
+    </section>
+
+    <section id="3">
+      <h2>3. Приклад з числами</h2>
+      <p>Додатковий приклад: ділення двох чисел з обробкою помилок:</p>
+      <script>
+        createCodeBlock(String.raw`
+try:
+    a = int(input("Введіть перше число: "))
+    b = int(input("Введіть друге число: "))
+    result = a / b
+    print("Результат:", result)
+except ValueError:
+    print("Будь ласка, введіть тільки числа!")
+except ZeroDivisionError:
+    print("На нуль ділити не можна!")
+        `, document.querySelector('[id="3"]'));
+      </script>
+      <p>Тут ми обробляємо <code>ValueError</code> (не число) і <code>ZeroDivisionError</code> (ділення на нуль).</p>
+    </section>
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

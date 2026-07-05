@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Заняття 11: Множини</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div class="page-wrapper">
+
+  <nav id="nav-local" class="local">
+    <a href="#1">1. Вступ</a>
+    <a href="#2">2. Створення множини</a>
+    <a href="#3">3. Додавання та видалення</a>
+    <a href="#4">4. Операції з множинами</a>
+    <div class="resizer"></div>
+  </nav>
+
+  <main id="content">
+
+    <h1>Заняття 11: Множини</h1>
+
+    <section id="1">
+      <h2>1. Вступ</h2>
+      <p>
+        Множина (<code>set</code>) — це структура даних, яка зберігає
+        <strong>унікальні значення</strong>.  
+        У множині не може бути однакових елементів, а порядок елементів не важливий.
+      </p>
+    </section>
+
+    <section id="2">
+      <h2>2. Створення множини</h2>
+      <p>Створимо просту множину з чисел і рядків:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Створення множини
+numbers = {1, 2, 3, 4, 5}
+words = {"яблуко", "банан", "груша"}
+
+print(numbers)
+print(words)
+
+# Однакові значення автоматично видаляються
+data = {1, 2, 2, 3, 3, 3}
+print(data)
+        `, document.querySelector('[id="2"]'));
+      </script>
+    </section>
+
+    <section id="3">
+      <h2>3. Додавання та видалення елементів</h2>
+      <p>Можемо додавати та видаляти елементи з множини:</p>
+      <script>
+        createCodeBlock(String.raw`
+# Початкова множина
+colors = {"червоний", "зелений"}
+
+# Додавання елемента
+colors.add("синій")
+print(colors)
+
+# Видалення елемента
+colors.remove("зелений")
+print(colors)
+
+# Додавання значення від користувача
+color = input("Введіть колір: ")
+colors.add(color)
+
+print("Оновлена множина:", colors)
+        `, document.querySelector('[id="3"]'));
+      </script>
+    </section>
+
+    <section id="4">
+      <h2>4. Операції з множинами</h2>
+      <p>Множини підтримують зручні операції:</p>
+      <script>
+        createCodeBlock(String.raw`
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+
+# Об'єднання
+print("Об'єднання:", a | b)
+
+# Перетин
+print("Перетин:", a & b)
+
+# Різниця
+print("Різниця a - b:", a - b)
+        `, document.querySelector('[id="4"]'));
+      </script>
+    </section>
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>
