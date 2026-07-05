@@ -172,282 +172,281 @@
 
 
             <div id="1">
-            <div class="q-text">Ось 20 запитань з теми "Робота з Oracle Database у Python (бібліотека oracledb)", де перша відповідь є правильною.
+            <div class="q-text">Питання 1. Який метод використовується для створення об'єкта підключення до бази даних Oracle?
 </div>
-            <div><input type="radio">oracledb.connect()
+            <div><input type="radio">oracledb.open()
 </div>
-<div><input type="radio">
+<div><input type="radio">oracledb.connect()
  </div>
-<div><input type="radio">Питання 1. Який метод використовується для створення об'єкта підключення до бази даних Oracle?
-</div>
 <div><input type="radio">oracledb.connection()
+</div>
+<div><input type="radio">oracledb.create_connection()
 </div>
 
             </div>
             
             <div id="2">
-            <div class="q-text">oracledb.create_connection()
+            <div class="q-text">Питання 2. Який об'єкт необхідно створити для виконання SQL-запитів після встановлення з'єднання?
 </div>
-            <div><input type="radio">cursor
-</div>
-<div><input type="radio">Питання 2. Який об'єкт необхідно створити для виконання SQL-запитів після встановлення з'єднання?
+            <div><input type="radio">executor
 </div>
 <div><input type="radio">statement
 </div>
-<div><input type="radio">
+<div><input type="radio">query_obj
+</div>
+<div><input type="radio">cursor
  </div>
 
             </div>
             
             <div id="3">
-            <div class="q-text">query_obj
+            <div class="q-text">Питання 3. Який метод курсору використовується для виконання SQL-запиту?
 </div>
-            <div><input type="radio">run()
+            <div><input type="radio">do()
 </div>
-<div><input type="radio">Питання 3. Який метод курсору використовується для виконання SQL-запиту?
+<div><input type="radio">run()
 </div>
-<div><input type="radio">
- </div>
 <div><input type="radio">execute()
+ </div>
+<div><input type="radio">send()
 </div>
 
             </div>
             
             <div id="4">
-            <div class="q-text">do()
+            <div class="q-text">Питання 4. Який метод курсору повертає один рядок результату запиту?
 </div>
-            <div><input type="radio">
+            <div><input type="radio">fetchone()
  </div>
-<div><input type="radio">fetchone()
+<div><input type="radio">read()
+</div>
+<div><input type="radio">select_one()
 </div>
 <div><input type="radio">getone()
-</div>
-<div><input type="radio">Питання 4. Який метод курсору повертає один рядок результату запиту?
 </div>
 
             </div>
             
             <div id="5">
-            <div class="q-text">select_one()
+            <div class="q-text">Питання 5. Який метод курсору повертає всі рядки результату запиту у вигляді списку кортежів?
 </div>
-            <div><input type="radio">fetchall()
+            <div><input type="radio">read_all()
 </div>
-<div><input type="radio">
+<div><input type="radio">fetchall()
  </div>
-<div><input type="radio">Питання 5. Який метод курсору повертає всі рядки результату запиту у вигляді списку кортежів?
-</div>
 <div><input type="radio">getall()
+</div>
+<div><input type="radio">list()
 </div>
 
             </div>
             
             <div id="6">
-            <div class="q-text">list()
+            <div class="q-text">Питання 6. Який метод потрібно викликати для завершення транзакції та збереження змін у базі даних?
 </div>
-            <div><input type="radio">
+            <div><input type="radio">connection.commit()
  </div>
-<div><input type="radio">connection.commit()
+<div><input type="radio">cursor.save()
+</div>
+<div><input type="radio">connection.apply()
 </div>
 <div><input type="radio">connection.save()
-</div>
-<div><input type="radio">Питання 6. Який метод потрібно викликати для завершення транзакції та збереження змін у базі даних?
 </div>
 
             </div>
             
             <div id="7">
-            <div class="q-text">connection.apply()
+            <div class="q-text">Питання 7. Що потрібно зробити для скасування змін (відкату транзакції) у разі помилки?
 </div>
-            <div><input type="radio">Питання 7. Що потрібно зробити для скасування змін (відкату транзакції) у разі помилки?
-</div>
-<div><input type="radio">
- </div>
-<div><input type="radio">connection.undo()
+            <div><input type="radio">connection.undo()
 </div>
 <div><input type="radio">connection.rollback()
+ </div>
+<div><input type="radio">connection.cancel()
+</div>
+<div><input type="radio">cursor.revert()
 </div>
 
             </div>
             
             <div id="8">
-            <div class="q-text">connection.cancel()
+            <div class="q-text">Питання 8. Як правильно закрити курсор, щоб звільнити ресурси?
 </div>
-            <div><input type="radio">cursor.close()
+            <div><input type="radio">cursor.exit()
 </div>
-<div><input type="radio">
+<div><input type="radio">cursor.close()
  </div>
-<div><input type="radio">cursor.finish()
+<div><input type="radio">del cursor
 </div>
-<div><input type="radio">Питання 8. Як правильно закрити курсор, щоб звільнити ресурси?
+<div><input type="radio">cursor.finish()
 </div>
 
             </div>
             
             <div id="9">
-            <div class="q-text">del cursor
+            <div class="q-text">Питання 9. Який режим роботи бібліотеки oracledb є основним (і не потребує Oracle Instant Client)?
 </div>
-            <div><input type="radio">Питання 9. Який режим роботи бібліотеки oracledb є основним (і не потребує Oracle Instant Client)?
+            <div><input type="radio">Thick mode
+</div>
+<div><input type="radio">Light mode
+</div>
+<div><input type="radio">Fast mode
 </div>
 <div><input type="radio">Thin mode
-</div>
-<div><input type="radio">Thick mode
-</div>
-<div><input type="radio">
  </div>
 
             </div>
             
             <div id="10">
-            <div class="q-text">Fast mode
+            <div class="q-text">Питання 10. Який параметр oracledb.connect() зазвичай містить рядок підключення (DSN)?
 </div>
-            <div><input type="radio">Питання 10. Який параметр oracledb.connect() зазвичай містить рядок підключення (DSN)?
+            <div><input type="radio">url
+</div>
+<div><input type="radio">connection_string
 </div>
 <div><input type="radio">dsn
-</div>
-<div><input type="radio">
  </div>
-<div><input type="radio">url
+<div><input type="radio">address
 </div>
 
             </div>
             
             <div id="11">
-            <div class="q-text">address
+            <div class="q-text">Питання 11. Як захиститися від SQL-ін'єкцій при виконанні запитів?
 </div>
-            <div><input type="radio">Використовувати прив'язку змінних (bind variables)
+            <div><input type="radio">Використовувати конкатенацію рядків
 </div>
-<div><input type="radio">
+<div><input type="radio">Використовувати прив'язку змінних (bind variables)
  </div>
-<div><input type="radio">Питання 11. Як захиститися від SQL-ін'єкцій при виконанні запитів?
-</div>
 <div><input type="radio">Використовувати f-рядки (f-strings)
+</div>
+<div><input type="radio">Завжди використовувати commit()
 </div>
 
             </div>
             
             <div id="12">
-            <div class="q-text">Завжди використовувати commit()
+            <div class="q-text">Питання 12. Яким символом зазвичай позначаються змінні для прив'язки (bind variables) у SQL-запиті в Oracle?
 </div>
-            <div><input type="radio">? (наприклад, ?id)
+            <div><input type="radio">@ (наприклад, @id)
 </div>
-<div><input type="radio">Питання 12. Яким символом зазвичай позначаються змінні для прив'язки (bind variables) у SQL-запиті в Oracle?
+<div><input type="radio">? (наприклад, ?id)
 </div>
-<div><input type="radio">
- </div>
 <div><input type="radio">: (наприклад, :id)
+ </div>
+<div><input type="radio">$ (наприклад, $id)
 </div>
 
             </div>
             
             <div id="13">
-            <div class="q-text">@ (наприклад, @id)
+            <div class="q-text">Питання 13. Що повертає властивість cursor.description?
 </div>
-            <div><input type="radio">Питання 13. Що повертає властивість cursor.description?
+            <div><input type="radio">Всі дані запиту
 </div>
-<div><input type="radio">Всі дані запиту
+<div><input type="radio">Кількість оброблених рядків
 </div>
-<div><input type="radio">
- </div>
 <div><input type="radio">Метадані стовпців запиту (назви, типи)
+ </div>
+<div><input type="radio">Останній виконаний SQL-запит
 </div>
 
             </div>
             
             <div id="14">
-            <div class="q-text">Кількість оброблених рядків
+            <div class="q-text">Питання 14. Який метод дозволяє виконати один і той самий запит багато разів з різними даними (для масової вставки)?
 </div>
-            <div><input type="radio">executemany()
+            <div><input type="radio">run_many()
+</div>
+<div><input type="radio">insert_many()
 </div>
 <div><input type="radio">execute_all()
 </div>
-<div><input type="radio">Питання 14. Який метод дозволяє виконати один і той самий запит багато разів з різними даними (для масової вставки)?
-</div>
-<div><input type="radio">
+<div><input type="radio">executemany()
  </div>
 
             </div>
             
             <div id="15">
-            <div class="q-text">insert_many()
+            <div class="q-text">Питання 15. У якому форматі oracledb за замовчуванням повертає назви стовпців у результатах запиту?
 </div>
-            <div><input type="radio">У верхньому регістрі (Uppercase)
+            <div><input type="radio">Як у базі даних (зазвичай верхній)
+</div>
+<div><input type="radio">Як у запиті (PascalCase)
 </div>
 <div><input type="radio">У нижньому регістрі (Lowercase)
 </div>
-<div><input type="radio">Питання 15. У якому форматі oracledb за замовчуванням повертає назви стовпців у результатах запиту?
-</div>
-<div><input type="radio">
+<div><input type="radio">У верхньому регістрі (Uppercase)
  </div>
 
             </div>
             
             <div id="16">
-            <div class="q-text">Як у запиті (PascalCase)
+            <div class="q-text">Питання 16. Яку помилку слід перехоплювати для відстеження проблем з Oracle Database?
 </div>
-            <div><input type="radio">Питання 16. Яку помилку слід перехоплювати для відстеження проблем з Oracle Database?
-</div>
-<div><input type="radio">
- </div>
-<div><input type="radio">DatabaseError
+            <div><input type="radio">DatabaseError
 </div>
 <div><input type="radio">oracledb.Error
+ </div>
+<div><input type="radio">ConnectionError
+</div>
+<div><input type="radio">OracleException
 </div>
 
             </div>
             
             <div id="17">
-            <div class="q-text">ConnectionError
+            <div class="q-text">Питання 17. Що станеться, якщо не закрити з'єднання з базою даних?
 </div>
-            <div><input type="radio">Питання 17. Що станеться, якщо не закрити з'єднання з базою даних?
+            <div><input type="radio">Програма автоматично завершиться з помилкою
 </div>
-<div><input type="radio">Програма автоматично завершиться з помилкою
+<div><input type="radio">Дані не збережуться в пам'яті Python
 </div>
-<div><input type="radio">
- </div>
 <div><input type="radio">Ресурс залишатиметься зайнятим до тайм-ауту сесії
+ </div>
+<div><input type="radio">База даних автоматично розірве з'єднання через 1 секунду
 </div>
 
             </div>
             
             <div id="18">
-            <div class="q-text">Дані не збережуться в пам'яті Python
+            <div class="q-text">Питання 18. Як можна налаштувати oracledb для використання "Thick mode" (якщо потрібні розширені функції)?
 </div>
-            <div><input type="radio">
+            <div><input type="radio">oracledb.init_oracle_client()
  </div>
+<div><input type="radio">oracledb.set_mode('thick')
+</div>
 <div><input type="radio">oracledb.enable_thick()
 </div>
-<div><input type="radio">Питання 18. Як можна налаштувати oracledb для використання "Thick mode" (якщо потрібні розширені функції)?
-</div>
-<div><input type="radio">oracledb.init_oracle_client()
+<div><input type="radio">oracledb.connect(mode='thick')
 </div>
 
             </div>
             
             <div id="19">
-            <div class="q-text">oracledb.set_mode('thick')
+            <div class="q-text">Питання 19. Яка властивість об'єкта курсору повертає кількість рядків, уражених запитом INSERT, UPDATE або DELETE?
 </div>
-            <div><input type="radio">rowcount
+            <div><input type="radio">size
 </div>
-<div><input type="radio">Питання 19. Яка властивість об'єкта курсору повертає кількість рядків, уражених запитом INSERT, UPDATE або DELETE?
-</div>
-<div><input type="radio">
- </div>
 <div><input type="radio">affected_rows
+</div>
+<div><input type="radio">rowcount
+ </div>
+<div><input type="radio">status
 </div>
 
             </div>
             
             <div id="20">
-            <div class="q-text">status
+            <div class="q-text">Питання 20. Чи можна використовувати with (context manager) для роботи з підключенням у oracledb?
 </div>
-            <div><input type="radio">Питання 20. Чи можна використовувати with (context manager) для роботи з підключенням у oracledb?
+            <div><input type="radio">Ні, підключення потрібно завжди закривати вручну
+</div>
+<div><input type="radio">Так, але тільки для курсора
 </div>
 <div><input type="radio">Так, це автоматично закриває підключення
-</div>
-<div><input type="radio">
  </div>
-<div><input type="radio">Ні, підключення потрібно завжди закривати вручну
-</div>
+<div><input type="radio">Тільки у версії "Thick mode"</div>
 
             </div>
             
