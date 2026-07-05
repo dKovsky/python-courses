@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест Python</title>
+<style>
+    :root {
+      --bg:        #0d1117;
+      --bg-card:   #161b22;
+      --bg-hover:  #1c2330;
+      --border:    #30363d;
+      --accent:    #58a6ff;
+      --accent2:   #3fb950;
+      --danger:    #f85149;
+      --warn:      #e3b341;
+      --text:      #c9d1d9;
+      --text-dim:  #8b949e;
+      --text-head: #f0f6fc;
+      --code-bg:   #1f2937;
+      --radius:    10px;
+      --correct:   rgba(63,185,80,.15);
+      --wrong:     rgba(248,81,73,.15);
+      --correct-border: #3fb950;
+      --wrong-border:   #f85149;
+    }
+
+    /* Загальні стилі сторінки */
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 680px;
+      margin: 30px auto;
+      padding: 0 15px;
+      line-height: 1.5;
+    }
+
+    /* Блок прогресу */
+    #progress-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 15px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: sticky;
+      top: 0;
+    }
+    #progress-bar-outer {
+      flex-grow: 1;
+      background: var(--border);
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    #progress-bar-inner {
+      background: var(--accent);
+      width: 10%; /* Тимчасово, для візуалізації */
+      height: 100%;
+      border-radius: 5px;
+    }
+    #progress-label {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* Контейнер картки питання (генерація з id="{i}") */
+    body > div:not(#progress-wrap) {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
+    }
+
+    /* Текст питання */
+    .q-text {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-head);
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    /* Контейнери варіантів відповідей (div навколо input) */
+    body > div:not(#progress-wrap) > div:not(.q-text) {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.15s, border-color 0.15s;
+    }
+    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+      background-color: var(--bg-hover);
+      border-color: var(--text-dim);
+    }
+
+    /* Стилізація радіо-кнопок */
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+      margin: 0;
+      font: inherit;
+      color: var(--accent);
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    input[type="radio"]::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      background-color: var(--accent);
+    }
+    input[type="radio"]:checked::before {
+      transform: scale(1);
+    }
+    input[type="radio"]:checked {
+      border-color: var(--accent);
+    }
+    input[type="radio"]:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Класи станів після вибору */
+    .correct { 
+      border-color: var(--correct-border) !important; 
+      background: var(--correct) !important; 
+      color: #56d364;
+    }
+    .ok { 
+      border-color: var(--correct-border) !important;
+      box-shadow: 0 0 10px rgba(63,185,80, 0.15);
+    }
+    .no { 
+      border-color: var(--wrong-border) !important;
+      box-shadow: 0 0 10px rgba(248,81,73, 0.15);
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="progress-wrap">
+  <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
+  <span id="progress-label">0 / 20</span>
+</div>
+
+
+            <div id="1">
+            <div class="q-text">Питання1. Який вбудований модуль використовується у Python для роботи з датами та часом і не потребує окремого встановлення?
+</div>
+            <div><input type="radio">import datetime
+ </div>
+<div><input type="radio">import time
+</div>
+<div><input type="radio">import calendar
+</div>
+<div><input type="radio">import date
+</div>
+
+            </div>
+            
+            <div id="2">
+            <div class="q-text">Питання2. Який метод класу datetime.datetime використовується для отримання повної поточної дати та часу з мікросекундами?
+</div>
+            <div><input type="radio">datetime.time.now()
+</div>
+<div><input type="radio">datetime.datetime.now()
+ </div>
+<div><input type="radio">datetime.datetime.today_date()
+</div>
+<div><input type="radio">datetime.date.today()
+</div>
+
+            </div>
+            
+            <div id="3">
+            <div class="q-text">Питання3. Який метод повертає виключно поточну дату (рік, місяць, день) без часової складової?
+</div>
+            <div><input type="radio">datetime.time.today()
+</div>
+<div><input type="radio">datetime.date.today()
+ </div>
+<div><input type="radio">datetime.date.now()
+</div>
+<div><input type="radio">datetime.datetime.now()
+</div>
+
+            </div>
+            
+            <div id="4">
+            <div class="q-text">Питання4. Який правильний порядок передачі аргументів у конструктор datetime.date() для створення власної дати?
+</div>
+            <div><input type="radio">День, місяць, рік
+</div>
+<div><input type="radio">Місяць, день, рік
+</div>
+<div><input type="radio">Рік, day, місяць
+</div>
+<div><input type="radio">Рік, місяць, день
+ </div>
+
+            </div>
+            
+            <div id="5">
+            <div class="q-text">Питання5. Як найпростіше отримати поточний рік як ціле число з об'єкта дати `current_date`?
+</div>
+            <div><input type="radio">current_date.year()
+</div>
+<div><input type="radio">current_date.year
+ </div>
+<div><input type="radio">current_date.get_year()
+</div>
+<div><input type="radio">current_date.strftime("%y")
+</div>
+
+            </div>
+            
+            <div id="6">
+            <div class="q-text">Питання6. Яка операція дозволяє порівняти дві дати й дізнатися, чи є одна дата хронологічно ранішою за іншу?
+</div>
+            <div><input type="radio">Дати не можна порівнювати між собою напряму
+</div>
+<div><input type="radio">Перетворити обидві дати в рядки й порівняти їхню довжину
+</div>
+<div><input type="radio">Використати спеціальний метод date1.is_before(date2)
+</div>
+<div><input type="radio">Використати стандартний оператор менше (<)
+ </div>
+
+            </div>
+            
+            <div id="7">
+            <div class="q-text">Питання7. Що потрібно передати в конструктор `datetime.time()`, щоб створити об'єкт, який позначає рівно 15:30?
+</div>
+            <div><input type="radio">Один текстовий рядок "15:30"
+</div>
+<div><input type="radio">Години (15) та хвилини (30) як окремі чисельні аргументи
+ </div>
+<div><input type="radio">Тільки кількість хвилин від початку доби
+</div>
+<div><input type="radio">Рік, місяць, день, а потім години й хвилини
+</div>
+
+            </div>
+            
+            <div id="8">
+            <div class="q-text">Питання8. Що буде результатом віднімання однієї дати від іншої (наприклад, `date2 - date1`)?
+</div>
+            <div><input type="radio">Новий об'єкт типу date з обнуленим роком
+</div>
+<div><input type="radio">Об'єкт типу timedelta, який зберігає різницю між ними
+ </div>
+<div><input type="radio">Ціле число (int), що означає кількість місяців
+</div>
+<div><input type="radio">Помилка виконання, оскільки дати не можна віднімати
+</div>
+
+            </div>
+            
+            <div id="9">
+            <div class="q-text">Питання9. Як правильно додати до об'єкта дати `today` рівно один тиждень (7 днів)?
+</div>
+            <div><input type="radio">today + timedelta(days=7)
+ </div>
+<div><input type="radio">today + 7
+</div>
+<div><input type="radio">today.add_days(7)
+</div>
+<div><input type="radio">today + timedelta(day=7)
+</div>
+
+            </div>
+            
+            <div id="10">
+            <div class="q-text">Питання10. Який метод об'єкта дати або часу потрібно викликати, щоб перетворити його на текстовий рядок за вашим власним шаблоном?
+</div>
+            <div><input type="radio">strftime()
+ </div>
+<div><input type="radio">to_string()
+</div>
+<div><input type="radio">strptime()
+</div>
+<div><input type="radio">format()
+</div>
+
+            </div>
+            
+            <div id="11">
+            <div class="q-text">Питання11. Який метод модуля datetime використовується для того, щоб перетворити звичайний текст із датою (наприклад, зчитаний з сайту) на об'єкт дати для обчислень?
+</div>
+            <div><input type="radio">datetime.datetime.strftime()
+</div>
+<div><input type="radio">datetime.datetime.strptime()
+ </div>
+<div><input type="radio">datetime.datetime.from_string()
+</div>
+<div><input type="radio">datetime.datetime.to_date()
+</div>
+
+            </div>
+            
+            <div id="12">
+            <div class="q-text">Питання12. Як отримати номер поточного місяця як ціле число від 1 до 12 з об'єкта дати `today`?
+</div>
+            <div><input type="radio">today.month()
+</div>
+<div><input type="radio">today.strftime("%M")
+</div>
+<div><input type="radio">today.get_month()
+</div>
+<div><input type="radio">today.month
+ </div>
+
+            </div>
+            
+            <div id="13">
+            <div class="q-text">Питання13. Якщо ви бажаєте додати до дати або відняти від неї часовий інтервал, з якого класу стандартної бібліотеки його потрібно імпортувати?
+</div>
+            <div><input type="radio">from time import delta
+</div>
+<div><input type="radio">from datetime import timedelta
+ </div>
+<div><input type="radio">from datetime import time_delta
+</div>
+<div><input type="radio">import timedelta
+</div>
+
+            </div>
+            
+            <div id="14">
+            <div class="q-text">Питання14. Як повернутися на 3 дні назад у часі від поточної дати `today`?
+</div>
+            <div><input type="radio">today.subtract(days=3)
+</div>
+<div><input type="radio">today - 3
+</div>
+<div><input type="radio">today - timedelta(days=3)
+ </div>
+<div><input type="radio">today - timedelta(day=3)
+</div>
+
+            </div>
+            
+            <div id="15">
+            <div class="q-text">Питання15. Як дізнатися загальну кількість секунд у проміжку часу `delta` (об'єкті timedelta)?
+</div>
+            <div><input type="radio">delta.get_total_seconds()
+</div>
+<div><input type="radio">delta.seconds
+</div>
+<div><input type="radio">delta.total_seconds()
+ </div>
+<div><input type="radio">delta.to_seconds()
+</div>
+
+            </div>
+            
+            <div id="16">
+            <div class="q-text">Питання16. Як отримати значення поточної хвилини як ціле число з об'єкта `now = datetime.datetime.now()`?
+</div>
+            <div><input type="radio">now.minute
+ </div>
+<div><input type="radio">now.minutes
+</div>
+<div><input type="radio">now.minute()
+</div>
+<div><input type="radio">now.get_minute()
+</div>
+
+            </div>
+            
+            <div id="17">
+            <div class="q-text">Питання17. Що буде за замовчуванням у значеннях хвилин та секунд, якщо створити об'єкт часу, вказавши лише годину: `datetime.time(14)`?
+</div>
+            <div><input type="radio">0 хвилин і 0 секунд
+ </div>
+<div><input type="radio">14 хвилин і 14 секунд
+</div>
+<div><input type="radio">Поточні хвилини та секунди на комп'ютері на момент запуску
+</div>
+<div><input type="radio">Виникне помилка, оскільки хвилини є обов'язковими
+</div>
+
+            </div>
+            
+            <div id="18">
+            <div class="q-text">Питання18. Як отримати поточний день місяця (число від 1 до 31) як ціле число з об'єкта дати `today`?
+</div>
+            <div><input type="radio">today.day
+ </div>
+<div><input type="radio">today.day()
+</div>
+<div><input type="radio">today.current_day
+</div>
+<div><input type="radio">today.get_day()
+</div>
+
+            </div>
+            
+            <div id="19">
+            <div class="q-text">Питання19. Як найпростіше запам'ятати різницю між методами strftime та strptime, щоб не плутати їх під час написання коду?
+</div>
+            <div><input type="radio">Буква 'f' призначена для запису у файл, а 'p' — для друку в консоль
+</div>
+<div><input type="radio">Буква 'f' означає format (у рядок), а 'p' — parse (з рядка в об'єкт)
+ </div>
+<div><input type="radio">Ці методи абсолютно однакові й повністю взаємозамінні
+</div>
+<div><input type="radio">Буква 'f' працює лише з майбутнім часом, а 'p' — з минулим
+</div>
+
+            </div>
+            
+            <div id="20">
+            <div class="q-text">Питання20. Який вигляд має дата за замовчуванням у форматі ISO, якщо просто вивести її в консоль через `print(datetime.date(2026, 5, 28))`?
+</div>
+            <div><input type="radio">2026_05_28</div>
+<div><input type="radio">28/05/2026
+</div>
+<div><input type="radio">2026-05-28
+ </div>
+<div><input type="radio">05-28-2026
+</div>
+
+            </div>
+            
+<script>
+const optionBoxes = document.querySelectorAll(
+  'body > div:not(#progress-wrap) > div:not(.q-text)'
+);
+
+optionBoxes.forEach(box => {
+  box.addEventListener('click', function () {
+
+    const radio = this.querySelector('input[type="radio"]');
+
+    // already answered
+    if (radio.disabled) {
+      return;
+    }
+    const label = document.getElementById('progress-label');
+    // Split by " / " and take the first part, then convert to a number
+    let currentCount = parseInt(label.textContent.split(' / ')[0]);
+
+    // Increment
+    currentCount++;
+
+    // Update
+    label.textContent = `${currentCount} / 20`;
+    document.getElementById('progress-bar-inner').style.width = `${(currentCount / 20) * 100}%`;
+    
+
+    radio.checked = true;
+
+    const text = this.textContent;
+    const question_card = this.parentElement;
+
+    // radios only inside current question
+    const siblingRadios = question_card.querySelectorAll('input[type="radio"]');
+
+    siblingRadios.forEach(r => {
+
+      // mark correct answer
+      if (r.parentElement.textContent.endsWith(" ")) {
+        r.parentElement.classList.add("correct");
+      }
+
+      r.disabled = true;
+    });
+
+    if (text.endsWith(" ")) {
+      question_card.classList.add("ok");
+    }
+    else {
+      question_card.classList.add("no");
+    }
+
+  });
+});
+</script>
+</body>
+</html>

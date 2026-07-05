@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест Python</title>
+<style>
+    :root {
+      --bg:        #0d1117;
+      --bg-card:   #161b22;
+      --bg-hover:  #1c2330;
+      --border:    #30363d;
+      --accent:    #58a6ff;
+      --accent2:   #3fb950;
+      --danger:    #f85149;
+      --warn:      #e3b341;
+      --text:      #c9d1d9;
+      --text-dim:  #8b949e;
+      --text-head: #f0f6fc;
+      --code-bg:   #1f2937;
+      --radius:    10px;
+      --correct:   rgba(63,185,80,.15);
+      --wrong:     rgba(248,81,73,.15);
+      --correct-border: #3fb950;
+      --wrong-border:   #f85149;
+    }
+
+    /* Загальні стилі сторінки */
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 680px;
+      margin: 30px auto;
+      padding: 0 15px;
+      line-height: 1.5;
+    }
+
+    /* Блок прогресу */
+    #progress-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 15px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: sticky;
+      top: 0;
+    }
+    #progress-bar-outer {
+      flex-grow: 1;
+      background: var(--border);
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    #progress-bar-inner {
+      background: var(--accent);
+      width: 10%; /* Тимчасово, для візуалізації */
+      height: 100%;
+      border-radius: 5px;
+    }
+    #progress-label {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* Контейнер картки питання (генерація з id="{i}") */
+    body > div:not(#progress-wrap) {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
+    }
+
+    /* Текст питання */
+    .q-text {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-head);
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    /* Контейнери варіантів відповідей (div навколо input) */
+    body > div:not(#progress-wrap) > div:not(.q-text) {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.15s, border-color 0.15s;
+    }
+    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+      background-color: var(--bg-hover);
+      border-color: var(--text-dim);
+    }
+
+    /* Стилізація радіо-кнопок */
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+      margin: 0;
+      font: inherit;
+      color: var(--accent);
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    input[type="radio"]::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      background-color: var(--accent);
+    }
+    input[type="radio"]:checked::before {
+      transform: scale(1);
+    }
+    input[type="radio"]:checked {
+      border-color: var(--accent);
+    }
+    input[type="radio"]:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Класи станів після вибору */
+    .correct { 
+      border-color: var(--correct-border) !important; 
+      background: var(--correct) !important; 
+      color: #56d364;
+    }
+    .ok { 
+      border-color: var(--correct-border) !important;
+      box-shadow: 0 0 10px rgba(63,185,80, 0.15);
+    }
+    .no { 
+      border-color: var(--wrong-border) !important;
+      box-shadow: 0 0 10px rgba(248,81,73, 0.15);
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="progress-wrap">
+  <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
+  <span id="progress-label">0 / 20</span>
+</div>
+
+
+            <div id="1">
+            <div class="q-text">Питання 1. Який стандартний модуль у Python використовується для роботи з JSON?
+</div>
+            <div><input type="radio">json_lib
+</div>
+<div><input type="radio">serialize
+</div>
+<div><input type="radio">json
+ </div>
+<div><input type="radio">pyjson
+</div>
+
+            </div>
+            
+            <div id="2">
+            <div class="q-text">Питання 2. Який метод використовується для перетворення об'єкта Python (наприклад, словника) у рядок JSON?
+</div>
+            <div><input type="radio">json.serialize()
+</div>
+<div><input type="radio">json.dumps()
+ </div>
+<div><input type="radio">json.to_json()
+</div>
+<div><input type="radio">json.dump()
+</div>
+
+            </div>
+            
+            <div id="3">
+            <div class="q-text">Питання 3. Який метод використовується для запису об'єкта Python безпосередньо у файл у форматі JSON?
+</div>
+            <div><input type="radio">json.write()
+</div>
+<div><input type="radio">json.dump()
+ </div>
+<div><input type="radio">json.save()
+</div>
+<div><input type="radio">json.dumps()
+</div>
+
+            </div>
+            
+            <div id="4">
+            <div class="q-text">Питання 4. Який метод використовується для зчитування JSON-даних із рядка і перетворення їх у об'єкт Python?
+</div>
+            <div><input type="radio">json.from_json()
+</div>
+<div><input type="radio">json.loads()
+ </div>
+<div><input type="radio">json.load()
+</div>
+<div><input type="radio">json.parse()
+</div>
+
+            </div>
+            
+            <div id="5">
+            <div class="q-text">Питання 5. Який метод використовується для зчитування JSON-файлу і перетворення його у словник чи список Python?
+</div>
+            <div><input type="radio">json.load()
+ </div>
+<div><input type="radio">json.parse_file()
+</div>
+<div><input type="radio">json.read()
+</div>
+<div><input type="radio">json.loads()
+</div>
+
+            </div>
+            
+            <div id="6">
+            <div class="q-text">Питання 6. Який тип даних у Python відповідає об'єкту в JSON?
+</div>
+            <div><input type="radio">list
+</div>
+<div><input type="radio">tuple
+</div>
+<div><input type="radio">str
+</div>
+<div><input type="radio">dict
+ </div>
+
+            </div>
+            
+            <div id="7">
+            <div class="q-text">Питання 7. Який тип даних у Python відповідає масиву (array) в JSON?
+</div>
+            <div><input type="radio">list
+ </div>
+<div><input type="radio">dict
+</div>
+<div><input type="radio">set
+</div>
+<div><input type="radio">tuple
+</div>
+
+            </div>
+            
+            <div id="8">
+            <div class="q-text">Питання 8. Що станеться, якщо спробувати конвертувати кортеж (tuple) в JSON за допомогою json.dumps()?
+</div>
+            <div><input type="radio">Він буде видалений
+</div>
+<div><input type="radio">Виникне помилка TypeError
+</div>
+<div><input type="radio">Він буде перетворений у список (list)
+ </div>
+<div><input type="radio">Він залишиться кортежем
+</div>
+
+            </div>
+            
+            <div id="9">
+            <div class="q-text">Питання 9. Який параметр у методах dump/dumps дозволяє зробити JSON-рядок читабельним з відступами?
+</div>
+            <div><input type="radio">spaces
+</div>
+<div><input type="radio">pretty
+</div>
+<div><input type="radio">padding
+</div>
+<div><input type="radio">indent
+ </div>
+
+            </div>
+            
+            <div id="10">
+            <div class="q-text">Питання 10. Яке кодування рекомендується використовувати при відкритті файлів для запису JSON, щоб уникнути проблем з кирилицею?
+</div>
+            <div><input type="radio">encoding='utf-8'
+ </div>
+<div><input type="radio">encoding='cp1251'
+</div>
+<div><input type="radio">encoding='latin-1'
+</div>
+<div><input type="radio">encoding='ascii'
+</div>
+
+            </div>
+            
+            <div id="11">
+            <div class="q-text">Питання 11. Що таке JSON?
+</div>
+            <div><input type="radio">Спеціальна бібліотека Python
+</div>
+<div><input type="radio">Формат обміну даними на основі тексту
+ </div>
+<div><input type="radio">Версія мови JavaScript
+</div>
+<div><input type="radio">Тип бази даних
+</div>
+
+            </div>
+            
+            <div id="12">
+            <div class="q-text">Питання 12. Чи підтримує формат JSON коментарі?
+</div>
+            <div><input type="radio">Так
+</div>
+<div><input type="radio">Тільки багаторядкові
+</div>
+<div><input type="radio">Ні
+ </div>
+<div><input type="radio">Тільки однорядкові
+</div>
+
+            </div>
+            
+            <div id="13">
+            <div class="q-text">Питання 13. Яка помилка виникне, якщо спробувати розпарсити (load) некоректний JSON-рядок?
+</div>
+            <div><input type="radio">json.JSONDecodeError
+ </div>
+<div><input type="radio">SyntaxError
+</div>
+<div><input type="radio">TypeError
+</div>
+<div><input type="radio">ValueError
+</div>
+
+            </div>
+            
+            <div id="14">
+            <div class="q-text">Питання 14. Чи може JSON містити значення None?
+</div>
+            <div><input type="radio">Ні, JSON не підтримує значення None
+</div>
+<div><input type="radio">Це викликає помилку
+</div>
+<div><input type="radio">Так, воно відображається як null
+ </div>
+<div><input type="radio">Так, воно залишається як None
+</div>
+
+            </div>
+            
+            <div id="15">
+            <div class="q-text">Питання 15. Як змінити порядок ключів у JSON-рядку при серіалізації?
+</div>
+            <div><input type="radio">reorder=True
+</div>
+<div><input type="radio">order_keys=True
+</div>
+<div><input type="radio">sort_keys=True
+ </div>
+<div><input type="radio">sorted=True
+</div>
+
+            </div>
+            
+            <div id="16">
+            <div class="q-text">Питання 16. Що станеться, якщо спробувати серіалізувати об'єкт, який не підтримується JSON (наприклад, об'єкт класу)?
+</div>
+            <div><input type="radio">Він буде ігноруватися
+</div>
+<div><input type="radio">Він перетвориться на None
+</div>
+<div><input type="radio">Він буде автоматично перетворений у рядок
+</div>
+<div><input type="radio">Виникне помилка TypeError
+ </div>
+
+            </div>
+            
+            <div id="17">
+            <div class="q-text">Питання 17. Що робить параметр `ensure_ascii=False` у методах dump/dumps?
+</div>
+            <div><input type="radio">Пришвидшує роботу функції
+</div>
+<div><input type="radio">Видаляє всі спеціальні символи
+</div>
+<div><input type="radio">Дозволяє коректне відображення не-ASCII символів (наприклад, кирилиці)
+ </div>
+<div><input type="radio">Перетворює все у формат ASCII
+</div>
+
+            </div>
+            
+            <div id="18">
+            <div class="q-text">Питання 18. Який символ використовується для розділення ключів і значень у форматі JSON?
+</div>
+            <div><input type="radio">:
+ </div>
+<div><input type="radio"><->
+</div>
+<div><input type="radio">->
+</div>
+<div><input type="radio">=>
+</div>
+
+            </div>
+            
+            <div id="19">
+            <div class="q-text">Питання 19. Яка структура даних JSON є коректною?
+</div>
+            <div><input type="radio">{"key": "value"}
+ </div>
+<div><input type="radio">{'key': 'value'}
+</div>
+<div><input type="radio">{key: value}
+</div>
+<div><input type="radio">(key: value)
+</div>
+
+            </div>
+            
+            <div id="20">
+            <div class="q-text">Питання 20. Чи можна вкладати списки всередину словників у JSON?
+</div>
+            <div><input type="radio">Тільки один рівень вкладеності
+</div>
+<div><input type="radio">Так
+ </div>
+<div><input type="radio">Тільки якщо список порожній</div>
+<div><input type="radio">Ні
+</div>
+
+            </div>
+            
+<script>
+const optionBoxes = document.querySelectorAll(
+  'body > div:not(#progress-wrap) > div:not(.q-text)'
+);
+
+optionBoxes.forEach(box => {
+  box.addEventListener('click', function () {
+
+    const radio = this.querySelector('input[type="radio"]');
+
+    // already answered
+    if (radio.disabled) {
+      return;
+    }
+    const label = document.getElementById('progress-label');
+    // Split by " / " and take the first part, then convert to a number
+    let currentCount = parseInt(label.textContent.split(' / ')[0]);
+
+    // Increment
+    currentCount++;
+
+    // Update
+    label.textContent = `${currentCount} / 20`;
+    document.getElementById('progress-bar-inner').style.width = `${(currentCount / 20) * 100}%`;
+    
+
+    radio.checked = true;
+
+    const text = this.textContent;
+    const question_card = this.parentElement;
+
+    // radios only inside current question
+    const siblingRadios = question_card.querySelectorAll('input[type="radio"]');
+
+    siblingRadios.forEach(r => {
+
+      // mark correct answer
+      if (r.parentElement.textContent.endsWith(" ")) {
+        r.parentElement.classList.add("correct");
+      }
+
+      r.disabled = true;
+    });
+
+    if (text.endsWith(" ")) {
+      question_card.classList.add("ok");
+    }
+    else {
+      question_card.classList.add("no");
+    }
+
+  });
+});
+</script>
+</body>
+</html>

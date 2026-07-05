@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест Python</title>
+<style>
+    :root {
+      --bg:        #0d1117;
+      --bg-card:   #161b22;
+      --bg-hover:  #1c2330;
+      --border:    #30363d;
+      --accent:    #58a6ff;
+      --accent2:   #3fb950;
+      --danger:    #f85149;
+      --warn:      #e3b341;
+      --text:      #c9d1d9;
+      --text-dim:  #8b949e;
+      --text-head: #f0f6fc;
+      --code-bg:   #1f2937;
+      --radius:    10px;
+      --correct:   rgba(63,185,80,.15);
+      --wrong:     rgba(248,81,73,.15);
+      --correct-border: #3fb950;
+      --wrong-border:   #f85149;
+    }
+
+    /* Загальні стилі сторінки */
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 680px;
+      margin: 30px auto;
+      padding: 0 15px;
+      line-height: 1.5;
+    }
+
+    /* Блок прогресу */
+    #progress-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 15px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: sticky;
+      top: 0;
+    }
+    #progress-bar-outer {
+      flex-grow: 1;
+      background: var(--border);
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    #progress-bar-inner {
+      background: var(--accent);
+      width: 10%; /* Тимчасово, для візуалізації */
+      height: 100%;
+      border-radius: 5px;
+    }
+    #progress-label {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* Контейнер картки питання (генерація з id="{i}") */
+    body > div:not(#progress-wrap) {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
+    }
+
+    /* Текст питання */
+    .q-text {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-head);
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    /* Контейнери варіантів відповідей (div навколо input) */
+    body > div:not(#progress-wrap) > div:not(.q-text) {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.15s, border-color 0.15s;
+    }
+    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+      background-color: var(--bg-hover);
+      border-color: var(--text-dim);
+    }
+
+    /* Стилізація радіо-кнопок */
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+      margin: 0;
+      font: inherit;
+      color: var(--accent);
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    input[type="radio"]::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      background-color: var(--accent);
+    }
+    input[type="radio"]:checked::before {
+      transform: scale(1);
+    }
+    input[type="radio"]:checked {
+      border-color: var(--accent);
+    }
+    input[type="radio"]:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Класи станів після вибору */
+    .correct { 
+      border-color: var(--correct-border) !important; 
+      background: var(--correct) !important; 
+      color: #56d364;
+    }
+    .ok { 
+      border-color: var(--correct-border) !important;
+      box-shadow: 0 0 10px rgba(63,185,80, 0.15);
+    }
+    .no { 
+      border-color: var(--wrong-border) !important;
+      box-shadow: 0 0 10px rgba(248,81,73, 0.15);
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="progress-wrap">
+  <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
+  <span id="progress-label">0 / 20</span>
+</div>
+
+
+            <div id="1">
+            <div class="q-text">Ось 20 запитань з теми "Робота з текстовими файлами (.txt) у Python", де перша відповідь є правильною.
+</div>
+            <div><input type="radio">open()
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">Питання 1. Яка вбудована функція використовується для відкриття файлу в Python?
+</div>
+<div><input type="radio">read_file()
+</div>
+
+            </div>
+            
+            <div id="2">
+            <div class="q-text">load()
+</div>
+            <div><input type="radio">'r'
+</div>
+<div><input type="radio">Питання 2. Який режим відкриття файлу потрібно вказати для читання (read)?
+</div>
+<div><input type="radio">'w'
+</div>
+<div><input type="radio">
+ </div>
+
+            </div>
+            
+            <div id="3">
+            <div class="q-text">'x'
+</div>
+            <div><input type="radio">'r'
+</div>
+<div><input type="radio">Питання 3. Який режим відкриття файлу використовується для запису даних (при цьому існуючий вміст файлу видаляється)?
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">'w'
+</div>
+
+            </div>
+            
+            <div id="4">
+            <div class="q-text">'w+'
+</div>
+            <div><input type="radio">
+ </div>
+<div><input type="radio">'a'
+</div>
+<div><input type="radio">'add'
+</div>
+<div><input type="radio">Питання 4. Який режим відкриття файлу використовується для додавання (append) даних у кінець файлу?
+</div>
+
+            </div>
+            
+            <div id="5">
+            <div class="q-text">'r+'
+</div>
+            <div><input type="radio">close()
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">Питання 5. Який метод об'єкта файлу використовується для закриття файлу після завершення роботи з ним?
+</div>
+<div><input type="radio">end()
+</div>
+
+            </div>
+            
+            <div id="6">
+            <div class="q-text">exit()
+</div>
+            <div><input type="radio">
+ </div>
+<div><input type="radio">with
+</div>
+<div><input type="radio">open
+</div>
+<div><input type="radio">Питання 6. Який оператор рекомендується використовувати для автоматичного закриття файлу після завершення блоку коду?
+</div>
+
+            </div>
+            
+            <div id="7">
+            <div class="q-text">finally
+</div>
+            <div><input type="radio">Питання 7. Який метод читає весь вміст файлу і повертає його як один рядок?
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">readline()
+</div>
+<div><input type="radio">read()
+</div>
+
+            </div>
+            
+            <div id="8">
+            <div class="q-text">fetch()
+</div>
+            <div><input type="radio">readlines()
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">read_list()
+</div>
+<div><input type="radio">Питання 8. Який метод читає файл рядок за рядком і повертає список усіх рядків?
+</div>
+
+            </div>
+            
+            <div id="9">
+            <div class="q-text">readline()
+</div>
+            <div><input type="radio">Питання 9. Який метод дозволяє записати рядок у відкритий файл?
+</div>
+<div><input type="radio">write()
+</div>
+<div><input type="radio">save()
+</div>
+<div><input type="radio">
+ </div>
+
+            </div>
+            
+            <div id="10">
+            <div class="q-text">append()
+</div>
+            <div><input type="radio">Питання 10. Який символ використовується для вказання кодування (наприклад, utf-8) при відкритті файлу?
+</div>
+<div><input type="radio">encoding='utf-8'
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">charset='utf-8'
+</div>
+
+            </div>
+            
+            <div id="11">
+            <div class="q-text">mode='utf-8'
+</div>
+            <div><input type="radio">Порожній рядок ""
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">Питання 11. Що поверне метод readline(), якщо файл досяг кінця (EOF)?
+</div>
+<div><input type="radio">None
+</div>
+
+            </div>
+            
+            <div id="12">
+            <div class="q-text">False
+</div>
+            <div><input type="radio">'w+'
+</div>
+<div><input type="radio">Питання 12. Який режим слід використовувати, якщо потрібно і читати, і записувати у файл (без видалення вмісту)?
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">'r+'
+</div>
+
+            </div>
+            
+            <div id="13">
+            <div class="q-text">'rw'
+</div>
+            <div><input type="radio">Питання 13. Що станеться, якщо спробувати відкрити файл для читання ('r'), якого не існує?
+</div>
+<div><input type="radio">Створиться порожній файл
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">Виникне помилка FileNotFoundError
+</div>
+
+            </div>
+            
+            <div id="14">
+            <div class="q-text">Повернеться значення None
+</div>
+            <div><input type="radio">f.closed
+</div>
+<div><input type="radio">f.is_closed()
+</div>
+<div><input type="radio">Питання 14. Як можна перевірити, чи файл закритий?
+</div>
+<div><input type="radio">
+ </div>
+
+            </div>
+            
+            <div id="15">
+            <div class="q-text">close(f)
+</div>
+            <div><input type="radio">readlines() зі зрізом або через цикл
+</div>
+<div><input type="radio">read()
+</div>
+<div><input type="radio">Питання 15. Який метод повертає список усіх рядків файлу, але без символів переходу на новий рядок (\n)?
+</div>
+<div><input type="radio">
+ </div>
+
+            </div>
+            
+            <div id="16">
+            <div class="q-text">readline()
+</div>
+            <div><input type="radio">Питання 16. Чи можна ітеруватися (перебирати) файл рядок за рядком за допомогою циклу for?
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">Ні, тільки через while
+</div>
+<div><input type="radio">Так, for line in file:
+</div>
+
+            </div>
+            
+            <div id="17">
+            <div class="q-text">Тільки якщо файл попередньо відкритий у режимі 'rb'
+</div>
+            <div><input type="radio">Питання 17. Що робить метод tell() у файловому об'єкті?
+</div>
+<div><input type="radio">Зчитує один рядок
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">Повертає поточну позицію вказівника у файлі
+</div>
+
+            </div>
+            
+            <div id="18">
+            <div class="q-text">Повідомляє розмір файлу
+</div>
+            <div><input type="radio">
+ </div>
+<div><input type="radio">move()
+</div>
+<div><input type="radio">Питання 18. Який метод використовується для переміщення вказівника на певну позицію у файлі?
+</div>
+<div><input type="radio">seek()
+</div>
+
+            </div>
+            
+            <div id="19">
+            <div class="q-text">jump()
+</div>
+            <div><input type="radio">\n
+</div>
+<div><input type="radio">Питання 19. Який символ у Python відповідає за перехід на новий рядок у текстовому файлі?
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">\r
+</div>
+
+            </div>
+            
+            <div id="20">
+            <div class="q-text">\
+</div>
+            <div><input type="radio">Питання 20. Якщо файл відкрито в режимі 'w', що відбудеться, якщо файл з таким іменем вже існує?
+</div>
+<div><input type="radio">Його вміст буде повністю стерто (перезаписано)
+</div>
+<div><input type="radio">
+ </div>
+<div><input type="radio">Дані будуть додані в кінець
+</div>
+
+            </div>
+            
+<script>
+const optionBoxes = document.querySelectorAll(
+  'body > div:not(#progress-wrap) > div:not(.q-text)'
+);
+
+optionBoxes.forEach(box => {
+  box.addEventListener('click', function () {
+
+    const radio = this.querySelector('input[type="radio"]');
+
+    // already answered
+    if (radio.disabled) {
+      return;
+    }
+    const label = document.getElementById('progress-label');
+    // Split by " / " and take the first part, then convert to a number
+    let currentCount = parseInt(label.textContent.split(' / ')[0]);
+
+    // Increment
+    currentCount++;
+
+    // Update
+    label.textContent = `${currentCount} / 20`;
+    document.getElementById('progress-bar-inner').style.width = `${(currentCount / 20) * 100}%`;
+    
+
+    radio.checked = true;
+
+    const text = this.textContent;
+    const question_card = this.parentElement;
+
+    // radios only inside current question
+    const siblingRadios = question_card.querySelectorAll('input[type="radio"]');
+
+    siblingRadios.forEach(r => {
+
+      // mark correct answer
+      if (r.parentElement.textContent.endsWith(" ")) {
+        r.parentElement.classList.add("correct");
+      }
+
+      r.disabled = true;
+    });
+
+    if (text.endsWith(" ")) {
+      question_card.classList.add("ok");
+    }
+    else {
+      question_card.classList.add("no");
+    }
+
+  });
+});
+</script>
+</body>
+</html>

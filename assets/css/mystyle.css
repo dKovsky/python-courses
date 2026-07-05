@@ -1,0 +1,368 @@
+.page-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+
+#content {
+    flex: 1;
+    /* fill remaining space automatically */
+    overflow: auto;
+    flex-direction: column;
+}
+
+.theme {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.version-container {
+  margin-left: auto; /* pushes this to the end of the row */
+}
+
+/* Basic styling for the navbar */
+/* Local navbar (for sections within the page) */
+nav.local {
+    flex: 0 0 200px;
+    min-width: 140px;
+    max-width: 500px;
+    resize: horizontal;
+    overflow: auto;
+    /* fixed width */
+    /* Width of the sidebar */
+    background-color: #333;
+    height: 100vh;
+    /* Full height */
+    position: fixed;
+    /* Fixed on the left side */
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+}
+
+
+nav.local .resizer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    cursor: ew-resize;
+    background: transparent;
+}
+
+nav.local a {
+    display: block;
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: left;
+}
+
+nav.local a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+/* Styling Submenu */
+nav.local .submenu {
+    padding-left: 20px;
+    display: none;
+}
+
+nav.local .submenu a {
+    background-color: #444;
+}
+
+nav.local>a:hover+.submenu,
+nav.local .submenu:hover {
+    display: block;
+}
+
+
+/* Global navbar (for linking to other pages) */
+nav.global {
+    flex: 0 0 200px;
+    box-sizing: border-box;
+    /* start width, resizable by JS */
+    min-width: 140px;
+    max-width: 500px;
+    resize: horizontal;
+    overflow: auto;
+
+    /* Width of the right navbar */
+    background-color: #444;
+    height: 100vh;
+    /* Full height */
+    position: fixed;
+    /* Fixed on the right side */
+    top: 0;
+    right: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+nav.global .resizer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    cursor: ew-resize;
+    background: transparent;
+}
+
+nav.global a {
+    display: block;
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: left;
+}
+
+nav.global a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+nav.global a.active {
+    background: #a1a1a1;
+    font-weight: 600;
+}
+
+.container {
+    text-align: center;
+    /* Center the content */
+}
+
+img {
+    max-width: 100%;
+    /* Ensure image is responsive */
+    height: auto;
+    /* Maintain aspect ratio */
+}
+
+/* Figcaption styles */
+figcaption {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 5px;
+    /* Space between image and caption */
+    margin-bottom: 25px;
+    /* Space between image and caption */
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    /* Rounded corners */
+    font-family: 'Arial', sans-serif;
+}
+
+
+
+/* Style for the Copy Code Button */
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    z-index: 10;
+    /* Ensure it's above the code block */
+    left: 10px;
+    /* Position the button on the left */
+    padding: 5px 10px;
+    background-color: #1e1e1e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: background-color 0.3s ease;
+    /* Smooth hover effect */
+}
+
+/* Adjust button hover effect */
+.copy-btn:hover {
+    opacity: 1;
+}
+
+/* Wrapper for code block and button */
+.code-container {
+    position: relative;
+    margin-bottom: 20px;
+    /* Space between code blocks */
+    padding-top: 15px;
+    /* Ensure space above the code */
+}
+
+/* Code block styling */
+pre {
+    position: relative;
+    margin: 0;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #282c34;
+    /* Ensure background matches the theme */
+    color: white;
+}
+
+body {
+    /* padding-left: 220px; */
+    /* Add left padding to content */
+    /* padding-right: 220px; */
+    /* padding-right: 220px; */
+    /* Add right padding to content */
+    font-family: 'Helvetica', sans-serif;
+    font-size: 14px;
+    color: inherit;
+}
+
+
+body.light {
+    background-color: #F7F7F7;
+    /* Softer off-white background */
+    color: #242526;
+    /* Dark text for contrast */
+}
+
+
+/* Dark theme styling */
+body.dark {
+    background-color: #242526;
+    color: #DDDDDD;
+}
+
+/* Navigation */
+body.dark #nav-list a {
+    color: white;
+}
+
+/* Content / external links */
+body.dark a[target="_blank"] {
+    color: #4ea3ff;
+}
+
+body.warm {
+    background-color: #FFDAB9;
+    /* Soft peach color */
+    color: #4A2C2A;
+    /* Dark brown text for contrast */
+}
+
+body.warm header {
+    background-color: #F4A261;
+    /* Warm orange */
+    color: white;
+}
+
+body.warm button {
+    background-color: #E07B53;
+    /* Muted coral */
+    color: white;
+}
+
+body.warm footer {
+    background-color: #F1C27D;
+    /* Light amber */
+}
+
+body.warm h1,
+body.warm h2,
+body.warm h3,
+body.warm h4,
+body.warm h5,
+body.warm h6 {
+    color: #4A2C2A;
+    /* Dark brown for headings */
+}
+
+body.warm h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+body.warm h2 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+body.warm h3 {
+    font-size: 1.75em;
+}
+
+body.warm h4 {
+    font-size: 1.5em;
+}
+
+body.warm h5 {
+    font-size: 1.25em;
+}
+
+body.warm h6 {
+    font-size: 1em;
+}
+
+
+
+body.cold {
+    background-color: #E6F7FF;
+    /* Softer pastel blue */
+    color: #333;
+    /* Dark text for readability */
+}
+
+body.cold header {
+    background-color: #A9D6E5;
+    /* Light blue */
+    color: #333;
+}
+
+body.cold button {
+    background-color: #6FA3D5;
+    /* Cool blue */
+    color: white;
+}
+
+body.cold footer {
+    background-color: #B0E0E6;
+    /* Powder blue */
+}
+
+body.cold h1,
+body.cold h2,
+body.cold h3,
+body.cold h4,
+body.cold h5,
+body.cold h6 {
+    color: #333;
+    /* Dark text for consistency */
+
+}
+
+body.cold h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+body.cold h2 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+body.cold h3 {
+    font-size: 1.75em;
+}
+
+body.cold h4 {
+    font-size: 1.5em;
+}
+
+body.cold h5 {
+    font-size: 1.25em;
+}
+
+body.cold h6 {
+    font-size: 1em;
+}

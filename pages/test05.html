@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест Python</title>
+<style>
+    :root {
+      --bg:        #0d1117;
+      --bg-card:   #161b22;
+      --bg-hover:  #1c2330;
+      --border:    #30363d;
+      --accent:    #58a6ff;
+      --accent2:   #3fb950;
+      --danger:    #f85149;
+      --warn:      #e3b341;
+      --text:      #c9d1d9;
+      --text-dim:  #8b949e;
+      --text-head: #f0f6fc;
+      --code-bg:   #1f2937;
+      --radius:    10px;
+      --correct:   rgba(63,185,80,.15);
+      --wrong:     rgba(248,81,73,.15);
+      --correct-border: #3fb950;
+      --wrong-border:   #f85149;
+    }
+
+    /* Загальні стилі сторінки */
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 680px;
+      margin: 30px auto;
+      padding: 0 15px;
+      line-height: 1.5;
+    }
+
+    /* Блок прогресу */
+    #progress-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 15px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: sticky;
+      top: 0;
+    }
+    #progress-bar-outer {
+      flex-grow: 1;
+      background: var(--border);
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    #progress-bar-inner {
+      background: var(--accent);
+      width: 10%; /* Тимчасово, для візуалізації */
+      height: 100%;
+      border-radius: 5px;
+    }
+    #progress-label {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* Контейнер картки питання (генерація з id="{i}") */
+    body > div:not(#progress-wrap) {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
+    }
+
+    /* Текст питання */
+    .q-text {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-head);
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    /* Контейнери варіантів відповідей (div навколо input) */
+    body > div:not(#progress-wrap) > div:not(.q-text) {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.15s, border-color 0.15s;
+    }
+    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+      background-color: var(--bg-hover);
+      border-color: var(--text-dim);
+    }
+
+    /* Стилізація радіо-кнопок */
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+      margin: 0;
+      font: inherit;
+      color: var(--accent);
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    input[type="radio"]::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      background-color: var(--accent);
+    }
+    input[type="radio"]:checked::before {
+      transform: scale(1);
+    }
+    input[type="radio"]:checked {
+      border-color: var(--accent);
+    }
+    input[type="radio"]:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Класи станів після вибору */
+    .correct { 
+      border-color: var(--correct-border) !important; 
+      background: var(--correct) !important; 
+      color: #56d364;
+    }
+    .ok { 
+      border-color: var(--correct-border) !important;
+      box-shadow: 0 0 10px rgba(63,185,80, 0.15);
+    }
+    .no { 
+      border-color: var(--wrong-border) !important;
+      box-shadow: 0 0 10px rgba(248,81,73, 0.15);
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="progress-wrap">
+  <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
+  <span id="progress-label">0 / 20</span>
+</div>
+
+
+            <div id="1">
+            <div class="q-text">Питання 1. Який цикл у Python використовується для ітерації по послідовності (наприклад, списку, рядку або діапазону)?
+</div>
+            <div><input type="radio">repeat
+</div>
+<div><input type="radio">for
+ </div>
+<div><input type="radio">loop
+</div>
+<div><input type="radio">while
+</div>
+
+            </div>
+            
+            <div id="2">
+            <div class="q-text">Питання 2. Який цикл використовується для виконання коду, доки певна умова залишається істинною?
+</div>
+            <div><input type="radio">for
+</div>
+<div><input type="radio">do-while
+</div>
+<div><input type="radio">loop-until
+</div>
+<div><input type="radio">while
+ </div>
+
+            </div>
+            
+            <div id="3">
+            <div class="q-text">Питання 3. Яка функція найчастіше використовується разом із циклом for для генерації послідовності чисел?
+</div>
+            <div><input type="radio">sequence()
+</div>
+<div><input type="radio">range()
+ </div>
+<div><input type="radio">iterate()
+</div>
+<div><input type="radio">list()
+</div>
+
+            </div>
+            
+            <div id="4">
+            <div class="q-text">Питання 4. Що зробить оператор break всередині циклу?
+</div>
+            <div><input type="radio">Перейде до наступної ітерації циклу
+</div>
+<div><input type="radio">Почне цикл заново
+</div>
+<div><input type="radio">Викличе помилку
+</div>
+<div><input type="radio">Негайно перерве виконання циклу
+ </div>
+
+            </div>
+            
+            <div id="5">
+            <div class="q-text">Питання 5. Що зробить оператор continue всередині циклу?
+</div>
+            <div><input type="radio">Пропустить поточну ітерацію та перейде до наступної
+ </div>
+<div><input type="radio">Повністю зупинить цикл
+</div>
+<div><input type="radio">Закриє програму
+</div>
+<div><input type="radio">Повернеться до початку циклу
+</div>
+
+            </div>
+            
+            <div id="6">
+            <div class="q-text">Питання 6. Який результат виведе код: for i in range(3): print(i)?
+</div>
+            <div><input type="radio">1, 2, 3
+</div>
+<div><input type="radio">0, 1, 2
+ </div>
+<div><input type="radio">1, 2
+</div>
+<div><input type="radio">0, 1, 2, 3
+</div>
+
+            </div>
+            
+            <div id="7">
+            <div class="q-text">Питання 7. Що станеться, якщо умова у циклі while ніколи не стане False?
+</div>
+            <div><input type="radio">Цикл стане нескінченним
+ </div>
+<div><input type="radio">Програма проігнорує цикл
+</div>
+<div><input type="radio">Виникне помилка
+</div>
+<div><input type="radio">Python автоматично зупинить цикл
+</div>
+
+            </div>
+            
+            <div id="8">
+            <div class="q-text">Питання 8. Яка функція range(start, stop) поверне послідовність чисел, починаючи з 2 до 4 (не включаючи 5)?
+</div>
+            <div><input type="radio">range(2, 5)
+ </div>
+<div><input type="radio">range(2, 6)
+</div>
+<div><input type="radio">range(2, 4)
+</div>
+<div><input type="radio">range(1, 5)
+</div>
+
+            </div>
+            
+            <div id="9">
+            <div class="q-text">Питання 9. Який параметр у range(start, stop, step) відповідає за крок ітерації?
+</div>
+            <div><input type="radio">offset
+</div>
+<div><input type="radio">jump
+</div>
+<div><input type="radio">step
+ </div>
+<div><input type="radio">increment
+</div>
+
+            </div>
+            
+            <div id="10">
+            <div class="q-text">Питання 10. Чи можна використовувати цикл всередині іншого циклу?
+</div>
+            <div><input type="radio">Так, це називається вкладеним циклом
+ </div>
+<div><input type="radio">Ні, Python не підтримує вкладені цикли
+</div>
+<div><input type="radio">Тільки для циклу while
+</div>
+<div><input type="radio">Тільки один раз
+</div>
+
+            </div>
+            
+            <div id="11">
+            <div class="q-text">Питання 11. Що виведе код: for i in "Hi": print(i)?
+</div>
+            <div><input type="radio">i, потім H
+</div>
+<div><input type="radio">Hi
+</div>
+<div><input type="radio">H, потім i
+ </div>
+<div><input type="radio">Помилка
+</div>
+
+            </div>
+            
+            <div id="12">
+            <div class="q-text">Питання 12. Який оператор можна додати до циклу, щоб виконати код після його завершення (якщо цикл не був перерваний break)?
+</div>
+            <div><input type="radio">finally
+</div>
+<div><input type="radio">else
+ </div>
+<div><input type="radio">after
+</div>
+<div><input type="radio">end
+</div>
+
+            </div>
+            
+            <div id="13">
+            <div class="q-text">Питання 13. Який діапазон чисел згенерує range(5)?
+</div>
+            <div><input type="radio">0, 1, 2, 3, 4, 5
+</div>
+<div><input type="radio">5
+</div>
+<div><input type="radio">0, 1, 2, 3, 4
+ </div>
+<div><input type="radio">1, 2, 3, 4, 5
+</div>
+
+            </div>
+            
+            <div id="14">
+            <div class="q-text">Питання 14. Як правильно перервати нескінченний цикл вручну під час виконання в терміналі?
+</div>
+            <div><input type="radio">Alt + F4
+</div>
+<div><input type="radio">Ctrl + C
+ </div>
+<div><input type="radio">Ctrl + Z
+</div>
+<div><input type="radio">Esc
+</div>
+
+            </div>
+            
+            <div id="15">
+            <div class="q-text">Питання 15. Чи можна використовувати рядок як ітерований об'єкт у циклі for?
+</div>
+            <div><input type="radio">Ні
+</div>
+<div><input type="radio">Тільки якщо в ньому числа
+</div>
+<div><input type="radio">Так
+ </div>
+<div><input type="radio">Тільки якщо він порожній
+</div>
+
+            </div>
+            
+            <div id="16">
+            <div class="q-text">Питання 16. Чим відрізняється цикл for від циклу while?
+</div>
+            <div><input type="radio">Між ними немає різниці
+</div>
+<div><input type="radio">while швидший за for
+</div>
+<div><input type="radio">for працює з послідовностями, while — за умовою
+ </div>
+<div><input type="radio">for використовує умови, а while — діапазони
+</div>
+
+            </div>
+            
+            <div id="17">
+            <div class="q-text">Питання 17. Яка функція дозволяє отримати і індекс, і значення елемента під час ітерації по списку?
+</div>
+            <div><input type="radio">enumerate()
+ </div>
+<div><input type="radio">index()
+</div>
+<div><input type="radio">zip()
+</div>
+<div><input type="radio">range_with_index()
+</div>
+
+            </div>
+            
+            <div id="18">
+            <div class="q-text">Питання 18. Скільки разів виконається цикл while i < 5: (якщо i = 0 і i збільшується на 1 кожного разу)?
+</div>
+            <div><input type="radio">5
+ </div>
+<div><input type="radio">0
+</div>
+<div><input type="radio">4
+</div>
+<div><input type="radio">6
+</div>
+
+            </div>
+            
+            <div id="19">
+            <div class="q-text">Питання 19. Що буде результатом виразу range(10, 0, -2)?
+</div>
+            <div><input type="radio">10, 8, 6, 4, 2, 0
+</div>
+<div><input type="radio">10, 12, 14...
+</div>
+<div><input type="radio">10, 8, 6, 4, 2
+ </div>
+<div><input type="radio">8, 6, 4, 2, 0
+</div>
+
+            </div>
+            
+            <div id="20">
+            <div class="q-text">Питання 20. Чи обов'язкова наявність тіла циклу (коду всередині)?
+</div>
+            <div><input type="radio">Так, мінімум один рядок
+</div>
+<div><input type="radio">Так, але тільки для while</div>
+<div><input type="radio">Ні, можна використовувати pass
+ </div>
+<div><input type="radio">Так, інакше виникне помилка
+</div>
+
+            </div>
+            
+<script>
+const optionBoxes = document.querySelectorAll(
+  'body > div:not(#progress-wrap) > div:not(.q-text)'
+);
+
+optionBoxes.forEach(box => {
+  box.addEventListener('click', function () {
+
+    const radio = this.querySelector('input[type="radio"]');
+
+    // already answered
+    if (radio.disabled) {
+      return;
+    }
+    const label = document.getElementById('progress-label');
+    // Split by " / " and take the first part, then convert to a number
+    let currentCount = parseInt(label.textContent.split(' / ')[0]);
+
+    // Increment
+    currentCount++;
+
+    // Update
+    label.textContent = `${currentCount} / 20`;
+    document.getElementById('progress-bar-inner').style.width = `${(currentCount / 20) * 100}%`;
+    
+
+    radio.checked = true;
+
+    const text = this.textContent;
+    const question_card = this.parentElement;
+
+    // radios only inside current question
+    const siblingRadios = question_card.querySelectorAll('input[type="radio"]');
+
+    siblingRadios.forEach(r => {
+
+      // mark correct answer
+      if (r.parentElement.textContent.endsWith(" ")) {
+        r.parentElement.classList.add("correct");
+      }
+
+      r.disabled = true;
+    });
+
+    if (text.endsWith(" ")) {
+      question_card.classList.add("ok");
+    }
+    else {
+      question_card.classList.add("no");
+    }
+
+  });
+});
+</script>
+</body>
+</html>
