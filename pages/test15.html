@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 7: Модуль os</title>
+  <title>Тест 15: Робота з базами даних за допомогою SQL Server і PostgreSQL</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -172,281 +172,281 @@
 
 
             <div id="1">
-            <div class="q-text">Питання 1. Яка функція модуля os повертає поточну робочу директорію?
+            <div class="q-text">Питання 1. Яка бібліотека є стандартом де-факто для роботи з PostgreSQL у Python?
 </div>
-            <div><input type="radio">os.getcwd()
+            <div><input type="radio">sql-postgres
+</div>
+<div><input type="radio">pgpy
+</div>
+<div><input type="radio">psycopg2
  </div>
-<div><input type="radio">os.pwd()
-</div>
-<div><input type="radio">os.current_dir()
-</div>
-<div><input type="radio">os.getdir()
+<div><input type="radio">psql-driver
 </div>
 
             </div>
             
             <div id="2">
-            <div class="q-text">Питання 2. Яка функція дозволяє змінити поточну робочу директорію?
+            <div class="q-text">Питання 2. Який метод використовується для створення з'єднання з БД PostgreSQL?
 </div>
-            <div><input type="radio">os.changedir()
+            <div><input type="radio">psycopg2.establish()
 </div>
-<div><input type="radio">os.chdir()
+<div><input type="radio">psycopg2.connect()
  </div>
-<div><input type="radio">os.movedir()
+<div><input type="radio">psycopg2.connection()
 </div>
-<div><input type="radio">os.setcwd()
+<div><input type="radio">psycopg2.open()
 </div>
 
             </div>
             
             <div id="3">
-            <div class="q-text">Питання 3. Яка функція використовується для переліку всіх файлів та папок у вказаній директорії?
+            <div class="q-text">Питання 3. Як у psycopg2 реалізовано автоматичне завершення транзакції?
 </div>
-            <div><input type="radio">os.listfiles()
+            <div><input type="radio">cursor.save()
 </div>
-<div><input type="radio">os.listdir()
+<div><input type="radio">transaction.end()
+</div>
+<div><input type="radio">connection.commit()
  </div>
-<div><input type="radio">os.getdircontent()
-</div>
-<div><input type="radio">os.showdir()
+<div><input type="radio">connection.apply()
 </div>
 
             </div>
             
             <div id="4">
-            <div class="q-text">Питання 4. Яка функція створює нову папку?
+            <div class="q-text">Питання 4. Який символ використовується для параметризованих запитів у psycopg2?
 </div>
-            <div><input type="radio">os.createdir()
-</div>
-<div><input type="radio">os.mkdir()
+            <div><input type="radio">%s
  </div>
-<div><input type="radio">os.makedir()
+<div><input type="radio">?
 </div>
-<div><input type="radio">os.newdir()
+<div><input type="radio">:name
+</div>
+<div><input type="radio">$1
 </div>
 
             </div>
             
             <div id="5">
-            <div class="q-text">Питання 5. Яка функція видаляє порожню папку?
+            <div class="q-text">Питання 5. Який об'єкт дозволяє зручно звертатися до стовпців результату за їх іменами (а не індексами)?
 </div>
-            <div><input type="radio">os.deletedir()
+            <div><input type="radio">psycopg2.RowCursor
 </div>
-<div><input type="radio">os.removedir()
+<div><input type="radio">psycopg2.DictResult
 </div>
-<div><input type="radio">os.deldir()
+<div><input type="radio">psycopg2.NameCursor
 </div>
-<div><input type="radio">os.rmdir()
+<div><input type="radio">psycopg2.extras.DictCursor
  </div>
 
             </div>
             
             <div id="6">
-            <div class="q-text">Питання 6. Яка функція видаляє файл?
+            <div class="q-text">Питання 6. Який тип виключення виникає при помилках підключення до Postgres?
 </div>
-            <div><input type="radio">os.erase()
+            <div><input type="radio">psycopg2.ConnectError
 </div>
-<div><input type="radio">os.unlinkfile()
-</div>
-<div><input type="radio">os.remove()
+<div><input type="radio">psycopg2.OperationalError
  </div>
-<div><input type="radio">os.delete()
+<div><input type="radio">psycopg2.DBError
+</div>
+<div><input type="radio">psycopg2.Error
 </div>
 
             </div>
             
             <div id="7">
-            <div class="q-text">Питання 7. Як перевірити, чи існує шлях (файл або папка)?
+            <div class="q-text">Питання 7. Який метод psycopg2 найефективніший для вставки великих обсягів даних?
 </div>
-            <div><input type="radio">os.exists()
+            <div><input type="radio">cursor.copy_from()
 </div>
-<div><input type="radio">os.is_path()
+<div><input type="radio">insert_many()
 </div>
-<div><input type="radio">os.check_path()
-</div>
-<div><input type="radio">os.path.exists()
+<div><input type="radio">execute_values()
  </div>
+<div><input type="radio">bulk_insert()
+</div>
 
             </div>
             
             <div id="8">
-            <div class="q-text">Питання 8. Який модуль всередині os призначений для маніпуляцій зі шляхами?
+            <div class="q-text">Питання 8. Чи підтримує psycopg2 асинхронні операції?
 </div>
-            <div><input type="radio">os.dirtools
+            <div><input type="radio">Ні, тільки синхронні
 </div>
-<div><input type="radio">os.pathutils
+<div><input type="radio">Тільки через сторонні бібліотеки
 </div>
-<div><input type="radio">os.paths
+<div><input type="radio">Так, але тільки для запису
 </div>
-<div><input type="radio">os.path
+<div><input type="radio">Так, через окремі модулі
  </div>
 
             </div>
             
             <div id="9">
-            <div class="q-text">Питання 9. Яка функція перевіряє, чи є шлях файлом?
+            <div class="q-text">Питання 9. Яка властивість курсора повертає статус останнього запиту (наприклад, "INSERT 0 1")?
 </div>
-            <div><input type="radio">os.path.exists_file()
+            <div><input type="radio">last_result
 </div>
-<div><input type="radio">os.path.isfile()
+<div><input type="radio">statusmessage
  </div>
-<div><input type="radio">os.isfile()
+<div><input type="radio">query_info
 </div>
-<div><input type="radio">os.path.is_file()
+<div><input type="radio">rowcount
 </div>
 
             </div>
             
             <div id="10">
-            <div class="q-text">Питання 10. Яка функція перевіряє, чи є шлях папкою (директорією)?
+            <div class="q-text">Питання 10. Що потрібно зробити після виконання змін (UPDATE/DELETE) в psycopg2, щоб зміни збереглися?
 </div>
-            <div><input type="radio">os.isdir()
+            <div><input type="radio">Виконати cursor.execute('SAVE')
 </div>
-<div><input type="radio">os.path.is_dir()
-</div>
-<div><input type="radio">os.path.isdir()
+<div><input type="radio">Викликати connection.commit()
  </div>
-<div><input type="radio">os.path.folder()
+<div><input type="radio">Нічого, зміни зберігаються автоматично
+</div>
+<div><input type="radio">Виконати cursor.close()
 </div>
 
             </div>
             
             <div id="11">
-            <div class="q-text">Питання 11. Яка функція розділяє шлях до файлу на ім'я папки та ім'я самого файлу?
+            <div class="q-text">Питання 11. Яка бібліотека найчастіше використовується для підключення до MS SQL Server?
 </div>
-            <div><input type="radio">os.split()
-</div>
-<div><input type="radio">os.path.divide()
-</div>
-<div><input type="radio">os.path.partition()
-</div>
-<div><input type="radio">os.path.split()
+            <div><input type="radio">pyodbc
  </div>
+<div><input type="radio">odbc-driver
+</div>
+<div><input type="radio">py-msql
+</div>
+<div><input type="radio">sqlserver-py
+</div>
 
             </div>
             
             <div id="12">
-            <div class="q-text">Питання 12. Як з'єднати декілька частин шляху в один рядок, коректний для вашої ОС?
+            <div class="q-text">Питання 12. Що обов'язково потрібно мати в системі для роботи pyodbc?
 </div>
-            <div><input type="radio">os.path.merge()
+            <div><input type="radio">Відкритий порт 1433
 </div>
-<div><input type="radio">os.path.combine()
-</div>
-<div><input type="radio">os.path.connect()
-</div>
-<div><input type="radio">os.path.join()
+<div><input type="radio">ODBC-драйвер для SQL Server
  </div>
+<div><input type="radio">Бібліотеку pypyodbc
+</div>
+<div><input type="radio">Встановлений SQL Server Management Studio
+</div>
 
             </div>
             
             <div id="13">
-            <div class="q-text">Питання 13. Яка функція повертає розмір файлу в байтах?
+            <div class="q-text">Питання 13. Який параметр зазвичай містить рядок підключення до SQL Server?
 </div>
-            <div><input type="radio">os.getfilesize()
-</div>
-<div><input type="radio">os.path.getsize()
+            <div><input type="radio">connection_string
  </div>
-<div><input type="radio">os.path.size()
+<div><input type="radio">url
 </div>
-<div><input type="radio">os.path.bytes()
+<div><input type="radio">dsn
+</div>
+<div><input type="radio">host + dbname
 </div>
 
             </div>
             
             <div id="14">
-            <div class="q-text">Питання 14. Як отримати назву операційної системи (наприклад, 'posix' або 'nt')?
+            <div class="q-text">Питання 14. Який символ використовується для параметризованих запитів у pyodbc?
 </div>
-            <div><input type="radio">os.name
+            <div><input type="radio">?
  </div>
-<div><input type="radio">os.os_type
+<div><input type="radio">:name
 </div>
-<div><input type="radio">os.platform()
+<div><input type="radio">@name
 </div>
-<div><input type="radio">os.system_name
+<div><input type="radio">%s
 </div>
 
             </div>
             
             <div id="15">
-            <div class="q-text">Питання 15. Яка функція видаляє файл або порожню папку (більш сучасний метод)?
+            <div class="q-text">Питання 15. Який метод дозволяє виконати запит і одразу отримати результат у вигляді ітератора?
 </div>
-            <div><input type="radio">os.delete_all()
-</div>
-<div><input type="radio">os.unlink()
+            <div><input type="radio">cursor.execute()
  </div>
-<div><input type="radio">os.kill()
+<div><input type="radio">cursor.stream()
 </div>
-<div><input type="radio">os.erase_path()
+<div><input type="radio">cursor.query()
+</div>
+<div><input type="radio">cursor.fetchall()
 </div>
 
             </div>
             
             <div id="16">
-            <div class="q-text">Питання 16. Яка змінна середовища в os дозволяє отримати доступ до змінних оточення (наприклад, PATH)?
+            <div class="q-text">Питання 16. Що потрібно вимкнути або налаштувати в pyodbc, щоб транзакції не підтверджувалися автоматично?
 </div>
-            <div><input type="radio">os.environment
+            <div><input type="radio">connection.set_manual()
 </div>
-<div><input type="radio">os.env
-</div>
-<div><input type="radio">os.get_env()
-</div>
-<div><input type="radio">os.environ
+<div><input type="radio">connection.autocommit = False
  </div>
+<div><input type="radio">cursor.commit = False
+</div>
+<div><input type="radio">connection.transaction = 'manual'
+</div>
 
             </div>
             
             <div id="17">
-            <div class="q-text">Питання 17. Яка функція дозволяє виконати системну команду безпосередньо з Python?
+            <div class="q-text">Питання 17. Як отримати список усіх доступних ODBC-драйверів у системі через pyodbc?
 </div>
-            <div><input type="radio">os.execute()
+            <div><input type="radio">pyodbc.odbc_data_sources()
 </div>
-<div><input type="radio">os.run()
-</div>
-<div><input type="radio">os.system()
+<div><input type="radio">pyodbc.drivers()
  </div>
-<div><input type="radio">os.cmd()
+<div><input type="radio">pyodbc.list_drivers()
+</div>
+<div><input type="radio">pyodbc.get_drivers()
 </div>
 
             </div>
             
             <div id="18">
-            <div class="q-text">Питання 18. Яка функція повертає абсолютний шлях до файлу?
+            <div class="q-text">Питання 18. Який метод pyodbc використовується для закриття з'єднання?
 </div>
-            <div><input type="radio">os.path.abspath()
+            <div><input type="radio">connection.close()
  </div>
-<div><input type="radio">os.path.abs()
+<div><input type="radio">connection.exit()
 </div>
-<div><input type="radio">os.absolute()
+<div><input type="radio">del connection
 </div>
-<div><input type="radio">os.path.getabsolute()
+<div><input type="radio">connection.finish()
 </div>
 
             </div>
             
             <div id="19">
-            <div class="q-text">Питання 19. Яка функція створює дерево папок (включаючи проміжні)?
+            <div class="q-text">Питання 19. Яка помилка виникне, якщо передати невірний рядок підключення в pyodbc?
 </div>
-            <div><input type="radio">os.tree()
+            <div><input type="radio">pyodbc.OperationalError
 </div>
-<div><input type="radio">os.mkdir_all()
-</div>
-<div><input type="radio">os.makedirs()
+<div><input type="radio">pyodbc.InterfaceError
  </div>
-<div><input type="radio">os.create_all()
+<div><input type="radio">pyodbc.ProgrammingError
+</div>
+<div><input type="radio">pyodbc.DataError
 </div>
 
             </div>
             
             <div id="20">
-            <div class="q-text">Питання 20. Яка функція повертає лише ім'я файлу з повного шляху (шлях до директорії відсікається)?
+            <div class="q-text">Питання 20. Чи можна використовувати with (context manager) для об'єкта підключення в pyodbc?
 </div>
-            <div><input type="radio">os.path.name()
-</div>
-<div><input type="radio">os.path.basename()
+            <div><input type="radio">Так, це гарантує закриття з'єднання
  </div>
-<div><input type="radio">os.path.splitname()</div>
-<div><input type="radio">os.path.filename()
+<div><input type="radio">Ні, тільки для курсорів
 </div>
+<div><input type="radio">Тільки в нових версіях
+</div>
+<div><input type="radio">Це залежить від драйвера</div>
 
             </div>
             

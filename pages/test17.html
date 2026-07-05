@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 7: Модуль os</title>
+  <title>Тест 17: Робота з бібліотекою openpyxl для роботи з Excel</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -172,281 +172,281 @@
 
 
             <div id="1">
-            <div class="q-text">Питання 1. Яка функція модуля os повертає поточну робочу директорію?
+            <div class="q-text">Питання 1. Який клас використовується для створення або завантаження Excel-книги в openpyxl?
 </div>
-            <div><input type="radio">os.getcwd()
+            <div><input type="radio">Book
+</div>
+<div><input type="radio">Workbook
  </div>
-<div><input type="radio">os.pwd()
+<div><input type="radio">ExcelFile
 </div>
-<div><input type="radio">os.current_dir()
-</div>
-<div><input type="radio">os.getdir()
+<div><input type="radio">File
 </div>
 
             </div>
             
             <div id="2">
-            <div class="q-text">Питання 2. Яка функція дозволяє змінити поточну робочу директорію?
+            <div class="q-text">Питання 2. Який метод використовується для завантаження існуючого файлу .xlsx?
 </div>
-            <div><input type="radio">os.changedir()
+            <div><input type="radio">get_workbook()
 </div>
-<div><input type="radio">os.chdir()
+<div><input type="radio">load_workbook()
  </div>
-<div><input type="radio">os.movedir()
+<div><input type="radio">read_workbook()
 </div>
-<div><input type="radio">os.setcwd()
+<div><input type="radio">open_workbook()
 </div>
 
             </div>
             
             <div id="3">
-            <div class="q-text">Питання 3. Яка функція використовується для переліку всіх файлів та папок у вказаній директорії?
+            <div class="q-text">Питання 3. Як отримати доступ до активного (поточного) аркуша в книзі?
 </div>
-            <div><input type="radio">os.listfiles()
-</div>
-<div><input type="radio">os.listdir()
+            <div><input type="radio">wb.active
  </div>
-<div><input type="radio">os.getdircontent()
+<div><input type="radio">wb.current_sheet
 </div>
-<div><input type="radio">os.showdir()
+<div><input type="radio">wb.get_active_sheet()
+</div>
+<div><input type="radio">wb.sheet_active
 </div>
 
             </div>
             
             <div id="4">
-            <div class="q-text">Питання 4. Яка функція створює нову папку?
+            <div class="q-text">Питання 4. Яка властивість об'єкта комірки повертає її значення?
 </div>
-            <div><input type="radio">os.createdir()
-</div>
-<div><input type="radio">os.mkdir()
+            <div><input type="radio">cell.value
  </div>
-<div><input type="radio">os.makedir()
+<div><input type="radio">cell.content
 </div>
-<div><input type="radio">os.newdir()
+<div><input type="radio">cell.data
+</div>
+<div><input type="radio">cell.get()
 </div>
 
             </div>
             
             <div id="5">
-            <div class="q-text">Питання 5. Яка функція видаляє порожню папку?
+            <div class="q-text">Питання 5. Як звернутися до комірки за її координатами (наприклад, 'A1')?
 </div>
-            <div><input type="radio">os.deletedir()
+            <div><input type="radio">ws.select('A1')
 </div>
-<div><input type="radio">os.removedir()
-</div>
-<div><input type="radio">os.deldir()
-</div>
-<div><input type="radio">os.rmdir()
+<div><input type="radio">ws['A1']
  </div>
+<div><input type="radio">ws.cell(row=1, column=1)
+</div>
+<div><input type="radio">ws.get('A1')
+</div>
 
             </div>
             
             <div id="6">
-            <div class="q-text">Питання 6. Яка функція видаляє файл?
+            <div class="q-text">Питання 6. Яка властивість об'єкта комірки повертає її назву (наприклад, 'A1')?
 </div>
-            <div><input type="radio">os.erase()
+            <div><input type="radio">cell.label
 </div>
-<div><input type="radio">os.unlinkfile()
+<div><input type="radio">cell.address
 </div>
-<div><input type="radio">os.remove()
+<div><input type="radio">cell.name
+</div>
+<div><input type="radio">cell.coordinate
  </div>
-<div><input type="radio">os.delete()
-</div>
 
             </div>
             
             <div id="7">
-            <div class="q-text">Питання 7. Як перевірити, чи існує шлях (файл або папка)?
+            <div class="q-text">Питання 7. Який метод використовується для збереження змін у файлі?
 </div>
-            <div><input type="radio">os.exists()
+            <div><input type="radio">wb.close('filename.xlsx')
 </div>
-<div><input type="radio">os.is_path()
+<div><input type="radio">wb.write('filename.xlsx')
 </div>
-<div><input type="radio">os.check_path()
-</div>
-<div><input type="radio">os.path.exists()
+<div><input type="radio">wb.save('filename.xlsx')
  </div>
+<div><input type="radio">wb.export('filename.xlsx')
+</div>
 
             </div>
             
             <div id="8">
-            <div class="q-text">Питання 8. Який модуль всередині os призначений для маніпуляцій зі шляхами?
+            <div class="q-text">Питання 8. Як створити новий аркуш у книзі?
 </div>
-            <div><input type="radio">os.dirtools
-</div>
-<div><input type="radio">os.pathutils
-</div>
-<div><input type="radio">os.paths
-</div>
-<div><input type="radio">os.path
+            <div><input type="radio">wb.create_sheet()
  </div>
+<div><input type="radio">wb.insert_sheet()
+</div>
+<div><input type="radio">wb.add_sheet()
+</div>
+<div><input type="radio">wb.new_sheet()
+</div>
 
             </div>
             
             <div id="9">
-            <div class="q-text">Питання 9. Яка функція перевіряє, чи є шлях файлом?
+            <div class="q-text">Питання 9. Яка властивість дозволяє змінити назву аркуша?
 </div>
-            <div><input type="radio">os.path.exists_file()
+            <div><input type="radio">ws.name
 </div>
-<div><input type="radio">os.path.isfile()
+<div><input type="radio">ws.label
+</div>
+<div><input type="radio">ws.title
  </div>
-<div><input type="radio">os.isfile()
-</div>
-<div><input type="radio">os.path.is_file()
+<div><input type="radio">ws.rename
 </div>
 
             </div>
             
             <div id="10">
-            <div class="q-text">Питання 10. Яка функція перевіряє, чи є шлях папкою (директорією)?
+            <div class="q-text">Питання 10. Як отримати значення з комірки за допомогою індексів рядка та стовпця (починаючи з 1)?
 </div>
-            <div><input type="radio">os.isdir()
+            <div><input type="radio">ws['1,1'].value
 </div>
-<div><input type="radio">os.path.is_dir()
-</div>
-<div><input type="radio">os.path.isdir()
+<div><input type="radio">ws.cell(row=1, column=1).value
  </div>
-<div><input type="radio">os.path.folder()
+<div><input type="radio">ws.cell(0, 0).value
+</div>
+<div><input type="radio">ws.get_cell(1, 1).value
 </div>
 
             </div>
             
             <div id="11">
-            <div class="q-text">Питання 11. Яка функція розділяє шлях до файлу на ім'я папки та ім'я самого файлу?
+            <div class="q-text">Питання 11. Яка властивість дозволяє отримати доступ до всіх рядків аркуша у вигляді ітератора?
 </div>
-            <div><input type="radio">os.split()
+            <div><input type="radio">ws.get_rows()
 </div>
-<div><input type="radio">os.path.divide()
+<div><input type="radio">ws.all_rows()
 </div>
-<div><input type="radio">os.path.partition()
-</div>
-<div><input type="radio">os.path.split()
+<div><input type="radio">ws.iter_rows()
  </div>
+<div><input type="radio">ws.rows()
+</div>
 
             </div>
             
             <div id="12">
-            <div class="q-text">Питання 12. Як з'єднати декілька частин шляху в один рядок, коректний для вашої ОС?
+            <div class="q-text">Питання 12. Як видалити аркуш із книги?
 </div>
-            <div><input type="radio">os.path.merge()
+            <div><input type="radio">wb.delete_sheet(sheet)
 </div>
-<div><input type="radio">os.path.combine()
-</div>
-<div><input type="radio">os.path.connect()
-</div>
-<div><input type="radio">os.path.join()
+<div><input type="radio">wb.remove(sheet)
  </div>
+<div><input type="radio">wb.del_sheet(sheet)
+</div>
+<div><input type="radio">wb.pop(sheet)
+</div>
 
             </div>
             
             <div id="13">
-            <div class="q-text">Питання 13. Яка функція повертає розмір файлу в байтах?
+            <div class="q-text">Питання 13. Який атрибут комірки використовується для встановлення шрифту (жирний, курсив)?
 </div>
-            <div><input type="radio">os.getfilesize()
+            <div><input type="radio">cell.appearance
 </div>
-<div><input type="radio">os.path.getsize()
+<div><input type="radio">cell.text_format
+</div>
+<div><input type="radio">cell.font
  </div>
-<div><input type="radio">os.path.size()
-</div>
-<div><input type="radio">os.path.bytes()
+<div><input type="radio">cell.style
 </div>
 
             </div>
             
             <div id="14">
-            <div class="q-text">Питання 14. Як отримати назву операційної системи (наприклад, 'posix' або 'nt')?
+            <div class="q-text">Питання 14. Як змінити колір фону комірки (через PatternFill)?
 </div>
-            <div><input type="radio">os.name
+            <div><input type="radio">cell.color
+</div>
+<div><input type="radio">cell.background
+</div>
+<div><input type="radio">cell.fill
  </div>
-<div><input type="radio">os.os_type
-</div>
-<div><input type="radio">os.platform()
-</div>
-<div><input type="radio">os.system_name
+<div><input type="radio">cell.paint
 </div>
 
             </div>
             
             <div id="15">
-            <div class="q-text">Питання 15. Яка функція видаляє файл або порожню папку (більш сучасний метод)?
+            <div class="q-text">Питання 15. Як додати формулу в комірку?
 </div>
-            <div><input type="radio">os.delete_all()
-</div>
-<div><input type="radio">os.unlink()
+            <div><input type="radio">cell.value = '=SUM(A1:A10)'
  </div>
-<div><input type="radio">os.kill()
+<div><input type="radio">cell.formula = 'SUM(A1:A10)'
 </div>
-<div><input type="radio">os.erase_path()
+<div><input type="radio">cell.add_formula('=SUM(A1:A10)')
+</div>
+<div><input type="radio">cell.set_formula('SUM(A1:A10)')
 </div>
 
             </div>
             
             <div id="16">
-            <div class="q-text">Питання 16. Яка змінна середовища в os дозволяє отримати доступ до змінних оточення (наприклад, PATH)?
+            <div class="q-text">Питання 16. Яка властивість об'єкта комірки дозволяє отримати доступ до її формату чисел (наприклад, дата чи валюта)?
 </div>
-            <div><input type="radio">os.environment
+            <div><input type="radio">cell.format
 </div>
-<div><input type="radio">os.env
-</div>
-<div><input type="radio">os.get_env()
-</div>
-<div><input type="radio">os.environ
+<div><input type="radio">cell.number_format
  </div>
+<div><input type="radio">cell.data_format
+</div>
+<div><input type="radio">cell.type
+</div>
 
             </div>
             
             <div id="17">
-            <div class="q-text">Питання 17. Яка функція дозволяє виконати системну команду безпосередньо з Python?
+            <div class="q-text">Питання 17. Як об'єднати комірки (наприклад, від A1 до B2)?
 </div>
-            <div><input type="radio">os.execute()
-</div>
-<div><input type="radio">os.run()
-</div>
-<div><input type="radio">os.system()
+            <div><input type="radio">ws.merge_cells('A1:B2')
  </div>
-<div><input type="radio">os.cmd()
+<div><input type="radio">ws.cells('A1:B2').merge()
+</div>
+<div><input type="radio">ws.combine_cells('A1:B2')
+</div>
+<div><input type="radio">ws.join_cells('A1:B2')
 </div>
 
             </div>
             
             <div id="18">
-            <div class="q-text">Питання 18. Яка функція повертає абсолютний шлях до файлу?
+            <div class="q-text">Питання 18. Як отримати кількість рядків, що містять дані на аркуші?
 </div>
-            <div><input type="radio">os.path.abspath()
+            <div><input type="radio">ws.max_row
  </div>
-<div><input type="radio">os.path.abs()
+<div><input type="radio">ws.rows_count
 </div>
-<div><input type="radio">os.absolute()
+<div><input type="radio">ws.total_rows
 </div>
-<div><input type="radio">os.path.getabsolute()
+<div><input type="radio">len(ws)
 </div>
 
             </div>
             
             <div id="19">
-            <div class="q-text">Питання 19. Яка функція створює дерево папок (включаючи проміжні)?
+            <div class="q-text">Питання 19. Чи підтримує openpyxl файли формату .xls (старий Excel)?
 </div>
-            <div><input type="radio">os.tree()
-</div>
-<div><input type="radio">os.mkdir_all()
-</div>
-<div><input type="radio">os.makedirs()
+            <div><input type="radio">Ні, тільки .xlsx та .xlsm
  </div>
-<div><input type="radio">os.create_all()
+<div><input type="radio">Так, автоматично
+</div>
+<div><input type="radio">Так, але з обмеженнями
+</div>
+<div><input type="radio">Тільки через додатковий плагін
 </div>
 
             </div>
             
             <div id="20">
-            <div class="q-text">Питання 20. Яка функція повертає лише ім'я файлу з повного шляху (шлях до директорії відсікається)?
+            <div class="q-text">Питання 20. Який метод дозволяє очистити всі дані з комірки, залишивши її формат?
 </div>
-            <div><input type="radio">os.path.name()
+            <div><input type="radio">cell.delete()
 </div>
-<div><input type="radio">os.path.basename()
+<div><input type="radio">cell.value = None
  </div>
-<div><input type="radio">os.path.splitname()</div>
-<div><input type="radio">os.path.filename()
+<div><input type="radio">cell.clear()
 </div>
+<div><input type="radio">cell.remove()</div>
 
             </div>
             

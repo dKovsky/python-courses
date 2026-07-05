@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест 16: Робота з CSV файлами</title>
+  <link rel="icon" type="image/png" href="../favicon.ico">
+<style>
+    :root {
+      --bg:        #0d1117;
+      --bg-card:   #161b22;
+      --bg-hover:  #1c2330;
+      --border:    #30363d;
+      --accent:    #58a6ff;
+      --accent2:   #3fb950;
+      --danger:    #f85149;
+      --warn:      #e3b341;
+      --text:      #c9d1d9;
+      --text-dim:  #8b949e;
+      --text-head: #f0f6fc;
+      --code-bg:   #1f2937;
+      --radius:    10px;
+      --correct:   rgba(63,185,80,.15);
+      --wrong:     rgba(248,81,73,.15);
+      --correct-border: #3fb950;
+      --wrong-border:   #f85149;
+    }
+
+    /* Загальні стилі сторінки */
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 680px;
+      margin: 30px auto;
+      padding: 0 15px;
+      line-height: 1.5;
+    }
+
+    /* Блок прогресу */
+    #progress-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 15px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: sticky;
+      top: 0;
+    }
+    #progress-bar-outer {
+      flex-grow: 1;
+      background: var(--border);
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    #progress-bar-inner {
+      background: var(--accent);
+      width: 10%; /* Тимчасово, для візуалізації */
+      height: 100%;
+      border-radius: 5px;
+    }
+    #progress-label {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* Контейнер картки питання (генерація з id="{i}") */
+    body > div:not(#progress-wrap) {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
+    }
+
+    /* Текст питання */
+    .q-text {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-head);
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    /* Контейнери варіантів відповідей (div навколо input) */
+    body > div:not(#progress-wrap) > div:not(.q-text) {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.15s, border-color 0.15s;
+    }
+    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+      background-color: var(--bg-hover);
+      border-color: var(--text-dim);
+    }
+
+    /* Стилізація радіо-кнопок */
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+      margin: 0;
+      font: inherit;
+      color: var(--accent);
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    input[type="radio"]::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      background-color: var(--accent);
+    }
+    input[type="radio"]:checked::before {
+      transform: scale(1);
+    }
+    input[type="radio"]:checked {
+      border-color: var(--accent);
+    }
+    input[type="radio"]:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Класи станів після вибору */
+    .correct { 
+      border-color: var(--correct-border) !important; 
+      background: var(--correct) !important; 
+      color: #56d364;
+    }
+    .ok { 
+      border-color: var(--correct-border) !important;
+      box-shadow: 0 0 10px rgba(63,185,80, 0.15);
+    }
+    .no { 
+      border-color: var(--wrong-border) !important;
+      box-shadow: 0 0 10px rgba(248,81,73, 0.15);
+    }
+  </style>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+<body>
+  
+  <nav id="nav-global" class="global"></nav>
+
+<div id="progress-wrap">
+  <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
+  <span id="progress-label">0 / 20</span>
+</div>
+
+
+            <div id="1">
+            <div class="q-text">Питання 1. Який вбудований модуль у Python використовується для роботи з CSV-файлами?
+</div>
+            <div><input type="radio">read_csv
+</div>
+<div><input type="radio">csv
+ </div>
+<div><input type="radio">text_csv
+</div>
+<div><input type="radio">file_csv
+</div>
+
+            </div>
+            
+            <div id="2">
+            <div class="q-text">Питання 2. Який об'єкт потрібно створити для запису даних у CSV-файл?
+</div>
+            <div><input type="radio">csv.write()
+</div>
+<div><input type="radio">csv.saver()
+</div>
+<div><input type="radio">csv.file_writer()
+</div>
+<div><input type="radio">csv.writer()
+ </div>
+
+            </div>
+            
+            <div id="3">
+            <div class="q-text">Питання 3. Який об'єкт використовується для читання CSV-файлу?
+</div>
+            <div><input type="radio">csv.file_reader()
+</div>
+<div><input type="radio">csv.reader()
+ </div>
+<div><input type="radio">csv.loader()
+</div>
+<div><input type="radio">csv.read()
+</div>
+
+            </div>
+            
+            <div id="4">
+            <div class="q-text">Питання 4. Який параметр при відкритті файлу є обов'язковим для коректного запису, щоб уникнути появи порожніх рядків у Windows?
+</div>
+            <div><input type="radio">encoding='utf-8'
+</div>
+<div><input type="radio">mode='w'
+</div>
+<div><input type="radio">buffering=0
+</div>
+<div><input type="radio">newline=''
+ </div>
+
+            </div>
+            
+            <div id="5">
+            <div class="q-text">Питання 5. Який метод об'єкта writer використовується для запису одного рядка (списку значень) у файл?
+</div>
+            <div><input type="radio">writerow()
+ </div>
+<div><input type="radio">write_row()
+</div>
+<div><input type="radio">add_row()
+</div>
+<div><input type="radio">save_row()
+</div>
+
+            </div>
+            
+            <div id="6">
+            <div class="q-text">Питання 6. Який метод об'єкта writer використовується для запису кількох рядків (списку списків) одночасно?
+</div>
+            <div><input type="radio">write_all()
+</div>
+<div><input type="radio">writerows()
+ </div>
+<div><input type="radio">add_rows()
+</div>
+<div><input type="radio">save_rows()
+</div>
+
+            </div>
+            
+            <div id="7">
+            <div class="q-text">Питання 7. Який параметр reader дозволяє вказати символ-розділювач, якщо це не кома (наприклад, крапка з комою)?
+</div>
+            <div><input type="radio">delimiter
+ </div>
+<div><input type="radio">fieldnames
+</div>
+<div><input type="radio">quotechar
+</div>
+<div><input type="radio">separator
+</div>
+
+            </div>
+            
+            <div id="8">
+            <div class="q-text">Питання 8. Що таке DictReader у модулі csv?
+</div>
+            <div><input type="radio">Клас, який читає CSV-рядки як словники (використовуючи перший рядок як ключі)
+ </div>
+<div><input type="radio">Метод для пошуку полів у словнику
+</div>
+<div><input type="radio">Клас, який читає CSV у словник Python-об'єктів
+</div>
+<div><input type="radio">Інструмент для автоматичного підрахунку слів у файлі
+</div>
+
+            </div>
+            
+            <div id="9">
+            <div class="q-text">Питання 9. Який параметр DictReader визначає, які ключі словника будуть використовуватися, якщо у файлі немає заголовків?
+</div>
+            <div><input type="radio">columns
+</div>
+<div><input type="radio">headers
+</div>
+<div><input type="radio">fieldnames
+ </div>
+<div><input type="radio">keys
+</div>
+
+            </div>
+            
+            <div id="10">
+            <div class="q-text">Питання 10. Який клас використовується для запису даних у CSV-файл із використанням словників?
+</div>
+            <div><input type="radio">csv.DictWriter()
+ </div>
+<div><input type="radio">csv.WriteDict()
+</div>
+<div><input type="radio">csv.DictSaver()
+</div>
+<div><input type="radio">csv.WriterDict()
+</div>
+
+            </div>
+            
+            <div id="11">
+            <div class="q-text">Питання 11. Що робить параметр quotechar у функціях reader та writer?
+</div>
+            <div><input type="radio">Визначає символ коментаря
+</div>
+<div><input type="radio">Визначає символ розділення
+</div>
+<div><input type="radio">Вказує символ, який використовується для взяття значень у лапки
+ </div>
+<div><input type="radio">Вказує символ кінця рядка
+</div>
+
+            </div>
+            
+            <div id="12">
+            <div class="q-text">Питання 12. Яким методом записуються заголовки (назви колонок) у DictWriter?
+</div>
+            <div><input type="radio">write_headers()
+</div>
+<div><input type="radio">writeheader()
+ </div>
+<div><input type="radio">save_header()
+</div>
+<div><input type="radio">add_header()
+</div>
+
+            </div>
+            
+            <div id="13">
+            <div class="q-text">Питання 13. Який тип даних повертає reader при ітерації по файлу?
+</div>
+            <div><input type="radio">Словник (dict)
+</div>
+<div><input type="radio">Рядок (str)
+</div>
+<div><input type="radio">Список (list)
+ </div>
+<div><input type="radio">Кортеж (tuple)
+</div>
+
+            </div>
+            
+            <div id="14">
+            <div class="q-text">Питання 14. Що буде, якщо відкрити CSV-файл без вказання newline='' у Windows?
+</div>
+            <div><input type="radio">Помилка кодування
+</div>
+<div><input type="radio">Порожні рядки будуть вставлятися після кожного рядка даних
+ </div>
+<div><input type="radio">Файл не відкриється
+</div>
+<div><input type="radio">Виникне помилка PermissionError
+</div>
+
+            </div>
+            
+            <div id="15">
+            <div class="q-text">Питання 15. Чи можна використовувати модуль csv для роботи з файлами, де розділювачем є табуляція?
+</div>
+            <div><input type="radio">Ні, тільки кома
+</div>
+<div><input type="radio">Так, але тільки для читання
+</div>
+<div><input type="radio">Так, через параметр delimiter='\t'
+ </div>
+<div><input type="radio">Тільки через модуль pandas
+</div>
+
+            </div>
+            
+            <div id="16">
+            <div class="q-text">Питання 16. Як перетворити рядок у CSV-формат (без запису у файл) за допомогою модуля csv?
+</div>
+            <div><input type="radio">Через функцію json.dumps()
+</div>
+<div><input type="radio">Це неможливо
+</div>
+<div><input type="radio">Використовуючи io.StringIO та csv.writer
+ </div>
+<div><input type="radio">Тільки через метод csv.to_string()
+</div>
+
+            </div>
+            
+            <div id="17">
+            <div class="q-text">Питання 17. Що робить параметр quoting (наприклад, csv.QUOTE_ALL)?
+</div>
+            <div><input type="radio">Визначає, коли використовувати лапки навколо значень
+ </div>
+<div><input type="radio">Визначає кодування файлу
+</div>
+<div><input type="radio">Визначає спосіб обробки пробілів
+</div>
+<div><input type="radio">Визначає спосіб обробки заголовків
+</div>
+
+            </div>
+            
+            <div id="18">
+            <div class="q-text">Питання 18. Якщо CSV-файл має заголовок, як його пропустити при читанні звичайним reader?
+</div>
+            <div><input type="radio">next(reader)
+ </div>
+<div><input type="radio">reader.header(False)
+</div>
+<div><input type="radio">reader.skip(1)
+</div>
+<div><input type="radio">reader.ignore_header()
+</div>
+
+            </div>
+            
+            <div id="19">
+            <div class="q-text">Питання 19. Який метод DictWriter використовується для запису одного рядка-словника у файл?
+</div>
+            <div><input type="radio">write()
+</div>
+<div><input type="radio">save()
+</div>
+<div><input type="radio">writerow()
+ </div>
+<div><input type="radio">add()
+</div>
+
+            </div>
+            
+            <div id="20">
+            <div class="q-text">Питання 20. Який параметр дозволяє обробляти значення з пробілами навколо розділювачів?
+</div>
+            <div><input type="radio">ignore_space
+</div>
+<div><input type="radio">strip</div>
+<div><input type="radio">skipinitialspace
+ </div>
+<div><input type="radio">trim_space
+</div>
+
+            </div>
+            
+<script>
+const optionBoxes = document.querySelectorAll(
+  'body > div:not(#progress-wrap) > div:not(.q-text)'
+);
+
+optionBoxes.forEach(box => {
+  box.addEventListener('click', function () {
+
+    const radio = this.querySelector('input[type="radio"]');
+
+    // already answered
+    if (radio.disabled) {
+      return;
+    }
+    const label = document.getElementById('progress-label');
+    // Split by " / " and take the first part, then convert to a number
+    let currentCount = parseInt(label.textContent.split(' / ')[0]);
+
+    // Increment
+    currentCount++;
+
+    // Update
+    label.textContent = `${currentCount} / 20`;
+    document.getElementById('progress-bar-inner').style.width = `${(currentCount / 20) * 100}%`;
+    
+
+    radio.checked = true;
+
+    const text = this.textContent;
+    const question_card = this.parentElement;
+
+    // radios only inside current question
+    const siblingRadios = question_card.querySelectorAll('input[type="radio"]');
+
+    siblingRadios.forEach(r => {
+
+      // mark correct answer
+      if (r.parentElement.textContent.endsWith(" ")) {
+        r.parentElement.classList.add("correct");
+      }
+
+      r.disabled = true;
+    });
+
+    if (text.endsWith(" ")) {
+      question_card.classList.add("ok");
+    }
+    else {
+      question_card.classList.add("no");
+    }
+
+  });
+});
+</script>
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

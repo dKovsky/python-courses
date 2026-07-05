@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест 13: Кортежі</title>
+  <link rel="icon" type="image/png" href="../favicon.ico">
+<style>
+    :root {
+      --bg:        #0d1117;
+      --bg-card:   #161b22;
+      --bg-hover:  #1c2330;
+      --border:    #30363d;
+      --accent:    #58a6ff;
+      --accent2:   #3fb950;
+      --danger:    #f85149;
+      --warn:      #e3b341;
+      --text:      #c9d1d9;
+      --text-dim:  #8b949e;
+      --text-head: #f0f6fc;
+      --code-bg:   #1f2937;
+      --radius:    10px;
+      --correct:   rgba(63,185,80,.15);
+      --wrong:     rgba(248,81,73,.15);
+      --correct-border: #3fb950;
+      --wrong-border:   #f85149;
+    }
+
+    /* Загальні стилі сторінки */
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 680px;
+      margin: 30px auto;
+      padding: 0 15px;
+      line-height: 1.5;
+    }
+
+    /* Блок прогресу */
+    #progress-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 15px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: sticky;
+      top: 0;
+    }
+    #progress-bar-outer {
+      flex-grow: 1;
+      background: var(--border);
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    #progress-bar-inner {
+      background: var(--accent);
+      width: 10%; /* Тимчасово, для візуалізації */
+      height: 100%;
+      border-radius: 5px;
+    }
+    #progress-label {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* Контейнер картки питання (генерація з id="{i}") */
+    body > div:not(#progress-wrap) {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
+    }
+
+    /* Текст питання */
+    .q-text {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-head);
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    /* Контейнери варіантів відповідей (div навколо input) */
+    body > div:not(#progress-wrap) > div:not(.q-text) {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.15s, border-color 0.15s;
+    }
+    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+      background-color: var(--bg-hover);
+      border-color: var(--text-dim);
+    }
+
+    /* Стилізація радіо-кнопок */
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+      margin: 0;
+      font: inherit;
+      color: var(--accent);
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    input[type="radio"]::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      background-color: var(--accent);
+    }
+    input[type="radio"]:checked::before {
+      transform: scale(1);
+    }
+    input[type="radio"]:checked {
+      border-color: var(--accent);
+    }
+    input[type="radio"]:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Класи станів після вибору */
+    .correct { 
+      border-color: var(--correct-border) !important; 
+      background: var(--correct) !important; 
+      color: #56d364;
+    }
+    .ok { 
+      border-color: var(--correct-border) !important;
+      box-shadow: 0 0 10px rgba(63,185,80, 0.15);
+    }
+    .no { 
+      border-color: var(--wrong-border) !important;
+      box-shadow: 0 0 10px rgba(248,81,73, 0.15);
+    }
+  </style>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+</head>
+<body>
+  
+  <nav id="nav-global" class="global"></nav>
+
+<div id="progress-wrap">
+  <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
+  <span id="progress-label">0 / 20</span>
+</div>
+
+
+            <div id="1">
+            <div class="q-text">Питання 1. Який символ використовується для позначення кортежу?
+</div>
+            <div><input type="radio">< >
+</div>
+<div><input type="radio">( )
+ </div>
+<div><input type="radio">[ ]
+</div>
+<div><input type="radio">{ }
+</div>
+
+            </div>
+            
+            <div id="2">
+            <div class="q-text">Питання 2. Яка головна відмінність кортежу від списку?
+</div>
+            <div><input type="radio">Кортежі швидші за списки
+</div>
+<div><input type="radio">Списки не можуть містити дублікати
+</div>
+<div><input type="radio">Кортежі можуть містити тільки числа
+</div>
+<div><input type="radio">Кортежі є незмінними (immutable)
+ </div>
+
+            </div>
+            
+            <div id="3">
+            <div class="q-text">Питання 3. Як створити кортеж, що містить лише один елемент?
+</div>
+            <div><input type="radio">(1, )
+ </div>
+<div><input type="radio">tuple(1)
+</div>
+<div><input type="radio">{1}
+</div>
+<div><input type="radio">(1)
+</div>
+
+            </div>
+            
+            <div id="4">
+            <div class="q-text">Питання 4. Яка функція перетворює послідовність (наприклад, список) на кортеж?
+</div>
+            <div><input type="radio">list_to_tuple()
+</div>
+<div><input type="radio">convert()
+</div>
+<div><input type="radio">( )
+</div>
+<div><input type="radio">tuple()
+ </div>
+
+            </div>
+            
+            <div id="5">
+            <div class="q-text">Питання 5. Чи можна отримати доступ до елемента кортежу за індексом?
+</div>
+            <div><input type="radio">Так, тільки через метод get()
+</div>
+<div><input type="radio">Так, за допомогою круглих дужок ( )
+</div>
+<div><input type="radio">Так, за допомогою квадратних дужок [ ]
+ </div>
+<div><input type="radio">Ні, елементи кортежу недоступні
+</div>
+
+            </div>
+            
+            <div id="6">
+            <div class="q-text">Питання 6. Що станеться, якщо спробувати змінити елемент кортежу (наприклад, t[0] = 5)?
+</div>
+            <div><input type="radio">Кортеж автоматично перетвориться на список
+</div>
+<div><input type="radio">Значення не зміниться, але помилки не буде
+</div>
+<div><input type="radio">Виникне помилка TypeError
+ </div>
+<div><input type="radio">Python дозволить зміну
+</div>
+
+            </div>
+            
+            <div id="7">
+            <div class="q-text">Питання 7. Який метод дозволяє дізнатися кількість входжень певного елемента в кортеж?
+</div>
+            <div><input type="radio">len()
+</div>
+<div><input type="radio">count()
+ </div>
+<div><input type="radio">index()
+</div>
+<div><input type="radio">find()
+</div>
+
+            </div>
+            
+            <div id="8">
+            <div class="q-text">Питання 8. Який метод дозволяє дізнатися індекс першого входження елемента в кортеж?
+</div>
+            <div><input type="radio">index()
+ </div>
+<div><input type="radio">find()
+</div>
+<div><input type="radio">search()
+</div>
+<div><input type="radio">count()
+</div>
+
+            </div>
+            
+            <div id="9">
+            <div class="q-text">Питання 9. Чи можна зберігати кортежі всередині списків?
+</div>
+            <div><input type="radio">Ні
+</div>
+<div><input type="radio">Тільки якщо список містить один елемент
+</div>
+<div><input type="radio">Так
+ </div>
+<div><input type="radio">Тільки якщо кортеж порожній
+</div>
+
+            </div>
+            
+            <div id="10">
+            <div class="q-text">Питання 10. Як називається процес призначення елементів кортежу окремим змінним (наприклад, a, b = (1, 2))?
+</div>
+            <div><input type="radio">Розбиття (splitting)
+</div>
+<div><input type="radio">Розпакування (unpacking)
+ </div>
+<div><input type="radio">Присвоєння (assigning)
+</div>
+<div><input type="radio">Розгортання (expanding)
+</div>
+
+            </div>
+            
+            <div id="11">
+            <div class="q-text">Питання 11. Що виведе len((1, 2, 3, 3))?
+</div>
+            <div><input type="radio">4
+ </div>
+<div><input type="radio">3
+</div>
+<div><input type="radio">5
+</div>
+<div><input type="radio">Помилка
+</div>
+
+            </div>
+            
+            <div id="12">
+            <div class="q-text">Питання 12. Чи можна змінити значення елемента кортежу, якщо цей елемент є списком?
+</div>
+            <div><input type="radio">Ні, це спричинить помилку AttributeError
+</div>
+<div><input type="radio">Ні, кортеж повністю забороняє будь-які зміни
+</div>
+<div><input type="radio">Так, внутрішній список залишається змінним
+ </div>
+<div><input type="radio">Так, але тільки якщо кортеж довжиною 1
+</div>
+
+            </div>
+            
+            <div id="13">
+            <div class="q-text">Питання 13. Який оператор використовується для об'єднання (конкатенації) двох кортежів?
+</div>
+            <div><input type="radio">&
+</div>
+<div><input type="radio">|
+</div>
+<div><input type="radio">+
+ </div>
+<div><input type="radio">*
+</div>
+
+            </div>
+            
+            <div id="14">
+            <div class="q-text">Питання 14. Що поверне оператор in для кортежу?
+</div>
+            <div><input type="radio">Кількість елементів
+</div>
+<div><input type="radio">Перевірку наявності елемента в кортежі
+ </div>
+<div><input type="radio">Позицію елемента
+</div>
+<div><input type="radio">Тип даних елементів
+</div>
+
+            </div>
+            
+            <div id="15">
+            <div class="q-text">Питання 15. Чи можна використовувати кортеж як ключ у словнику (dict)?
+</div>
+            <div><input type="radio">Так, бо кортежі є незмінними
+ </div>
+<div><input type="radio">Ні, тільки якщо кортеж містить списки
+</div>
+<div><input type="radio">Тільки якщо кортеж містить числа
+</div>
+<div><input type="radio">Ні, ключами можуть бути тільки рядки
+</div>
+
+            </div>
+            
+            <div id="16">
+            <div class="q-text">Питання 16. Як перетворити кортеж у список?
+</div>
+            <div><input type="radio">tuple_to_list()
+</div>
+<div><input type="radio">[ ]
+</div>
+<div><input type="radio">convert_list()
+</div>
+<div><input type="radio">list()
+ </div>
+
+            </div>
+            
+            <div id="17">
+            <div class="q-text">Питання 17. Що станеться при спробі використати метод append() для кортежу?
+</div>
+            <div><input type="radio">Елемент додасться в кінець
+</div>
+<div><input type="radio">Кортеж розшириться
+</div>
+<div><input type="radio">Нічого не станеться
+</div>
+<div><input type="radio">Виникне помилка AttributeError
+ </div>
+
+            </div>
+            
+            <div id="18">
+            <div class="q-text">Питання 18. Яким буде результат операції (1, 2) * 3?
+</div>
+            <div><input type="radio">(1, 2, 1, 2, 1, 2)
+ </div>
+<div><input type="radio">Помилка
+</div>
+<div><input type="radio">(1, 1, 1, 2, 2, 2)
+</div>
+<div><input type="radio">(3, 6)
+</div>
+
+            </div>
+            
+            <div id="19">
+            <div class="q-text">Питання 19. Що таке іменований кортеж (namedtuple) із модуля collections?
+</div>
+            <div><input type="radio">Тип даних для зберігання констант
+</div>
+<div><input type="radio">Звичайний кортеж, що містить тільки рядки
+</div>
+<div><input type="radio">Кортеж, який обов'язково має назву змінної
+</div>
+<div><input type="radio">Кортеж, де до елементів можна звертатися за іменами (полями)
+ </div>
+
+            </div>
+            
+            <div id="20">
+            <div class="q-text">Питання 20. Чи можна видалити окремий елемент кортежу?
+</div>
+            <div><input type="radio">Так, за допомогою del t[0]
+</div>
+<div><input type="radio">Так, за допомогою методу pop()
+</div>
+<div><input type="radio">Так, тільки якщо в кортежі більше 5 елементів</div>
+<div><input type="radio">Ні, кортеж неможливо змінити
+ </div>
+
+            </div>
+            
+<script>
+const optionBoxes = document.querySelectorAll(
+  'body > div:not(#progress-wrap) > div:not(.q-text)'
+);
+
+optionBoxes.forEach(box => {
+  box.addEventListener('click', function () {
+
+    const radio = this.querySelector('input[type="radio"]');
+
+    // already answered
+    if (radio.disabled) {
+      return;
+    }
+    const label = document.getElementById('progress-label');
+    // Split by " / " and take the first part, then convert to a number
+    let currentCount = parseInt(label.textContent.split(' / ')[0]);
+
+    // Increment
+    currentCount++;
+
+    // Update
+    label.textContent = `${currentCount} / 20`;
+    document.getElementById('progress-bar-inner').style.width = `${(currentCount / 20) * 100}%`;
+    
+
+    radio.checked = true;
+
+    const text = this.textContent;
+    const question_card = this.parentElement;
+
+    // radios only inside current question
+    const siblingRadios = question_card.querySelectorAll('input[type="radio"]');
+
+    siblingRadios.forEach(r => {
+
+      // mark correct answer
+      if (r.parentElement.textContent.endsWith(" ")) {
+        r.parentElement.classList.add("correct");
+      }
+
+      r.disabled = true;
+    });
+
+    if (text.endsWith(" ")) {
+      question_card.classList.add("ok");
+    }
+    else {
+      question_card.classList.add("no");
+    }
+
+  });
+});
+</script>
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

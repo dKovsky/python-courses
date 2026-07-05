@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 1: Основи синтаксису</title>
+  <title>Тест 14: Вступ до роботи з базами даних за допомогою бібліотеки oracledb</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -172,281 +172,282 @@
 
 
             <div id="1">
-            <div class="q-text">Питання 1. Яка функція в Python використовується для виведення даних на екран?
+            <div class="q-text">Ось 20 запитань з теми "Робота з Oracle Database у Python (бібліотека oracledb)", де перша відповідь є правильною.
 </div>
-            <div><input type="radio">show()
+            <div><input type="radio">oracledb.connect()
 </div>
-<div><input type="radio">print()
+<div><input type="radio">
  </div>
-<div><input type="radio">input()
+<div><input type="radio">Питання 1. Який метод використовується для створення об'єкта підключення до бази даних Oracle?
 </div>
-<div><input type="radio">display()
+<div><input type="radio">oracledb.connection()
 </div>
 
             </div>
             
             <div id="2">
-            <div class="q-text">Питання 2. Яка функція використовується для зчитування даних, введених користувачем з клавіатури?
+            <div class="q-text">oracledb.create_connection()
 </div>
-            <div><input type="radio">read()
+            <div><input type="radio">cursor
 </div>
-<div><input type="radio">print()
+<div><input type="radio">Питання 2. Який об'єкт необхідно створити для виконання SQL-запитів після встановлення з'єднання?
 </div>
-<div><input type="radio">get_input()
+<div><input type="radio">statement
 </div>
-<div><input type="radio">input()
+<div><input type="radio">
  </div>
 
             </div>
             
             <div id="3">
-            <div class="q-text">Питання 3. Який тип даних у Python використовується для представлення цілих чисел?
+            <div class="q-text">query_obj
 </div>
-            <div><input type="radio">float
+            <div><input type="radio">run()
 </div>
-<div><input type="radio">int
+<div><input type="radio">Питання 3. Який метод курсору використовується для виконання SQL-запиту?
+</div>
+<div><input type="radio">
  </div>
-<div><input type="radio">bool
-</div>
-<div><input type="radio">str
+<div><input type="radio">execute()
 </div>
 
             </div>
             
             <div id="4">
-            <div class="q-text">Питання 4. Який тип даних використовується для представлення чисел з плаваючою комою (десяткових дробів)?
+            <div class="q-text">do()
 </div>
-            <div><input type="radio">float
+            <div><input type="radio">
  </div>
-<div><input type="radio">decimal
+<div><input type="radio">fetchone()
 </div>
-<div><input type="radio">int
+<div><input type="radio">getone()
 </div>
-<div><input type="radio">double
+<div><input type="radio">Питання 4. Який метод курсору повертає один рядок результату запиту?
 </div>
 
             </div>
             
             <div id="5">
-            <div class="q-text">Питання 5. Як у Python позначається текстовий рядок?
+            <div class="q-text">select_one()
 </div>
-            <div><input type="radio">[текст]
+            <div><input type="radio">fetchall()
 </div>
-<div><input type="radio">{текст}
-</div>
-<div><input type="radio">"текст" або 'текст'
+<div><input type="radio">
  </div>
-<div><input type="radio">(текст)
+<div><input type="radio">Питання 5. Який метод курсору повертає всі рядки результату запиту у вигляді списку кортежів?
+</div>
+<div><input type="radio">getall()
 </div>
 
             </div>
             
             <div id="6">
-            <div class="q-text">Питання 6. Який результат виконання коду print(5 + 2)?
+            <div class="q-text">list()
 </div>
-            <div><input type="radio">"5+2"
-</div>
-<div><input type="radio">7
+            <div><input type="radio">
  </div>
-<div><input type="radio">5.2
+<div><input type="radio">connection.commit()
 </div>
-<div><input type="radio">52
+<div><input type="radio">connection.save()
+</div>
+<div><input type="radio">Питання 6. Який метод потрібно викликати для завершення транзакції та збереження змін у базі даних?
 </div>
 
             </div>
             
             <div id="7">
-            <div class="q-text">Питання 7. Який результат виконання коду print("5" + "2")?
+            <div class="q-text">connection.apply()
 </div>
-            <div><input type="radio">52
+            <div><input type="radio">Питання 7. Що потрібно зробити для скасування змін (відкату транзакції) у разі помилки?
 </div>
-<div><input type="radio">7
-</div>
-<div><input type="radio">"52"
+<div><input type="radio">
  </div>
-<div><input type="radio">Помилка
+<div><input type="radio">connection.undo()
+</div>
+<div><input type="radio">connection.rollback()
 </div>
 
             </div>
             
             <div id="8">
-            <div class="q-text">Питання 8. Яка функція перетворює рядок у ціле число?
+            <div class="q-text">connection.cancel()
 </div>
-            <div><input type="radio">int()
+            <div><input type="radio">cursor.close()
+</div>
+<div><input type="radio">
  </div>
-<div><input type="radio">float()
+<div><input type="radio">cursor.finish()
 </div>
-<div><input type="radio">convert()
-</div>
-<div><input type="radio">str()
+<div><input type="radio">Питання 8. Як правильно закрити курсор, щоб звільнити ресурси?
 </div>
 
             </div>
             
             <div id="9">
-            <div class="q-text">Питання 9. Яка функція перетворює будь-який тип даних у рядок?
+            <div class="q-text">del cursor
 </div>
-            <div><input type="radio">string()
+            <div><input type="radio">Питання 9. Який режим роботи бібліотеки oracledb є основним (і не потребує Oracle Instant Client)?
 </div>
-<div><input type="radio">to_str()
+<div><input type="radio">Thin mode
 </div>
-<div><input type="radio">str()
+<div><input type="radio">Thick mode
+</div>
+<div><input type="radio">
  </div>
-<div><input type="radio">cast()
-</div>
 
             </div>
             
             <div id="10">
-            <div class="q-text">Питання 10. Який оператор використовується для піднесення числа до степеня?
+            <div class="q-text">Fast mode
 </div>
-            <div><input type="radio">*
+            <div><input type="radio">Питання 10. Який параметр oracledb.connect() зазвичай містить рядок підключення (DSN)?
 </div>
-<div><input type="radio">**
+<div><input type="radio">dsn
+</div>
+<div><input type="radio">
  </div>
-<div><input type="radio">^
-</div>
-<div><input type="radio">pow
+<div><input type="radio">url
 </div>
 
             </div>
             
             <div id="11">
-            <div class="q-text">Питання 11. Який символ використовується для написання коментарів у коді Python?
+            <div class="q-text">address
 </div>
-            <div><input type="radio">//
+            <div><input type="radio">Використовувати прив'язку змінних (bind variables)
 </div>
-<div><input type="radio">#
+<div><input type="radio">
  </div>
-<div><input type="radio">/* */
+<div><input type="radio">Питання 11. Як захиститися від SQL-ін'єкцій при виконанні запитів?
 </div>
-<div><input type="radio">--
+<div><input type="radio">Використовувати f-рядки (f-strings)
 </div>
 
             </div>
             
             <div id="12">
-            <div class="q-text">Питання 12. Який оператор повертає остачу від ділення?
+            <div class="q-text">Завжди використовувати commit()
 </div>
-            <div><input type="radio">/
+            <div><input type="radio">? (наприклад, ?id)
 </div>
-<div><input type="radio">//
+<div><input type="radio">Питання 12. Яким символом зазвичай позначаються змінні для прив'язки (bind variables) у SQL-запиті в Oracle?
 </div>
-<div><input type="radio">%
+<div><input type="radio">
  </div>
-<div><input type="radio">\
+<div><input type="radio">: (наприклад, :id)
 </div>
 
             </div>
             
             <div id="13">
-            <div class="q-text">Питання 13. Що виведе функція print(10 // 3)?
+            <div class="q-text">@ (наприклад, @id)
 </div>
-            <div><input type="radio">3.33
+            <div><input type="radio">Питання 13. Що повертає властивість cursor.description?
 </div>
-<div><input type="radio">3
+<div><input type="radio">Всі дані запиту
+</div>
+<div><input type="radio">
  </div>
-<div><input type="radio">4
-</div>
-<div><input type="radio">1
+<div><input type="radio">Метадані стовпців запиту (назви, типи)
 </div>
 
             </div>
             
             <div id="14">
-            <div class="q-text">Питання 14. Як правильно оголосити змінну та присвоїти їй значення?
+            <div class="q-text">Кількість оброблених рядків
 </div>
-            <div><input type="radio">int x = 10
+            <div><input type="radio">executemany()
 </div>
-<div><input type="radio">x := 10
+<div><input type="radio">execute_all()
 </div>
-<div><input type="radio">var x = 10
+<div><input type="radio">Питання 14. Який метод дозволяє виконати один і той самий запит багато разів з різними даними (для масової вставки)?
 </div>
-<div><input type="radio">x = 10
+<div><input type="radio">
  </div>
 
             </div>
             
             <div id="15">
-            <div class="q-text">Питання 15. Яка функція дозволяє дізнатися тип об'єкта?
+            <div class="q-text">insert_many()
 </div>
-            <div><input type="radio">check()
+            <div><input type="radio">У верхньому регістрі (Uppercase)
 </div>
-<div><input type="radio">type()
+<div><input type="radio">У нижньому регістрі (Lowercase)
+</div>
+<div><input type="radio">Питання 15. У якому форматі oracledb за замовчуванням повертає назви стовпців у результатах запиту?
+</div>
+<div><input type="radio">
  </div>
-<div><input type="radio">class()
-</div>
-<div><input type="radio">typeof()
-</div>
 
             </div>
             
             <div id="16">
-            <div class="q-text">Питання 16. Як об'єднати (конкатенувати) два рядки "Hello" та "World" з пробілом між ними?
+            <div class="q-text">Як у запиті (PascalCase)
 </div>
-            <div><input type="radio">"Hello" + " " + "World"
+            <div><input type="radio">Питання 16. Яку помилку слід перехоплювати для відстеження проблем з Oracle Database?
+</div>
+<div><input type="radio">
  </div>
-<div><input type="radio">"Hello", "World"
+<div><input type="radio">DatabaseError
 </div>
-<div><input type="radio">"Hello".join("World")
-</div>
-<div><input type="radio">"Hello" & "World"
+<div><input type="radio">oracledb.Error
 </div>
 
             </div>
             
             <div id="17">
-            <div class="q-text">Питання 17. Що станеться, якщо спробувати виконати print("5" + 2)?
+            <div class="q-text">ConnectionError
 </div>
-            <div><input type="radio">7
+            <div><input type="radio">Питання 17. Що станеться, якщо не закрити з'єднання з базою даних?
 </div>
-<div><input type="radio">Помилка (TypeError)
+<div><input type="radio">Програма автоматично завершиться з помилкою
+</div>
+<div><input type="radio">
  </div>
-<div><input type="radio">5
-</div>
-<div><input type="radio">"52"
+<div><input type="radio">Ресурс залишатиметься зайнятим до тайм-ауту сесії
 </div>
 
             </div>
             
             <div id="18">
-            <div class="q-text">Питання 18. Який символ використовується для множення?
+            <div class="q-text">Дані не збережуться в пам'яті Python
 </div>
             <div><input type="radio">
-</div>
-<div><input type="radio">&
-</div>
-<div><input type="radio">x
-</div>
-<div><input type="radio">*
  </div>
+<div><input type="radio">oracledb.enable_thick()
+</div>
+<div><input type="radio">Питання 18. Як можна налаштувати oracledb для використання "Thick mode" (якщо потрібні розширені функції)?
+</div>
+<div><input type="radio">oracledb.init_oracle_client()
+</div>
 
             </div>
             
             <div id="19">
-            <div class="q-text">Питання 19. Яка функція повертає довжину рядка?
+            <div class="q-text">oracledb.set_mode('thick')
 </div>
-            <div><input type="radio">size()
+            <div><input type="radio">rowcount
 </div>
-<div><input type="radio">len()
+<div><input type="radio">Питання 19. Яка властивість об'єкта курсору повертає кількість рядків, уражених запитом INSERT, UPDATE або DELETE?
+</div>
+<div><input type="radio">
  </div>
-<div><input type="radio">length()
-</div>
-<div><input type="radio">count()
+<div><input type="radio">affected_rows
 </div>
 
             </div>
             
             <div id="20">
-            <div class="q-text">Питання 20. Як називається метод для видалення зайвих пробілів на початку та в кінці рядка?
+            <div class="q-text">status
 </div>
-            <div><input type="radio">cut()</div>
-<div><input type="radio">trim()
+            <div><input type="radio">Питання 20. Чи можна використовувати with (context manager) для роботи з підключенням у oracledb?
 </div>
-<div><input type="radio">clean()
+<div><input type="radio">Так, це автоматично закриває підключення
 </div>
-<div><input type="radio">strip()
+<div><input type="radio">
  </div>
+<div><input type="radio">Ні, підключення потрібно завжди закривати вручну
+</div>
 
             </div>
             

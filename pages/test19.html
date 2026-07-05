@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 7: Модуль os</title>
+  <title>Тест 19: Відправка електронних листів через Outlook (pywin32)</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -172,281 +172,281 @@
 
 
             <div id="1">
-            <div class="q-text">Питання 1. Яка функція модуля os повертає поточну робочу директорію?
+            <div class="q-text">Питання 1. Яка бібліотека використовується для доступу до COM-об'єктів Windows та Outlook?
 </div>
-            <div><input type="radio">os.getcwd()
+            <div><input type="radio">win32com.client
  </div>
-<div><input type="radio">os.pwd()
+<div><input type="radio">win32outlook
 </div>
-<div><input type="radio">os.current_dir()
+<div><input type="radio">outlook.client
 </div>
-<div><input type="radio">os.getdir()
+<div><input type="radio">pyoutlook
 </div>
 
             </div>
             
             <div id="2">
-            <div class="q-text">Питання 2. Яка функція дозволяє змінити поточну робочу директорію?
+            <div class="q-text">Питання 2. Яка команда ініціалізує об'єкт Outlook у Python?
 </div>
-            <div><input type="radio">os.changedir()
+            <div><input type="radio">outlook = win32com.client.Init("Outlook")
 </div>
-<div><input type="radio">os.chdir()
+<div><input type="radio">outlook = win32com.client.Outlook()
+</div>
+<div><input type="radio">outlook = win32com.Outlook.Application()
+</div>
+<div><input type="radio">outlook = win32com.client.Dispatch("Outlook.Application")
  </div>
-<div><input type="radio">os.movedir()
-</div>
-<div><input type="radio">os.setcwd()
-</div>
 
             </div>
             
             <div id="3">
-            <div class="q-text">Питання 3. Яка функція використовується для переліку всіх файлів та папок у вказаній директорії?
+            <div class="q-text">Питання 3. Як отримати доступ до простору імен (Namespace) Outlook (наприклад, для доступу до папок)?
 </div>
-            <div><input type="radio">os.listfiles()
+            <div><input type="radio">namespace = outlook.Namespace()
 </div>
-<div><input type="radio">os.listdir()
+<div><input type="radio">namespace = outlook.GetNamespace("Outlook")
+</div>
+<div><input type="radio">namespace = outlook.GetNamespace("MAPI")
  </div>
-<div><input type="radio">os.getdircontent()
-</div>
-<div><input type="radio">os.showdir()
+<div><input type="radio">namespace = outlook.Session()
 </div>
 
             </div>
             
             <div id="4">
-            <div class="q-text">Питання 4. Яка функція створює нову папку?
+            <div class="q-text">Питання 4. Яка константа в Outlook позначає стандартну папку "Вхідні" (Inbox)?
 </div>
-            <div><input type="radio">os.createdir()
-</div>
-<div><input type="radio">os.mkdir()
+            <div><input type="radio">6
  </div>
-<div><input type="radio">os.makedir()
+<div><input type="radio">1
 </div>
-<div><input type="radio">os.newdir()
+<div><input type="radio">2
+</div>
+<div><input type="radio">3
 </div>
 
             </div>
             
             <div id="5">
-            <div class="q-text">Питання 5. Яка функція видаляє порожню папку?
+            <div class="q-text">Питання 5. Як отримати доступ до папки "Вхідні" через namespace?
 </div>
-            <div><input type="radio">os.deletedir()
+            <div><input type="radio">inbox = namespace.Folders("Inbox")
 </div>
-<div><input type="radio">os.removedir()
-</div>
-<div><input type="radio">os.deldir()
-</div>
-<div><input type="radio">os.rmdir()
+<div><input type="radio">inbox = namespace.GetDefaultFolder(6)
  </div>
+<div><input type="radio">inbox = outlook.GetDefaultFolder("Inbox")
+</div>
+<div><input type="radio">inbox = namespace.GetFolder(1)
+</div>
 
             </div>
             
             <div id="6">
-            <div class="q-text">Питання 6. Яка функція видаляє файл?
+            <div class="q-text">Питання 6. Який метод створює новий об'єкт електронного листа?
 </div>
-            <div><input type="radio">os.erase()
+            <div><input type="radio">outlook.CreateItem("Mail")
 </div>
-<div><input type="radio">os.unlinkfile()
+<div><input type="radio">outlook.NewItem(1)
 </div>
-<div><input type="radio">os.remove()
+<div><input type="radio">outlook.CreateEmail()
+</div>
+<div><input type="radio">outlook.CreateItem(0)
  </div>
-<div><input type="radio">os.delete()
-</div>
 
             </div>
             
             <div id="7">
-            <div class="q-text">Питання 7. Як перевірити, чи існує шлях (файл або папка)?
+            <div class="q-text">Питання 7. Яка властивість об'єкта листа відповідає за тему (Subject)?
 </div>
-            <div><input type="radio">os.exists()
+            <div><input type="radio">mail.Title
 </div>
-<div><input type="radio">os.is_path()
+<div><input type="radio">mail.Header
 </div>
-<div><input type="radio">os.check_path()
+<div><input type="radio">mail.Topic
 </div>
-<div><input type="radio">os.path.exists()
+<div><input type="radio">mail.Subject
  </div>
 
             </div>
             
             <div id="8">
-            <div class="q-text">Питання 8. Який модуль всередині os призначений для маніпуляцій зі шляхами?
+            <div class="q-text">Питання 8. Яка властивість використовується для встановлення отримувача листа?
 </div>
-            <div><input type="radio">os.dirtools
+            <div><input type="radio">mail.Recipient
 </div>
-<div><input type="radio">os.pathutils
+<div><input type="radio">mail.SendTo
 </div>
-<div><input type="radio">os.paths
-</div>
-<div><input type="radio">os.path
+<div><input type="radio">mail.To
  </div>
+<div><input type="radio">mail.Address
+</div>
 
             </div>
             
             <div id="9">
-            <div class="q-text">Питання 9. Яка функція перевіряє, чи є шлях файлом?
+            <div class="q-text">Питання 9. Який метод відправляє підготовлений лист?
 </div>
-            <div><input type="radio">os.path.exists_file()
-</div>
-<div><input type="radio">os.path.isfile()
+            <div><input type="radio">mail.Send()
  </div>
-<div><input type="radio">os.isfile()
+<div><input type="radio">mail.Commit()
 </div>
-<div><input type="radio">os.path.is_file()
+<div><input type="radio">mail.Submit()
+</div>
+<div><input type="radio">mail.Dispatch()
 </div>
 
             </div>
             
             <div id="10">
-            <div class="q-text">Питання 10. Яка функція перевіряє, чи є шлях папкою (директорією)?
+            <div class="q-text">Питання 10. Як додати вкладення до листа?
 </div>
-            <div><input type="radio">os.isdir()
+            <div><input type="radio">mail.AddAttachment("шлях_до_файлу")
 </div>
-<div><input type="radio">os.path.is_dir()
+<div><input type="radio">mail.Files.Add("шлях_до_файлу")
 </div>
-<div><input type="radio">os.path.isdir()
+<div><input type="radio">mail.Attachments.Add("шлях_до_файлу")
  </div>
-<div><input type="radio">os.path.folder()
+<div><input type="radio">mail.Attach("шлях_до_файлу")
 </div>
 
             </div>
             
             <div id="11">
-            <div class="q-text">Питання 11. Яка функція розділяє шлях до файлу на ім'я папки та ім'я самого файлу?
+            <div class="q-text">Питання 11. Як отримати доступ до колекції повідомлень у папці "Вхідні"?
 </div>
-            <div><input type="radio">os.split()
-</div>
-<div><input type="radio">os.path.divide()
-</div>
-<div><input type="radio">os.path.partition()
-</div>
-<div><input type="radio">os.path.split()
+            <div><input type="radio">inbox.Items
  </div>
+<div><input type="radio">inbox.Mails
+</div>
+<div><input type="radio">inbox.Content
+</div>
+<div><input type="radio">inbox.Messages
+</div>
 
             </div>
             
             <div id="12">
-            <div class="q-text">Питання 12. Як з'єднати декілька частин шляху в один рядок, коректний для вашої ОС?
+            <div class="q-text">Питання 12. Яка властивість листа містить його текст (Body)?
 </div>
-            <div><input type="radio">os.path.merge()
-</div>
-<div><input type="radio">os.path.combine()
-</div>
-<div><input type="radio">os.path.connect()
-</div>
-<div><input type="radio">os.path.join()
+            <div><input type="radio">mail.Body
  </div>
+<div><input type="radio">mail.Message
+</div>
+<div><input type="radio">mail.Text
+</div>
+<div><input type="radio">mail.Content
+</div>
 
             </div>
             
             <div id="13">
-            <div class="q-text">Питання 13. Яка функція повертає розмір файлу в байтах?
+            <div class="q-text">Питання 13. Який метод дозволяє перетворити тіло листа на HTML-формат?
 </div>
-            <div><input type="radio">os.getfilesize()
+            <div><input type="radio">mail.Format = "HTML"
 </div>
-<div><input type="radio">os.path.getsize()
+<div><input type="radio">mail.SetHTML("...")
+</div>
+<div><input type="radio">mail.HTMLBody = "..."
  </div>
-<div><input type="radio">os.path.size()
-</div>
-<div><input type="radio">os.path.bytes()
+<div><input type="radio">mail.BodyFormat = 2
 </div>
 
             </div>
             
             <div id="14">
-            <div class="q-text">Питання 14. Як отримати назву операційної системи (наприклад, 'posix' або 'nt')?
+            <div class="q-text">Питання 14. Як відсортувати елементи в папці за часом отримання?
 </div>
-            <div><input type="radio">os.name
+            <div><input type="radio">inbox.Items.Sort("[ReceivedTime]", True)
  </div>
-<div><input type="radio">os.os_type
+<div><input type="radio">inbox.Sort("Received")
 </div>
-<div><input type="radio">os.platform()
+<div><input type="radio">inbox.Items.SortByDate()
 </div>
-<div><input type="radio">os.system_name
+<div><input type="radio">inbox.Items.OrderBy("Date")
 </div>
 
             </div>
             
             <div id="15">
-            <div class="q-text">Питання 15. Яка функція видаляє файл або порожню папку (більш сучасний метод)?
+            <div class="q-text">Питання 15. Як отримати доступ до відправника листа?
 </div>
-            <div><input type="radio">os.delete_all()
+            <div><input type="radio">mail.From
 </div>
-<div><input type="radio">os.unlink()
+<div><input type="radio">mail.SenderEmailAddress
  </div>
-<div><input type="radio">os.kill()
+<div><input type="radio">mail.Originator
 </div>
-<div><input type="radio">os.erase_path()
+<div><input type="radio">mail.Sender
 </div>
 
             </div>
             
             <div id="16">
-            <div class="q-text">Питання 16. Яка змінна середовища в os дозволяє отримати доступ до змінних оточення (наприклад, PATH)?
+            <div class="q-text">Питання 16. Що повертає mail.ReceivedTime?
 </div>
-            <div><input type="radio">os.environment
-</div>
-<div><input type="radio">os.env
-</div>
-<div><input type="radio">os.get_env()
-</div>
-<div><input type="radio">os.environ
+            <div><input type="radio">Час отримання листа
  </div>
+<div><input type="radio">Час відправки листа
+</div>
+<div><input type="radio">Час створення чернетки
+</div>
+<div><input type="radio">Поточний час
+</div>
 
             </div>
             
             <div id="17">
-            <div class="q-text">Питання 17. Яка функція дозволяє виконати системну команду безпосередньо з Python?
+            <div class="q-text">Питання 17. Який метод дозволяє видалити повідомлення?
 </div>
-            <div><input type="radio">os.execute()
+            <div><input type="radio">mail.Drop()
 </div>
-<div><input type="radio">os.run()
+<div><input type="radio">mail.Remove()
 </div>
-<div><input type="radio">os.system()
+<div><input type="radio">mail.Delete()
  </div>
-<div><input type="radio">os.cmd()
+<div><input type="radio">mail.Clear()
 </div>
 
             </div>
             
             <div id="18">
-            <div class="q-text">Питання 18. Яка функція повертає абсолютний шлях до файлу?
+            <div class="q-text">Питання 18. Чи можна працювати з календарем Outlook через pywin32?
 </div>
-            <div><input type="radio">os.path.abspath()
+            <div><input type="radio">Так, через GetDefaultFolder(9)
  </div>
-<div><input type="radio">os.path.abs()
+<div><input type="radio">Тільки якщо встановлено окремий плагін
 </div>
-<div><input type="radio">os.absolute()
+<div><input type="radio">Ні, тільки з поштою
 </div>
-<div><input type="radio">os.path.getabsolute()
+<div><input type="radio">Тільки через веб-інтерфейс
 </div>
 
             </div>
             
             <div id="19">
-            <div class="q-text">Питання 19. Яка функція створює дерево папок (включаючи проміжні)?
+            <div class="q-text">Питання 19. Як відповісти на існуючий лист?
 </div>
-            <div><input type="radio">os.tree()
+            <div><input type="radio">reply = mail.Respond()
 </div>
-<div><input type="radio">os.mkdir_all()
-</div>
-<div><input type="radio">os.makedirs()
+<div><input type="radio">reply = mail.Reply()
  </div>
-<div><input type="radio">os.create_all()
+<div><input type="radio">reply = mail.Answer()
+</div>
+<div><input type="radio">reply = mail.Back()
 </div>
 
             </div>
             
             <div id="20">
-            <div class="q-text">Питання 20. Яка функція повертає лише ім'я файлу з повного шляху (шлях до директорії відсікається)?
+            <div class="q-text">Питання 20. Чому при роботі з pywin32 Outlook іноді видає попередження про спробу доступу стороннього застосунку?
 </div>
-            <div><input type="radio">os.path.name()
-</div>
-<div><input type="radio">os.path.basename()
+            <div><input type="radio">Це заходи безпеки Outlook для запобігання вірусам
  </div>
-<div><input type="radio">os.path.splitname()</div>
-<div><input type="radio">os.path.filename()
+<div><input type="radio">Потрібно оновити Windows
 </div>
+<div><input type="radio">Це помилка налаштування Python
+</div>
+<div><input type="radio">Програма повинна бути підписана цифровим сертифікатом</div>
 
             </div>
             

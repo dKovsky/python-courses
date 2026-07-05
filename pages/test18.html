@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 7: Модуль os</title>
+  <title>Тест 18: Вступ до бібліотеки pandas</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -172,281 +172,281 @@
 
 
             <div id="1">
-            <div class="q-text">Питання 1. Яка функція модуля os повертає поточну робочу директорію?
+            <div class="q-text">Питання 1. Який основний двовимірний об'єкт даних у бібліотеці Pandas?
 </div>
-            <div><input type="radio">os.getcwd()
+            <div><input type="radio">Matrix
+</div>
+<div><input type="radio">Panel
+</div>
+<div><input type="radio">DataFrame
  </div>
-<div><input type="radio">os.pwd()
-</div>
-<div><input type="radio">os.current_dir()
-</div>
-<div><input type="radio">os.getdir()
+<div><input type="radio">Series
 </div>
 
             </div>
             
             <div id="2">
-            <div class="q-text">Питання 2. Яка функція дозволяє змінити поточну робочу директорію?
+            <div class="q-text">Питання 2. Який одномірний масив даних у Pandas, що підтримує мітки осей (індекси)?
 </div>
-            <div><input type="radio">os.changedir()
-</div>
-<div><input type="radio">os.chdir()
+            <div><input type="radio">Series
  </div>
-<div><input type="radio">os.movedir()
+<div><input type="radio">Array
 </div>
-<div><input type="radio">os.setcwd()
+<div><input type="radio">Index
+</div>
+<div><input type="radio">DataFrame
 </div>
 
             </div>
             
             <div id="3">
-            <div class="q-text">Питання 3. Яка функція використовується для переліку всіх файлів та папок у вказаній директорії?
+            <div class="q-text">Питання 3. Яка функція використовується для зчитування CSV-файлу у DataFrame?
 </div>
-            <div><input type="radio">os.listfiles()
+            <div><input type="radio">pd.import_csv()
 </div>
-<div><input type="radio">os.listdir()
+<div><input type="radio">pd.read_file()
+</div>
+<div><input type="radio">pd.read_csv()
  </div>
-<div><input type="radio">os.getdircontent()
-</div>
-<div><input type="radio">os.showdir()
+<div><input type="radio">pd.load_csv()
 </div>
 
             </div>
             
             <div id="4">
-            <div class="q-text">Питання 4. Яка функція створює нову папку?
+            <div class="q-text">Питання 4. Який метод дозволяє переглянути перші 5 рядків DataFrame?
 </div>
-            <div><input type="radio">os.createdir()
-</div>
-<div><input type="radio">os.mkdir()
+            <div><input type="radio">df.head()
  </div>
-<div><input type="radio">os.makedir()
+<div><input type="radio">df.show(5)
 </div>
-<div><input type="radio">os.newdir()
+<div><input type="radio">df.top()
+</div>
+<div><input type="radio">df.first()
 </div>
 
             </div>
             
             <div id="5">
-            <div class="q-text">Питання 5. Яка функція видаляє порожню папку?
+            <div class="q-text">Питання 5. Як дізнатися загальну інформацію про DataFrame (типи даних, кількість непустотних значень)?
 </div>
-            <div><input type="radio">os.deletedir()
+            <div><input type="radio">df.summary()
 </div>
-<div><input type="radio">os.removedir()
+<div><input type="radio">df.details()
 </div>
-<div><input type="radio">os.deldir()
+<div><input type="radio">df.describe()
 </div>
-<div><input type="radio">os.rmdir()
+<div><input type="radio">df.info()
  </div>
 
             </div>
             
             <div id="6">
-            <div class="q-text">Питання 6. Яка функція видаляє файл?
+            <div class="q-text">Питання 6. Який метод повертає статистичні показники (середнє, мінімум, максимум, квартилі) для числових стовпців?
 </div>
-            <div><input type="radio">os.erase()
+            <div><input type="radio">df.analyze()
 </div>
-<div><input type="radio">os.unlinkfile()
+<div><input type="radio">df.info()
 </div>
-<div><input type="radio">os.remove()
+<div><input type="radio">df.describe()
  </div>
-<div><input type="radio">os.delete()
+<div><input type="radio">df.stats()
 </div>
 
             </div>
             
             <div id="7">
-            <div class="q-text">Питання 7. Як перевірити, чи існує шлях (файл або папка)?
+            <div class="q-text">Питання 7. Як вибрати один стовпець col1 з DataFrame df?
 </div>
-            <div><input type="radio">os.exists()
+            <div><input type="radio">df.col1
 </div>
-<div><input type="radio">os.is_path()
+<div><input type="radio">df(col1)
 </div>
-<div><input type="radio">os.check_path()
-</div>
-<div><input type="radio">os.path.exists()
+<div><input type="radio">df['col1']
  </div>
+<div><input type="radio">df.select('col1')
+</div>
 
             </div>
             
             <div id="8">
-            <div class="q-text">Питання 8. Який модуль всередині os призначений для маніпуляцій зі шляхами?
+            <div class="q-text">Питання 8. Як видалити рядок або стовпець з DataFrame?
 </div>
-            <div><input type="radio">os.dirtools
+            <div><input type="radio">df.delete()
 </div>
-<div><input type="radio">os.pathutils
-</div>
-<div><input type="radio">os.paths
-</div>
-<div><input type="radio">os.path
+<div><input type="radio">df.drop()
  </div>
+<div><input type="radio">df.remove()
+</div>
+<div><input type="radio">df.pop()
+</div>
 
             </div>
             
             <div id="9">
-            <div class="q-text">Питання 9. Яка функція перевіряє, чи є шлях файлом?
+            <div class="q-text">Питання 9. Який атрибут повертає розмірність (кількість рядків і стовпців) DataFrame?
 </div>
-            <div><input type="radio">os.path.exists_file()
+            <div><input type="radio">df.size
 </div>
-<div><input type="radio">os.path.isfile()
+<div><input type="radio">df.dim
+</div>
+<div><input type="radio">df.shape
  </div>
-<div><input type="radio">os.isfile()
-</div>
-<div><input type="radio">os.path.is_file()
+<div><input type="radio">df.len()
 </div>
 
             </div>
             
             <div id="10">
-            <div class="q-text">Питання 10. Яка функція перевіряє, чи є шлях папкою (директорією)?
+            <div class="q-text">Питання 10. Який метод використовується для фільтрації рядків за умовою, наприклад df[df['age'] > 30]?
 </div>
-            <div><input type="radio">os.isdir()
+            <div><input type="radio">Функція filter()
 </div>
-<div><input type="radio">os.path.is_dir()
-</div>
-<div><input type="radio">os.path.isdir()
+<div><input type="radio">Булева індексація (Boolean Indexing)
  </div>
-<div><input type="radio">os.path.folder()
+<div><input type="radio">Метод where()
+</div>
+<div><input type="radio">Метод find()
 </div>
 
             </div>
             
             <div id="11">
-            <div class="q-text">Питання 11. Яка функція розділяє шлях до файлу на ім'я папки та ім'я самого файлу?
+            <div class="q-text">Питання 11. Як заповнити пропущені значення (NaN) у DataFrame?
 </div>
-            <div><input type="radio">os.split()
+            <div><input type="radio">df.fill_missing()
 </div>
-<div><input type="radio">os.path.divide()
+<div><input type="radio">df.replace_na()
 </div>
-<div><input type="radio">os.path.partition()
-</div>
-<div><input type="radio">os.path.split()
+<div><input type="radio">df.fillna()
  </div>
+<div><input type="radio">df.drop_na()
+</div>
 
             </div>
             
             <div id="12">
-            <div class="q-text">Питання 12. Як з'єднати декілька частин шляху в один рядок, коректний для вашої ОС?
+            <div class="q-text">Питання 12. Який метод дозволяє згрупувати дані за певним стовпцем?
 </div>
-            <div><input type="radio">os.path.merge()
-</div>
-<div><input type="radio">os.path.combine()
-</div>
-<div><input type="radio">os.path.connect()
-</div>
-<div><input type="radio">os.path.join()
+            <div><input type="radio">df.groupby()
  </div>
+<div><input type="radio">df.split()
+</div>
+<div><input type="radio">df.group()
+</div>
+<div><input type="radio">df.aggregate()
+</div>
 
             </div>
             
             <div id="13">
-            <div class="q-text">Питання 13. Яка функція повертає розмір файлу в байтах?
+            <div class="q-text">Питання 13. Яка функція використовується для об'єднання двох DataFrame по спільному ключу (як JOIN у SQL)?
 </div>
-            <div><input type="radio">os.getfilesize()
+            <div><input type="radio">pd.join()
 </div>
-<div><input type="radio">os.path.getsize()
+<div><input type="radio">pd.merge()
  </div>
-<div><input type="radio">os.path.size()
+<div><input type="radio">pd.concat()
 </div>
-<div><input type="radio">os.path.bytes()
+<div><input type="radio">pd.append()
 </div>
 
             </div>
             
             <div id="14">
-            <div class="q-text">Питання 14. Як отримати назву операційної системи (наприклад, 'posix' або 'nt')?
+            <div class="q-text">Питання 14. Як відсортувати значення в DataFrame за певним стовпцем?
 </div>
-            <div><input type="radio">os.name
+            <div><input type="radio">df.sort()
+</div>
+<div><input type="radio">df.arrange()
+</div>
+<div><input type="radio">df.sort_values()
  </div>
-<div><input type="radio">os.os_type
-</div>
-<div><input type="radio">os.platform()
-</div>
-<div><input type="radio">os.system_name
+<div><input type="radio">df.order()
 </div>
 
             </div>
             
             <div id="15">
-            <div class="q-text">Питання 15. Яка функція видаляє файл або порожню папку (більш сучасний метод)?
+            <div class="q-text">Питання 15. Яка функція використовується для перетворення рядків у тип datetime?
 </div>
-            <div><input type="radio">os.delete_all()
+            <div><input type="radio">pd.parse_date()
 </div>
-<div><input type="radio">os.unlink()
+<div><input type="radio">pd.as_datetime()
+</div>
+<div><input type="radio">pd.convert_date()
+</div>
+<div><input type="radio">pd.to_datetime()
  </div>
-<div><input type="radio">os.kill()
-</div>
-<div><input type="radio">os.erase_path()
-</div>
 
             </div>
             
             <div id="16">
-            <div class="q-text">Питання 16. Яка змінна середовища в os дозволяє отримати доступ до змінних оточення (наприклад, PATH)?
+            <div class="q-text">Питання 16. Як отримати доступ до рядків за індексом (міткою) через назву?
 </div>
-            <div><input type="radio">os.environment
+            <div><input type="radio">df.index[]
 </div>
-<div><input type="radio">os.env
+<div><input type="radio">df.iloc[]
 </div>
-<div><input type="radio">os.get_env()
-</div>
-<div><input type="radio">os.environ
+<div><input type="radio">df.loc[]
  </div>
+<div><input type="radio">df.at[]
+</div>
 
             </div>
             
             <div id="17">
-            <div class="q-text">Питання 17. Яка функція дозволяє виконати системну команду безпосередньо з Python?
+            <div class="q-text">Питання 17. Як отримати доступ до рядків за їх позиційним номером (цілочисельним індексом)?
 </div>
-            <div><input type="radio">os.execute()
-</div>
-<div><input type="radio">os.run()
-</div>
-<div><input type="radio">os.system()
+            <div><input type="radio">df.iloc[]
  </div>
-<div><input type="radio">os.cmd()
+<div><input type="radio">df.row[]
+</div>
+<div><input type="radio">df.loc[]
+</div>
+<div><input type="radio">df.iat[]
 </div>
 
             </div>
             
             <div id="18">
-            <div class="q-text">Питання 18. Яка функція повертає абсолютний шлях до файлу?
+            <div class="q-text">Питання 18. Який метод дозволяє перейменувати стовпці у DataFrame?
 </div>
-            <div><input type="radio">os.path.abspath()
+            <div><input type="radio">df.change_columns()
+</div>
+<div><input type="radio">df.set_names()
+</div>
+<div><input type="radio">df.rename()
  </div>
-<div><input type="radio">os.path.abs()
-</div>
-<div><input type="radio">os.absolute()
-</div>
-<div><input type="radio">os.path.getabsolute()
+<div><input type="radio">df.alias()
 </div>
 
             </div>
             
             <div id="19">
-            <div class="q-text">Питання 19. Яка функція створює дерево папок (включаючи проміжні)?
+            <div class="q-text">Питання 19. Як обчислити кореляцію між стовпцями?
 </div>
-            <div><input type="radio">os.tree()
+            <div><input type="radio">df.relate()
 </div>
-<div><input type="radio">os.mkdir_all()
-</div>
-<div><input type="radio">os.makedirs()
+<div><input type="radio">df.corr()
  </div>
-<div><input type="radio">os.create_all()
+<div><input type="radio">df.associate()
+</div>
+<div><input type="radio">df.correlation()
 </div>
 
             </div>
             
             <div id="20">
-            <div class="q-text">Питання 20. Яка функція повертає лише ім'я файлу з повного шляху (шлях до директорії відсікається)?
+            <div class="q-text">Питання 20. Як видалити всі рядки, що містять хоча б одне пропущене значення?
 </div>
-            <div><input type="radio">os.path.name()
+            <div><input type="radio">df.remove_na()
 </div>
-<div><input type="radio">os.path.basename()
+<div><input type="radio">df.fill(None)</div>
+<div><input type="radio">df.drop_na()
+</div>
+<div><input type="radio">df.dropna()
  </div>
-<div><input type="radio">os.path.splitname()</div>
-<div><input type="radio">os.path.filename()
-</div>
 
             </div>
             
