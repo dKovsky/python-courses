@@ -173,83 +173,87 @@ if (activeLink) {
   });
 }
 
-
 (function () {
-  const navLeft = document.getElementById("nav-local");
-  const navRight = document.getElementById("nav-global");
-  const content = document.getElementById("content");
-  if (!content || (!navLeft && !navRight)) return;
+  const navLeft = document.getElementById("nav-local"); //[cite: 1]
+  const navRight = document.getElementById("nav-global"); //[cite: 1]
+  const content = document.getElementById("content"); //[cite: 1]
+  
+  // FIX 1: Don't stop if 'content' is missing, only stop if both navs are missing
+  if (!navLeft && !navRight) return;
 
-  const MIN_WIDTH = 140;
-  const MAX_WIDTH = 500;
-  const LEFT_STORAGE_KEY = "localNavWidth";
-  const RIGHT_STORAGE_KEY = "globalNavWidth";
+  const MIN_WIDTH = 140; //[cite: 1]
+  const MAX_WIDTH = 500; //[cite: 1]
+  const LEFT_STORAGE_KEY = "localNavWidth"; //[cite: 1]
+  const RIGHT_STORAGE_KEY = "globalNavWidth"; //[cite: 1]
 
   // Restore saved widths
-  if (navLeft) {
-    const savedLeft = localStorage.getItem(LEFT_STORAGE_KEY);
-    if (savedLeft) {
-      const width = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, parseInt(savedLeft)));
-      navLeft.style.width = width + "px";
-    }
-  }
+  if (navLeft) { //[cite: 1]
+    const savedLeft = localStorage.getItem(LEFT_STORAGE_KEY); //[cite: 1]
+    if (savedLeft) { //[cite: 1]
+      const width = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, parseInt(savedLeft))); //[cite: 1]
+      navLeft.style.width = width + "px"; //[cite: 1]
+    } //[cite: 1]
+  } //[cite: 1]
 
-  if (navRight) {
-    const savedRight = localStorage.getItem(RIGHT_STORAGE_KEY);
-    if (savedRight) {
-      const width = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, parseInt(savedRight)));
-      navRight.style.width = width + "px";
-    }
-  }
+  if (navRight) { //[cite: 1]
+    const savedRight = localStorage.getItem(RIGHT_STORAGE_KEY); //[cite: 1]
+    if (savedRight) { //[cite: 1]
+      const width = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, parseInt(savedRight))); //[cite: 1]
+      navRight.style.width = width + "px"; //[cite: 1]
+    } //[cite: 1]
+  } //[cite: 1]
 
   // Update content padding based on both sidebars
-  function updateContentPadding() {
-    const leftWidth = navLeft ? navLeft.offsetWidth : 0;
-    const rightWidth = navRight ? navRight.offsetWidth : 0;
-    content.style.paddingLeft = leftWidth + "px";
-    content.style.paddingRight = rightWidth + "px";
-  }
+  function updateContentPadding() { //[cite: 1]
+    // FIX 1 cont: Only try to pad the content if the element actually exists
+    if (!content) return; 
+    
+    const leftWidth = navLeft ? navLeft.offsetWidth : 0; //[cite: 1]
+    const rightWidth = navRight ? navRight.offsetWidth : 0; //[cite: 1]
+    content.style.paddingLeft = leftWidth + "px"; //[cite: 1]
+    content.style.paddingRight = rightWidth + "px"; //[cite: 1]
+  } //[cite: 1]
 
-  updateContentPadding();
+  updateContentPadding(); //[cite: 1]
 
   // Generic resizer drag function
-  function makeResizable(nav, storageKey, isLeft) {
-    const resizer = nav.querySelector(".resizer");
-    if (!resizer) return;
+  function makeResizable(nav, storageKey, isLeft) { //[cite: 1]
+    const resizer = nav.querySelector(".resizer"); //[cite: 1]
+    if (!resizer) return; //[cite: 1]
 
-    resizer.addEventListener("mousedown", (e) => {
-      e.preventDefault();
-      document.body.style.cursor = "ew-resize";
+    resizer.addEventListener("mousedown", (e) => { //[cite: 1]
+      e.preventDefault(); //[cite: 1]
+      document.body.style.cursor = "ew-resize"; //[cite: 1]
 
-      function onMouseMove(e) {
-        let newWidth;
-        if (isLeft) {
-          newWidth = e.clientX; // distance from left edge
-        } else {
-          const leftWidth = navLeft ? navLeft.offsetWidth : 0;
-          newWidth = window.innerWidth - e.clientX - leftWidth; // distance from right edge
+      function onMouseMove(e) { //[cite: 1]
+        let newWidth; //[cite: 1]
+        if (isLeft) { //[cite: 1]
+          newWidth = e.clientX; // distance from left edge //[cite: 1]
+        } else { //[cite: 1]
+          // FIX 2: Correct math for the right side
+          newWidth = window.innerWidth - e.clientX; 
         }
 
-        const clamped = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, newWidth));
-        nav.style.width = clamped + "px";
-        localStorage.setItem(storageKey, clamped);
-        updateContentPadding();
-      }
+        const clamped = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, newWidth)); //[cite: 1]
+        nav.style.width = clamped + "px"; //[cite: 1]
+        localStorage.setItem(storageKey, clamped); //[cite: 1]
+        updateContentPadding(); //[cite: 1]
+      } //[cite: 1]
 
-      function onMouseUp() {
-        document.body.style.cursor = "";
-        document.removeEventListener("mousemove", onMouseMove);
-        document.removeEventListener("mouseup", onMouseUp);
-      }
+      function onMouseUp() { //[cite: 1]
+        document.body.style.cursor = ""; //[cite: 1]
+        document.removeEventListener("mousemove", onMouseMove); //[cite: 1]
+        document.removeEventListener("mouseup", onMouseUp); //[cite: 1]
+      } //[cite: 1]
 
-      document.addEventListener("mousemove", onMouseMove);
-      document.addEventListener("mouseup", onMouseUp);
-    });
-  }
+      document.addEventListener("mousemove", onMouseMove); //[cite: 1]
+      document.addEventListener("mouseup", onMouseUp); //[cite: 1]
+    }); //[cite: 1]
+  } //[cite: 1]
 
-  if (navLeft) makeResizable(navLeft, LEFT_STORAGE_KEY, true);
-  if (navRight) makeResizable(navRight, RIGHT_STORAGE_KEY, false);
+  if (navLeft) makeResizable(navLeft, LEFT_STORAGE_KEY, true); //[cite: 1]
+  if (navRight) makeResizable(navRight, RIGHT_STORAGE_KEY, false); //[cite: 1]
 
   // Update content padding on window resize
-  window.addEventListener("resize", updateContentPadding);
-})();
+  window.addEventListener("resize", updateContentPadding); //[cite: 1]
+})(); //[cite: 1]
