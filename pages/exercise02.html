@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Вправа 2: Списки</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div id="codeModal" class="code-modal" onclick="closeFullCode()">
+    <div class="code-modal-content" onclick="event.stopPropagation()">
+        <span class="code-modal-close" onclick="closeFullCode()">&times;</span>
+        <pre><code class="python" id="modalCodeTarget"></code></pre>
+    </div>
+</div>
+
+<div class="page-wrapper">
+
+
+  <main id="content">
+
+<h1>Вправа 2: Списки</h1>
+
+
+<section class="exercise-card">
+<section id="1">
+    <h2>Завдання № 1.</h2>
+    <p class="exercise-description">Зробіть список порожнім.</p>
+    <script>
+        createCodeBlock(String.raw`
+empty_list = [1, 2, 3]
+empty_list = # YOUR CODE HERE
+print(empty_list)
+    `, document.querySelector('[id="1"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="2">
+    <h2>Завдання № 2.</h2>
+    <p class="exercise-description">Добавте у кінець списку число 5.</p>
+    <script>
+        createCodeBlock(String.raw`
+my_list = [1, 2, 3, 4]
+
+# YOUR CODE HERE
+
+print(my_list)
+    `, document.querySelector('[id="2"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="3">
+    <h2>Завдання № 3.</h2>
+    <p class="exercise-description">Добавте на початок списку число 1.</p>
+    <script>
+        createCodeBlock(String.raw`
+new_list = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# YOUR CODE HERE
+
+print(new_list)
+    `, document.querySelector('[id="3"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="4">
+    <h2>Завдання № 4.</h2>
+    <p class="exercise-description">Добавте на сьому позицію списку число 8.</p>
+    <script>
+        createCodeBlock(String.raw`
+mark_list = [1, 2, 3, 4, 5, 6, 7, 9, 10]
+
+# YOUR CODE HERE
+
+print(mark_list)
+    `, document.querySelector('[id="4"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="5">
+    <h2>Завдання № 5.</h2>
+    <p class="exercise-description">Видаліть усі елементи у списку.</p>
+    <script>
+        createCodeBlock(String.raw`
+clean_list = ['a', 'b', 'c']
+
+# YOUR CODE HERE
+
+print(clean_list)
+    `, document.querySelector('[id="5"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="6">
+    <h2>Завдання № 6.</h2>
+    <p class="exercise-description">Видаліть усі елементи у списку.</p>
+    <script>
+        createCodeBlock(String.raw`
+clean_list = ['a', 'b', 'c']
+
+# YOUR CODE HERE
+
+print(clean_list)
+    `, document.querySelector('[id="6"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="7">
+    <h2>Завдання № 7.</h2>
+    <p class="exercise-description">Замініть третій елемент у списку на число 3.</p>
+    <script>
+        createCodeBlock(String.raw`
+number_list = [1, 2, '3', 4, 5, 6, 7, 8, 9, 10]
+
+# YOUR CODE HERE
+
+print(number_list)
+    `, document.querySelector('[id="7"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="8">
+    <h2>Завдання № 8.</h2>
+    <p class="exercise-description">Видаліть зі списку слово Асгард.</p>
+    <script>
+        createCodeBlock(String.raw`
+city_list = ['Броди', 'Львів', 'Асгард', 'Київ']
+
+# YOUR CODE HERE
+
+print(city_list)
+    `, document.querySelector('[id="8"]'));
+    </script>
+</section>
+</section>
+
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

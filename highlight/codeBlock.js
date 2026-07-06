@@ -5,6 +5,10 @@ function createCodeBlock(code, element) {
     codeCounter++;
     const id = `code-${codeCounter}`; // Generate unique ID
 
+    // <button class="bookmark-btn">
+    //       <svg fill="currentColor" viewBox="0 0 24 24"width="16" height="16" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><path id="primary" d="M12,17,5,21V4A1,1,0,0,1,6,3H18a1,1,0,0,1,1,1V21Z" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>
+    // </button>
+
     const codeBlockHTML = `
         <div class="code-container">
             <button class="copy-btn" onclick="copyCode('${id}', this)">
@@ -13,6 +17,16 @@ function createCodeBlock(code, element) {
                 </svg>
                 Copy
             </button>
+
+            <button class="fullsize-btn" onclick="fullCode('${id}', this)">
+            <svg fill="currentColor" viewBox="0 0 24 24"width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 4H7C5.58579 4 4.87868 4 4.43934 4.43934C4 4.87868 4 5.58579 4 7V9" stroke="#222222" stroke-linecap="round"/>
+        <path d="M9 20H7C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V15" stroke="#222222" stroke-linecap="round"/>
+        <path d="M15 4H17C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V9" stroke="#222222" stroke-linecap="round"/>
+        <path d="M15 20H17C18.4142 20 19.1213 20 19.5607 19.5607C20 19.1213 20 18.4142 20 17V15" stroke="#222222" stroke-linecap="round"/>
+        </svg>
+</button>
+
             <pre><code class="python" id="${id}">${code}</code></pre>
         </div>
     `;
@@ -44,6 +58,66 @@ function copyCode(id, btn) {
             Copy
         `;
     }, 2000);
+}
+
+// Function to launch code block in fullscreen popup
+function fullCode(id, btn) {
+    // 1. Fetch the raw code text from the specific target element
+    var originalCode = document.getElementById(id).innerText;
+    
+    // 2. Point to our modal target containers
+    var modal = document.getElementById('codeModal');
+    var modalTarget = document.getElementById('modalCodeTarget');
+    
+    // 3. Inject code text safely
+    modalTarget.textContent  = originalCode;
+    
+    // 4. Force HighlightJS to process syntax coloring on the modal's DOM element
+    if (window.hljs) {
+        // Reset element attribute tag tracking so highlightjs recalculates it fresh
+        modalTarget.removeAttribute('data-highlighted');
+        hljs.highlightElement(modalTarget);
+    }
+    
+    // 5. Uncover the popup visually
+    modal.style.display = "flex";
+}
+
+// Function to close the modal window safely
+function closeFullCode() {
+    document.getElementById('codeModal').style.display = "none";
+}
+
+function addAnswerToggle(sectionId, answerCode) {
+    const section = document.querySelector(`[id="${sectionId}"]`);
+
+    // createCodeBlock() inserts the .code-container as the NEXT SIBLING
+    // of `section` (it uses insertAdjacentHTML("afterend", ...) on the
+    // element it's given). So right after createCodeBlock() has run,
+    // section.nextElementSibling IS the exercise's own code block.
+    const exerciseCodeBlock = section.nextElementSibling;
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Показати відповідь';
+    btn.className = 'show-answer-btn';
+    exerciseCodeBlock.insertAdjacentElement('afterend', btn);
+
+    // `anchor` is just an insertion point: createCodeBlock() will insert
+    // its highlighted block right after it. We remove the anchor itself
+    // once we've grabbed a reference to what it created.
+    const anchor = document.createElement('div');
+    btn.insertAdjacentElement('afterend', anchor);
+
+    createCodeBlock(answerCode, anchor);       // adds highlighting + copy button
+    const answerContainer = anchor.nextElementSibling;
+    answerContainer.style.display = 'none';
+    anchor.remove();
+
+    btn.onclick = () => {
+        const hidden = answerContainer.style.display === 'none';
+        answerContainer.style.display = hidden ? 'block' : 'none';
+        btn.textContent = hidden ? 'Сховати відповідь' : 'Показати відповідь';
+    };
 }
 
 

@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Вправа 3: Робота з файлами (txt)</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div id="codeModal" class="code-modal" onclick="closeFullCode()">
+    <div class="code-modal-content" onclick="event.stopPropagation()">
+        <span class="code-modal-close" onclick="closeFullCode()">&times;</span>
+        <pre><code class="python" id="modalCodeTarget"></code></pre>
+    </div>
+</div>
+
+<div class="page-wrapper">
+
+
+  <main id="content">
+
+<h1>Вправа 3: Робота з файлами (txt)</h1>
+
+
+<section class="exercise-card">
+<section id="1">
+    <h2>Завдання № 1.</h2>
+    <p class="exercise-description">Запишіть у файл 'my_file.txt' вказаний текст</p>
+    <script>
+        createCodeBlock(String.raw`
+filename = 'my_file.txt'
+text = r"¯\_(ツ)_/¯"
+
+# YOUR CODE HERE
+
+print(f'Збережено файл {filename}')
+    `, document.querySelector('[id="1"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="2">
+    <h2>Завдання № 2.</h2>
+    <p class="exercise-description">Виведіть текст з файлу 'test.txt' у консоль.</p>
+    <script>
+        createCodeBlock(String.raw`
+filename = 'test.txt'
+with open('test.txt', 'w', encoding='utf-8') as f:
+	f.write('Hello world!')
+
+# YOUR CODE HERE
+
+print('↑ текст у файлі {filename}')
+    `, document.querySelector('[id="2"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="3">
+    <h2>Завдання № 3.</h2>
+    <p class="exercise-description">Добавте у файл 'data.csv' додатковий текст.</p>
+    <script>
+        createCodeBlock(String.raw`
+filename = 'data.csv'
+
+with open(filename, 'w', encoding='utf-8') as f:
+	f.write("id;name;age;city\n")
+	f.write("1;Олег;35;Вінниця\n")
+	f.write("2;Анна;25;Житомир\n")
+	f.write("3;Андрій;45;Київ")
+
+
+additional_text = """
+4;Софія;50;Черкаси
+5;Тарас;22;Тернопіль
+"""
+
+# YOUR CODE HERE
+
+print('Внесено зміни у файл {filename}')
+    `, document.querySelector('[id="3"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="4">
+    <h2>Завдання № 4.</h2>
+    <p class="exercise-description">Зчитайте всі рядки з файлу 'colors.txt' Результатом має бути змінна тупу список.</p>
+    <script>
+        createCodeBlock(String.raw`
+filename = 'colors.txt'
+with open(filename, 'w', encoding='utf-8') as f:
+	f.write("Червоний\nЗелений\nСиній")
+
+# YOUR CODE HERE
+
+print('↑ список кольорів')
+    `, document.querySelector('[id="4"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="5">
+    <h2>Завдання № 5.</h2>
+    <p class="exercise-description">Зчитайте лише перший рядок з файлу 'config.txt' у змінну first_line.</p>
+    <script>
+        createCodeBlock(String.raw`
+filename = 'config.txt'
+with open(filename, 'w', encoding='utf-8') as f:
+	f.write("host=localhost\nport=8080")
+
+# YOUR CODE HERE
+
+print('↑ перший рядок')
+    `, document.querySelector('[id="5"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="6">
+    <h2>Завдання № 6.</h2>
+    <p class="exercise-description">Зчитайте перші 5 символів з файлу 'secret.txt' у змінну code_part.</p>
+    <script>
+        createCodeBlock(String.raw`
+filename = 'secret.txt'
+with open(filename, 'w', encoding='utf-8') as f:
+	f.write("1234567890")
+
+# YOUR CODE HERE
+
+print('↑ перші 5 символів')
+    `, document.querySelector('[id="6"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="7">
+    <h2>Завдання № 7.</h2>
+    <p class="exercise-description">Запишіть список текстів у файл 'log.txt'.</p>
+    <script>
+        createCodeBlock(String.raw`
+filename = 'log.txt'
+log_entries = ["INFO: Start\n", "WARNING: Low memory\n", "ERROR: Crash\n"]
+
+# YOUR CODE HERE
+
+print(f'Записи додано у файл {filename}')
+    `, document.querySelector('[id="7"]'));
+    </script>
+</section>
+</section>
+
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

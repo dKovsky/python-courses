@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Вправа 1: Основи синтаксису</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div id="codeModal" class="code-modal" onclick="closeFullCode()">
+    <div class="code-modal-content" onclick="event.stopPropagation()">
+        <span class="code-modal-close" onclick="closeFullCode()">&times;</span>
+        <pre><code class="python" id="modalCodeTarget"></code></pre>
+    </div>
+</div>
+
+<div class="page-wrapper">
+
+
+  <main id="content">
+
+<h1>Вправа 1: Основи синтаксису</h1>
+
+
+<section class="exercise-card">
+<section id="1">
+    <h2>Завдання № 1.</h2>
+    <p class="exercise-description">Виведіть у консоль `Hello world`.</p>
+    <script>
+        createCodeBlock(String.raw`
+# YOUR CODE HERE
+    `, document.querySelector('[id="1"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="2">
+    <h2>Завдання № 2.</h2>
+    <p class="exercise-description">Виведіть у консоль результат 7 + 25 / 5 - 1_000**0 + -1 * (5 - 4).</p>
+    <script>
+        createCodeBlock(String.raw`
+# YOUR CODE HERE
+    `, document.querySelector('[id="2"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="3">
+    <h2>Завдання № 3.</h2>
+    <p class="exercise-description">Виведіть у консоль результат 10 / 0.</p>
+    <script>
+        createCodeBlock(String.raw`
+# YOUR CODE HERE
+    `, document.querySelector('[id="3"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="4">
+    <h2>Завдання № 4.</h2>
+    <p class="exercise-description">Виведіть у консоль символ `-` у одному рядку 40 разів.</p>
+    <script>
+        createCodeBlock(String.raw`
+# YOUR CODE HERE
+    `, document.querySelector('[id="4"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="5">
+    <h2>Завдання № 5.</h2>
+    <p class="exercise-description">Знайдіть цілу частину від 13355 при діленні на 171.</p>
+    <script>
+        createCodeBlock(String.raw`
+result = # YOUR CODE HERE
+print(result)
+    `, document.querySelector('[id="5"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="6">
+    <h2>Завдання № 6.</h2>
+    <p class="exercise-description">Знайдіть остачу від 13355 при діленні на 171.</p>
+    <script>
+        createCodeBlock(String.raw`
+result = # YOUR CODE HERE
+print(result)
+    `, document.querySelector('[id="6"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="7">
+    <h2>Завдання № 7.</h2>
+    <p class="exercise-description">Виведіть перші 20 символів змінної.</p>
+    <script>
+        createCodeBlock(String.raw`
+secret = """conn = 0.0.0.1
+user = admin
+password = admin"""
+
+# YOUR CODE HERE
+    `, document.querySelector('[id="7"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="8">
+    <h2>Завдання № 8.</h2>
+    <p class="exercise-description">Виведіть чи є у тексті вказане слово.</p>
+    <script>
+        createCodeBlock(String.raw`
+search_keyword = 'signature'
+negative_prompt = r"low quality, normal quality, lowres, low details, oversaturated, undersaturated, overexposed, underexposed, grayscale, bw, bad photo, bad photography, bad art:1.4), (watermark, signature, text font, username, error, logo, words, letters, digits, autograph, trademark, name:1.2),owres, (bad), text, error, fewer, extra, missing, worst quality, jpeg artifacts, low quality, watermark, unfinished, displeasing, oldest, early, chromatic aberration, signature, extra digits, artistic error, username, scan,cross-eyed,Adam's apple,(bad quality,worst quality,worst detail,bad, low quality, bad anatomy), (6 fingers, 4 fingers, bad hands, bad feet, bad hand, bad finger, bad fingers, missing finger,missing fingers, extra finger, extra fingers, split finger, split fingers, extra digits, fused arms, fused hands), camel toe"
+
+# YOUR CODE HERE
+    `, document.querySelector('[id="8"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="9">
+    <h2>Завдання № 9.</h2>
+    <p class="exercise-description">Скрипт має вивести 'select * from my_table limit my_limit' де замість параметрів `my_table` та `my_limit` відповідні значення</p>
+    <script>
+        createCodeBlock(String.raw`
+my_table = "my_tbl"
+my_limit = 100
+sql = # YOUR CODE HERE
+print(sql)
+    `, document.querySelector('[id="9"]'));
+    </script>
+</section>
+</section>
+
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

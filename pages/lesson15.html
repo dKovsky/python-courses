@@ -14,7 +14,14 @@
   <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 
-<body class="dark"> <!-- Default to dark theme -->
+<body class="dark">
+<div id="codeModal" class="code-modal" onclick="closeFullCode()">
+    <div class="code-modal-content" onclick="event.stopPropagation()">
+        <span class="code-modal-close" onclick="closeFullCode()">&times;</span>
+        <pre><code class="python" id="modalCodeTarget"></code></pre>
+    </div>
+</div>
+ <!-- Default to dark theme -->
   <div class="page-wrapper">
 
     <nav id="nav-local" class="local">

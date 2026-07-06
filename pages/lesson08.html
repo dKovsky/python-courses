@@ -11,6 +11,13 @@
   <script src="../highlight/codeBlock.js"></script>
 </head>
 <body class="dark">
+<div id="codeModal" class="code-modal" onclick="closeFullCode()">
+    <div class="code-modal-content" onclick="event.stopPropagation()">
+        <span class="code-modal-close" onclick="closeFullCode()">&times;</span>
+        <pre><code class="python" id="modalCodeTarget"></code></pre>
+    </div>
+</div>
+
 
 <div class="page-wrapper">
 

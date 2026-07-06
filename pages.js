@@ -10,7 +10,7 @@ let dir_pages = lastPart === "index.html" ? "pages/" : "";
 
 
 const navItems = [
-    {
+  {
     group_name: "null",
     items: [
       { href: dir_index + "index.html", text: "Home" },
@@ -20,33 +20,33 @@ const navItems = [
     group_name: "Заняття",
     items: [
 
-  { href: dir_pages + "lesson01.html", text: "Заняття 1: Вступ до Python та основи синтаксису" },
-  { href: dir_pages + "lesson02.html", text: "Заняття 2: Списки" },
-  { href: dir_pages + "lesson03.html", text: "Заняття 3: Робота з файлами (txt)" },
-  { href: dir_pages + "lesson04.html", text: "Заняття 4: Булевий тип даних та умовні оператори (if)" },
-  { href: dir_pages + "lesson05.html", text: "Заняття 5: Цикли в Python" },
+      { href: dir_pages + "lesson01.html", text: "Заняття 1: Вступ до Python та основи синтаксису" },
+      { href: dir_pages + "lesson02.html", text: "Заняття 2: Списки" },
+      { href: dir_pages + "lesson03.html", text: "Заняття 3: Робота з файлами (txt)" },
+      { href: dir_pages + "lesson04.html", text: "Заняття 4: Булевий тип даних та умовні оператори (if)" },
+      { href: dir_pages + "lesson05.html", text: "Заняття 5: Цикли в Python" },
 
-  { href: dir_pages + "lesson06.html", text: "Заняття 6: Обробка помилок (Exceptions)" },
-  { href: dir_pages + "lesson07.html", text: "Заняття 7: Модуль os" },
-  { href: dir_pages + "lesson08.html", text: "Заняття 8: Функції в Python" },
-  { href: dir_pages + "lesson09.html", text: "Заняття 9: Словники" },
-  { href: dir_pages + "lesson10.html", text: "Заняття 10: Робота з JSON файлами" },
+      { href: dir_pages + "lesson06.html", text: "Заняття 6: Обробка помилок (Exceptions)" },
+      { href: dir_pages + "lesson07.html", text: "Заняття 7: Модуль os" },
+      { href: dir_pages + "lesson08.html", text: "Заняття 8: Функції в Python" },
+      { href: dir_pages + "lesson09.html", text: "Заняття 9: Словники" },
+      { href: dir_pages + "lesson10.html", text: "Заняття 10: Робота з JSON файлами" },
 
-  { href: dir_pages + "lesson11.html", text: "Заняття 11: Множини" },
-  { href: dir_pages + "lesson12.html", text: "Заняття 12: Робота з датами і часом (модулі datetime та time)" },
-  { href: dir_pages + "lesson13.html", text: "Заняття 13: Кортежі" },
-  { href: dir_pages + "lesson14.html", text: "Заняття 14: Вступ до роботи з базами даних за допомогою бібліотеки oracledb" },
-  { href: dir_pages + "lesson15.html", text: "Заняття 15: Робота з базами даних за допомогою SQL Server і PostgreSQL" },
+      { href: dir_pages + "lesson11.html", text: "Заняття 11: Множини" },
+      { href: dir_pages + "lesson12.html", text: "Заняття 12: Робота з датами і часом (модулі datetime та time)" },
+      { href: dir_pages + "lesson13.html", text: "Заняття 13: Кортежі" },
+      { href: dir_pages + "lesson14.html", text: "Заняття 14: Вступ до роботи з базами даних за допомогою бібліотеки oracledb" },
+      { href: dir_pages + "lesson15.html", text: "Заняття 15: Робота з базами даних за допомогою SQL Server і PostgreSQL" },
 
-  { href: dir_pages + "lesson16.html", text: "Заняття 16: Робота з CSV файлами" },
-  { href: dir_pages + "lesson17.html", text: "Заняття 17: Робота з бібліотекою openpyxl для роботи з Excel" },
-  { href: dir_pages + "lesson18.html", text: "Заняття 18: Вступ до бібліотеки pandas" },
-  { href: dir_pages + "lesson19.html", text: "Заняття 19: Відправка електронних листів через Outlook (pywin32)" },
-  { href: dir_pages + "lesson20.html", text: "Заняття 20: Робота з SFTP за допомогою бібліотеки paramiko" },
+      { href: dir_pages + "lesson16.html", text: "Заняття 16: Робота з CSV файлами" },
+      { href: dir_pages + "lesson17.html", text: "Заняття 17: Робота з бібліотекою openpyxl для роботи з Excel" },
+      { href: dir_pages + "lesson18.html", text: "Заняття 18: Вступ до бібліотеки pandas" },
+      { href: dir_pages + "lesson19.html", text: "Заняття 19: Відправка електронних листів через Outlook (pywin32)" },
+      { href: dir_pages + "lesson20.html", text: "Заняття 20: Робота з SFTP за допомогою бібліотеки paramiko" },
 
-]
+    ]
   },
-    {
+  {
     group_name: "Тести",
     items: [
 
@@ -75,8 +75,66 @@ const navItems = [
       { href: dir_pages + "test20.html", text: "Тест 20: Робота з SFTP за допомогою бібліотеки paramiko" },
     ]
   },
+  {
+    group_name: "Вправи",
+    items: [
+
+      { href: dir_pages + "exercise01.html", text: "Вправа 1: Основи синтаксису" },
+      { href: dir_pages + "exercise02.html", text: "Вправа 2: Списки" },
+      { href: dir_pages + "exercise03.html", text: "Вправа 3: Робота з файлами (txt)" },
+      { href: dir_pages + "exercise04.html", text: "Вправа 4: Булевий тип даних та умовні оператори (if)" },
+      // { href: dir_pages + "exercise05.html", text: "Вправа 5: Цикли в Python" },
+
+      // { href: dir_pages + "exercise06.html", text: "Вправа 6: Обробка помилок (Exceptions)" },
+      // { href: dir_pages + "exercise07.html", text: "Вправа 7: Модуль os" },
+      // { href: dir_pages + "exercise08.html", text: "Вправа 8: Функції в Python" },
+      // { href: dir_pages + "exercise09.html", text: "Вправа 9: Словники" },
+      // { href: dir_pages + "exercise10.html", text: "Вправа 10: Робота з JSON файлами" },
+
+      // { href: dir_pages + "exercise11.html", text: "Вправа 11: Множини" },
+      // { href: dir_pages + "exercise12.html", text: "Вправа 12: Робота з датами і часом (модулі datetime та time)" },
+      // { href: dir_pages + "exercise13.html", text: "Вправа 13: Кортежі" },
+      // { href: dir_pages + "exercise14.html", text: "Вправа 14: Вступ до роботи з базами даних за допомогою бібліотеки oracledb" },
+      // { href: dir_pages + "exercise15.html", text: "Вправа 15: Робота з базами даних за допомогою SQL Server і PostgreSQL" },
+
+      // { href: dir_pages + "exercise16.html", text: "Вправа 16: Робота з CSV файлами" },
+      // { href: dir_pages + "exercise17.html", text: "Вправа 17: Робота з бібліотекою openpyxl для роботи з Excel" },
+      // { href: dir_pages + "exercise18.html", text: "Вправа 18: Вступ до бібліотеки pandas" },
+      // { href: dir_pages + "exercise19.html", text: "Вправа 19: Відправка електронних листів через Outlook (pywin32)" },
+      // { href: dir_pages + "exercise20.html", text: "Вправа 20: Робота з SFTP за допомогою бібліотеки paramiko" },
+    ]
+  },
+  // {
+  //   group_name: "Задачі",
+  //   items: [
+
+  //     { href: dir_pages + "task01.html", text: "Вправа 1: Основи синтаксису" },
+  //     { href: dir_pages + "task02.html", text: "Вправа 2: Списки" },
+  //     { href: dir_pages + "task03.html", text: "Вправа 3: Робота з файлами (txt)" },
+  //     { href: dir_pages + "task04.html", text: "Вправа 4: Булевий тип даних та умовні оператори (if)" },
+  //     { href: dir_pages + "task05.html", text: "Вправа 5: Цикли в Python" },
+
+  //     { href: dir_pages + "task06.html", text: "Вправа 6: Обробка помилок (Exceptions)" },
+  //     { href: dir_pages + "task07.html", text: "Вправа 7: Модуль os" },
+  //     { href: dir_pages + "task08.html", text: "Вправа 8: Функції в Python" },
+  //     { href: dir_pages + "task09.html", text: "Вправа 9: Словники" },
+  //     { href: dir_pages + "task10.html", text: "Вправа 10: Робота з JSON файлами" },
+
+  //     { href: dir_pages + "task11.html", text: "Вправа 11: Множини" },
+  //     { href: dir_pages + "task12.html", text: "Вправа 12: Робота з датами і часом (модулі datetime та time)" },
+  //     { href: dir_pages + "task13.html", text: "Вправа 13: Кортежі" },
+  //     { href: dir_pages + "task14.html", text: "Вправа 14: Вступ до роботи з базами даних за допомогою бібліотеки oracledb" },
+  //     { href: dir_pages + "task15.html", text: "Вправа 15: Робота з базами даних за допомогою SQL Server і PostgreSQL" },
+
+  //     { href: dir_pages + "task16.html", text: "Вправа 16: Робота з CSV файлами" },
+  //     { href: dir_pages + "task17.html", text: "Вправа 17: Робота з бібліотекою openpyxl для роботи з Excel" },
+  //     { href: dir_pages + "task18.html", text: "Вправа 18: Вступ до бібліотеки pandas" },
+  //     { href: dir_pages + "task19.html", text: "Вправа 19: Відправка електронних листів через Outlook (pywin32)" },
+  //     { href: dir_pages + "task20.html", text: "Вправа 20: Робота з SFTP за допомогою бібліотеки paramiko" },
+  //   ]
+  // },
 ]
-;
+  ;
 
 const ul = document.getElementById("nav-global");
 const div = document.createElement("div");
@@ -174,86 +232,86 @@ if (activeLink) {
 }
 
 (function () {
-  const navLeft = document.getElementById("nav-local"); //[cite: 1]
-  const navRight = document.getElementById("nav-global"); //[cite: 1]
-  const content = document.getElementById("content"); //[cite: 1]
-  
+  const navLeft = document.getElementById("nav-local");
+  const navRight = document.getElementById("nav-global");
+  const content = document.getElementById("content");
+
   // FIX 1: Don't stop if 'content' is missing, only stop if both navs are missing
   if (!navLeft && !navRight) return;
 
-  const MIN_WIDTH = 140; //[cite: 1]
-  const MAX_WIDTH = 500; //[cite: 1]
-  const LEFT_STORAGE_KEY = "localNavWidth"; //[cite: 1]
-  const RIGHT_STORAGE_KEY = "globalNavWidth"; //[cite: 1]
+  const MIN_WIDTH = 140;
+  const MAX_WIDTH = 500;
+  const LEFT_STORAGE_KEY = "localNavWidth";
+  const RIGHT_STORAGE_KEY = "globalNavWidth";
 
   // Restore saved widths
-  if (navLeft) { //[cite: 1]
-    const savedLeft = localStorage.getItem(LEFT_STORAGE_KEY); //[cite: 1]
-    if (savedLeft) { //[cite: 1]
-      const width = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, parseInt(savedLeft))); //[cite: 1]
-      navLeft.style.width = width + "px"; //[cite: 1]
-    } //[cite: 1]
-  } //[cite: 1]
+  if (navLeft) {
+    const savedLeft = localStorage.getItem(LEFT_STORAGE_KEY);
+    if (savedLeft) {
+      const width = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, parseInt(savedLeft)));
+      navLeft.style.width = width + "px";
+    }
+  }
 
-  if (navRight) { //[cite: 1]
-    const savedRight = localStorage.getItem(RIGHT_STORAGE_KEY); //[cite: 1]
-    if (savedRight) { //[cite: 1]
-      const width = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, parseInt(savedRight))); //[cite: 1]
-      navRight.style.width = width + "px"; //[cite: 1]
-    } //[cite: 1]
-  } //[cite: 1]
+  if (navRight) {
+    const savedRight = localStorage.getItem(RIGHT_STORAGE_KEY);
+    if (savedRight) {
+      const width = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, parseInt(savedRight)));
+      navRight.style.width = width + "px";
+    }
+  }
 
   // Update content padding based on both sidebars
-  function updateContentPadding() { //[cite: 1]
+  function updateContentPadding() {
     // FIX 1 cont: Only try to pad the content if the element actually exists
-    if (!content) return; 
-    
-    const leftWidth = navLeft ? navLeft.offsetWidth : 0; //[cite: 1]
-    const rightWidth = navRight ? navRight.offsetWidth : 0; //[cite: 1]
-    content.style.paddingLeft = leftWidth + "px"; //[cite: 1]
-    content.style.paddingRight = rightWidth + "px"; //[cite: 1]
-  } //[cite: 1]
+    if (!content) return;
 
-  updateContentPadding(); //[cite: 1]
+    const leftWidth = navLeft ? navLeft.offsetWidth : 0;
+    const rightWidth = navRight ? navRight.offsetWidth : 0;
+    content.style.paddingLeft = leftWidth + "px";
+    content.style.paddingRight = rightWidth + "px";
+  }
+
+  updateContentPadding();
 
   // Generic resizer drag function
-  function makeResizable(nav, storageKey, isLeft) { //[cite: 1]
-    const resizer = nav.querySelector(".resizer"); //[cite: 1]
-    if (!resizer) return; //[cite: 1]
+  function makeResizable(nav, storageKey, isLeft) {
+    const resizer = nav.querySelector(".resizer");
+    if (!resizer) return;
 
-    resizer.addEventListener("mousedown", (e) => { //[cite: 1]
-      e.preventDefault(); //[cite: 1]
-      document.body.style.cursor = "ew-resize"; //[cite: 1]
+    resizer.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      document.body.style.cursor = "ew-resize";
 
-      function onMouseMove(e) { //[cite: 1]
-        let newWidth; //[cite: 1]
-        if (isLeft) { //[cite: 1]
-          newWidth = e.clientX; // distance from left edge //[cite: 1]
-        } else { //[cite: 1]
+      function onMouseMove(e) {
+        let newWidth;
+        if (isLeft) {
+          newWidth = e.clientX; // distance from left edge
+        } else {
           // FIX 2: Correct math for the right side
-          newWidth = window.innerWidth - e.clientX; 
+          newWidth = window.innerWidth - e.clientX;
         }
 
-        const clamped = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, newWidth)); //[cite: 1]
-        nav.style.width = clamped + "px"; //[cite: 1]
-        localStorage.setItem(storageKey, clamped); //[cite: 1]
-        updateContentPadding(); //[cite: 1]
-      } //[cite: 1]
+        const clamped = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, newWidth));
+        nav.style.width = clamped + "px";
+        localStorage.setItem(storageKey, clamped);
+        updateContentPadding();
+      }
 
-      function onMouseUp() { //[cite: 1]
-        document.body.style.cursor = ""; //[cite: 1]
-        document.removeEventListener("mousemove", onMouseMove); //[cite: 1]
-        document.removeEventListener("mouseup", onMouseUp); //[cite: 1]
-      } //[cite: 1]
+      function onMouseUp() {
+        document.body.style.cursor = "";
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+      }
 
-      document.addEventListener("mousemove", onMouseMove); //[cite: 1]
-      document.addEventListener("mouseup", onMouseUp); //[cite: 1]
-    }); //[cite: 1]
-  } //[cite: 1]
+      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mouseup", onMouseUp);
+    });
+  }
 
-  if (navLeft) makeResizable(navLeft, LEFT_STORAGE_KEY, true); //[cite: 1]
-  if (navRight) makeResizable(navRight, RIGHT_STORAGE_KEY, false); //[cite: 1]
+  if (navLeft) makeResizable(navLeft, LEFT_STORAGE_KEY, true);
+  if (navRight) makeResizable(navRight, RIGHT_STORAGE_KEY, false);
 
   // Update content padding on window resize
-  window.addEventListener("resize", updateContentPadding); //[cite: 1]
-})(); //[cite: 1]
+  window.addEventListener("resize", updateContentPadding);
+})();

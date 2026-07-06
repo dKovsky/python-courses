@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Вправа 4: Булевий тип даних та умовні оператори (if)</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div id="codeModal" class="code-modal" onclick="closeFullCode()">
+    <div class="code-modal-content" onclick="event.stopPropagation()">
+        <span class="code-modal-close" onclick="closeFullCode()">&times;</span>
+        <pre><code class="python" id="modalCodeTarget"></code></pre>
+    </div>
+</div>
+
+<div class="page-wrapper">
+
+
+  <main id="content">
+
+<h1>Вправа 4: Булевий тип даних та умовні оператори (if)</h1>
+
+
+<section class="exercise-card">
+<section id="1">
+    <h2>Завдання № 1.</h2>
+    <p class="exercise-description">Вивести чи введене ціле число парне чи не парне, у змінній result має бути відповідно значення 'Парне', 'Не парне'.</p>
+    <script>
+        createCodeBlock(String.raw`
+input_number = int(input("Введіть ціле число:\n"))
+
+
+# YOUR CODE HERE
+
+
+print(result)
+    `, document.querySelector('[id="1"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="2">
+    <h2>Завдання № 2.</h2>
+    <p class="exercise-description">Якщо значення змінної:
+`f`, `F`, `Female` - вивести `1) Жінка`,
+`m`, `M`, `Male` - вивести `2) Чоловік`.</p>
+    <script>
+        createCodeBlock(String.raw`
+input_gender = input("Введіть закодовану стать:\n"))
+
+
+# YOUR CODE HERE
+
+
+print(gender_category)
+    `, document.querySelector('[id="2"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="3">
+    <h2>Завдання № 3.</h2>
+    <p class="exercise-description">Вивести для віку відповідну категорію:
+1) 18 - 24
+2) 25 - 34
+3) 35 - 44
+4) 45 - 54
+5) 55 - 64
+6) 65+</p>
+    <script>
+        createCodeBlock(String.raw`
+age = int(input("Введіть вік:\n"))
+
+
+# YOUR CODE HERE
+
+
+print(f'Для віку {age} - вікова група {age_category}')
+    `, document.querySelector('[id="3"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="4">
+    <h2>Завдання № 4.</h2>
+    <p class="exercise-description">Для даних розширеннь файлів вказати змінній file_type значення:
+`txt`, `json` -`Текст`,
+`png`, `jpg` - `Зображення`,
+`mp4`, `mkv`, `avi` - 'Відео',
+`mp3`, `ogg` - `Аудіо`,
+інакше - `Unknown`</p>
+    <script>
+        createCodeBlock(String.raw`
+file_extension = input("Введіть тип розширення:\n")
+
+
+# YOUR CODE HERE
+
+
+print(f'[Тип {file_type}] {file_extension}')
+    `, document.querySelector('[id="4"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="5">
+    <h2>Завдання № 5.</h2>
+    <p class="exercise-description">Якщо слово є у списку prompt_negative вивести negative.
+Якщо слово є у списку prompt_positive вивести positive.</p>
+    <script>
+        createCodeBlock(String.raw`
+keyword = input("Введіть слово:\n")
+print(f'{keyword = }')
+
+prompt_positive = ['grayscale', 'cute', 'hd']
+prompt_negative = ['grayscale', 'watermark', 'username', 'artist name']
+
+# YOUR CODE HERE
+    `, document.querySelector('[id="5"]'));
+    </script>
+</section>
+</section>
+
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>
