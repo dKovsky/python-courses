@@ -1,12 +1,11 @@
-let url = window.location.href;
-console.log("url: ", url)
-let lastPart = url.split('/').pop();  // "index.html"
-console.log("lastPart: ", lastPart);
+// window.location.pathname returns just the path (e.g., "/python-courses/" or "/python-courses/index.html")
+let path = window.location.pathname;
 
+// Check if the path ends with a trailing slash or index.html
+let isHomepage = path.endsWith('/') || path.endsWith('index.html');
 
-// Determine the prefix for hrefs
-let dir_index = lastPart === "index.html" ? "" : "../";
-let dir_pages = lastPart === "index.html" ? "pages/" : "";
+let dir_index = isHomepage ? "" : "../";
+let dir_pages = isHomepage ? "pages/" : "";
 
 
 const navItems = [
