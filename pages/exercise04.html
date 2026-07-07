@@ -31,7 +31,7 @@
 <section class="exercise-card">
 <section id="1">
     <h2>Завдання № 1.</h2>
-    <p class="exercise-description">Вивести чи введене ціле число парне чи не парне, у змінній result має бути відповідно значення 'Парне', 'Не парне'.</p>
+    <p class="exercise-description">Вивести чи введене ціле число парне чи не парне, у змінній <code>result</code> має бути відповідно значення <code>'Парне'</code>, <code>'Не парне'</code>.</p>
     <script>
         createCodeBlock(String.raw`
 input_number = int(input("Введіть ціле число:\n"))
@@ -49,9 +49,9 @@ print(result)
 <section class="exercise-card">
 <section id="2">
     <h2>Завдання № 2.</h2>
-    <p class="exercise-description">Якщо значення змінної:
-`f`, `F`, `Female` - вивести `1) Жінка`,
-`m`, `M`, `Male` - вивести `2) Чоловік`.</p>
+    <p class="exercise-description">Якщо значення змінної:<br>
+<code>f</code>, <code>F</code>, <code>Female</code> - вивести <code>1) Жінка</code>,<br>
+<code>m</code>, <code>M</code>, <code>Male</code> - вивести <code>2) Чоловік</code>.<br></p>
     <script>
         createCodeBlock(String.raw`
 input_gender = input("Введіть закодовану стать:\n"))
@@ -69,13 +69,13 @@ print(gender_category)
 <section class="exercise-card">
 <section id="3">
     <h2>Завдання № 3.</h2>
-    <p class="exercise-description">Вивести для віку відповідну категорію:
-1) 18 - 24
-2) 25 - 34
-3) 35 - 44
-4) 45 - 54
-5) 55 - 64
-6) 65+</p>
+    <p class="exercise-description">Вивести для віку відповідну категорію:<br>
+1) 18 - 24<br>
+2) 25 - 34<br>
+3) 35 - 44<br>
+4) 45 - 54<br>
+5) 55 - 64<br>
+6) 65+<br></p>
     <script>
         createCodeBlock(String.raw`
 age = int(input("Введіть вік:\n"))
@@ -93,12 +93,12 @@ print(f'Для віку {age} - вікова група {age_category}')
 <section class="exercise-card">
 <section id="4">
     <h2>Завдання № 4.</h2>
-    <p class="exercise-description">Для даних розширеннь файлів вказати змінній file_type значення:
-`txt`, `json` -`Текст`,
-`png`, `jpg` - `Зображення`,
-`mp4`, `mkv`, `avi` - 'Відео',
-`mp3`, `ogg` - `Аудіо`,
-інакше - `Unknown`</p>
+    <p class="exercise-description">Для даних розширеннь файлів вказати змінній <code>file_type</code> значення:<br>
+<code>Текст</code>           -   <code>txt</code>, <code>json</code>;<br>
+<code>Зображення</code>      -   <code>png</code>, <code>jpg</code>;<br>
+<code>Відео</code>           -   <code>mp4</code>, <code>mkv</code>, <code>avi</code>;<br>
+<code>Аудіо</code>           -   <code>mp3</code>, <code>ogg</code>;<br>
+<code>Не відомо</code>       -   для усіх інших розширеннь.<br></p>
     <script>
         createCodeBlock(String.raw`
 file_extension = input("Введіть тип розширення:\n")
@@ -116,8 +116,8 @@ print(f'[Тип {file_type}] {file_extension}')
 <section class="exercise-card">
 <section id="5">
     <h2>Завдання № 5.</h2>
-    <p class="exercise-description">Якщо слово є у списку prompt_negative вивести negative.
-Якщо слово є у списку prompt_positive вивести positive.</p>
+    <p class="exercise-description">Якщо слово є у списку <code>prompt_negative</code> вивести <code>'negative'</code>.<br>
+Якщо слово є у списку <code>prompt_positive</code> вивести <code>'positive'</code>.</p>
     <script>
         createCodeBlock(String.raw`
 keyword = input("Введіть слово:\n")

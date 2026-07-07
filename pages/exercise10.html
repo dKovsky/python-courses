@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="../favicon.ico">
-  <title>Вправа 3: Робота з файлами (txt)</title>
+  <title>Вправа 10: Робота з JSON файлами</title>
   <link rel="stylesheet" href="../assets/css/mystyle.css">
   <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
   <script src="../highlight/highlight.min.js"></script>
@@ -25,21 +25,19 @@
 
   <main id="content">
 
-<h1>Вправа 3: Робота з файлами (txt)</h1>
+<h1>Вправа 10: Робота з JSON файлами</h1>
 
 
 <section class="exercise-card">
 <section id="1">
     <h2>Завдання № 1.</h2>
-    <p class="exercise-description">Запишіть у файл <code>my_file.txt</code> вказаний текст</p>
+    <p class="exercise-description">Перетворіть словник у рядок формату JSON.</p>
     <script>
         createCodeBlock(String.raw`
-filename = 'my_file.txt'
-text = r"¯\_(ツ)_/¯"
-
-# YOUR CODE HERE
-
-print(f'Збережено файл {filename}')
+import json
+user_data = {"name": "Oleg", "role": "user"}
+json_string = # YOUR CODE HERE
+print(type(json_string))
     `, document.querySelector('[id="1"]'));
     </script>
 </section>
@@ -48,16 +46,13 @@ print(f'Збережено файл {filename}')
 <section class="exercise-card">
 <section id="2">
     <h2>Завдання № 2.</h2>
-    <p class="exercise-description">Виведіть текст з файлу <code>test.txt</code> у консоль.</p>
+    <p class="exercise-description">Перетворіть рядок формату JSON назад у словник Python.</p>
     <script>
         createCodeBlock(String.raw`
-filename = 'test.txt'
-with open('test.txt', 'w', encoding='utf-8') as f:
-	f.write('Hello world!')
-
-# YOUR CODE HERE
-
-print('↑ текст у файлі {filename}')
+import json
+json_data = '{"animal_id": 9931, "type": "cat"}'
+parsed_dict = # YOUR CODE HERE
+print(parsed_dict["type"])
     `, document.querySelector('[id="2"]'));
     </script>
 </section>
@@ -66,26 +61,14 @@ print('↑ текст у файлі {filename}')
 <section class="exercise-card">
 <section id="3">
     <h2>Завдання № 3.</h2>
-    <p class="exercise-description">Добавте у файл <code>data.csv</code> додатковий текст.</p>
+    <p class="exercise-description">Запишіть Python-словник безпосередньо у файл <code>config.json</code>.</p>
     <script>
         createCodeBlock(String.raw`
-filename = 'data.csv'
-
-with open(filename, 'w', encoding='utf-8') as f:
-	f.write("id;name;age;city\n")
-	f.write("1;Олег;35;Вінниця\n")
-	f.write("2;Анна;25;Житомир\n")
-	f.write("3;Андрій;45;Київ")
-
-
-additional_text = """
-4;Софія;50;Черкаси
-5;Тарас;22;Тернопіль
-"""
+import json
+config = {"host": "127.0.0.1", "port": 5432}
+json_file = "config.json"
 
 # YOUR CODE HERE
-
-print('Внесено зміни у файл {filename}')
     `, document.querySelector('[id="3"]'));
     </script>
 </section>
@@ -94,16 +77,17 @@ print('Внесено зміни у файл {filename}')
 <section class="exercise-card">
 <section id="4">
     <h2>Завдання № 4.</h2>
-    <p class="exercise-description">Зчитайте всі рядки з файлу <code>colors.txt</code> Результатом має бути змінна тупу список.</p>
+    <p class="exercise-description">Прочитайте дані з файлу <code>config.json</code> та перетворіть їх на словник Python.</p>
     <script>
         createCodeBlock(String.raw`
-filename = 'colors.txt'
+import json
+filename = "config.json"
 with open(filename, 'w', encoding='utf-8') as f:
-	f.write("Червоний\nЗелений\nСиній")
+    f.write('{"id": 9931, "name": "Anna", "age": 22}')
 
 # YOUR CODE HERE
 
-print('↑ список кольорів')
+print(data)
     `, document.querySelector('[id="4"]'));
     </script>
 </section>
@@ -112,16 +96,13 @@ print('↑ список кольорів')
 <section class="exercise-card">
 <section id="5">
     <h2>Завдання № 5.</h2>
-    <p class="exercise-description">Зчитайте лише перший рядок з файлу <code>config.txt</code> у змінну <code>first_line</code>.</p>
+    <p class="exercise-description">Перетворіть словник у JSON-рядок із гарним форматуванням (відступами у 4 пробіли).</p>
     <script>
         createCodeBlock(String.raw`
-filename = 'config.txt'
-with open(filename, 'w', encoding='utf-8') as f:
-	f.write("host=localhost\nport=8080")
-
-# YOUR CODE HERE
-
-print('↑ перший рядок')
+import json
+payload = {"status": "success", "code": 200}
+pretty_json = # YOUR CODE HERE
+print(pretty_json)
     `, document.querySelector('[id="5"]'));
     </script>
 </section>
@@ -130,16 +111,13 @@ print('↑ перший рядок')
 <section class="exercise-card">
 <section id="6">
     <h2>Завдання № 6.</h2>
-    <p class="exercise-description">Зчитайте перші 5 символів з файлу <code>secret.txt</code> у змінну <code>code_part</code>.</p>
+    <p class="exercise-description">Збережіть кириличні символи (наприклад, назву міста) у вихідному вигляді, щоб уникнути їхнього кодування у формат \uXXXX.</p>
     <script>
         createCodeBlock(String.raw`
-filename = 'secret.txt'
-with open(filename, 'w', encoding='utf-8') as f:
-	f.write("1234567890")
-
-# YOUR CODE HERE
-
-print('↑ перші 5 символів')
+import json
+local_data = {"city": "Львів"}
+json_str = # YOUR CODE HERE
+print(json_str)
     `, document.querySelector('[id="6"]'));
     </script>
 </section>
@@ -148,15 +126,12 @@ print('↑ перші 5 символів')
 <section class="exercise-card">
 <section id="7">
     <h2>Завдання № 7.</h2>
-    <p class="exercise-description">Запишіть список текстів у файл <code>log.txt</code>.</p>
+    <p class="exercise-description">Обробіть специфічну помилку, яка виникає при спробі розпарсити некоректний JSON-рядок.</p>
     <script>
         createCodeBlock(String.raw`
-filename = 'log.txt'
-log_entries = ["INFO: Start\n", "WARNING: Low memory\n", "ERROR: Crash\n"]
-
-# YOUR CODE HERE
-
-print(f'Записи додано у файл {filename}')
+import json
+invalid_json = "{'status': 'active'}"  # одинарні лапки є помилкою для JSON
+?
     `, document.querySelector('[id="7"]'));
     </script>
 </section>

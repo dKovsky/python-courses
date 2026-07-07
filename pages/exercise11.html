@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="../favicon.ico">
-  <title>Вправа 2: Списки</title>
+  <title>Вправа 11: Множини</title>
   <link rel="stylesheet" href="../assets/css/mystyle.css">
   <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
   <script src="../highlight/highlight.min.js"></script>
@@ -25,18 +25,18 @@
 
   <main id="content">
 
-<h1>Вправа 2: Списки</h1>
+<h1>Вправа 11: Множини</h1>
 
 
 <section class="exercise-card">
 <section id="1">
     <h2>Завдання № 1.</h2>
-    <p class="exercise-description">Зробіть список порожнім.</p>
+    <p class="exercise-description">Створіть множину зі списку</p>
     <script>
         createCodeBlock(String.raw`
-empty_list = [1, 2, 3]
-empty_list = # YOUR CODE HERE
-print(empty_list)
+raw_ids = [4002, 4005, 4002, 4009, 4005]
+unique_ids = # YOUR CODE HERE
+print(unique_ids)
     `, document.querySelector('[id="1"]'));
     </script>
 </section>
@@ -45,14 +45,14 @@ print(empty_list)
 <section class="exercise-card">
 <section id="2">
     <h2>Завдання № 2.</h2>
-    <p class="exercise-description">Добавте у кінець списку число 5.</p>
+    <p class="exercise-description">Додайте один новий елемент "DuckDB" до множини.</p>
     <script>
         createCodeBlock(String.raw`
-my_list = [1, 2, 3, 4]
+databases = {"Oracle", "PostgreSQL"}
 
 # YOUR CODE HERE
 
-print(my_list)
+print(databases)
     `, document.querySelector('[id="2"]'));
     </script>
 </section>
@@ -61,14 +61,15 @@ print(my_list)
 <section class="exercise-card">
 <section id="3">
     <h2>Завдання № 3.</h2>
-    <p class="exercise-description">Добавте на початок списку число 1.</p>
+    <p class="exercise-description">Додайте одразу кілька елементів з іншої колекції (списку) до існуючої множини.</p>
     <script>
         createCodeBlock(String.raw`
-new_list = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+tools = {"Playwright", "Scrapy"}
+new_tools = ["BeautifulSoup", "Selenium"]
 
 # YOUR CODE HERE
 
-print(new_list)
+print(tools)
     `, document.querySelector('[id="3"]'));
     </script>
 </section>
@@ -77,14 +78,15 @@ print(new_list)
 <section class="exercise-card">
 <section id="4">
     <h2>Завдання № 4.</h2>
-    <p class="exercise-description">Добавте на сьому позицію списку число 8.</p>
+    <p class="exercise-description">Безпечно видаліть елемент з множини так, щоб не виникала помилка KeyError, якщо цього елемента там раптом немає.</p>
     <script>
         createCodeBlock(String.raw`
-mark_list = [1, 2, 3, 4, 5, 6, 7, 9, 10]
+active_users = {"user_1", "user_2", "user_3"}
+delete_user = "user_1000"
 
 # YOUR CODE HERE
 
-print(mark_list)
+print(active_users)
     `, document.querySelector('[id="4"]'));
     </script>
 </section>
@@ -93,14 +95,13 @@ print(mark_list)
 <section class="exercise-card">
 <section id="5">
     <h2>Завдання № 5.</h2>
-    <p class="exercise-description">Видаліть усі елементи у списку.</p>
+    <p class="exercise-description">Знайдіть спільні елементи для двох множин (перетин множин) за допомогою методу.</p>
     <script>
         createCodeBlock(String.raw`
-clean_list = ['a', 'b', 'c']
-
-# YOUR CODE HERE
-
-print(clean_list)
+frontend_skills = {"HTML", "CSS", "JavaScript"}
+backend_skills = {"Python", "PostgreSQL", "JavaScript"}
+common_skills = # YOUR CODE HERE
+print(common_skills)
     `, document.querySelector('[id="5"]'));
     </script>
 </section>
@@ -109,14 +110,13 @@ print(clean_list)
 <section class="exercise-card">
 <section id="6">
     <h2>Завдання № 6.</h2>
-    <p class="exercise-description">Видаліть усі елементи у списку.</p>
+    <p class="exercise-description">Об'єднайте дві множини за допомогою оператора (символу), щоб отримати повний перелік усіх унікальних елементів.</p>
     <script>
         createCodeBlock(String.raw`
-clean_list = ['a', 'b', 'c']
-
-# YOUR CODE HERE
-
-print(clean_list)
+dev_stack = {"Python", "Git"}
+ops_stack = {"Docker", "Git"}
+full_stack = # YOUR CODE HERE
+print(full_stack)
     `, document.querySelector('[id="6"]'));
     </script>
 </section>
@@ -125,14 +125,13 @@ print(clean_list)
 <section class="exercise-card">
 <section id="7">
     <h2>Завдання № 7.</h2>
-    <p class="exercise-description">Замініть третій елемент у списку на число 3.</p>
+    <p class="exercise-description">Знайдіть елементи, які є в першій множині, але відсутні в другій (різниця множин за допомогою оператора).</p>
     <script>
         createCodeBlock(String.raw`
-number_list = [1, 2, '3', 4, 5, 6, 7, 8, 9, 10]
-
-# YOUR CODE HERE
-
-print(number_list)
+all_tasks = {"task_1", "task_2", "task_3", "task_4"}
+done_tasks = {"task_1", "task_3"}
+pending_tasks = # YOUR CODE HERE
+print(pending_tasks)
     `, document.querySelector('[id="7"]'));
     </script>
 </section>
@@ -141,14 +140,13 @@ print(number_list)
 <section class="exercise-card">
 <section id="8">
     <h2>Завдання № 8.</h2>
-    <p class="exercise-description">Видаліть зі списку слово Асгард.</p>
+    <p class="exercise-description">Знайдіть елементи, які є в кожній з множин, але не в обох одночасно (симетрична різниця за допомогою оператора).</p>
     <script>
         createCodeBlock(String.raw`
-city_list = ['Броди', 'Львів', 'Асгард', 'Київ']
-
-# YOUR CODE HERE
-
-print(city_list)
+group_a = {"cat", "dog"}
+group_b = {"dog", "parrot"}
+unique_to_each = # YOUR CODE HERE
+print(unique_to_each)
     `, document.querySelector('[id="8"]'));
     </script>
 </section>
@@ -157,12 +155,13 @@ print(city_list)
 <section class="exercise-card">
 <section id="9">
     <h2>Завдання № 9.</h2>
-    <p class="exercise-description">Виведіть перший елемент зі списку.</p>
+    <p class="exercise-description">Перевірте, чи є один елемент частиною множини (повертає True/False).</p>
     <script>
         createCodeBlock(String.raw`
-fruits = ["apple", "banana", "ananas"]
-first_item = # YOUR CODE HERE
-print(first_item)
+user_roles = {"user", "manager", "admin"}
+search_role = "admin"
+is_admin =  ?
+print(is_admin)
     `, document.querySelector('[id="9"]'));
     </script>
 </section>
@@ -171,41 +170,14 @@ print(first_item)
 <section class="exercise-card">
 <section id="10">
     <h2>Завдання № 10.</h2>
-    <p class="exercise-description">Виведіть останній елемент зі списку, використовуючи від'ємний індекс.</p>
+    <p class="exercise-description">Перевірте, чи є перша множина підмножиною другої (чи всі її елементи містяться в іншій множині).</p>
     <script>
         createCodeBlock(String.raw`
-databases = ["Oracle", "SQL Server", "MySQL", "PostgreSQL", "DuckDB"]
-last_item = # YOUR CODE HERE
-print(last_item)
+required_keys = {"id", "status"}
+received_keys = {"id", "status", "timestamp", "payload"}
+is_subset = # YOUR CODE HERE
+print(is_subset)
     `, document.querySelector('[id="10"]'));
-    </script>
-</section>
-</section>
-
-<section class="exercise-card">
-<section id="11">
-    <h2>Завдання № 11.</h2>
-    <p class="exercise-description">Виведіть останній елемент зі списку, не використовуючи від'ємний індекс.</p>
-    <script>
-        createCodeBlock(String.raw`
-databases = ["Oracle", "SQL Server", "MySQL", "PostgreSQL", "DuckDB"]
-last_item = # YOUR CODE HERE
-print(last_item)
-    `, document.querySelector('[id="11"]'));
-    </script>
-</section>
-</section>
-
-<section class="exercise-card">
-<section id="12">
-    <h2>Завдання № 12.</h2>
-    <p class="exercise-description">Створіть новий список без першого та останнього елемента.</p>
-    <script>
-        createCodeBlock(String.raw`
-data = ["id", "year", "count", "sum", "avg", "updated"]
-new_list = # YOUR CODE HERE
-print(f'{new_list = }')
-    `, document.querySelector('[id="12"]'));
     </script>
 </section>
 </section>

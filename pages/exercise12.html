@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="../favicon.ico">
-  <title>Вправа 2: Списки</title>
+  <title>Вправа 12: Робота з датами і часом (модулі datetime та time)</title>
   <link rel="stylesheet" href="../assets/css/mystyle.css">
   <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
   <script src="../highlight/highlight.min.js"></script>
@@ -25,18 +25,18 @@
 
   <main id="content">
 
-<h1>Вправа 2: Списки</h1>
+<h1>Вправа 12: Робота з датами і часом (модулі datetime та time)</h1>
 
 
 <section class="exercise-card">
 <section id="1">
     <h2>Завдання № 1.</h2>
-    <p class="exercise-description">Зробіть список порожнім.</p>
+    <p class="exercise-description">Отримайте поточні дату та час (об'єкт datetime).</p>
     <script>
         createCodeBlock(String.raw`
-empty_list = [1, 2, 3]
-empty_list = # YOUR CODE HERE
-print(empty_list)
+# YOUR CODE HERE
+
+print(current_now)
     `, document.querySelector('[id="1"]'));
     </script>
 </section>
@@ -45,14 +45,12 @@ print(empty_list)
 <section class="exercise-card">
 <section id="2">
     <h2>Завдання № 2.</h2>
-    <p class="exercise-description">Добавте у кінець списку число 5.</p>
+    <p class="exercise-description">Отримайте лише поточну дату (без годин та секунд).</p>
     <script>
         createCodeBlock(String.raw`
-my_list = [1, 2, 3, 4]
-
-# YOUR CODE HERE
-
-print(my_list)
+from datetime import date
+today_date = # YOUR CODE HERE
+print(today_date)
     `, document.querySelector('[id="2"]'));
     </script>
 </section>
@@ -61,14 +59,13 @@ print(my_list)
 <section class="exercise-card">
 <section id="3">
     <h2>Завдання № 3.</h2>
-    <p class="exercise-description">Добавте на початок списку число 1.</p>
+    <p class="exercise-description">Отримайте окремо значення поточного року як ціле число.</p>
     <script>
         createCodeBlock(String.raw`
-new_list = [2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-# YOUR CODE HERE
-
-print(new_list)
+from datetime import datetime
+now = datetime.now()
+current_year = # YOUR CODE HERE
+print(current_year)
     `, document.querySelector('[id="3"]'));
     </script>
 </section>
@@ -77,14 +74,12 @@ print(new_list)
 <section class="exercise-card">
 <section id="4">
     <h2>Завдання № 4.</h2>
-    <p class="exercise-description">Добавте на сьому позицію списку число 8.</p>
+    <p class="exercise-description">Створіть об'єкт datetime для конкретної дати: 7 липня 2026 року.</p>
     <script>
         createCodeBlock(String.raw`
-mark_list = [1, 2, 3, 4, 5, 6, 7, 9, 10]
-
-# YOUR CODE HERE
-
-print(mark_list)
+from datetime import date
+target_date = # YOUR CODE HERE
+print(target_date)
     `, document.querySelector('[id="4"]'));
     </script>
 </section>
@@ -93,14 +88,13 @@ print(mark_list)
 <section class="exercise-card">
 <section id="5">
     <h2>Завдання № 5.</h2>
-    <p class="exercise-description">Видаліть усі елементи у списку.</p>
+    <p class="exercise-description">Перетворіть (розпарсіть) рядок із датою у повноцінний об'єкт datetime.</p>
     <script>
         createCodeBlock(String.raw`
-clean_list = ['a', 'b', 'c']
-
-# YOUR CODE HERE
-
-print(clean_list)
+from datetime import datetime
+date_str = "2026-07-07 14:30:00"
+parsed_date = # YOUR CODE HERE
+print(type(parsed_date))
     `, document.querySelector('[id="5"]'));
     </script>
 </section>
@@ -109,14 +103,13 @@ print(clean_list)
 <section class="exercise-card">
 <section id="6">
     <h2>Завдання № 6.</h2>
-    <p class="exercise-description">Видаліть усі елементи у списку.</p>
+    <p class="exercise-description">Перетворіть об'єкт datetime у текстовий рядок у форматі ДД.ММ.РРРР.</p>
     <script>
         createCodeBlock(String.raw`
-clean_list = ['a', 'b', 'c']
-
-# YOUR CODE HERE
-
-print(clean_list)
+from datetime import datetime
+event_date = datetime(2026, 7, 7)
+formatted_str = # YOUR CODE HERE
+print(formatted_str)
     `, document.querySelector('[id="6"]'));
     </script>
 </section>
@@ -125,14 +118,12 @@ print(clean_list)
 <section class="exercise-card">
 <section id="7">
     <h2>Завдання № 7.</h2>
-    <p class="exercise-description">Замініть третій елемент у списку на число 3.</p>
+    <p class="exercise-description">Додайте до поточної дати рівно 14 днів за допомогою часового зсуву.</p>
     <script>
         createCodeBlock(String.raw`
-number_list = [1, 2, '3', 4, 5, 6, 7, 8, 9, 10]
-
 # YOUR CODE HERE
 
-print(number_list)
+print(future_date)
     `, document.querySelector('[id="7"]'));
     </script>
 </section>
@@ -141,14 +132,14 @@ print(number_list)
 <section class="exercise-card">
 <section id="8">
     <h2>Завдання № 8.</h2>
-    <p class="exercise-description">Видаліть зі списку слово Асгард.</p>
+    <p class="exercise-description">Знайдіть кількість днів між двома датами.</p>
     <script>
         createCodeBlock(String.raw`
-city_list = ['Броди', 'Львів', 'Асгард', 'Київ']
-
-# YOUR CODE HERE
-
-print(city_list)
+from datetime import date
+start_date = date(2026, 6, 1)
+end_date = date(2026, 7, 7)
+delta_days = # YOUR CODE HERE
+print(delta_days)
     `, document.querySelector('[id="8"]'));
     </script>
 </section>
@@ -157,12 +148,13 @@ print(city_list)
 <section class="exercise-card">
 <section id="9">
     <h2>Завдання № 9.</h2>
-    <p class="exercise-description">Виведіть перший елемент зі списку.</p>
+    <p class="exercise-description">Перетворіть поточний час у UNIX-timestamp (кількість секунд з 1 січня 1970 року).</p>
     <script>
         createCodeBlock(String.raw`
-fruits = ["apple", "banana", "ananas"]
-first_item = # YOUR CODE HERE
-print(first_item)
+from datetime import datetime
+now = datetime.now()
+timestamp = # YOUR CODE HERE
+print(timestamp)
     `, document.querySelector('[id="9"]'));
     </script>
 </section>
@@ -171,41 +163,14 @@ print(first_item)
 <section class="exercise-card">
 <section id="10">
     <h2>Завдання № 10.</h2>
-    <p class="exercise-description">Виведіть останній елемент зі списку, використовуючи від'ємний індекс.</p>
+    <p class="exercise-description">Перетворіть числове значення UNIX-timestamp назад в об'єкт дати й часу.</p>
     <script>
         createCodeBlock(String.raw`
-databases = ["Oracle", "SQL Server", "MySQL", "PostgreSQL", "DuckDB"]
-last_item = # YOUR CODE HERE
-print(last_item)
+from datetime import datetime
+ts = 1783424400.0
+readable_date = # YOUR CODE HERE
+print(readable_date)
     `, document.querySelector('[id="10"]'));
-    </script>
-</section>
-</section>
-
-<section class="exercise-card">
-<section id="11">
-    <h2>Завдання № 11.</h2>
-    <p class="exercise-description">Виведіть останній елемент зі списку, не використовуючи від'ємний індекс.</p>
-    <script>
-        createCodeBlock(String.raw`
-databases = ["Oracle", "SQL Server", "MySQL", "PostgreSQL", "DuckDB"]
-last_item = # YOUR CODE HERE
-print(last_item)
-    `, document.querySelector('[id="11"]'));
-    </script>
-</section>
-</section>
-
-<section class="exercise-card">
-<section id="12">
-    <h2>Завдання № 12.</h2>
-    <p class="exercise-description">Створіть новий список без першого та останнього елемента.</p>
-    <script>
-        createCodeBlock(String.raw`
-data = ["id", "year", "count", "sum", "avg", "updated"]
-new_list = # YOUR CODE HERE
-print(f'{new_list = }')
-    `, document.querySelector('[id="12"]'));
     </script>
 </section>
 </section>

@@ -31,7 +31,7 @@
 <section class="exercise-card">
 <section id="1">
     <h2>Завдання № 1.</h2>
-    <p class="exercise-description">Виведіть у консоль `Hello world`.</p>
+    <p class="exercise-description">Виведіть у консоль <code>Hello world</code>.</p>
     <script>
         createCodeBlock(String.raw`
 # YOUR CODE HERE
@@ -67,7 +67,7 @@
 <section class="exercise-card">
 <section id="4">
     <h2>Завдання № 4.</h2>
-    <p class="exercise-description">Виведіть у консоль символ `-` у одному рядку 40 разів.</p>
+    <p class="exercise-description">Виведіть у консоль символ <code>"-"</code> у одному рядку 40 разів.</p>
     <script>
         createCodeBlock(String.raw`
 # YOUR CODE HERE
@@ -136,7 +136,7 @@ negative_prompt = r"low quality, normal quality, lowres, low details, oversatura
 <section class="exercise-card">
 <section id="9">
     <h2>Завдання № 9.</h2>
-    <p class="exercise-description">Скрипт має вивести 'select * from my_table limit my_limit' де замість параметрів `my_table` та `my_limit` відповідні значення</p>
+    <p class="exercise-description">Скрипт має вивести <br><code>select *<br>from my_table<br>limit my_limit</code><br> де замість параметрів <code>my_table</code> та <code>my_limit</code> відповідні значення</p>
     <script>
         createCodeBlock(String.raw`
 my_table = "my_tbl"
@@ -144,6 +144,90 @@ my_limit = 100
 sql = # YOUR CODE HERE
 print(sql)
     `, document.querySelector('[id="9"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="10">
+    <h2>Завдання № 10.</h2>
+    <p class="exercise-description">Виведіть довжину (кількість символів) значення змінної.</p>
+    <script>
+        createCodeBlock(String.raw`
+text = "This is Sparta!"
+length = # YOUR CODE HERE
+print(length)
+    `, document.querySelector('[id="10"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="11">
+    <h2>Завдання № 11.</h2>
+    <p class="exercise-description">Переведіть рядок у нижній регістр (малі літери).</p>
+    <script>
+        createCodeBlock(String.raw`
+command_input = "sHoW"
+command = # YOUR CODE HERE
+print(command)
+    `, document.querySelector('[id="11"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="12">
+    <h2>Завдання № 12.</h2>
+    <p class="exercise-description">Замініть усі дефіси у рядку на крапку <code>.</code>.</p>
+    <script>
+        createCodeBlock(String.raw`
+date_str = "2026-07-07"
+formatted_date = # YOUR CODE HERE
+print(formatted_date)
+    `, document.querySelector('[id="12"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="13">
+    <h2>Завдання № 13.</h2>
+    <p class="exercise-description">Перетворіть рядок на ціле число та знайдіть його квадрат.</p>
+    <script>
+        createCodeBlock(String.raw`
+value_str = "12"
+result = # YOUR CODE HERE
+print(result)
+    `, document.querySelector('[id="13"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="14">
+    <h2>Завдання № 14.</h2>
+    <p class="exercise-description">Округліть дробове число до двох знаків після коми.</p>
+    <script>
+        createCodeBlock(String.raw`
+coefficient = 1.052631
+rounded_value = # YOUR CODE HERE
+print(rounded_value)
+    `, document.querySelector('[id="14"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="15">
+    <h2>Завдання № 15.</h2>
+    <p class="exercise-description">Перевірте, чи є число парним (результатом має бути <code>True</code> або <code>False</code>).</p>
+    <script>
+        createCodeBlock(String.raw`
+number = 42
+is_even = # YOUR CODE HERE
+print(is_even)
+    `, document.querySelector('[id="15"]'));
     </script>
 </section>
 </section>

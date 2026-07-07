@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Вправа 8: Функції в Python</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div id="codeModal" class="code-modal" onclick="closeFullCode()">
+    <div class="code-modal-content" onclick="event.stopPropagation()">
+        <span class="code-modal-close" onclick="closeFullCode()">&times;</span>
+        <pre><code class="python" id="modalCodeTarget"></code></pre>
+    </div>
+</div>
+
+<div class="page-wrapper">
+
+
+  <main id="content">
+
+<h1>Вправа 8: Функції в Python</h1>
+
+
+<section class="exercise-card">
+<section id="1">
+    <h2>Завдання № 1.</h2>
+    <p class="exercise-description">Створіть функцію <code>greet</code>, яка виводить рядок <code>"Hello world!"</code>.</p>
+    <script>
+        createCodeBlock(String.raw`
+# YOUR CODE HERE
+
+
+greet()
+    `, document.querySelector('[id="1"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="2">
+    <h2>Завдання № 2.</h2>
+    <p class="exercise-description">Створіть функцію <code>show_user_info</code>,<br>
+яка приймає аргумент <code>name</code> та <code>age</code>,<br>
+виводить текст<br>
+<code>Моє ім'я {name}.</code><br>
+<code>Мій вік {age}.</code><br>
+.<br></p>
+    <script>
+        createCodeBlock(String.raw`
+# YOUR CODE HERE
+
+
+show_user_info('Анна', 22)
+show_user_info('Данило', 35)
+    `, document.querySelector('[id="2"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="3">
+    <h2>Завдання № 3.</h2>
+    <p class="exercise-description">Створіть функцію <code>format_mobile</code>,<br>
+яка приймає аргумент <code>mobile</code>,<br>
+та повертає значення відформатованого номера у форматі +380.</p>
+    <script>
+        createCodeBlock(String.raw`
+# YOUR CODE HERE
+
+
+m1 = '0969500123'
+m2 = '380991122069'
+
+mobile1 = format_mobile(m1)
+print(f'{mobile1} - відформатований мобільний, оригінальне значення {m1}')
+
+mobile2 = format_mobile(m2)
+print(f'{mobile2} - відформатований мобільний, оригінальне значення {m2}')
+    `, document.querySelector('[id="3"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="4">
+    <h2>Завдання № 4.</h2>
+    <p class="exercise-description">Створіть функцію <code>count_args</code>,<br>
+яка приймає довільну кількість аргументів.<br>
+Функція має вивести у консоль кількість переданих аргументів, та кожне значення аргумента з нового рядка.</p>
+    <script>
+        createCodeBlock(String.raw`
+# YOUR CODE HERE
+
+
+count_args(1, 2, 'abc', ['hello', 'world'])
+    `, document.querySelector('[id="4"]'));
+    </script>
+</section>
+</section>
+
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

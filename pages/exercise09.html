@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="../favicon.ico">
-  <title>Вправа 2: Списки</title>
+  <title>Вправа 9: Словники</title>
   <link rel="stylesheet" href="../assets/css/mystyle.css">
   <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
   <script src="../highlight/highlight.min.js"></script>
@@ -25,18 +25,18 @@
 
   <main id="content">
 
-<h1>Вправа 2: Списки</h1>
+<h1>Вправа 9: Словники</h1>
 
 
 <section class="exercise-card">
 <section id="1">
     <h2>Завдання № 1.</h2>
-    <p class="exercise-description">Зробіть список порожнім.</p>
+    <p class="exercise-description">Отримайте значення за ключем <code>"host"</code> зі словника.</p>
     <script>
         createCodeBlock(String.raw`
-empty_list = [1, 2, 3]
-empty_list = # YOUR CODE HERE
-print(empty_list)
+db_config = {"host": "127.0.0.1", "port": 1521}
+server_ip = # YOUR CODE HERE
+print(server_ip)
     `, document.querySelector('[id="1"]'));
     </script>
 </section>
@@ -45,14 +45,14 @@ print(empty_list)
 <section class="exercise-card">
 <section id="2">
     <h2>Завдання № 2.</h2>
-    <p class="exercise-description">Добавте у кінець списку число 5.</p>
+    <p class="exercise-description">Використайте метод безпечного отримання значення за ключем, щоб уникнути помилки KeyError. Якщо ключа "disk_io" немає, поверніть 0.</p>
     <script>
         createCodeBlock(String.raw`
-my_list = [1, 2, 3, 4]
+metrics = {"cpu_usage": 45, "memory": 80}
 
 # YOUR CODE HERE
 
-print(my_list)
+print(disk_io)
     `, document.querySelector('[id="2"]'));
     </script>
 </section>
@@ -61,14 +61,14 @@ print(my_list)
 <section class="exercise-card">
 <section id="3">
     <h2>Завдання № 3.</h2>
-    <p class="exercise-description">Добавте на початок списку число 1.</p>
+    <p class="exercise-description">Додайте нову пару ключ-значення ("company": "OKKO") у існуючий словник.</p>
     <script>
         createCodeBlock(String.raw`
-new_list = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+profile = {"id": 1, "name": "Oleg", "birthdate": '2002-02-02'}
 
 # YOUR CODE HERE
 
-print(new_list)
+print(profile)
     `, document.querySelector('[id="3"]'));
     </script>
 </section>
@@ -77,14 +77,12 @@ print(new_list)
 <section class="exercise-card">
 <section id="4">
     <h2>Завдання № 4.</h2>
-    <p class="exercise-description">Добавте на сьому позицію списку число 8.</p>
+    <p class="exercise-description">Оновіть значення для вже існуючого ключа "status" на "completed".</p>
     <script>
         createCodeBlock(String.raw`
-mark_list = [1, 2, 3, 4, 5, 6, 7, 9, 10]
-
-# YOUR CODE HERE
-
-print(mark_list)
+task = {"task_id": 8421, "status": "pending"}
+? = "completed"
+print(task)
     `, document.querySelector('[id="4"]'));
     </script>
 </section>
@@ -93,14 +91,12 @@ print(mark_list)
 <section class="exercise-card">
 <section id="5">
     <h2>Завдання № 5.</h2>
-    <p class="exercise-description">Видаліть усі елементи у списку.</p>
+    <p class="exercise-description">Отримайте всі ключі словника.</p>
     <script>
         createCodeBlock(String.raw`
-clean_list = ['a', 'b', 'c']
-
-# YOUR CODE HERE
-
-print(clean_list)
+pet_registry = {"animal_id": 9931, "type": "cat", "chipped": True}
+all_keys = # YOUR CODE HERE
+print(all_keys)
     `, document.querySelector('[id="5"]'));
     </script>
 </section>
@@ -109,14 +105,12 @@ print(clean_list)
 <section class="exercise-card">
 <section id="6">
     <h2>Завдання № 6.</h2>
-    <p class="exercise-description">Видаліть усі елементи у списку.</p>
+    <p class="exercise-description">Отримайте всі значення словника.</p>
     <script>
         createCodeBlock(String.raw`
-clean_list = ['a', 'b', 'c']
-
-# YOUR CODE HERE
-
-print(clean_list)
+pet_registry = {"animal_id": 9931, "type": "cat", "chipped": True}
+all_values = # YOUR CODE HERE
+print(all_values)
     `, document.querySelector('[id="6"]'));
     </script>
 </section>
@@ -125,14 +119,12 @@ print(clean_list)
 <section class="exercise-card">
 <section id="7">
     <h2>Завдання № 7.</h2>
-    <p class="exercise-description">Замініть третій елемент у списку на число 3.</p>
+    <p class="exercise-description">Пройдіться циклом for по словнику, отримуючи одночасно і ключ, і його значення.</p>
     <script>
         createCodeBlock(String.raw`
-number_list = [1, 2, '3', 4, 5, 6, 7, 8, 9, 10]
+oracle_stats = {"sessions": 150, "active_queries": 12}
 
 # YOUR CODE HERE
-
-print(number_list)
     `, document.querySelector('[id="7"]'));
     </script>
 </section>
@@ -141,14 +133,12 @@ print(number_list)
 <section class="exercise-card">
 <section id="8">
     <h2>Завдання № 8.</h2>
-    <p class="exercise-description">Видаліть зі списку слово Асгард.</p>
+    <p class="exercise-description">Видаліть елемент зі словника за ключем <code>"token"</code> та збережіть видалене значення у змінну.</p>
     <script>
         createCodeBlock(String.raw`
-city_list = ['Броди', 'Львів', 'Асгард', 'Київ']
-
-# YOUR CODE HERE
-
-print(city_list)
+auth_data = {"user": "admin", "token": "x-890-xyz", "timeout": 30}
+extracted_token = # YOUR CODE HERE
+print(extracted_token)
     `, document.querySelector('[id="8"]'));
     </script>
 </section>
@@ -157,12 +147,12 @@ print(city_list)
 <section class="exercise-card">
 <section id="9">
     <h2>Завдання № 9.</h2>
-    <p class="exercise-description">Виведіть перший елемент зі списку.</p>
+    <p class="exercise-description">Перевірте, чи існує ключ <code>"target_url"</code> у словнику (результат має бути <code>True</code> або <code>False</code>).</p>
     <script>
         createCodeBlock(String.raw`
-fruits = ["apple", "banana", "ananas"]
-first_item = # YOUR CODE HERE
-print(first_item)
+scrape_params = {"target_url": "https://example.com", "delay": 2}
+has_url = # YOUR CODE HERE
+print(has_url)
     `, document.querySelector('[id="9"]'));
     </script>
 </section>
@@ -171,41 +161,15 @@ print(first_item)
 <section class="exercise-card">
 <section id="10">
     <h2>Завдання № 10.</h2>
-    <p class="exercise-description">Виведіть останній елемент зі списку, використовуючи від'ємний індекс.</p>
+    <p class="exercise-description">Очистіть словник повністю, видаливши з нього всі елементи.</p>
     <script>
         createCodeBlock(String.raw`
-databases = ["Oracle", "SQL Server", "MySQL", "PostgreSQL", "DuckDB"]
-last_item = # YOUR CODE HERE
-print(last_item)
+temp_results = {"result_1": 100, "result_2": 200}
+
+# YOUR CODE HERE
+
+print(temp_results)
     `, document.querySelector('[id="10"]'));
-    </script>
-</section>
-</section>
-
-<section class="exercise-card">
-<section id="11">
-    <h2>Завдання № 11.</h2>
-    <p class="exercise-description">Виведіть останній елемент зі списку, не використовуючи від'ємний індекс.</p>
-    <script>
-        createCodeBlock(String.raw`
-databases = ["Oracle", "SQL Server", "MySQL", "PostgreSQL", "DuckDB"]
-last_item = # YOUR CODE HERE
-print(last_item)
-    `, document.querySelector('[id="11"]'));
-    </script>
-</section>
-</section>
-
-<section class="exercise-card">
-<section id="12">
-    <h2>Завдання № 12.</h2>
-    <p class="exercise-description">Створіть новий список без першого та останнього елемента.</p>
-    <script>
-        createCodeBlock(String.raw`
-data = ["id", "year", "count", "sum", "avg", "updated"]
-new_list = # YOUR CODE HERE
-print(f'{new_list = }')
-    `, document.querySelector('[id="12"]'));
     </script>
 </section>
 </section>

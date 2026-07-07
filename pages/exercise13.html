@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Вправа 13: Кортежі</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div id="codeModal" class="code-modal" onclick="closeFullCode()">
+    <div class="code-modal-content" onclick="event.stopPropagation()">
+        <span class="code-modal-close" onclick="closeFullCode()">&times;</span>
+        <pre><code class="python" id="modalCodeTarget"></code></pre>
+    </div>
+</div>
+
+<div class="page-wrapper">
+
+
+  <main id="content">
+
+<h1>Вправа 13: Кортежі</h1>
+
+
+<section class="exercise-card">
+<section id="1">
+    <h2>Завдання № 1.</h2>
+    <p class="exercise-description">Створіть кортеж із одного єдиного елемента (числа 42). Пам'ятайте про синтаксичну особливість для одного елемента, щоб тип змінної визначився саме як кортеж.</p>
+    <script>
+        createCodeBlock(String.raw`
+single_item = # YOUR CODE HERE
+print(type(single_item))
+    `, document.querySelector('[id="1"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="2">
+    <h2>Завдання № 2.</h2>
+    <p class="exercise-description">Отримайте другий елемент (значення довготи) з кортежу гео-координат.</p>
+    <script>
+        createCodeBlock(String.raw`
+lviv_coordinates = (49.84, 24.02, 338)
+longitude = # YOUR CODE HERE
+print(longitude)
+    `, document.querySelector('[id="2"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="3">
+    <h2>Завдання № 3.</h2>
+    <p class="exercise-description">Спробуйте змінити перший елемент кортежу на інше число, щоб викликати виняток TypeError.</p>
+    <script>
+        createCodeBlock(String.raw`
+immutable_data = (1, 2, 3)
+
+# YOUR CODE HERE
+    `, document.querySelector('[id="3"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="4">
+    <h2>Завдання № 4.</h2>
+    <p class="exercise-description">Розпакуйте кортеж з даними користувача у три окремі змінні в один рядок.</p>
+    <script>
+        createCodeBlock(String.raw`
+user_profile = ("Andrew", 31, "CEO")
+name, age, role = # YOUR CODE HERE
+print(name, age, role)
+    `, document.querySelector('[id="4"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="5">
+    <h2>Завдання № 5.</h2>
+    <p class="exercise-description">Порахуйте, скільки разів число 7 зустрічається в кортежі.</p>
+    <script>
+        createCodeBlock(String.raw`
+numbers = (7, 1, 4, 7, 3, 7, 2)
+count_seven = # YOUR CODE HERE
+print(count_seven)
+    `, document.querySelector('[id="5"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="6">
+    <h2>Завдання № 6.</h2>
+    <p class="exercise-description">Знайдіть індекс (позицію) першого входження елемента "PostgreSQL".</p>
+    <script>
+        createCodeBlock(String.raw`
+db_tuple = ("Oracle", "PostgreSQL", "DuckDB", "PostgreSQL")
+index_pg = # YOUR CODE HERE
+print(index_pg)
+    `, document.querySelector('[id="6"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="7">
+    <h2>Завдання № 7.</h2>
+    <p class="exercise-description">Об'єднайте два кортежі в один новий за допомогою оператора.</p>
+    <script>
+        createCodeBlock(String.raw`
+part_1 = (10, 20)
+part_2 = (30, 40)
+full_tuple = # YOUR CODE HERE
+print(full_tuple)
+    `, document.querySelector('[id="7"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="8">
+    <h2>Завдання № 8.</h2>
+    <p class="exercise-description">Перевірте, чи є значення "admin" у кортежі дозволених ролей (результат True/False).</p>
+    <script>
+        createCodeBlock(String.raw`
+allowed_roles = ("user", "manager", "admin")
+is_allowed = # YOUR CODE HERE
+print(is_allowed)
+    `, document.querySelector('[id="8"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="9">
+    <h2>Завдання № 9.</h2>
+    <p class="exercise-description">Перетворіть існуючий динамічний список на незмінний кортеж.</p>
+    <script>
+        createCodeBlock(String.raw`
+tech_list = ["Python", "Git", "Docker"]
+tech_tuple = # YOUR CODE HERE
+print(type(tech_tuple))
+    `, document.querySelector('[id="9"]'));
+    </script>
+</section>
+</section>
+
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>

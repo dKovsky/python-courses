@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../favicon.ico">
+  <title>Вправа 5: Цикли в Python</title>
+  <link rel="stylesheet" href="../assets/css/mystyle.css">
+  <link id="highlight-css" rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+  <script src="../highlight/highlight.min.js"></script>
+  <script src="../highlight/codeBlock.js"></script>
+</head>
+<body class="dark">
+
+<div id="codeModal" class="code-modal" onclick="closeFullCode()">
+    <div class="code-modal-content" onclick="event.stopPropagation()">
+        <span class="code-modal-close" onclick="closeFullCode()">&times;</span>
+        <pre><code class="python" id="modalCodeTarget"></code></pre>
+    </div>
+</div>
+
+<div class="page-wrapper">
+
+
+  <main id="content">
+
+<h1>Вправа 5: Цикли в Python</h1>
+
+
+<section class="exercise-card">
+<section id="1">
+    <h2>Завдання № 1.</h2>
+    <p class="exercise-description">Знайдіть суму елементів.</p>
+    <script>
+        createCodeBlock(String.raw`
+sales = [100, 800, 1_200, 75, 1_025]
+total = # YOUR CODE HERE
+print(total)
+    `, document.querySelector('[id="1"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="2">
+    <h2>Завдання № 2.</h2>
+    <p class="exercise-description">Знайдіть найбільший та найменший елемент у списку, запишіть у змінні <code>min_value</code> та <code>max_value</code>.</p>
+    <script>
+        createCodeBlock(String.raw`
+values = [100, 800, 1_200, 75, 1_025]
+
+# YOUR CODE HERE
+
+print(f'{min_value = }')
+print(f'{max_value = }')
+    `, document.querySelector('[id="2"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="3">
+    <h2>Завдання № 3.</h2>
+    <p class="exercise-description">Пронумеруйте та виведіть в консоль список у форматі:<br>
+1. item1<br> 
+2. item2<br>
+...<br></p>
+    <script>
+        createCodeBlock(String.raw`
+top_movies = ['Шрек', 'Втеча з Шоушенка', 'Бійцівський клуб', '1+1', 'Обсесія']
+
+# YOUR CODE HERE
+    `, document.querySelector('[id="3"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="4">
+    <h2>Завдання № 4.</h2>
+    <p class="exercise-description">Виведіть на екран лише парні числа.</p>
+    <script>
+        createCodeBlock(String.raw`
+numbers = [12, 5, 8, 17, 20, 3, 14]
+
+# YOUR CODE HERE
+    `, document.querySelector('[id="4"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="5">
+    <h2>Завдання № 5.</h2>
+    <p class="exercise-description">Виведіть елементи у зворотньому порядку.</p>
+    <script>
+        createCodeBlock(String.raw`
+company = ['5) oracle', '4) microsoft',  '3) google', '2) facebook', '1) apple']
+
+# YOUR CODE HERE
+    `, document.querySelector('[id="5"]'));
+    </script>
+</section>
+</section>
+
+<section class="exercise-card">
+<section id="6">
+    <h2>Завдання № 6.</h2>
+    <p class="exercise-description">Скрипт має отримувати команди від користувача,<br>
+якщо користувач вкаже команду <code>exit</code> програма має завершитись;<br>
+для команди <code>hi</code> - вивести <code>'Привіт'</code>.<br>
+Приклад:<br>
+app  -> Введіть команду:<br>
+user -> new<br>
+app  -> Введіть команду:<br>
+user -> hi<br>
+app  -> Привіт<br>
+app  -> Введіть команду:<br>
+user -> 1 + 1<br>
+app  -> Введіть команду:<br>
+user -> exit<br>
+app  -> Програму завершено<br></p>
+    <script>
+        createCodeBlock(String.raw`
+# YOUR CODE HERE
+    `, document.querySelector('[id="6"]'));
+    </script>
+</section>
+</section>
+
+
+  </main>
+
+  <nav id="nav-global" class="global"></nav>
+
+</div>
+
+<script src="../themes.js"></script>
+<script src="../pages.js"></script>
+</body>
+</html>
