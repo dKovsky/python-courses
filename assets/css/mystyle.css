@@ -637,3 +637,116 @@ code {
 main {
     margin-left: 16px;
 }
+
+
+       .row_btns {
+            display: flex;
+            gap: 4px;
+            /* Puts space between the first two buttons */
+            align-items: flex-start;
+            /* Keeps the right button aligned to the top */
+        }
+
+
+        .btn_copy {
+            position: relative;
+            top: 10px;
+            z-index: 10;
+            /* Ensure it's above the code block */
+            left: 10px;
+            /* Position the button on the left */
+            padding: 5px 10px;
+            background-color: #1e1e1e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: background-color 0.3s ease;
+            /* Smooth hover effect */
+        }
+
+
+        .btn_run {
+            display: none;
+            position: relative;
+            top: 10px;
+            z-index: 10;
+            /* Ensure it's above the code block */
+            left: 10px;
+            /* Position the button on the left */
+            padding: 5px 10px;
+            background-color: #1e1e1e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn_answear {
+            position: relative;
+            top: 10px;
+            z-index: 10;
+            /* Ensure it's above the code block */
+            left: 10px;
+            /* Position the button on the left */
+            padding: 5px 10px;
+            background-color: #1e1e1e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: background-color 0.3s ease;
+        }
+
+
+        .btn_fullsize {
+            position: relative;
+            top: 10px;
+            z-index: 10;
+            /* Ensure it's above the code block */
+            left: 10px;
+            /* Position the button on the left */
+            padding: 5px 10px;
+            background-color: #1e1e1e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: background-color 0.3s ease;
+        }
+
+
+        /* This targets the 3rd button specifically */
+        .btn_3dot {
+            display: none;
+            position: relative;
+            margin-left: auto;
+            top: 10px;
+            z-index: 10;
+            /* Ensure it's above the code block */
+            left: 10px;
+            /* Position the button on the left */
+            padding: 5px 10px;
+            background-color: #1e1e1e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: background-color 0.3s ease;
+
+        }
+
+        .code_answear {
+            display: none;
+        }

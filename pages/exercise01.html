@@ -33,9 +33,11 @@
     <h2>Завдання № 1.</h2>
     <p class="exercise-description">Виведіть у консоль <code>Hello world</code>.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(String.raw`
 # YOUR CODE HERE
-    `, document.querySelector('[id="1"]'));
+`
+, String.raw`print('Hello world')`
+, document.querySelector('[id="1"]'));
     </script>
 </section>
 </section>
@@ -45,9 +47,13 @@
     <h2>Завдання № 2.</h2>
     <p class="exercise-description">Виведіть у консоль результат 7 + 25 / 5 - 1_000**0 + -1 * (5 - 4).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+String.raw`
 # YOUR CODE HERE
-    `, document.querySelector('[id="2"]'));
+`
+, String.raw`print(7 + 25 / 5 - 1_000**0 + -1 * (5 - 4))`
+, document.querySelector('[id="2"]')
+);
     </script>
 </section>
 </section>
@@ -57,9 +63,13 @@
     <h2>Завдання № 3.</h2>
     <p class="exercise-description">Виведіть у консоль результат 10 / 0.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+String.raw`
 # YOUR CODE HERE
-    `, document.querySelector('[id="3"]'));
+`
+, String.raw`print(10 / 0)`
+, document.querySelector('[id="3"]')
+);
     </script>
 </section>
 </section>
@@ -69,9 +79,11 @@
     <h2>Завдання № 4.</h2>
     <p class="exercise-description">Виведіть у консоль символ <code>"-"</code> у одному рядку 40 разів.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(String.raw`
 # YOUR CODE HERE
-    `, document.querySelector('[id="4"]'));
+`
+, String.raw`print("-" * 40)`
+, document.querySelector('[id="4"]'));
     </script>
 </section>
 </section>
@@ -81,10 +93,13 @@
     <h2>Завдання № 5.</h2>
     <p class="exercise-description">Знайдіть цілу частину від 13355 при діленні на 171.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+String.raw`
 result = # YOUR CODE HERE
 print(result)
-    `, document.querySelector('[id="5"]'));
+`
+, String.raw`13_355 // 171`
+, document.querySelector('[id="5"]'));
     </script>
 </section>
 </section>

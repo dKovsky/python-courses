@@ -36,6 +36,108 @@ function createCodeBlock(code, element) {
 }
 
 
+
+// Function to create a code block
+function create_code_with_answear(code, answear, element) {
+    codeCounter++;
+    const id = `code-${codeCounter}`; // Generate unique ID
+
+    // <button class="bookmark-btn">
+    //       <svg fill="currentColor" viewBox="0 0 24 24"width="16" height="16" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><path id="primary" d="M12,17,5,21V4A1,1,0,0,1,6,3H18a1,1,0,0,1,1,1V21Z" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>
+    // </button>
+
+    const codeBlockHTML = `
+    <div class="code-container">
+        <div class="row_btns">
+            <button class="btn_copy" onclick="copyCode('${id}', this)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="16" height="16">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M7 5C7 3.34315 8.34315 2 10 2H19C20.6569 2 22 3.34315 22 5V14C22 15.6569 20.6569 17 19 17H17V19C17 20.6569 15.6569 22 14 22H5C3.34315 22 2 20.6569 2 19V10C2 8.34315 3.34315 7 5 7H7V5ZM9 7H14C15.6569 7 17 8.34315 17 10V15H19C19.5523 15 20 14.5523 20 14V5C20 4.44772 19.5523 4 19 4H10C9.44772 4 9 4.44772 9 5V7ZM5 9C4.44772 9 4 9.44772 4 10V19C4 19.5523 4.44772 20 5 20H14C14.5523 20 15 19.5523 15 19V10C15 9.44772 14.5523 9 14 9H5Z">
+                    </path>
+                </svg>
+                Copy
+            </button>
+
+                      <button class="btn_run">
+                <svg fill="currentColor" viewBox="0 0 512 512" width="16px" height="16px"
+                    xmlns="http://www.w3.org/2000/svg">
+
+                    <path
+                        d="M33.299,245v245l423.402-245L33.299,0V245z M190.579,245l202.992,0L70.27,432.077L190.579,245z" />
+                </svg>
+            </button>
+
+
+            <button class="btn_answear" onclick="show_answear('${id}', this)">
+                <svg fill="currentColor" viewBox="0 0 768 768" width="16px" height="16px"
+                    xmlns="http://www.w3.org/2000/svg">
+
+                    <path
+                        d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM513.1 518.1l-192 161c-5.2 4.4-13.1.7-13.1-6.1v-62.7c0-2.3 1.1-4.6 2.9-6.1L420.7 512l-109.8-92.2a7.63 7.63 0 0 1-2.9-6.1V351c0-6.8 7.9-10.5 13.1-6.1l192 160.9c3.9 3.2 3.9 9.1 0 12.3zM716 673c0 4.4-3.4 8-7.5 8h-185c-4.1 0-7.5-3.6-7.5-8v-48c0-4.4 3.4-8 7.5-8h185c4.1 0 7.5 3.6 7.5 8v48z"
+                        fill="white" />
+                </svg>
+            </button>
+
+            <button class="btn_fullsize" onclick="fullCode('${id}', this)">
+                <svg fill="currentColor" viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 4H7C5.58579 4 4.87868 4 4.43934 4.43934C4 4.87868 4 5.58579 4 7V9" stroke="#222222"
+                        stroke-linecap="round" />
+                    <path d="M9 20H7C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V15" stroke="#222222"
+                        stroke-linecap="round" />
+                    <path d="M15 4H17C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V9" stroke="#222222"
+                        stroke-linecap="round" />
+                    <path d="M15 20H17C18.4142 20 19.1213 20 19.5607 19.5607C20 19.1213 20 18.4142 20 17V15"
+                        stroke="#222222" stroke-linecap="round" />
+                </svg>
+            </button>
+
+            <button class="btn_3dot">
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"
+                    viewBox="0 0 52 52">
+                    <path d="M20,44c0-3.3,2.7-6,6-6s6,2.7,6,6s-2.7,6-6,6S20,47.3,20,44z M20,26c0-3.3,2.7-6,6-6s6,2.7,6,6s-2.7,6-6,6	S20,29.3,20,26z M20,8c0-3.3,2.7-6,6-6s6,2.7,6,6s-2.7,6-6,6S20,11.3,20,8z" />
+                </svg></button>
+
+  </div>
+        <div class="code_answear">'${answear}'</div>
+
+
+
+        
+        <pre><code class="python" id="${id}">${code}</code></pre>
+    </div>
+    `;
+
+    element.insertAdjacentHTML("afterend", codeBlockHTML);
+    hljs.highlightAll(); // Apply syntax highlighting to new block
+}
+
+function show_answear(id, btn) {
+    const code_element = document.getElementById(id);
+    var code = code_element.textContent;
+    console.log(code)
+
+    // 1. Find the answer div inside the same container as the clicked button
+    const answearDiv = btn.parentElement.parentElement.querySelector('.code_answear');
+
+    // 2. Use textContent to read the text (works perfectly even with display: none)
+    const hiddenText = answearDiv.textContent;
+    console.log("Hidden text successfully read:", hiddenText);
+
+    code = code.replace('# YOUR CODE HERE', hiddenText.slice(1, -1));
+    console.log(code);
+
+    code_element.textContent = code;
+
+    // FIX: Strip the "already highlighted" protective stamp 
+    code_element.removeAttribute('data-highlighted');
+
+    // Now Highlight.js will happily color it again!
+    hljs.highlightElement(code_element);
+
+
+}
+
+
 // Function to copy code to clipboard
 function copyCode(id, btn) {
     var code = document.getElementById(id).innerText;
@@ -45,7 +147,7 @@ function copyCode(id, btn) {
     textArea.select();
     document.execCommand('copy');
     document.body.removeChild(textArea);
-    
+
     btn.innerText = 'Copied!';
     setTimeout(() => {
         // Reset button text and include the SVG when it switches back to "Copy"
@@ -64,21 +166,21 @@ function copyCode(id, btn) {
 function fullCode(id, btn) {
     // 1. Fetch the raw code text from the specific target element
     var originalCode = document.getElementById(id).innerText;
-    
+
     // 2. Point to our modal target containers
     var modal = document.getElementById('codeModal');
     var modalTarget = document.getElementById('modalCodeTarget');
-    
+
     // 3. Inject code text safely
-    modalTarget.textContent  = originalCode;
-    
+    modalTarget.textContent = originalCode;
+
     // 4. Force HighlightJS to process syntax coloring on the modal's DOM element
     if (window.hljs) {
         // Reset element attribute tag tracking so highlightjs recalculates it fresh
         modalTarget.removeAttribute('data-highlighted');
         hljs.highlightElement(modalTarget);
     }
-    
+
     // 5. Uncover the popup visually
     modal.style.display = "flex";
 }
