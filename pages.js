@@ -12,7 +12,7 @@ const navItems = [
   {
     group_name: "null",
     items: [
-      { href: dir_index + "index.html", text: "Home" },
+      { href: dir_index + "index.html", text: "Курс Python" },
     ]
   },
   {

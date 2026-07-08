@@ -57,10 +57,24 @@ nav.local .resizer {
 nav.local a {
     display: block;
     color: white;
-    padding: 14px 20px;
+    /* padding: 14px 20px; */
+    padding: 4px 8px;
     text-decoration: none;
     text-align: left;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+/* This adds a background color to every second link */
+nav.local a:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight white tint */
+}
+
+/* Optional: You can also style the odd ones if you want two alternating colors */
+nav.local a:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.2); /* Slight dark tint */
+}
+
 
 nav.local a:hover {
     background-color: #ddd;
@@ -104,6 +118,8 @@ nav.global {
     right: 0;
     padding-top: 20px;
     padding-bottom: 20px;
+
+    font-size: 12px;
 }
 
 
@@ -120,9 +136,22 @@ nav.global .resizer {
 nav.global a {
     display: block;
     color: white;
-    padding: 14px 20px;
+    /* padding: 14px 20px; */
+    padding: 4px 8px;
     text-decoration: none;
     text-align: left;
+}
+
+
+
+/* This adds a background color to every second link */
+nav.global a:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight white tint */
+}
+
+/* Optional: You can also style the odd ones if you want two alternating colors */
+nav.global a:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.2); /* Slight dark tint */
 }
 
 nav.global a:hover {
@@ -137,7 +166,8 @@ nav.global a.active {
 
 /* Grouped sections inside the global navbar (Заняття, Вправи, Завдання, Тести) */
 nav.global .nav-group-title {
-    margin: 18px 0 4px 0;
+    /* margin: 18px 0 4px 0; */
+    margin: 2px 0 2px 0;
     padding: 0 20px;
     font-size: 12px;
     font-weight: 700;
@@ -150,6 +180,7 @@ nav.global .nav-group-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: rgb(49, 49, 49);
 }
 
 nav.global .nav-group-title:hover {
@@ -158,7 +189,7 @@ nav.global .nav-group-title:hover {
 
 nav.global .nav-group-title::after {
     content: "▾";
-    font-size: 10px;
+    font-size: 16px;
     margin-left: 8px;
     transition: transform 0.15s ease;
 }
@@ -387,7 +418,7 @@ body.dark #nav-list a {
 
 /* Content / external links */
 body.dark a[target="_blank"] {
-    color: #4ea3ff;
+    color: #adc5df;
 }
 
 body.warm {
@@ -601,4 +632,8 @@ code {
   .task-card h2 {
     font-size: 1.1rem;
   }
+}
+
+main {
+    margin-left: 16px;
 }
