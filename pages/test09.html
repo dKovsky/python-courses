@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 9: Словники</title>
+  <title>Тест 1: Основи синтаксису</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -31,12 +31,16 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 680px;
+      /* max-width: 680px; */
       margin: 30px auto;
       padding: 0 15px;
       line-height: 1.5;
     }
-
+    
+    main#content {
+      overflow: visible;
+      display: block;
+    }
     /* Блок прогресу */
     #progress-wrap {
       background: var(--bg-card);
@@ -47,8 +51,11 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      
+      /* FIXES */
       position: sticky;
-      top: 0;
+      top: 10px;       /* Keeps it pinned 10px from the top of its scroll view */
+      z-index: 999;    /* Pulls it safely above the question cards' transition layers */
     }
     #progress-bar-outer {
       flex-grow: 1;
@@ -59,7 +66,7 @@
     }
     #progress-bar-inner {
       background: var(--accent);
-      width: 10%; /* Тимчасово, для візуалізації */
+      width: 0%; /* Тимчасово, для візуалізації */
       height: 100%;
       border-radius: 5px;
     }
@@ -71,7 +78,7 @@
     }
 
     /* Контейнер картки питання (генерація з id="{i}") */
-    body > div:not(#progress-wrap) {
+    body main > div:not(#progress-wrap) {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -81,7 +88,7 @@
     }
 
     /* Текст питання */
-    .q-text {
+    main .q-text {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-head);
@@ -91,7 +98,7 @@
     }
 
     /* Контейнери варіантів відповідей (div навколо input) */
-    body > div:not(#progress-wrap) > div:not(.q-text) {
+    body main > div:not(#progress-wrap) > div:not(.q-text) {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -102,13 +109,13 @@
       cursor: pointer;
       transition: background-color 0.15s, border-color 0.15s;
     }
-    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+    body main > div:not(#progress-wrap) > div:not(.q-text):hover {
       background-color: var(--bg-hover);
       border-color: var(--text-dim);
     }
 
     /* Стилізація радіо-кнопок */
-    input[type="radio"] {
+    main input[type="radio"] {
       appearance: none;
       -webkit-appearance: none;
       background-color: transparent;
@@ -124,7 +131,7 @@
       cursor: pointer;
       transition: border-color 0.15s;
     }
-    input[type="radio"]::before {
+    main input[type="radio"]::before {
       content: "";
       width: 10px;
       height: 10px;
@@ -133,13 +140,13 @@
       transition: 120ms transform ease-in-out;
       background-color: var(--accent);
     }
-    input[type="radio"]:checked::before {
+    main input[type="radio"]:checked::before {
       transform: scale(1);
     }
-    input[type="radio"]:checked {
+    main input[type="radio"]:checked {
       border-color: var(--accent);
     }
-    input[type="radio"]:disabled {
+    main input[type="radio"]:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
@@ -162,297 +169,224 @@
   <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 <body>
-  
+
+
   <nav id="nav-global" class="global"></nav>
+
+
+<main id="content">
 
 <div id="progress-wrap">
   <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
   <span id="progress-label">0 / 20</span>
 </div>
 
-
-            <div id="1">
-            <div class="q-text">Питання 1. Який стандартний модуль у Python використовується для роботи з JSON?
+<div id="1">
+<div class="q-text">Питання 1. Який стандартний модуль у Python використовується для роботи з JSON?
 </div>
-            <div><input type="radio">pyjson
-</div>
+<div><input type="radio">pyjson</div>
 <div><input type="radio">json
  </div>
-<div><input type="radio">json_lib
-</div>
-<div><input type="radio">serialize
-</div>
+<div><input type="radio">json_lib</div>
+<div><input type="radio">serialize</div>
 
-            </div>
-            
+</div>
             <div id="2">
-            <div class="q-text">Питання 2. Який метод використовується для перетворення об'єкта Python (наприклад, словника) у рядок JSON?
+<div class="q-text">Питання 2. Який метод використовується для перетворення об'єкта Python (наприклад, словника) у рядок JSON?
 </div>
-            <div><input type="radio">json.dumps()
- </div>
-<div><input type="radio">json.serialize()
-</div>
-<div><input type="radio">json.dump()
-</div>
-<div><input type="radio">json.to_json()
-</div>
-
-            </div>
-            
-            <div id="3">
-            <div class="q-text">Питання 3. Який метод використовується для запису об'єкта Python безпосередньо у файл у форматі JSON?
-</div>
-            <div><input type="radio">json.write()
-</div>
-<div><input type="radio">json.save()
-</div>
-<div><input type="radio">json.dump()
- </div>
 <div><input type="radio">json.dumps()
-</div>
+ </div>
+<div><input type="radio">json.serialize()</div>
+<div><input type="radio">json.dump()</div>
+<div><input type="radio">json.to_json()</div>
 
-            </div>
-            
+</div>
+            <div id="3">
+<div class="q-text">Питання 3. Який метод використовується для запису об'єкта Python безпосередньо у файл у форматі JSON?
+</div>
+<div><input type="radio">json.write()</div>
+<div><input type="radio">json.save()</div>
+<div><input type="radio">json.dump()
+ </div>
+<div><input type="radio">json.dumps()</div>
+
+</div>
             <div id="4">
-            <div class="q-text">Питання 4. Який метод використовується для зчитування JSON-даних із рядка і перетворення їх у об'єкт Python?
+<div class="q-text">Питання 4. Який метод використовується для зчитування JSON-даних із рядка і перетворення їх у об'єкт Python?
 </div>
-            <div><input type="radio">json.parse()
-</div>
-<div><input type="radio">json.from_json()
-</div>
-<div><input type="radio">json.load()
-</div>
+<div><input type="radio">json.parse()</div>
+<div><input type="radio">json.from_json()</div>
+<div><input type="radio">json.load()</div>
 <div><input type="radio">json.loads()
  </div>
 
-            </div>
-            
+</div>
             <div id="5">
-            <div class="q-text">Питання 5. Який метод використовується для зчитування JSON-файлу і перетворення його у словник чи список Python?
+<div class="q-text">Питання 5. Який метод використовується для зчитування JSON-файлу і перетворення його у словник чи список Python?
 </div>
-            <div><input type="radio">json.parse_file()
-</div>
-<div><input type="radio">json.read()
-</div>
+<div><input type="radio">json.parse_file()</div>
+<div><input type="radio">json.read()</div>
 <div><input type="radio">json.load()
  </div>
-<div><input type="radio">json.loads()
-</div>
+<div><input type="radio">json.loads()</div>
 
-            </div>
-            
+</div>
             <div id="6">
-            <div class="q-text">Питання 6. Який тип даних у Python відповідає об'єкту в JSON?
+<div class="q-text">Питання 6. Який тип даних у Python відповідає об'єкту в JSON?
 </div>
-            <div><input type="radio">str
-</div>
+<div><input type="radio">str</div>
 <div><input type="radio">dict
  </div>
-<div><input type="radio">tuple
-</div>
-<div><input type="radio">list
-</div>
+<div><input type="radio">tuple</div>
+<div><input type="radio">list</div>
 
-            </div>
-            
+</div>
             <div id="7">
-            <div class="q-text">Питання 7. Який тип даних у Python відповідає масиву (array) в JSON?
+<div class="q-text">Питання 7. Який тип даних у Python відповідає масиву (array) в JSON?
 </div>
-            <div><input type="radio">set
-</div>
-<div><input type="radio">dict
-</div>
-<div><input type="radio">tuple
-</div>
+<div><input type="radio">set</div>
+<div><input type="radio">dict</div>
+<div><input type="radio">tuple</div>
 <div><input type="radio">list
  </div>
 
-            </div>
-            
+</div>
             <div id="8">
-            <div class="q-text">Питання 8. Що станеться, якщо спробувати конвертувати кортеж (tuple) в JSON за допомогою json.dumps()?
+<div class="q-text">Питання 8. Що станеться, якщо спробувати конвертувати кортеж (tuple) в JSON за допомогою json.dumps()?
 </div>
-            <div><input type="radio">Він буде видалений
-</div>
+<div><input type="radio">Він буде видалений</div>
 <div><input type="radio">Він буде перетворений у список (list)
  </div>
-<div><input type="radio">Він залишиться кортежем
-</div>
-<div><input type="radio">Виникне помилка TypeError
-</div>
+<div><input type="radio">Він залишиться кортежем</div>
+<div><input type="radio">Виникне помилка TypeError</div>
 
-            </div>
-            
+</div>
             <div id="9">
-            <div class="q-text">Питання 9. Який параметр у методах dump/dumps дозволяє зробити JSON-рядок читабельним з відступами?
+<div class="q-text">Питання 9. Який параметр у методах dump/dumps дозволяє зробити JSON-рядок читабельним з відступами?
 </div>
-            <div><input type="radio">spaces
-</div>
-<div><input type="radio">pretty
-</div>
-<div><input type="radio">padding
-</div>
+<div><input type="radio">spaces</div>
+<div><input type="radio">pretty</div>
+<div><input type="radio">padding</div>
 <div><input type="radio">indent
  </div>
 
-            </div>
-            
+</div>
             <div id="10">
-            <div class="q-text">Питання 10. Яке кодування рекомендується використовувати при відкритті файлів для запису JSON, щоб уникнути проблем з кирилицею?
+<div class="q-text">Питання 10. Яке кодування рекомендується використовувати при відкритті файлів для запису JSON, щоб уникнути проблем з кирилицею?
 </div>
-            <div><input type="radio">encoding='cp1251'
-</div>
+<div><input type="radio">encoding='cp1251'</div>
 <div><input type="radio">encoding='utf-8'
  </div>
-<div><input type="radio">encoding='latin-1'
-</div>
-<div><input type="radio">encoding='ascii'
-</div>
+<div><input type="radio">encoding='latin-1'</div>
+<div><input type="radio">encoding='ascii'</div>
 
-            </div>
-            
+</div>
             <div id="11">
-            <div class="q-text">Питання 11. Що таке JSON?
+<div class="q-text">Питання 11. Що таке JSON?
 </div>
-            <div><input type="radio">Тип бази даних
-</div>
+<div><input type="radio">Тип бази даних</div>
 <div><input type="radio">Формат обміну даними на основі тексту
  </div>
-<div><input type="radio">Версія мови JavaScript
-</div>
-<div><input type="radio">Спеціальна бібліотека Python
-</div>
+<div><input type="radio">Версія мови JavaScript</div>
+<div><input type="radio">Спеціальна бібліотека Python</div>
 
-            </div>
-            
+</div>
             <div id="12">
-            <div class="q-text">Питання 12. Чи підтримує формат JSON коментарі?
+<div class="q-text">Питання 12. Чи підтримує формат JSON коментарі?
 </div>
-            <div><input type="radio">Тільки однорядкові
-</div>
-<div><input type="radio">Тільки багаторядкові
-</div>
-<div><input type="radio">Так
-</div>
+<div><input type="radio">Тільки однорядкові</div>
+<div><input type="radio">Тільки багаторядкові</div>
+<div><input type="radio">Так</div>
 <div><input type="radio">Ні
  </div>
 
-            </div>
-            
+</div>
             <div id="13">
-            <div class="q-text">Питання 13. Яка помилка виникне, якщо спробувати розпарсити (load) некоректний JSON-рядок?
+<div class="q-text">Питання 13. Яка помилка виникне, якщо спробувати розпарсити (load) некоректний JSON-рядок?
 </div>
-            <div><input type="radio">TypeError
-</div>
+<div><input type="radio">TypeError</div>
 <div><input type="radio">json.JSONDecodeError
  </div>
-<div><input type="radio">ValueError
-</div>
-<div><input type="radio">SyntaxError
-</div>
+<div><input type="radio">ValueError</div>
+<div><input type="radio">SyntaxError</div>
 
-            </div>
-            
+</div>
             <div id="14">
-            <div class="q-text">Питання 14. Чи може JSON містити значення None?
+<div class="q-text">Питання 14. Чи може JSON містити значення None?
 </div>
-            <div><input type="radio">Ні, JSON не підтримує значення None
-</div>
-<div><input type="radio">Так, воно залишається як None
-</div>
-<div><input type="radio">Це викликає помилку
-</div>
+<div><input type="radio">Ні, JSON не підтримує значення None</div>
+<div><input type="radio">Так, воно залишається як None</div>
+<div><input type="radio">Це викликає помилку</div>
 <div><input type="radio">Так, воно відображається як null
  </div>
 
-            </div>
-            
+</div>
             <div id="15">
-            <div class="q-text">Питання 15. Як змінити порядок ключів у JSON-рядку при серіалізації?
+<div class="q-text">Питання 15. Як змінити порядок ключів у JSON-рядку при серіалізації?
 </div>
-            <div><input type="radio">sorted=True
-</div>
-<div><input type="radio">reorder=True
-</div>
+<div><input type="radio">sorted=True</div>
+<div><input type="radio">reorder=True</div>
 <div><input type="radio">sort_keys=True
  </div>
-<div><input type="radio">order_keys=True
-</div>
+<div><input type="radio">order_keys=True</div>
 
-            </div>
-            
+</div>
             <div id="16">
-            <div class="q-text">Питання 16. Що станеться, якщо спробувати серіалізувати об'єкт, який не підтримується JSON (наприклад, об'єкт класу)?
+<div class="q-text">Питання 16. Що станеться, якщо спробувати серіалізувати об'єкт, який не підтримується JSON (наприклад, об'єкт класу)?
 </div>
-            <div><input type="radio">Він перетвориться на None
-</div>
-<div><input type="radio">Він буде ігноруватися
-</div>
-<div><input type="radio">Він буде автоматично перетворений у рядок
-</div>
+<div><input type="radio">Він перетвориться на None</div>
+<div><input type="radio">Він буде ігноруватися</div>
+<div><input type="radio">Він буде автоматично перетворений у рядок</div>
 <div><input type="radio">Виникне помилка TypeError
  </div>
 
-            </div>
-            
+</div>
             <div id="17">
-            <div class="q-text">Питання 17. Що робить параметр `ensure_ascii=False` у методах dump/dumps?
+<div class="q-text">Питання 17. Що робить параметр `ensure_ascii=False` у методах dump/dumps?
 </div>
-            <div><input type="radio">Перетворює все у формат ASCII
-</div>
-<div><input type="radio">Видаляє всі спеціальні символи
-</div>
+<div><input type="radio">Перетворює все у формат ASCII</div>
+<div><input type="radio">Видаляє всі спеціальні символи</div>
 <div><input type="radio">Дозволяє коректне відображення не-ASCII символів (наприклад, кирилиці)
  </div>
-<div><input type="radio">Пришвидшує роботу функції
-</div>
+<div><input type="radio">Пришвидшує роботу функції</div>
 
-            </div>
-            
+</div>
             <div id="18">
-            <div class="q-text">Питання 18. Який символ використовується для розділення ключів і значень у форматі JSON?
+<div class="q-text">Питання 18. Який символ використовується для розділення ключів і значень у форматі JSON?
 </div>
-            <div><input type="radio"><->
-</div>
-<div><input type="radio">->
-</div>
+<div><input type="radio"><-></div>
+<div><input type="radio">-></div>
 <div><input type="radio">:
  </div>
-<div><input type="radio">=>
-</div>
+<div><input type="radio">=></div>
 
-            </div>
-            
+</div>
             <div id="19">
-            <div class="q-text">Питання 19. Яка структура даних JSON є коректною?
+<div class="q-text">Питання 19. Яка структура даних JSON є коректною?
 </div>
-            <div><input type="radio">(key: value)
-</div>
+<div><input type="radio">(key: value)</div>
 <div><input type="radio">{"key": "value"}
  </div>
-<div><input type="radio">{key: value}
-</div>
-<div><input type="radio">{'key': 'value'}
-</div>
+<div><input type="radio">{key: value}</div>
+<div><input type="radio">{'key': 'value'}</div>
 
-            </div>
-            
+</div>
             <div id="20">
-            <div class="q-text">Питання 20. Чи можна вкладати списки всередину словників у JSON?
+<div class="q-text">Питання 20. Чи можна вкладати списки всередину словників у JSON?
 </div>
-            <div><input type="radio">Тільки якщо список порожній</div>
-<div><input type="radio">Тільки один рівень вкладеності
-</div>
+<div><input type="radio">Тільки якщо список порожній</div>
+<div><input type="radio">Тільки один рівень вкладеності</div>
 <div><input type="radio">Так
  </div>
-<div><input type="radio">Ні
-</div>
+<div><input type="radio">Ні</div>
 
-            </div>
+</div>
             
+</main>
+
 <script>
 const optionBoxes = document.querySelectorAll(
-  'body > div:not(#progress-wrap) > div:not(.q-text)'
+  'main > div:not(#progress-wrap) > div:not(.q-text)'
 );
 
 optionBoxes.forEach(box => {

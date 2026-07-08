@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 19: Відправка електронних листів через Outlook (pywin32)</title>
+  <title>Тест 1: Основи синтаксису</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -31,12 +31,16 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 680px;
+      /* max-width: 680px; */
       margin: 30px auto;
       padding: 0 15px;
       line-height: 1.5;
     }
-
+    
+    main#content {
+      overflow: visible;
+      display: block;
+    }
     /* Блок прогресу */
     #progress-wrap {
       background: var(--bg-card);
@@ -47,8 +51,11 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      
+      /* FIXES */
       position: sticky;
-      top: 0;
+      top: 10px;       /* Keeps it pinned 10px from the top of its scroll view */
+      z-index: 999;    /* Pulls it safely above the question cards' transition layers */
     }
     #progress-bar-outer {
       flex-grow: 1;
@@ -59,7 +66,7 @@
     }
     #progress-bar-inner {
       background: var(--accent);
-      width: 10%; /* Тимчасово, для візуалізації */
+      width: 0%; /* Тимчасово, для візуалізації */
       height: 100%;
       border-radius: 5px;
     }
@@ -71,7 +78,7 @@
     }
 
     /* Контейнер картки питання (генерація з id="{i}") */
-    body > div:not(#progress-wrap) {
+    body main > div:not(#progress-wrap) {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -81,7 +88,7 @@
     }
 
     /* Текст питання */
-    .q-text {
+    main .q-text {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-head);
@@ -91,7 +98,7 @@
     }
 
     /* Контейнери варіантів відповідей (div навколо input) */
-    body > div:not(#progress-wrap) > div:not(.q-text) {
+    body main > div:not(#progress-wrap) > div:not(.q-text) {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -102,13 +109,13 @@
       cursor: pointer;
       transition: background-color 0.15s, border-color 0.15s;
     }
-    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+    body main > div:not(#progress-wrap) > div:not(.q-text):hover {
       background-color: var(--bg-hover);
       border-color: var(--text-dim);
     }
 
     /* Стилізація радіо-кнопок */
-    input[type="radio"] {
+    main input[type="radio"] {
       appearance: none;
       -webkit-appearance: none;
       background-color: transparent;
@@ -124,7 +131,7 @@
       cursor: pointer;
       transition: border-color 0.15s;
     }
-    input[type="radio"]::before {
+    main input[type="radio"]::before {
       content: "";
       width: 10px;
       height: 10px;
@@ -133,13 +140,13 @@
       transition: 120ms transform ease-in-out;
       background-color: var(--accent);
     }
-    input[type="radio"]:checked::before {
+    main input[type="radio"]:checked::before {
       transform: scale(1);
     }
-    input[type="radio"]:checked {
+    main input[type="radio"]:checked {
       border-color: var(--accent);
     }
-    input[type="radio"]:disabled {
+    main input[type="radio"]:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
@@ -162,297 +169,224 @@
   <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 <body>
-  
+
+
   <nav id="nav-global" class="global"></nav>
+
+
+<main id="content">
 
 <div id="progress-wrap">
   <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
   <span id="progress-label">0 / 20</span>
 </div>
 
-
-            <div id="1">
-            <div class="q-text">Питання 1. Яка бібліотека використовується для доступу до COM-об'єктів Windows та Outlook?
+<div id="1">
+<div class="q-text">Питання 1. Яка бібліотека використовується для доступу до COM-об'єктів Windows та Outlook?
 </div>
-            <div><input type="radio">win32com.client
+<div><input type="radio">win32com.client
  </div>
-<div><input type="radio">win32outlook
-</div>
-<div><input type="radio">outlook.client
-</div>
-<div><input type="radio">pyoutlook
-</div>
+<div><input type="radio">win32outlook</div>
+<div><input type="radio">outlook.client</div>
+<div><input type="radio">pyoutlook</div>
 
-            </div>
-            
+</div>
             <div id="2">
-            <div class="q-text">Питання 2. Яка команда ініціалізує об'єкт Outlook у Python?
+<div class="q-text">Питання 2. Яка команда ініціалізує об'єкт Outlook у Python?
 </div>
-            <div><input type="radio">outlook = win32com.client.Init("Outlook")
-</div>
-<div><input type="radio">outlook = win32com.client.Outlook()
-</div>
-<div><input type="radio">outlook = win32com.Outlook.Application()
-</div>
+<div><input type="radio">outlook = win32com.client.Init("Outlook")</div>
+<div><input type="radio">outlook = win32com.client.Outlook()</div>
+<div><input type="radio">outlook = win32com.Outlook.Application()</div>
 <div><input type="radio">outlook = win32com.client.Dispatch("Outlook.Application")
  </div>
 
-            </div>
-            
+</div>
             <div id="3">
-            <div class="q-text">Питання 3. Як отримати доступ до простору імен (Namespace) Outlook (наприклад, для доступу до папок)?
+<div class="q-text">Питання 3. Як отримати доступ до простору імен (Namespace) Outlook (наприклад, для доступу до папок)?
 </div>
-            <div><input type="radio">namespace = outlook.Namespace()
-</div>
-<div><input type="radio">namespace = outlook.GetNamespace("Outlook")
-</div>
+<div><input type="radio">namespace = outlook.Namespace()</div>
+<div><input type="radio">namespace = outlook.GetNamespace("Outlook")</div>
 <div><input type="radio">namespace = outlook.GetNamespace("MAPI")
  </div>
-<div><input type="radio">namespace = outlook.Session()
-</div>
+<div><input type="radio">namespace = outlook.Session()</div>
 
-            </div>
-            
+</div>
             <div id="4">
-            <div class="q-text">Питання 4. Яка константа в Outlook позначає стандартну папку "Вхідні" (Inbox)?
+<div class="q-text">Питання 4. Яка константа в Outlook позначає стандартну папку "Вхідні" (Inbox)?
 </div>
-            <div><input type="radio">6
+<div><input type="radio">6
  </div>
-<div><input type="radio">1
-</div>
-<div><input type="radio">2
-</div>
-<div><input type="radio">3
-</div>
+<div><input type="radio">1</div>
+<div><input type="radio">2</div>
+<div><input type="radio">3</div>
 
-            </div>
-            
+</div>
             <div id="5">
-            <div class="q-text">Питання 5. Як отримати доступ до папки "Вхідні" через namespace?
+<div class="q-text">Питання 5. Як отримати доступ до папки "Вхідні" через namespace?
 </div>
-            <div><input type="radio">inbox = namespace.Folders("Inbox")
-</div>
+<div><input type="radio">inbox = namespace.Folders("Inbox")</div>
 <div><input type="radio">inbox = namespace.GetDefaultFolder(6)
  </div>
-<div><input type="radio">inbox = outlook.GetDefaultFolder("Inbox")
-</div>
-<div><input type="radio">inbox = namespace.GetFolder(1)
-</div>
+<div><input type="radio">inbox = outlook.GetDefaultFolder("Inbox")</div>
+<div><input type="radio">inbox = namespace.GetFolder(1)</div>
 
-            </div>
-            
+</div>
             <div id="6">
-            <div class="q-text">Питання 6. Який метод створює новий об'єкт електронного листа?
+<div class="q-text">Питання 6. Який метод створює новий об'єкт електронного листа?
 </div>
-            <div><input type="radio">outlook.CreateItem("Mail")
-</div>
-<div><input type="radio">outlook.NewItem(1)
-</div>
-<div><input type="radio">outlook.CreateEmail()
-</div>
+<div><input type="radio">outlook.CreateItem("Mail")</div>
+<div><input type="radio">outlook.NewItem(1)</div>
+<div><input type="radio">outlook.CreateEmail()</div>
 <div><input type="radio">outlook.CreateItem(0)
  </div>
 
-            </div>
-            
+</div>
             <div id="7">
-            <div class="q-text">Питання 7. Яка властивість об'єкта листа відповідає за тему (Subject)?
+<div class="q-text">Питання 7. Яка властивість об'єкта листа відповідає за тему (Subject)?
 </div>
-            <div><input type="radio">mail.Title
-</div>
-<div><input type="radio">mail.Header
-</div>
-<div><input type="radio">mail.Topic
-</div>
+<div><input type="radio">mail.Title</div>
+<div><input type="radio">mail.Header</div>
+<div><input type="radio">mail.Topic</div>
 <div><input type="radio">mail.Subject
  </div>
 
-            </div>
-            
+</div>
             <div id="8">
-            <div class="q-text">Питання 8. Яка властивість використовується для встановлення отримувача листа?
+<div class="q-text">Питання 8. Яка властивість використовується для встановлення отримувача листа?
 </div>
-            <div><input type="radio">mail.Recipient
-</div>
-<div><input type="radio">mail.SendTo
-</div>
+<div><input type="radio">mail.Recipient</div>
+<div><input type="radio">mail.SendTo</div>
 <div><input type="radio">mail.To
  </div>
-<div><input type="radio">mail.Address
-</div>
+<div><input type="radio">mail.Address</div>
 
-            </div>
-            
+</div>
             <div id="9">
-            <div class="q-text">Питання 9. Який метод відправляє підготовлений лист?
+<div class="q-text">Питання 9. Який метод відправляє підготовлений лист?
 </div>
-            <div><input type="radio">mail.Send()
+<div><input type="radio">mail.Send()
  </div>
-<div><input type="radio">mail.Commit()
-</div>
-<div><input type="radio">mail.Submit()
-</div>
-<div><input type="radio">mail.Dispatch()
-</div>
+<div><input type="radio">mail.Commit()</div>
+<div><input type="radio">mail.Submit()</div>
+<div><input type="radio">mail.Dispatch()</div>
 
-            </div>
-            
+</div>
             <div id="10">
-            <div class="q-text">Питання 10. Як додати вкладення до листа?
+<div class="q-text">Питання 10. Як додати вкладення до листа?
 </div>
-            <div><input type="radio">mail.AddAttachment("шлях_до_файлу")
-</div>
-<div><input type="radio">mail.Files.Add("шлях_до_файлу")
-</div>
+<div><input type="radio">mail.AddAttachment("шлях_до_файлу")</div>
+<div><input type="radio">mail.Files.Add("шлях_до_файлу")</div>
 <div><input type="radio">mail.Attachments.Add("шлях_до_файлу")
  </div>
-<div><input type="radio">mail.Attach("шлях_до_файлу")
-</div>
+<div><input type="radio">mail.Attach("шлях_до_файлу")</div>
 
-            </div>
-            
+</div>
             <div id="11">
-            <div class="q-text">Питання 11. Як отримати доступ до колекції повідомлень у папці "Вхідні"?
+<div class="q-text">Питання 11. Як отримати доступ до колекції повідомлень у папці "Вхідні"?
 </div>
-            <div><input type="radio">inbox.Items
+<div><input type="radio">inbox.Items
  </div>
-<div><input type="radio">inbox.Mails
-</div>
-<div><input type="radio">inbox.Content
-</div>
-<div><input type="radio">inbox.Messages
-</div>
+<div><input type="radio">inbox.Mails</div>
+<div><input type="radio">inbox.Content</div>
+<div><input type="radio">inbox.Messages</div>
 
-            </div>
-            
+</div>
             <div id="12">
-            <div class="q-text">Питання 12. Яка властивість листа містить його текст (Body)?
+<div class="q-text">Питання 12. Яка властивість листа містить його текст (Body)?
 </div>
-            <div><input type="radio">mail.Body
+<div><input type="radio">mail.Body
  </div>
-<div><input type="radio">mail.Message
-</div>
-<div><input type="radio">mail.Text
-</div>
-<div><input type="radio">mail.Content
-</div>
+<div><input type="radio">mail.Message</div>
+<div><input type="radio">mail.Text</div>
+<div><input type="radio">mail.Content</div>
 
-            </div>
-            
+</div>
             <div id="13">
-            <div class="q-text">Питання 13. Який метод дозволяє перетворити тіло листа на HTML-формат?
+<div class="q-text">Питання 13. Який метод дозволяє перетворити тіло листа на HTML-формат?
 </div>
-            <div><input type="radio">mail.Format = "HTML"
-</div>
-<div><input type="radio">mail.SetHTML("...")
-</div>
+<div><input type="radio">mail.Format = "HTML"</div>
+<div><input type="radio">mail.SetHTML("...")</div>
 <div><input type="radio">mail.HTMLBody = "..."
  </div>
-<div><input type="radio">mail.BodyFormat = 2
-</div>
+<div><input type="radio">mail.BodyFormat = 2</div>
 
-            </div>
-            
+</div>
             <div id="14">
-            <div class="q-text">Питання 14. Як відсортувати елементи в папці за часом отримання?
+<div class="q-text">Питання 14. Як відсортувати елементи в папці за часом отримання?
 </div>
-            <div><input type="radio">inbox.Items.Sort("[ReceivedTime]", True)
+<div><input type="radio">inbox.Items.Sort("[ReceivedTime]", True)
  </div>
-<div><input type="radio">inbox.Sort("Received")
-</div>
-<div><input type="radio">inbox.Items.SortByDate()
-</div>
-<div><input type="radio">inbox.Items.OrderBy("Date")
-</div>
+<div><input type="radio">inbox.Sort("Received")</div>
+<div><input type="radio">inbox.Items.SortByDate()</div>
+<div><input type="radio">inbox.Items.OrderBy("Date")</div>
 
-            </div>
-            
+</div>
             <div id="15">
-            <div class="q-text">Питання 15. Як отримати доступ до відправника листа?
+<div class="q-text">Питання 15. Як отримати доступ до відправника листа?
 </div>
-            <div><input type="radio">mail.From
-</div>
+<div><input type="radio">mail.From</div>
 <div><input type="radio">mail.SenderEmailAddress
  </div>
-<div><input type="radio">mail.Originator
-</div>
-<div><input type="radio">mail.Sender
-</div>
+<div><input type="radio">mail.Originator</div>
+<div><input type="radio">mail.Sender</div>
 
-            </div>
-            
+</div>
             <div id="16">
-            <div class="q-text">Питання 16. Що повертає mail.ReceivedTime?
+<div class="q-text">Питання 16. Що повертає mail.ReceivedTime?
 </div>
-            <div><input type="radio">Час отримання листа
+<div><input type="radio">Час отримання листа
  </div>
-<div><input type="radio">Час відправки листа
-</div>
-<div><input type="radio">Час створення чернетки
-</div>
-<div><input type="radio">Поточний час
-</div>
+<div><input type="radio">Час відправки листа</div>
+<div><input type="radio">Час створення чернетки</div>
+<div><input type="radio">Поточний час</div>
 
-            </div>
-            
+</div>
             <div id="17">
-            <div class="q-text">Питання 17. Який метод дозволяє видалити повідомлення?
+<div class="q-text">Питання 17. Який метод дозволяє видалити повідомлення?
 </div>
-            <div><input type="radio">mail.Drop()
-</div>
-<div><input type="radio">mail.Remove()
-</div>
+<div><input type="radio">mail.Drop()</div>
+<div><input type="radio">mail.Remove()</div>
 <div><input type="radio">mail.Delete()
  </div>
-<div><input type="radio">mail.Clear()
-</div>
+<div><input type="radio">mail.Clear()</div>
 
-            </div>
-            
+</div>
             <div id="18">
-            <div class="q-text">Питання 18. Чи можна працювати з календарем Outlook через pywin32?
+<div class="q-text">Питання 18. Чи можна працювати з календарем Outlook через pywin32?
 </div>
-            <div><input type="radio">Так, через GetDefaultFolder(9)
+<div><input type="radio">Так, через GetDefaultFolder(9)
  </div>
-<div><input type="radio">Тільки якщо встановлено окремий плагін
-</div>
-<div><input type="radio">Ні, тільки з поштою
-</div>
-<div><input type="radio">Тільки через веб-інтерфейс
-</div>
+<div><input type="radio">Тільки якщо встановлено окремий плагін</div>
+<div><input type="radio">Ні, тільки з поштою</div>
+<div><input type="radio">Тільки через веб-інтерфейс</div>
 
-            </div>
-            
+</div>
             <div id="19">
-            <div class="q-text">Питання 19. Як відповісти на існуючий лист?
+<div class="q-text">Питання 19. Як відповісти на існуючий лист?
 </div>
-            <div><input type="radio">reply = mail.Respond()
-</div>
+<div><input type="radio">reply = mail.Respond()</div>
 <div><input type="radio">reply = mail.Reply()
  </div>
-<div><input type="radio">reply = mail.Answer()
-</div>
-<div><input type="radio">reply = mail.Back()
-</div>
+<div><input type="radio">reply = mail.Answer()</div>
+<div><input type="radio">reply = mail.Back()</div>
 
-            </div>
-            
+</div>
             <div id="20">
-            <div class="q-text">Питання 20. Чому при роботі з pywin32 Outlook іноді видає попередження про спробу доступу стороннього застосунку?
+<div class="q-text">Питання 20. Чому при роботі з pywin32 Outlook іноді видає попередження про спробу доступу стороннього застосунку?
 </div>
-            <div><input type="radio">Це заходи безпеки Outlook для запобігання вірусам
+<div><input type="radio">Це заходи безпеки Outlook для запобігання вірусам
  </div>
-<div><input type="radio">Потрібно оновити Windows
-</div>
-<div><input type="radio">Це помилка налаштування Python
-</div>
+<div><input type="radio">Потрібно оновити Windows</div>
+<div><input type="radio">Це помилка налаштування Python</div>
 <div><input type="radio">Програма повинна бути підписана цифровим сертифікатом</div>
 
-            </div>
+</div>
             
+</main>
+
 <script>
 const optionBoxes = document.querySelectorAll(
-  'body > div:not(#progress-wrap) > div:not(.q-text)'
+  'main > div:not(#progress-wrap) > div:not(.q-text)'
 );
 
 optionBoxes.forEach(box => {

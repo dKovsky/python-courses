@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 13: Кортежі</title>
+  <title>Тест 1: Основи синтаксису</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -31,12 +31,16 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 680px;
+      /* max-width: 680px; */
       margin: 30px auto;
       padding: 0 15px;
       line-height: 1.5;
     }
-
+    
+    main#content {
+      overflow: visible;
+      display: block;
+    }
     /* Блок прогресу */
     #progress-wrap {
       background: var(--bg-card);
@@ -47,8 +51,11 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      
+      /* FIXES */
       position: sticky;
-      top: 0;
+      top: 10px;       /* Keeps it pinned 10px from the top of its scroll view */
+      z-index: 999;    /* Pulls it safely above the question cards' transition layers */
     }
     #progress-bar-outer {
       flex-grow: 1;
@@ -59,7 +66,7 @@
     }
     #progress-bar-inner {
       background: var(--accent);
-      width: 10%; /* Тимчасово, для візуалізації */
+      width: 0%; /* Тимчасово, для візуалізації */
       height: 100%;
       border-radius: 5px;
     }
@@ -71,7 +78,7 @@
     }
 
     /* Контейнер картки питання (генерація з id="{i}") */
-    body > div:not(#progress-wrap) {
+    body main > div:not(#progress-wrap) {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -81,7 +88,7 @@
     }
 
     /* Текст питання */
-    .q-text {
+    main .q-text {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-head);
@@ -91,7 +98,7 @@
     }
 
     /* Контейнери варіантів відповідей (div навколо input) */
-    body > div:not(#progress-wrap) > div:not(.q-text) {
+    body main > div:not(#progress-wrap) > div:not(.q-text) {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -102,13 +109,13 @@
       cursor: pointer;
       transition: background-color 0.15s, border-color 0.15s;
     }
-    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+    body main > div:not(#progress-wrap) > div:not(.q-text):hover {
       background-color: var(--bg-hover);
       border-color: var(--text-dim);
     }
 
     /* Стилізація радіо-кнопок */
-    input[type="radio"] {
+    main input[type="radio"] {
       appearance: none;
       -webkit-appearance: none;
       background-color: transparent;
@@ -124,7 +131,7 @@
       cursor: pointer;
       transition: border-color 0.15s;
     }
-    input[type="radio"]::before {
+    main input[type="radio"]::before {
       content: "";
       width: 10px;
       height: 10px;
@@ -133,13 +140,13 @@
       transition: 120ms transform ease-in-out;
       background-color: var(--accent);
     }
-    input[type="radio"]:checked::before {
+    main input[type="radio"]:checked::before {
       transform: scale(1);
     }
-    input[type="radio"]:checked {
+    main input[type="radio"]:checked {
       border-color: var(--accent);
     }
-    input[type="radio"]:disabled {
+    main input[type="radio"]:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
@@ -162,297 +169,224 @@
   <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 <body>
-  
+
+
   <nav id="nav-global" class="global"></nav>
+
+
+<main id="content">
 
 <div id="progress-wrap">
   <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
   <span id="progress-label">0 / 20</span>
 </div>
 
-
-            <div id="1">
-            <div class="q-text">Питання 1. Який символ використовується для позначення кортежу?
+<div id="1">
+<div class="q-text">Питання 1. Який символ використовується для позначення кортежу?
 </div>
-            <div><input type="radio">< >
-</div>
+<div><input type="radio">< ></div>
 <div><input type="radio">( )
  </div>
-<div><input type="radio">[ ]
-</div>
-<div><input type="radio">{ }
-</div>
+<div><input type="radio">[ ]</div>
+<div><input type="radio">{ }</div>
 
-            </div>
-            
+</div>
             <div id="2">
-            <div class="q-text">Питання 2. Яка головна відмінність кортежу від списку?
+<div class="q-text">Питання 2. Яка головна відмінність кортежу від списку?
 </div>
-            <div><input type="radio">Кортежі швидші за списки
-</div>
-<div><input type="radio">Списки не можуть містити дублікати
-</div>
-<div><input type="radio">Кортежі можуть містити тільки числа
-</div>
+<div><input type="radio">Кортежі швидші за списки</div>
+<div><input type="radio">Списки не можуть містити дублікати</div>
+<div><input type="radio">Кортежі можуть містити тільки числа</div>
 <div><input type="radio">Кортежі є незмінними (immutable)
  </div>
 
-            </div>
-            
+</div>
             <div id="3">
-            <div class="q-text">Питання 3. Як створити кортеж, що містить лише один елемент?
+<div class="q-text">Питання 3. Як створити кортеж, що містить лише один елемент?
 </div>
-            <div><input type="radio">(1, )
+<div><input type="radio">(1, )
  </div>
-<div><input type="radio">tuple(1)
-</div>
-<div><input type="radio">{1}
-</div>
-<div><input type="radio">(1)
-</div>
+<div><input type="radio">tuple(1)</div>
+<div><input type="radio">{1}</div>
+<div><input type="radio">(1)</div>
 
-            </div>
-            
+</div>
             <div id="4">
-            <div class="q-text">Питання 4. Яка функція перетворює послідовність (наприклад, список) на кортеж?
+<div class="q-text">Питання 4. Яка функція перетворює послідовність (наприклад, список) на кортеж?
 </div>
-            <div><input type="radio">list_to_tuple()
-</div>
-<div><input type="radio">convert()
-</div>
-<div><input type="radio">( )
-</div>
+<div><input type="radio">list_to_tuple()</div>
+<div><input type="radio">convert()</div>
+<div><input type="radio">( )</div>
 <div><input type="radio">tuple()
  </div>
 
-            </div>
-            
+</div>
             <div id="5">
-            <div class="q-text">Питання 5. Чи можна отримати доступ до елемента кортежу за індексом?
+<div class="q-text">Питання 5. Чи можна отримати доступ до елемента кортежу за індексом?
 </div>
-            <div><input type="radio">Так, тільки через метод get()
-</div>
-<div><input type="radio">Так, за допомогою круглих дужок ( )
-</div>
+<div><input type="radio">Так, тільки через метод get()</div>
+<div><input type="radio">Так, за допомогою круглих дужок ( )</div>
 <div><input type="radio">Так, за допомогою квадратних дужок [ ]
  </div>
-<div><input type="radio">Ні, елементи кортежу недоступні
-</div>
+<div><input type="radio">Ні, елементи кортежу недоступні</div>
 
-            </div>
-            
+</div>
             <div id="6">
-            <div class="q-text">Питання 6. Що станеться, якщо спробувати змінити елемент кортежу (наприклад, t[0] = 5)?
+<div class="q-text">Питання 6. Що станеться, якщо спробувати змінити елемент кортежу (наприклад, t[0] = 5)?
 </div>
-            <div><input type="radio">Кортеж автоматично перетвориться на список
-</div>
-<div><input type="radio">Значення не зміниться, але помилки не буде
-</div>
+<div><input type="radio">Кортеж автоматично перетвориться на список</div>
+<div><input type="radio">Значення не зміниться, але помилки не буде</div>
 <div><input type="radio">Виникне помилка TypeError
  </div>
-<div><input type="radio">Python дозволить зміну
-</div>
+<div><input type="radio">Python дозволить зміну</div>
 
-            </div>
-            
+</div>
             <div id="7">
-            <div class="q-text">Питання 7. Який метод дозволяє дізнатися кількість входжень певного елемента в кортеж?
+<div class="q-text">Питання 7. Який метод дозволяє дізнатися кількість входжень певного елемента в кортеж?
 </div>
-            <div><input type="radio">len()
-</div>
+<div><input type="radio">len()</div>
 <div><input type="radio">count()
  </div>
-<div><input type="radio">index()
-</div>
-<div><input type="radio">find()
-</div>
+<div><input type="radio">index()</div>
+<div><input type="radio">find()</div>
 
-            </div>
-            
+</div>
             <div id="8">
-            <div class="q-text">Питання 8. Який метод дозволяє дізнатися індекс першого входження елемента в кортеж?
+<div class="q-text">Питання 8. Який метод дозволяє дізнатися індекс першого входження елемента в кортеж?
 </div>
-            <div><input type="radio">index()
+<div><input type="radio">index()
  </div>
-<div><input type="radio">find()
-</div>
-<div><input type="radio">search()
-</div>
-<div><input type="radio">count()
-</div>
+<div><input type="radio">find()</div>
+<div><input type="radio">search()</div>
+<div><input type="radio">count()</div>
 
-            </div>
-            
+</div>
             <div id="9">
-            <div class="q-text">Питання 9. Чи можна зберігати кортежі всередині списків?
+<div class="q-text">Питання 9. Чи можна зберігати кортежі всередині списків?
 </div>
-            <div><input type="radio">Ні
-</div>
-<div><input type="radio">Тільки якщо список містить один елемент
-</div>
+<div><input type="radio">Ні</div>
+<div><input type="radio">Тільки якщо список містить один елемент</div>
 <div><input type="radio">Так
  </div>
-<div><input type="radio">Тільки якщо кортеж порожній
-</div>
+<div><input type="radio">Тільки якщо кортеж порожній</div>
 
-            </div>
-            
+</div>
             <div id="10">
-            <div class="q-text">Питання 10. Як називається процес призначення елементів кортежу окремим змінним (наприклад, a, b = (1, 2))?
+<div class="q-text">Питання 10. Як називається процес призначення елементів кортежу окремим змінним (наприклад, a, b = (1, 2))?
 </div>
-            <div><input type="radio">Розбиття (splitting)
-</div>
+<div><input type="radio">Розбиття (splitting)</div>
 <div><input type="radio">Розпакування (unpacking)
  </div>
-<div><input type="radio">Присвоєння (assigning)
-</div>
-<div><input type="radio">Розгортання (expanding)
-</div>
+<div><input type="radio">Присвоєння (assigning)</div>
+<div><input type="radio">Розгортання (expanding)</div>
 
-            </div>
-            
+</div>
             <div id="11">
-            <div class="q-text">Питання 11. Що виведе len((1, 2, 3, 3))?
+<div class="q-text">Питання 11. Що виведе len((1, 2, 3, 3))?
 </div>
-            <div><input type="radio">4
+<div><input type="radio">4
  </div>
-<div><input type="radio">3
-</div>
-<div><input type="radio">5
-</div>
-<div><input type="radio">Помилка
-</div>
+<div><input type="radio">3</div>
+<div><input type="radio">5</div>
+<div><input type="radio">Помилка</div>
 
-            </div>
-            
+</div>
             <div id="12">
-            <div class="q-text">Питання 12. Чи можна змінити значення елемента кортежу, якщо цей елемент є списком?
+<div class="q-text">Питання 12. Чи можна змінити значення елемента кортежу, якщо цей елемент є списком?
 </div>
-            <div><input type="radio">Ні, це спричинить помилку AttributeError
-</div>
-<div><input type="radio">Ні, кортеж повністю забороняє будь-які зміни
-</div>
+<div><input type="radio">Ні, це спричинить помилку AttributeError</div>
+<div><input type="radio">Ні, кортеж повністю забороняє будь-які зміни</div>
 <div><input type="radio">Так, внутрішній список залишається змінним
  </div>
-<div><input type="radio">Так, але тільки якщо кортеж довжиною 1
-</div>
+<div><input type="radio">Так, але тільки якщо кортеж довжиною 1</div>
 
-            </div>
-            
+</div>
             <div id="13">
-            <div class="q-text">Питання 13. Який оператор використовується для об'єднання (конкатенації) двох кортежів?
+<div class="q-text">Питання 13. Який оператор використовується для об'єднання (конкатенації) двох кортежів?
 </div>
-            <div><input type="radio">&
-</div>
-<div><input type="radio">|
-</div>
+<div><input type="radio">&</div>
+<div><input type="radio">|</div>
 <div><input type="radio">+
  </div>
-<div><input type="radio">*
-</div>
+<div><input type="radio">*</div>
 
-            </div>
-            
+</div>
             <div id="14">
-            <div class="q-text">Питання 14. Що поверне оператор in для кортежу?
+<div class="q-text">Питання 14. Що поверне оператор in для кортежу?
 </div>
-            <div><input type="radio">Кількість елементів
-</div>
+<div><input type="radio">Кількість елементів</div>
 <div><input type="radio">Перевірку наявності елемента в кортежі
  </div>
-<div><input type="radio">Позицію елемента
-</div>
-<div><input type="radio">Тип даних елементів
-</div>
+<div><input type="radio">Позицію елемента</div>
+<div><input type="radio">Тип даних елементів</div>
 
-            </div>
-            
+</div>
             <div id="15">
-            <div class="q-text">Питання 15. Чи можна використовувати кортеж як ключ у словнику (dict)?
+<div class="q-text">Питання 15. Чи можна використовувати кортеж як ключ у словнику (dict)?
 </div>
-            <div><input type="radio">Так, бо кортежі є незмінними
+<div><input type="radio">Так, бо кортежі є незмінними
  </div>
-<div><input type="radio">Ні, тільки якщо кортеж містить списки
-</div>
-<div><input type="radio">Тільки якщо кортеж містить числа
-</div>
-<div><input type="radio">Ні, ключами можуть бути тільки рядки
-</div>
+<div><input type="radio">Ні, тільки якщо кортеж містить списки</div>
+<div><input type="radio">Тільки якщо кортеж містить числа</div>
+<div><input type="radio">Ні, ключами можуть бути тільки рядки</div>
 
-            </div>
-            
+</div>
             <div id="16">
-            <div class="q-text">Питання 16. Як перетворити кортеж у список?
+<div class="q-text">Питання 16. Як перетворити кортеж у список?
 </div>
-            <div><input type="radio">tuple_to_list()
-</div>
-<div><input type="radio">[ ]
-</div>
-<div><input type="radio">convert_list()
-</div>
+<div><input type="radio">tuple_to_list()</div>
+<div><input type="radio">[ ]</div>
+<div><input type="radio">convert_list()</div>
 <div><input type="radio">list()
  </div>
 
-            </div>
-            
+</div>
             <div id="17">
-            <div class="q-text">Питання 17. Що станеться при спробі використати метод append() для кортежу?
+<div class="q-text">Питання 17. Що станеться при спробі використати метод append() для кортежу?
 </div>
-            <div><input type="radio">Елемент додасться в кінець
-</div>
-<div><input type="radio">Кортеж розшириться
-</div>
-<div><input type="radio">Нічого не станеться
-</div>
+<div><input type="radio">Елемент додасться в кінець</div>
+<div><input type="radio">Кортеж розшириться</div>
+<div><input type="radio">Нічого не станеться</div>
 <div><input type="radio">Виникне помилка AttributeError
  </div>
 
-            </div>
-            
+</div>
             <div id="18">
-            <div class="q-text">Питання 18. Яким буде результат операції (1, 2) * 3?
+<div class="q-text">Питання 18. Яким буде результат операції (1, 2) * 3?
 </div>
-            <div><input type="radio">(1, 2, 1, 2, 1, 2)
+<div><input type="radio">(1, 2, 1, 2, 1, 2)
  </div>
-<div><input type="radio">Помилка
-</div>
-<div><input type="radio">(1, 1, 1, 2, 2, 2)
-</div>
-<div><input type="radio">(3, 6)
-</div>
+<div><input type="radio">Помилка</div>
+<div><input type="radio">(1, 1, 1, 2, 2, 2)</div>
+<div><input type="radio">(3, 6)</div>
 
-            </div>
-            
+</div>
             <div id="19">
-            <div class="q-text">Питання 19. Що таке іменований кортеж (namedtuple) із модуля collections?
+<div class="q-text">Питання 19. Що таке іменований кортеж (namedtuple) із модуля collections?
 </div>
-            <div><input type="radio">Тип даних для зберігання констант
-</div>
-<div><input type="radio">Звичайний кортеж, що містить тільки рядки
-</div>
-<div><input type="radio">Кортеж, який обов'язково має назву змінної
-</div>
+<div><input type="radio">Тип даних для зберігання констант</div>
+<div><input type="radio">Звичайний кортеж, що містить тільки рядки</div>
+<div><input type="radio">Кортеж, який обов'язково має назву змінної</div>
 <div><input type="radio">Кортеж, де до елементів можна звертатися за іменами (полями)
  </div>
 
-            </div>
-            
+</div>
             <div id="20">
-            <div class="q-text">Питання 20. Чи можна видалити окремий елемент кортежу?
+<div class="q-text">Питання 20. Чи можна видалити окремий елемент кортежу?
 </div>
-            <div><input type="radio">Так, за допомогою del t[0]
-</div>
-<div><input type="radio">Так, за допомогою методу pop()
-</div>
+<div><input type="radio">Так, за допомогою del t[0]</div>
+<div><input type="radio">Так, за допомогою методу pop()</div>
 <div><input type="radio">Так, тільки якщо в кортежі більше 5 елементів</div>
 <div><input type="radio">Ні, кортеж неможливо змінити
  </div>
 
-            </div>
+</div>
             
+</main>
+
 <script>
 const optionBoxes = document.querySelectorAll(
-  'body > div:not(#progress-wrap) > div:not(.q-text)'
+  'main > div:not(#progress-wrap) > div:not(.q-text)'
 );
 
 optionBoxes.forEach(box => {

@@ -31,12 +31,16 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 680px;
+      /* max-width: 680px; */
       margin: 30px auto;
       padding: 0 15px;
       line-height: 1.5;
     }
-
+    
+    main#content {
+      overflow: visible;
+      display: block;
+    }
     /* Блок прогресу */
     #progress-wrap {
       background: var(--bg-card);
@@ -47,8 +51,11 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      
+      /* FIXES */
       position: sticky;
-      top: 0;
+      top: 10px;       /* Keeps it pinned 10px from the top of its scroll view */
+      z-index: 999;    /* Pulls it safely above the question cards' transition layers */
     }
     #progress-bar-outer {
       flex-grow: 1;
@@ -59,7 +66,7 @@
     }
     #progress-bar-inner {
       background: var(--accent);
-      width: 10%; /* Тимчасово, для візуалізації */
+      width: 0%; /* Тимчасово, для візуалізації */
       height: 100%;
       border-radius: 5px;
     }
@@ -71,7 +78,7 @@
     }
 
     /* Контейнер картки питання (генерація з id="{i}") */
-    body > div:not(#progress-wrap) {
+    body main > div:not(#progress-wrap) {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -81,7 +88,7 @@
     }
 
     /* Текст питання */
-    .q-text {
+    main .q-text {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-head);
@@ -91,7 +98,7 @@
     }
 
     /* Контейнери варіантів відповідей (div навколо input) */
-    body > div:not(#progress-wrap) > div:not(.q-text) {
+    body main > div:not(#progress-wrap) > div:not(.q-text) {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -102,13 +109,13 @@
       cursor: pointer;
       transition: background-color 0.15s, border-color 0.15s;
     }
-    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+    body main > div:not(#progress-wrap) > div:not(.q-text):hover {
       background-color: var(--bg-hover);
       border-color: var(--text-dim);
     }
 
     /* Стилізація радіо-кнопок */
-    input[type="radio"] {
+    main input[type="radio"] {
       appearance: none;
       -webkit-appearance: none;
       background-color: transparent;
@@ -124,7 +131,7 @@
       cursor: pointer;
       transition: border-color 0.15s;
     }
-    input[type="radio"]::before {
+    main input[type="radio"]::before {
       content: "";
       width: 10px;
       height: 10px;
@@ -133,13 +140,13 @@
       transition: 120ms transform ease-in-out;
       background-color: var(--accent);
     }
-    input[type="radio"]:checked::before {
+    main input[type="radio"]:checked::before {
       transform: scale(1);
     }
-    input[type="radio"]:checked {
+    main input[type="radio"]:checked {
       border-color: var(--accent);
     }
-    input[type="radio"]:disabled {
+    main input[type="radio"]:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
@@ -162,297 +169,224 @@
   <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 <body>
-  
+
+
   <nav id="nav-global" class="global"></nav>
+
+
+<main id="content">
 
 <div id="progress-wrap">
   <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
   <span id="progress-label">0 / 20</span>
 </div>
 
-
-            <div id="1">
-            <div class="q-text">Питання 1. Яка функція в Python використовується для виведення даних на екран?
+<div id="1">
+<div class="q-text">Питання 1. Яка функція в Python використовується для виведення даних на екран?
 </div>
-            <div><input type="radio">show()
-</div>
+<div><input type="radio">show()</div>
 <div><input type="radio">print()
  </div>
-<div><input type="radio">input()
-</div>
-<div><input type="radio">display()
-</div>
+<div><input type="radio">input()</div>
+<div><input type="radio">display()</div>
 
-            </div>
-            
+</div>
             <div id="2">
-            <div class="q-text">Питання 2. Яка функція використовується для зчитування даних, введених користувачем з клавіатури?
+<div class="q-text">Питання 2. Яка функція використовується для зчитування даних, введених користувачем з клавіатури?
 </div>
-            <div><input type="radio">read()
-</div>
-<div><input type="radio">print()
-</div>
-<div><input type="radio">get_input()
-</div>
+<div><input type="radio">read()</div>
+<div><input type="radio">print()</div>
+<div><input type="radio">get_input()</div>
 <div><input type="radio">input()
  </div>
 
-            </div>
-            
+</div>
             <div id="3">
-            <div class="q-text">Питання 3. Який тип даних у Python використовується для представлення цілих чисел?
+<div class="q-text">Питання 3. Який тип даних у Python використовується для представлення цілих чисел?
 </div>
-            <div><input type="radio">float
-</div>
+<div><input type="radio">float</div>
 <div><input type="radio">int
  </div>
-<div><input type="radio">bool
-</div>
-<div><input type="radio">str
-</div>
+<div><input type="radio">bool</div>
+<div><input type="radio">str</div>
 
-            </div>
-            
+</div>
             <div id="4">
-            <div class="q-text">Питання 4. Який тип даних використовується для представлення чисел з плаваючою комою (десяткових дробів)?
+<div class="q-text">Питання 4. Який тип даних використовується для представлення чисел з плаваючою комою (десяткових дробів)?
 </div>
-            <div><input type="radio">float
+<div><input type="radio">float
  </div>
-<div><input type="radio">decimal
-</div>
-<div><input type="radio">int
-</div>
-<div><input type="radio">double
-</div>
+<div><input type="radio">decimal</div>
+<div><input type="radio">int</div>
+<div><input type="radio">double</div>
 
-            </div>
-            
+</div>
             <div id="5">
-            <div class="q-text">Питання 5. Як у Python позначається текстовий рядок?
+<div class="q-text">Питання 5. Як у Python позначається текстовий рядок?
 </div>
-            <div><input type="radio">[текст]
-</div>
-<div><input type="radio">{текст}
-</div>
+<div><input type="radio">[текст]</div>
+<div><input type="radio">{текст}</div>
 <div><input type="radio">"текст" або 'текст'
  </div>
-<div><input type="radio">(текст)
-</div>
+<div><input type="radio">(текст)</div>
 
-            </div>
-            
+</div>
             <div id="6">
-            <div class="q-text">Питання 6. Який результат виконання коду print(5 + 2)?
+<div class="q-text">Питання 6. Який результат виконання коду print(5 + 2)?
 </div>
-            <div><input type="radio">"5+2"
-</div>
+<div><input type="radio">"5+2"</div>
 <div><input type="radio">7
  </div>
-<div><input type="radio">5.2
-</div>
-<div><input type="radio">52
-</div>
+<div><input type="radio">5.2</div>
+<div><input type="radio">52</div>
 
-            </div>
-            
+</div>
             <div id="7">
-            <div class="q-text">Питання 7. Який результат виконання коду print("5" + "2")?
+<div class="q-text">Питання 7. Який результат виконання коду print("5" + "2")?
 </div>
-            <div><input type="radio">52
-</div>
-<div><input type="radio">7
-</div>
+<div><input type="radio">52</div>
+<div><input type="radio">7</div>
 <div><input type="radio">"52"
  </div>
-<div><input type="radio">Помилка
-</div>
+<div><input type="radio">Помилка</div>
 
-            </div>
-            
+</div>
             <div id="8">
-            <div class="q-text">Питання 8. Яка функція перетворює рядок у ціле число?
+<div class="q-text">Питання 8. Яка функція перетворює рядок у ціле число?
 </div>
-            <div><input type="radio">int()
+<div><input type="radio">int()
  </div>
-<div><input type="radio">float()
-</div>
-<div><input type="radio">convert()
-</div>
-<div><input type="radio">str()
-</div>
+<div><input type="radio">float()</div>
+<div><input type="radio">convert()</div>
+<div><input type="radio">str()</div>
 
-            </div>
-            
+</div>
             <div id="9">
-            <div class="q-text">Питання 9. Яка функція перетворює будь-який тип даних у рядок?
+<div class="q-text">Питання 9. Яка функція перетворює будь-який тип даних у рядок?
 </div>
-            <div><input type="radio">string()
-</div>
-<div><input type="radio">to_str()
-</div>
+<div><input type="radio">string()</div>
+<div><input type="radio">to_str()</div>
 <div><input type="radio">str()
  </div>
-<div><input type="radio">cast()
-</div>
+<div><input type="radio">cast()</div>
 
-            </div>
-            
+</div>
             <div id="10">
-            <div class="q-text">Питання 10. Який оператор використовується для піднесення числа до степеня?
+<div class="q-text">Питання 10. Який оператор використовується для піднесення числа до степеня?
 </div>
-            <div><input type="radio">*
-</div>
+<div><input type="radio">*</div>
 <div><input type="radio">**
  </div>
-<div><input type="radio">^
-</div>
-<div><input type="radio">pow
-</div>
+<div><input type="radio">^</div>
+<div><input type="radio">pow</div>
 
-            </div>
-            
+</div>
             <div id="11">
-            <div class="q-text">Питання 11. Який символ використовується для написання коментарів у коді Python?
+<div class="q-text">Питання 11. Який символ використовується для написання коментарів у коді Python?
 </div>
-            <div><input type="radio">//
-</div>
+<div><input type="radio">//</div>
 <div><input type="radio">#
  </div>
-<div><input type="radio">/* */
-</div>
-<div><input type="radio">--
-</div>
+<div><input type="radio">/* */</div>
+<div><input type="radio">--</div>
 
-            </div>
-            
+</div>
             <div id="12">
-            <div class="q-text">Питання 12. Який оператор повертає остачу від ділення?
+<div class="q-text">Питання 12. Який оператор повертає остачу від ділення?
 </div>
-            <div><input type="radio">/
-</div>
-<div><input type="radio">//
-</div>
+<div><input type="radio">/</div>
+<div><input type="radio">//</div>
 <div><input type="radio">%
  </div>
-<div><input type="radio">\
-</div>
+<div><input type="radio">\</div>
 
-            </div>
-            
+</div>
             <div id="13">
-            <div class="q-text">Питання 13. Що виведе функція print(10 // 3)?
+<div class="q-text">Питання 13. Що виведе функція print(10 // 3)?
 </div>
-            <div><input type="radio">3.33
-</div>
+<div><input type="radio">3.33</div>
 <div><input type="radio">3
  </div>
-<div><input type="radio">4
-</div>
-<div><input type="radio">1
-</div>
+<div><input type="radio">4</div>
+<div><input type="radio">1</div>
 
-            </div>
-            
+</div>
             <div id="14">
-            <div class="q-text">Питання 14. Як правильно оголосити змінну та присвоїти їй значення?
+<div class="q-text">Питання 14. Як правильно оголосити змінну та присвоїти їй значення?
 </div>
-            <div><input type="radio">int x = 10
-</div>
-<div><input type="radio">x := 10
-</div>
-<div><input type="radio">var x = 10
-</div>
+<div><input type="radio">int x = 10</div>
+<div><input type="radio">x := 10</div>
+<div><input type="radio">var x = 10</div>
 <div><input type="radio">x = 10
  </div>
 
-            </div>
-            
+</div>
             <div id="15">
-            <div class="q-text">Питання 15. Яка функція дозволяє дізнатися тип об'єкта?
+<div class="q-text">Питання 15. Яка функція дозволяє дізнатися тип об'єкта?
 </div>
-            <div><input type="radio">check()
-</div>
+<div><input type="radio">check()</div>
 <div><input type="radio">type()
  </div>
-<div><input type="radio">class()
-</div>
-<div><input type="radio">typeof()
-</div>
+<div><input type="radio">class()</div>
+<div><input type="radio">typeof()</div>
 
-            </div>
-            
+</div>
             <div id="16">
-            <div class="q-text">Питання 16. Як об'єднати (конкатенувати) два рядки "Hello" та "World" з пробілом між ними?
+<div class="q-text">Питання 16. Як об'єднати (конкатенувати) два рядки "Hello" та "World" з пробілом між ними?
 </div>
-            <div><input type="radio">"Hello" + " " + "World"
+<div><input type="radio">"Hello" + " " + "World"
  </div>
-<div><input type="radio">"Hello", "World"
-</div>
-<div><input type="radio">"Hello".join("World")
-</div>
-<div><input type="radio">"Hello" & "World"
-</div>
+<div><input type="radio">"Hello", "World"</div>
+<div><input type="radio">"Hello".join("World")</div>
+<div><input type="radio">"Hello" & "World"</div>
 
-            </div>
-            
+</div>
             <div id="17">
-            <div class="q-text">Питання 17. Що станеться, якщо спробувати виконати print("5" + 2)?
+<div class="q-text">Питання 17. Що станеться, якщо спробувати виконати print("5" + 2)?
 </div>
-            <div><input type="radio">7
-</div>
+<div><input type="radio">7</div>
 <div><input type="radio">Помилка (TypeError)
  </div>
-<div><input type="radio">5
-</div>
-<div><input type="radio">"52"
-</div>
+<div><input type="radio">5</div>
+<div><input type="radio">"52"</div>
 
-            </div>
-            
+</div>
             <div id="18">
-            <div class="q-text">Питання 18. Який символ використовується для множення?
+<div class="q-text">Питання 18. Який символ використовується для множення?
 </div>
-            <div><input type="radio">
-</div>
-<div><input type="radio">&
-</div>
-<div><input type="radio">x
-</div>
+<div><input type="radio"></div>
+<div><input type="radio">&</div>
+<div><input type="radio">x</div>
 <div><input type="radio">*
  </div>
 
-            </div>
-            
+</div>
             <div id="19">
-            <div class="q-text">Питання 19. Яка функція повертає довжину рядка?
+<div class="q-text">Питання 19. Яка функція повертає довжину рядка?
 </div>
-            <div><input type="radio">size()
-</div>
+<div><input type="radio">size()</div>
 <div><input type="radio">len()
  </div>
-<div><input type="radio">length()
-</div>
-<div><input type="radio">count()
-</div>
+<div><input type="radio">length()</div>
+<div><input type="radio">count()</div>
 
-            </div>
-            
+</div>
             <div id="20">
-            <div class="q-text">Питання 20. Як називається метод для видалення зайвих пробілів на початку та в кінці рядка?
+<div class="q-text">Питання 20. Як називається метод для видалення зайвих пробілів на початку та в кінці рядка?
 </div>
-            <div><input type="radio">cut()</div>
-<div><input type="radio">trim()
-</div>
-<div><input type="radio">clean()
-</div>
+<div><input type="radio">cut()</div>
+<div><input type="radio">trim()</div>
+<div><input type="radio">clean()</div>
 <div><input type="radio">strip()
  </div>
 
-            </div>
+</div>
             
+</main>
+
 <script>
 const optionBoxes = document.querySelectorAll(
-  'body > div:not(#progress-wrap) > div:not(.q-text)'
+  'main > div:not(#progress-wrap) > div:not(.q-text)'
 );
 
 optionBoxes.forEach(box => {

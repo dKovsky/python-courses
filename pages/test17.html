@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 17: Робота з бібліотекою openpyxl для роботи з Excel</title>
+  <title>Тест 1: Основи синтаксису</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -31,12 +31,16 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 680px;
+      /* max-width: 680px; */
       margin: 30px auto;
       padding: 0 15px;
       line-height: 1.5;
     }
-
+    
+    main#content {
+      overflow: visible;
+      display: block;
+    }
     /* Блок прогресу */
     #progress-wrap {
       background: var(--bg-card);
@@ -47,8 +51,11 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      
+      /* FIXES */
       position: sticky;
-      top: 0;
+      top: 10px;       /* Keeps it pinned 10px from the top of its scroll view */
+      z-index: 999;    /* Pulls it safely above the question cards' transition layers */
     }
     #progress-bar-outer {
       flex-grow: 1;
@@ -59,7 +66,7 @@
     }
     #progress-bar-inner {
       background: var(--accent);
-      width: 10%; /* Тимчасово, для візуалізації */
+      width: 0%; /* Тимчасово, для візуалізації */
       height: 100%;
       border-radius: 5px;
     }
@@ -71,7 +78,7 @@
     }
 
     /* Контейнер картки питання (генерація з id="{i}") */
-    body > div:not(#progress-wrap) {
+    body main > div:not(#progress-wrap) {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -81,7 +88,7 @@
     }
 
     /* Текст питання */
-    .q-text {
+    main .q-text {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-head);
@@ -91,7 +98,7 @@
     }
 
     /* Контейнери варіантів відповідей (div навколо input) */
-    body > div:not(#progress-wrap) > div:not(.q-text) {
+    body main > div:not(#progress-wrap) > div:not(.q-text) {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -102,13 +109,13 @@
       cursor: pointer;
       transition: background-color 0.15s, border-color 0.15s;
     }
-    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+    body main > div:not(#progress-wrap) > div:not(.q-text):hover {
       background-color: var(--bg-hover);
       border-color: var(--text-dim);
     }
 
     /* Стилізація радіо-кнопок */
-    input[type="radio"] {
+    main input[type="radio"] {
       appearance: none;
       -webkit-appearance: none;
       background-color: transparent;
@@ -124,7 +131,7 @@
       cursor: pointer;
       transition: border-color 0.15s;
     }
-    input[type="radio"]::before {
+    main input[type="radio"]::before {
       content: "";
       width: 10px;
       height: 10px;
@@ -133,13 +140,13 @@
       transition: 120ms transform ease-in-out;
       background-color: var(--accent);
     }
-    input[type="radio"]:checked::before {
+    main input[type="radio"]:checked::before {
       transform: scale(1);
     }
-    input[type="radio"]:checked {
+    main input[type="radio"]:checked {
       border-color: var(--accent);
     }
-    input[type="radio"]:disabled {
+    main input[type="radio"]:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
@@ -162,297 +169,224 @@
   <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 <body>
-  
+
+
   <nav id="nav-global" class="global"></nav>
+
+
+<main id="content">
 
 <div id="progress-wrap">
   <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
   <span id="progress-label">0 / 20</span>
 </div>
 
-
-            <div id="1">
-            <div class="q-text">Питання 1. Який клас використовується для створення або завантаження Excel-книги в openpyxl?
+<div id="1">
+<div class="q-text">Питання 1. Який клас використовується для створення або завантаження Excel-книги в openpyxl?
 </div>
-            <div><input type="radio">Book
-</div>
+<div><input type="radio">Book</div>
 <div><input type="radio">Workbook
  </div>
-<div><input type="radio">ExcelFile
-</div>
-<div><input type="radio">File
-</div>
+<div><input type="radio">ExcelFile</div>
+<div><input type="radio">File</div>
 
-            </div>
-            
+</div>
             <div id="2">
-            <div class="q-text">Питання 2. Який метод використовується для завантаження існуючого файлу .xlsx?
+<div class="q-text">Питання 2. Який метод використовується для завантаження існуючого файлу .xlsx?
 </div>
-            <div><input type="radio">get_workbook()
-</div>
+<div><input type="radio">get_workbook()</div>
 <div><input type="radio">load_workbook()
  </div>
-<div><input type="radio">read_workbook()
-</div>
-<div><input type="radio">open_workbook()
-</div>
+<div><input type="radio">read_workbook()</div>
+<div><input type="radio">open_workbook()</div>
 
-            </div>
-            
+</div>
             <div id="3">
-            <div class="q-text">Питання 3. Як отримати доступ до активного (поточного) аркуша в книзі?
+<div class="q-text">Питання 3. Як отримати доступ до активного (поточного) аркуша в книзі?
 </div>
-            <div><input type="radio">wb.active
+<div><input type="radio">wb.active
  </div>
-<div><input type="radio">wb.current_sheet
-</div>
-<div><input type="radio">wb.get_active_sheet()
-</div>
-<div><input type="radio">wb.sheet_active
-</div>
+<div><input type="radio">wb.current_sheet</div>
+<div><input type="radio">wb.get_active_sheet()</div>
+<div><input type="radio">wb.sheet_active</div>
 
-            </div>
-            
+</div>
             <div id="4">
-            <div class="q-text">Питання 4. Яка властивість об'єкта комірки повертає її значення?
+<div class="q-text">Питання 4. Яка властивість об'єкта комірки повертає її значення?
 </div>
-            <div><input type="radio">cell.value
+<div><input type="radio">cell.value
  </div>
-<div><input type="radio">cell.content
-</div>
-<div><input type="radio">cell.data
-</div>
-<div><input type="radio">cell.get()
-</div>
+<div><input type="radio">cell.content</div>
+<div><input type="radio">cell.data</div>
+<div><input type="radio">cell.get()</div>
 
-            </div>
-            
+</div>
             <div id="5">
-            <div class="q-text">Питання 5. Як звернутися до комірки за її координатами (наприклад, 'A1')?
+<div class="q-text">Питання 5. Як звернутися до комірки за її координатами (наприклад, 'A1')?
 </div>
-            <div><input type="radio">ws.select('A1')
-</div>
+<div><input type="radio">ws.select('A1')</div>
 <div><input type="radio">ws['A1']
  </div>
-<div><input type="radio">ws.cell(row=1, column=1)
-</div>
-<div><input type="radio">ws.get('A1')
-</div>
+<div><input type="radio">ws.cell(row=1, column=1)</div>
+<div><input type="radio">ws.get('A1')</div>
 
-            </div>
-            
+</div>
             <div id="6">
-            <div class="q-text">Питання 6. Яка властивість об'єкта комірки повертає її назву (наприклад, 'A1')?
+<div class="q-text">Питання 6. Яка властивість об'єкта комірки повертає її назву (наприклад, 'A1')?
 </div>
-            <div><input type="radio">cell.label
-</div>
-<div><input type="radio">cell.address
-</div>
-<div><input type="radio">cell.name
-</div>
+<div><input type="radio">cell.label</div>
+<div><input type="radio">cell.address</div>
+<div><input type="radio">cell.name</div>
 <div><input type="radio">cell.coordinate
  </div>
 
-            </div>
-            
+</div>
             <div id="7">
-            <div class="q-text">Питання 7. Який метод використовується для збереження змін у файлі?
+<div class="q-text">Питання 7. Який метод використовується для збереження змін у файлі?
 </div>
-            <div><input type="radio">wb.close('filename.xlsx')
-</div>
-<div><input type="radio">wb.write('filename.xlsx')
-</div>
+<div><input type="radio">wb.close('filename.xlsx')</div>
+<div><input type="radio">wb.write('filename.xlsx')</div>
 <div><input type="radio">wb.save('filename.xlsx')
  </div>
-<div><input type="radio">wb.export('filename.xlsx')
-</div>
+<div><input type="radio">wb.export('filename.xlsx')</div>
 
-            </div>
-            
+</div>
             <div id="8">
-            <div class="q-text">Питання 8. Як створити новий аркуш у книзі?
+<div class="q-text">Питання 8. Як створити новий аркуш у книзі?
 </div>
-            <div><input type="radio">wb.create_sheet()
+<div><input type="radio">wb.create_sheet()
  </div>
-<div><input type="radio">wb.insert_sheet()
-</div>
-<div><input type="radio">wb.add_sheet()
-</div>
-<div><input type="radio">wb.new_sheet()
-</div>
+<div><input type="radio">wb.insert_sheet()</div>
+<div><input type="radio">wb.add_sheet()</div>
+<div><input type="radio">wb.new_sheet()</div>
 
-            </div>
-            
+</div>
             <div id="9">
-            <div class="q-text">Питання 9. Яка властивість дозволяє змінити назву аркуша?
+<div class="q-text">Питання 9. Яка властивість дозволяє змінити назву аркуша?
 </div>
-            <div><input type="radio">ws.name
-</div>
-<div><input type="radio">ws.label
-</div>
+<div><input type="radio">ws.name</div>
+<div><input type="radio">ws.label</div>
 <div><input type="radio">ws.title
  </div>
-<div><input type="radio">ws.rename
-</div>
+<div><input type="radio">ws.rename</div>
 
-            </div>
-            
+</div>
             <div id="10">
-            <div class="q-text">Питання 10. Як отримати значення з комірки за допомогою індексів рядка та стовпця (починаючи з 1)?
+<div class="q-text">Питання 10. Як отримати значення з комірки за допомогою індексів рядка та стовпця (починаючи з 1)?
 </div>
-            <div><input type="radio">ws['1,1'].value
-</div>
+<div><input type="radio">ws['1,1'].value</div>
 <div><input type="radio">ws.cell(row=1, column=1).value
  </div>
-<div><input type="radio">ws.cell(0, 0).value
-</div>
-<div><input type="radio">ws.get_cell(1, 1).value
-</div>
+<div><input type="radio">ws.cell(0, 0).value</div>
+<div><input type="radio">ws.get_cell(1, 1).value</div>
 
-            </div>
-            
+</div>
             <div id="11">
-            <div class="q-text">Питання 11. Яка властивість дозволяє отримати доступ до всіх рядків аркуша у вигляді ітератора?
+<div class="q-text">Питання 11. Яка властивість дозволяє отримати доступ до всіх рядків аркуша у вигляді ітератора?
 </div>
-            <div><input type="radio">ws.get_rows()
-</div>
-<div><input type="radio">ws.all_rows()
-</div>
+<div><input type="radio">ws.get_rows()</div>
+<div><input type="radio">ws.all_rows()</div>
 <div><input type="radio">ws.iter_rows()
  </div>
-<div><input type="radio">ws.rows()
-</div>
+<div><input type="radio">ws.rows()</div>
 
-            </div>
-            
+</div>
             <div id="12">
-            <div class="q-text">Питання 12. Як видалити аркуш із книги?
+<div class="q-text">Питання 12. Як видалити аркуш із книги?
 </div>
-            <div><input type="radio">wb.delete_sheet(sheet)
-</div>
+<div><input type="radio">wb.delete_sheet(sheet)</div>
 <div><input type="radio">wb.remove(sheet)
  </div>
-<div><input type="radio">wb.del_sheet(sheet)
-</div>
-<div><input type="radio">wb.pop(sheet)
-</div>
+<div><input type="radio">wb.del_sheet(sheet)</div>
+<div><input type="radio">wb.pop(sheet)</div>
 
-            </div>
-            
+</div>
             <div id="13">
-            <div class="q-text">Питання 13. Який атрибут комірки використовується для встановлення шрифту (жирний, курсив)?
+<div class="q-text">Питання 13. Який атрибут комірки використовується для встановлення шрифту (жирний, курсив)?
 </div>
-            <div><input type="radio">cell.appearance
-</div>
-<div><input type="radio">cell.text_format
-</div>
+<div><input type="radio">cell.appearance</div>
+<div><input type="radio">cell.text_format</div>
 <div><input type="radio">cell.font
  </div>
-<div><input type="radio">cell.style
-</div>
+<div><input type="radio">cell.style</div>
 
-            </div>
-            
+</div>
             <div id="14">
-            <div class="q-text">Питання 14. Як змінити колір фону комірки (через PatternFill)?
+<div class="q-text">Питання 14. Як змінити колір фону комірки (через PatternFill)?
 </div>
-            <div><input type="radio">cell.color
-</div>
-<div><input type="radio">cell.background
-</div>
+<div><input type="radio">cell.color</div>
+<div><input type="radio">cell.background</div>
 <div><input type="radio">cell.fill
  </div>
-<div><input type="radio">cell.paint
-</div>
+<div><input type="radio">cell.paint</div>
 
-            </div>
-            
+</div>
             <div id="15">
-            <div class="q-text">Питання 15. Як додати формулу в комірку?
+<div class="q-text">Питання 15. Як додати формулу в комірку?
 </div>
-            <div><input type="radio">cell.value = '=SUM(A1:A10)'
+<div><input type="radio">cell.value = '=SUM(A1:A10)'
  </div>
-<div><input type="radio">cell.formula = 'SUM(A1:A10)'
-</div>
-<div><input type="radio">cell.add_formula('=SUM(A1:A10)')
-</div>
-<div><input type="radio">cell.set_formula('SUM(A1:A10)')
-</div>
+<div><input type="radio">cell.formula = 'SUM(A1:A10)'</div>
+<div><input type="radio">cell.add_formula('=SUM(A1:A10)')</div>
+<div><input type="radio">cell.set_formula('SUM(A1:A10)')</div>
 
-            </div>
-            
+</div>
             <div id="16">
-            <div class="q-text">Питання 16. Яка властивість об'єкта комірки дозволяє отримати доступ до її формату чисел (наприклад, дата чи валюта)?
+<div class="q-text">Питання 16. Яка властивість об'єкта комірки дозволяє отримати доступ до її формату чисел (наприклад, дата чи валюта)?
 </div>
-            <div><input type="radio">cell.format
-</div>
+<div><input type="radio">cell.format</div>
 <div><input type="radio">cell.number_format
  </div>
-<div><input type="radio">cell.data_format
-</div>
-<div><input type="radio">cell.type
-</div>
+<div><input type="radio">cell.data_format</div>
+<div><input type="radio">cell.type</div>
 
-            </div>
-            
+</div>
             <div id="17">
-            <div class="q-text">Питання 17. Як об'єднати комірки (наприклад, від A1 до B2)?
+<div class="q-text">Питання 17. Як об'єднати комірки (наприклад, від A1 до B2)?
 </div>
-            <div><input type="radio">ws.merge_cells('A1:B2')
+<div><input type="radio">ws.merge_cells('A1:B2')
  </div>
-<div><input type="radio">ws.cells('A1:B2').merge()
-</div>
-<div><input type="radio">ws.combine_cells('A1:B2')
-</div>
-<div><input type="radio">ws.join_cells('A1:B2')
-</div>
+<div><input type="radio">ws.cells('A1:B2').merge()</div>
+<div><input type="radio">ws.combine_cells('A1:B2')</div>
+<div><input type="radio">ws.join_cells('A1:B2')</div>
 
-            </div>
-            
+</div>
             <div id="18">
-            <div class="q-text">Питання 18. Як отримати кількість рядків, що містять дані на аркуші?
+<div class="q-text">Питання 18. Як отримати кількість рядків, що містять дані на аркуші?
 </div>
-            <div><input type="radio">ws.max_row
+<div><input type="radio">ws.max_row
  </div>
-<div><input type="radio">ws.rows_count
-</div>
-<div><input type="radio">ws.total_rows
-</div>
-<div><input type="radio">len(ws)
-</div>
+<div><input type="radio">ws.rows_count</div>
+<div><input type="radio">ws.total_rows</div>
+<div><input type="radio">len(ws)</div>
 
-            </div>
-            
+</div>
             <div id="19">
-            <div class="q-text">Питання 19. Чи підтримує openpyxl файли формату .xls (старий Excel)?
+<div class="q-text">Питання 19. Чи підтримує openpyxl файли формату .xls (старий Excel)?
 </div>
-            <div><input type="radio">Ні, тільки .xlsx та .xlsm
+<div><input type="radio">Ні, тільки .xlsx та .xlsm
  </div>
-<div><input type="radio">Так, автоматично
-</div>
-<div><input type="radio">Так, але з обмеженнями
-</div>
-<div><input type="radio">Тільки через додатковий плагін
-</div>
+<div><input type="radio">Так, автоматично</div>
+<div><input type="radio">Так, але з обмеженнями</div>
+<div><input type="radio">Тільки через додатковий плагін</div>
 
-            </div>
-            
+</div>
             <div id="20">
-            <div class="q-text">Питання 20. Який метод дозволяє очистити всі дані з комірки, залишивши її формат?
+<div class="q-text">Питання 20. Який метод дозволяє очистити всі дані з комірки, залишивши її формат?
 </div>
-            <div><input type="radio">cell.delete()
-</div>
+<div><input type="radio">cell.delete()</div>
 <div><input type="radio">cell.value = None
  </div>
-<div><input type="radio">cell.clear()
-</div>
+<div><input type="radio">cell.clear()</div>
 <div><input type="radio">cell.remove()</div>
 
-            </div>
+</div>
             
+</main>
+
 <script>
 const optionBoxes = document.querySelectorAll(
-  'body > div:not(#progress-wrap) > div:not(.q-text)'
+  'main > div:not(#progress-wrap) > div:not(.q-text)'
 );
 
 optionBoxes.forEach(box => {

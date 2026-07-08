@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 18: Вступ до бібліотеки pandas</title>
+  <title>Тест 1: Основи синтаксису</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -31,12 +31,16 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 680px;
+      /* max-width: 680px; */
       margin: 30px auto;
       padding: 0 15px;
       line-height: 1.5;
     }
-
+    
+    main#content {
+      overflow: visible;
+      display: block;
+    }
     /* Блок прогресу */
     #progress-wrap {
       background: var(--bg-card);
@@ -47,8 +51,11 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      
+      /* FIXES */
       position: sticky;
-      top: 0;
+      top: 10px;       /* Keeps it pinned 10px from the top of its scroll view */
+      z-index: 999;    /* Pulls it safely above the question cards' transition layers */
     }
     #progress-bar-outer {
       flex-grow: 1;
@@ -59,7 +66,7 @@
     }
     #progress-bar-inner {
       background: var(--accent);
-      width: 10%; /* Тимчасово, для візуалізації */
+      width: 0%; /* Тимчасово, для візуалізації */
       height: 100%;
       border-radius: 5px;
     }
@@ -71,7 +78,7 @@
     }
 
     /* Контейнер картки питання (генерація з id="{i}") */
-    body > div:not(#progress-wrap) {
+    body main > div:not(#progress-wrap) {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -81,7 +88,7 @@
     }
 
     /* Текст питання */
-    .q-text {
+    main .q-text {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-head);
@@ -91,7 +98,7 @@
     }
 
     /* Контейнери варіантів відповідей (div навколо input) */
-    body > div:not(#progress-wrap) > div:not(.q-text) {
+    body main > div:not(#progress-wrap) > div:not(.q-text) {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -102,13 +109,13 @@
       cursor: pointer;
       transition: background-color 0.15s, border-color 0.15s;
     }
-    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+    body main > div:not(#progress-wrap) > div:not(.q-text):hover {
       background-color: var(--bg-hover);
       border-color: var(--text-dim);
     }
 
     /* Стилізація радіо-кнопок */
-    input[type="radio"] {
+    main input[type="radio"] {
       appearance: none;
       -webkit-appearance: none;
       background-color: transparent;
@@ -124,7 +131,7 @@
       cursor: pointer;
       transition: border-color 0.15s;
     }
-    input[type="radio"]::before {
+    main input[type="radio"]::before {
       content: "";
       width: 10px;
       height: 10px;
@@ -133,13 +140,13 @@
       transition: 120ms transform ease-in-out;
       background-color: var(--accent);
     }
-    input[type="radio"]:checked::before {
+    main input[type="radio"]:checked::before {
       transform: scale(1);
     }
-    input[type="radio"]:checked {
+    main input[type="radio"]:checked {
       border-color: var(--accent);
     }
-    input[type="radio"]:disabled {
+    main input[type="radio"]:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
@@ -162,297 +169,224 @@
   <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 <body>
-  
+
+
   <nav id="nav-global" class="global"></nav>
+
+
+<main id="content">
 
 <div id="progress-wrap">
   <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
   <span id="progress-label">0 / 20</span>
 </div>
 
-
-            <div id="1">
-            <div class="q-text">Питання 1. Який основний двовимірний об'єкт даних у бібліотеці Pandas?
+<div id="1">
+<div class="q-text">Питання 1. Який основний двовимірний об'єкт даних у бібліотеці Pandas?
 </div>
-            <div><input type="radio">Matrix
-</div>
-<div><input type="radio">Panel
-</div>
+<div><input type="radio">Matrix</div>
+<div><input type="radio">Panel</div>
 <div><input type="radio">DataFrame
  </div>
-<div><input type="radio">Series
-</div>
+<div><input type="radio">Series</div>
 
-            </div>
-            
+</div>
             <div id="2">
-            <div class="q-text">Питання 2. Який одномірний масив даних у Pandas, що підтримує мітки осей (індекси)?
+<div class="q-text">Питання 2. Який одномірний масив даних у Pandas, що підтримує мітки осей (індекси)?
 </div>
-            <div><input type="radio">Series
+<div><input type="radio">Series
  </div>
-<div><input type="radio">Array
-</div>
-<div><input type="radio">Index
-</div>
-<div><input type="radio">DataFrame
-</div>
+<div><input type="radio">Array</div>
+<div><input type="radio">Index</div>
+<div><input type="radio">DataFrame</div>
 
-            </div>
-            
+</div>
             <div id="3">
-            <div class="q-text">Питання 3. Яка функція використовується для зчитування CSV-файлу у DataFrame?
+<div class="q-text">Питання 3. Яка функція використовується для зчитування CSV-файлу у DataFrame?
 </div>
-            <div><input type="radio">pd.import_csv()
-</div>
-<div><input type="radio">pd.read_file()
-</div>
+<div><input type="radio">pd.import_csv()</div>
+<div><input type="radio">pd.read_file()</div>
 <div><input type="radio">pd.read_csv()
  </div>
-<div><input type="radio">pd.load_csv()
-</div>
+<div><input type="radio">pd.load_csv()</div>
 
-            </div>
-            
+</div>
             <div id="4">
-            <div class="q-text">Питання 4. Який метод дозволяє переглянути перші 5 рядків DataFrame?
+<div class="q-text">Питання 4. Який метод дозволяє переглянути перші 5 рядків DataFrame?
 </div>
-            <div><input type="radio">df.head()
+<div><input type="radio">df.head()
  </div>
-<div><input type="radio">df.show(5)
-</div>
-<div><input type="radio">df.top()
-</div>
-<div><input type="radio">df.first()
-</div>
+<div><input type="radio">df.show(5)</div>
+<div><input type="radio">df.top()</div>
+<div><input type="radio">df.first()</div>
 
-            </div>
-            
+</div>
             <div id="5">
-            <div class="q-text">Питання 5. Як дізнатися загальну інформацію про DataFrame (типи даних, кількість непустотних значень)?
+<div class="q-text">Питання 5. Як дізнатися загальну інформацію про DataFrame (типи даних, кількість непустотних значень)?
 </div>
-            <div><input type="radio">df.summary()
-</div>
-<div><input type="radio">df.details()
-</div>
-<div><input type="radio">df.describe()
-</div>
+<div><input type="radio">df.summary()</div>
+<div><input type="radio">df.details()</div>
+<div><input type="radio">df.describe()</div>
 <div><input type="radio">df.info()
  </div>
 
-            </div>
-            
+</div>
             <div id="6">
-            <div class="q-text">Питання 6. Який метод повертає статистичні показники (середнє, мінімум, максимум, квартилі) для числових стовпців?
+<div class="q-text">Питання 6. Який метод повертає статистичні показники (середнє, мінімум, максимум, квартилі) для числових стовпців?
 </div>
-            <div><input type="radio">df.analyze()
-</div>
-<div><input type="radio">df.info()
-</div>
+<div><input type="radio">df.analyze()</div>
+<div><input type="radio">df.info()</div>
 <div><input type="radio">df.describe()
  </div>
-<div><input type="radio">df.stats()
-</div>
+<div><input type="radio">df.stats()</div>
 
-            </div>
-            
+</div>
             <div id="7">
-            <div class="q-text">Питання 7. Як вибрати один стовпець col1 з DataFrame df?
+<div class="q-text">Питання 7. Як вибрати один стовпець col1 з DataFrame df?
 </div>
-            <div><input type="radio">df.col1
-</div>
-<div><input type="radio">df(col1)
-</div>
+<div><input type="radio">df.col1</div>
+<div><input type="radio">df(col1)</div>
 <div><input type="radio">df['col1']
  </div>
-<div><input type="radio">df.select('col1')
-</div>
+<div><input type="radio">df.select('col1')</div>
 
-            </div>
-            
+</div>
             <div id="8">
-            <div class="q-text">Питання 8. Як видалити рядок або стовпець з DataFrame?
+<div class="q-text">Питання 8. Як видалити рядок або стовпець з DataFrame?
 </div>
-            <div><input type="radio">df.delete()
-</div>
+<div><input type="radio">df.delete()</div>
 <div><input type="radio">df.drop()
  </div>
-<div><input type="radio">df.remove()
-</div>
-<div><input type="radio">df.pop()
-</div>
+<div><input type="radio">df.remove()</div>
+<div><input type="radio">df.pop()</div>
 
-            </div>
-            
+</div>
             <div id="9">
-            <div class="q-text">Питання 9. Який атрибут повертає розмірність (кількість рядків і стовпців) DataFrame?
+<div class="q-text">Питання 9. Який атрибут повертає розмірність (кількість рядків і стовпців) DataFrame?
 </div>
-            <div><input type="radio">df.size
-</div>
-<div><input type="radio">df.dim
-</div>
+<div><input type="radio">df.size</div>
+<div><input type="radio">df.dim</div>
 <div><input type="radio">df.shape
  </div>
-<div><input type="radio">df.len()
-</div>
+<div><input type="radio">df.len()</div>
 
-            </div>
-            
+</div>
             <div id="10">
-            <div class="q-text">Питання 10. Який метод використовується для фільтрації рядків за умовою, наприклад df[df['age'] > 30]?
+<div class="q-text">Питання 10. Який метод використовується для фільтрації рядків за умовою, наприклад df[df['age'] > 30]?
 </div>
-            <div><input type="radio">Функція filter()
-</div>
+<div><input type="radio">Функція filter()</div>
 <div><input type="radio">Булева індексація (Boolean Indexing)
  </div>
-<div><input type="radio">Метод where()
-</div>
-<div><input type="radio">Метод find()
-</div>
+<div><input type="radio">Метод where()</div>
+<div><input type="radio">Метод find()</div>
 
-            </div>
-            
+</div>
             <div id="11">
-            <div class="q-text">Питання 11. Як заповнити пропущені значення (NaN) у DataFrame?
+<div class="q-text">Питання 11. Як заповнити пропущені значення (NaN) у DataFrame?
 </div>
-            <div><input type="radio">df.fill_missing()
-</div>
-<div><input type="radio">df.replace_na()
-</div>
+<div><input type="radio">df.fill_missing()</div>
+<div><input type="radio">df.replace_na()</div>
 <div><input type="radio">df.fillna()
  </div>
-<div><input type="radio">df.drop_na()
-</div>
+<div><input type="radio">df.drop_na()</div>
 
-            </div>
-            
+</div>
             <div id="12">
-            <div class="q-text">Питання 12. Який метод дозволяє згрупувати дані за певним стовпцем?
+<div class="q-text">Питання 12. Який метод дозволяє згрупувати дані за певним стовпцем?
 </div>
-            <div><input type="radio">df.groupby()
+<div><input type="radio">df.groupby()
  </div>
-<div><input type="radio">df.split()
-</div>
-<div><input type="radio">df.group()
-</div>
-<div><input type="radio">df.aggregate()
-</div>
+<div><input type="radio">df.split()</div>
+<div><input type="radio">df.group()</div>
+<div><input type="radio">df.aggregate()</div>
 
-            </div>
-            
+</div>
             <div id="13">
-            <div class="q-text">Питання 13. Яка функція використовується для об'єднання двох DataFrame по спільному ключу (як JOIN у SQL)?
+<div class="q-text">Питання 13. Яка функція використовується для об'єднання двох DataFrame по спільному ключу (як JOIN у SQL)?
 </div>
-            <div><input type="radio">pd.join()
-</div>
+<div><input type="radio">pd.join()</div>
 <div><input type="radio">pd.merge()
  </div>
-<div><input type="radio">pd.concat()
-</div>
-<div><input type="radio">pd.append()
-</div>
+<div><input type="radio">pd.concat()</div>
+<div><input type="radio">pd.append()</div>
 
-            </div>
-            
+</div>
             <div id="14">
-            <div class="q-text">Питання 14. Як відсортувати значення в DataFrame за певним стовпцем?
+<div class="q-text">Питання 14. Як відсортувати значення в DataFrame за певним стовпцем?
 </div>
-            <div><input type="radio">df.sort()
-</div>
-<div><input type="radio">df.arrange()
-</div>
+<div><input type="radio">df.sort()</div>
+<div><input type="radio">df.arrange()</div>
 <div><input type="radio">df.sort_values()
  </div>
-<div><input type="radio">df.order()
-</div>
+<div><input type="radio">df.order()</div>
 
-            </div>
-            
+</div>
             <div id="15">
-            <div class="q-text">Питання 15. Яка функція використовується для перетворення рядків у тип datetime?
+<div class="q-text">Питання 15. Яка функція використовується для перетворення рядків у тип datetime?
 </div>
-            <div><input type="radio">pd.parse_date()
-</div>
-<div><input type="radio">pd.as_datetime()
-</div>
-<div><input type="radio">pd.convert_date()
-</div>
+<div><input type="radio">pd.parse_date()</div>
+<div><input type="radio">pd.as_datetime()</div>
+<div><input type="radio">pd.convert_date()</div>
 <div><input type="radio">pd.to_datetime()
  </div>
 
-            </div>
-            
-            <div id="16">
-            <div class="q-text">Питання 16. Як отримати доступ до рядків за індексом (міткою) через назву?
 </div>
-            <div><input type="radio">df.index[]
+            <div id="16">
+<div class="q-text">Питання 16. Як отримати доступ до рядків за індексом (міткою) через назву?
+</div>
+<div><input type="radio">df.index[]</div>
+<div><input type="radio">df.iloc[]</div>
+<div><input type="radio">df.loc[]
+ </div>
+<div><input type="radio">df.at[]</div>
+
+</div>
+            <div id="17">
+<div class="q-text">Питання 17. Як отримати доступ до рядків за їх позиційним номером (цілочисельним індексом)?
 </div>
 <div><input type="radio">df.iloc[]
-</div>
-<div><input type="radio">df.loc[]
  </div>
-<div><input type="radio">df.at[]
-</div>
+<div><input type="radio">df.row[]</div>
+<div><input type="radio">df.loc[]</div>
+<div><input type="radio">df.iat[]</div>
 
-            </div>
-            
-            <div id="17">
-            <div class="q-text">Питання 17. Як отримати доступ до рядків за їх позиційним номером (цілочисельним індексом)?
 </div>
-            <div><input type="radio">df.iloc[]
- </div>
-<div><input type="radio">df.row[]
-</div>
-<div><input type="radio">df.loc[]
-</div>
-<div><input type="radio">df.iat[]
-</div>
-
-            </div>
-            
             <div id="18">
-            <div class="q-text">Питання 18. Який метод дозволяє перейменувати стовпці у DataFrame?
+<div class="q-text">Питання 18. Який метод дозволяє перейменувати стовпці у DataFrame?
 </div>
-            <div><input type="radio">df.change_columns()
-</div>
-<div><input type="radio">df.set_names()
-</div>
+<div><input type="radio">df.change_columns()</div>
+<div><input type="radio">df.set_names()</div>
 <div><input type="radio">df.rename()
  </div>
-<div><input type="radio">df.alias()
-</div>
+<div><input type="radio">df.alias()</div>
 
-            </div>
-            
+</div>
             <div id="19">
-            <div class="q-text">Питання 19. Як обчислити кореляцію між стовпцями?
+<div class="q-text">Питання 19. Як обчислити кореляцію між стовпцями?
 </div>
-            <div><input type="radio">df.relate()
-</div>
+<div><input type="radio">df.relate()</div>
 <div><input type="radio">df.corr()
  </div>
-<div><input type="radio">df.associate()
-</div>
-<div><input type="radio">df.correlation()
-</div>
+<div><input type="radio">df.associate()</div>
+<div><input type="radio">df.correlation()</div>
 
-            </div>
-            
+</div>
             <div id="20">
-            <div class="q-text">Питання 20. Як видалити всі рядки, що містять хоча б одне пропущене значення?
+<div class="q-text">Питання 20. Як видалити всі рядки, що містять хоча б одне пропущене значення?
 </div>
-            <div><input type="radio">df.remove_na()
-</div>
+<div><input type="radio">df.remove_na()</div>
 <div><input type="radio">df.fill(None)</div>
-<div><input type="radio">df.drop_na()
-</div>
+<div><input type="radio">df.drop_na()</div>
 <div><input type="radio">df.dropna()
  </div>
 
-            </div>
+</div>
             
+</main>
+
 <script>
 const optionBoxes = document.querySelectorAll(
-  'body > div:not(#progress-wrap) > div:not(.q-text)'
+  'main > div:not(#progress-wrap) > div:not(.q-text)'
 );
 
 optionBoxes.forEach(box => {

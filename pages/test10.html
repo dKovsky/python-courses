@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 10: Робота з JSON файлами</title>
+  <title>Тест 1: Основи синтаксису</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -31,12 +31,16 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 680px;
+      /* max-width: 680px; */
       margin: 30px auto;
       padding: 0 15px;
       line-height: 1.5;
     }
-
+    
+    main#content {
+      overflow: visible;
+      display: block;
+    }
     /* Блок прогресу */
     #progress-wrap {
       background: var(--bg-card);
@@ -47,8 +51,11 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      
+      /* FIXES */
       position: sticky;
-      top: 0;
+      top: 10px;       /* Keeps it pinned 10px from the top of its scroll view */
+      z-index: 999;    /* Pulls it safely above the question cards' transition layers */
     }
     #progress-bar-outer {
       flex-grow: 1;
@@ -59,7 +66,7 @@
     }
     #progress-bar-inner {
       background: var(--accent);
-      width: 10%; /* Тимчасово, для візуалізації */
+      width: 0%; /* Тимчасово, для візуалізації */
       height: 100%;
       border-radius: 5px;
     }
@@ -71,7 +78,7 @@
     }
 
     /* Контейнер картки питання (генерація з id="{i}") */
-    body > div:not(#progress-wrap) {
+    body main > div:not(#progress-wrap) {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -81,7 +88,7 @@
     }
 
     /* Текст питання */
-    .q-text {
+    main .q-text {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-head);
@@ -91,7 +98,7 @@
     }
 
     /* Контейнери варіантів відповідей (div навколо input) */
-    body > div:not(#progress-wrap) > div:not(.q-text) {
+    body main > div:not(#progress-wrap) > div:not(.q-text) {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -102,13 +109,13 @@
       cursor: pointer;
       transition: background-color 0.15s, border-color 0.15s;
     }
-    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+    body main > div:not(#progress-wrap) > div:not(.q-text):hover {
       background-color: var(--bg-hover);
       border-color: var(--text-dim);
     }
 
     /* Стилізація радіо-кнопок */
-    input[type="radio"] {
+    main input[type="radio"] {
       appearance: none;
       -webkit-appearance: none;
       background-color: transparent;
@@ -124,7 +131,7 @@
       cursor: pointer;
       transition: border-color 0.15s;
     }
-    input[type="radio"]::before {
+    main input[type="radio"]::before {
       content: "";
       width: 10px;
       height: 10px;
@@ -133,13 +140,13 @@
       transition: 120ms transform ease-in-out;
       background-color: var(--accent);
     }
-    input[type="radio"]:checked::before {
+    main input[type="radio"]:checked::before {
       transform: scale(1);
     }
-    input[type="radio"]:checked {
+    main input[type="radio"]:checked {
       border-color: var(--accent);
     }
-    input[type="radio"]:disabled {
+    main input[type="radio"]:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
@@ -162,297 +169,224 @@
   <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 <body>
-  
+
+
   <nav id="nav-global" class="global"></nav>
+
+
+<main id="content">
 
 <div id="progress-wrap">
   <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
   <span id="progress-label">0 / 20</span>
 </div>
 
-
-            <div id="1">
-            <div class="q-text">Питання 1. Як правильно створити порожню множину в Python?
+<div id="1">
+<div class="q-text">Питання 1. Як правильно створити порожню множину в Python?
 </div>
-            <div><input type="radio">dict()
-</div>
+<div><input type="radio">dict()</div>
 <div><input type="radio">set()
  </div>
-<div><input type="radio">set([])
-</div>
-<div><input type="radio">{}
-</div>
+<div><input type="radio">set([])</div>
+<div><input type="radio">{}</div>
 
-            </div>
-            
+</div>
             <div id="2">
-            <div class="q-text">Питання 2. Яка головна особливість елементів у множині set?
+<div class="q-text">Питання 2. Яка головна особливість елементів у множині set?
 </div>
-            <div><input type="radio">Елементи мають індекси
-</div>
-<div><input type="radio">Елементи зберігаються у визначеному порядку
-</div>
+<div><input type="radio">Елементи мають індекси</div>
+<div><input type="radio">Елементи зберігаються у визначеному порядку</div>
 <div><input type="radio">Усі елементи є унікальними
  </div>
-<div><input type="radio">Множини можуть містити змінні списки
-</div>
+<div><input type="radio">Множини можуть містити змінні списки</div>
 
-            </div>
-            
+</div>
             <div id="3">
-            <div class="q-text">Питання 3. Який метод використовується для додавання одного елемента до множини?
+<div class="q-text">Питання 3. Який метод використовується для додавання одного елемента до множини?
 </div>
-            <div><input type="radio">add()
+<div><input type="radio">add()
  </div>
-<div><input type="radio">push()
-</div>
-<div><input type="radio">append()
-</div>
-<div><input type="radio">insert()
-</div>
+<div><input type="radio">push()</div>
+<div><input type="radio">append()</div>
+<div><input type="radio">insert()</div>
 
-            </div>
-            
+</div>
             <div id="4">
-            <div class="q-text">Питання 4. Який метод видаляє елемент із множини, але не викликає помилку, якщо елемента немає?
-</div>
-            <div><input type="radio">discard()
- </div>
-<div><input type="radio">delete()
-</div>
-<div><input type="radio">pop()
-</div>
-<div><input type="radio">remove()
-</div>
-
-            </div>
-            
-            <div id="5">
-            <div class="q-text">Питання 5. Яка операція повертає об'єднання двох множин?
-</div>
-            <div><input type="radio">| або union()
- </div>
-<div><input type="radio">^ або symmetric_difference()
-</div>
-<div><input type="radio">* або difference()
-</div>
-<div><input type="radio">& або intersection()
-</div>
-
-            </div>
-            
-            <div id="6">
-            <div class="q-text">Питання 6. Яка операція повертає перетин (спільні елементи) двох множин?
-</div>
-            <div><input type="radio">| або union()
-</div>
-<div><input type="radio">* або difference()
-</div>
-<div><input type="radio">^ або symmetric_difference()
-</div>
-<div><input type="radio">& або intersection()
- </div>
-
-            </div>
-            
-            <div id="7">
-            <div class="q-text">Питання 7. Яка операція повертає різницю множин (елементи, що є в першій, але немає в другій)?
-</div>
-            <div><input type="radio">* або difference()
- </div>
-<div><input type="radio">| або union()
-</div>
-<div><input type="radio">& або intersection()
-</div>
-<div><input type="radio">^ або symmetric_difference()
-</div>
-
-            </div>
-            
-            <div id="8">
-            <div class="q-text">Питання 8. Яка операція повертає симетричну різницю (елементи, що є або в одній, або в іншій, але не в обох)?
-</div>
-            <div><input type="radio">^ або symmetric_difference()
- </div>
-<div><input type="radio">& або intersection()
-</div>
-<div><input type="radio">| або union()
-</div>
-<div><input type="radio">* або difference()
-</div>
-
-            </div>
-            
-            <div id="9">
-            <div class="q-text">Питання 9. Чи можна отримати доступ до елемента множини за індексом?
-</div>
-            <div><input type="radio">Так, за допомогою s.get(0)
-</div>
-<div><input type="radio">Так, але тільки для невеликих множин
-</div>
-<div><input type="radio">Ні, множини не впорядковані
- </div>
-<div><input type="radio">Так, за допомогою s[0]
-</div>
-
-            </div>
-            
-            <div id="10">
-            <div class="q-text">Питання 10. Який метод видаляє всі елементи з множини?
-</div>
-            <div><input type="radio">clear()
- </div>
-<div><input type="radio">remove_all()
-</div>
-<div><input type="radio">delete_all()
-</div>
-<div><input type="radio">empty()
-</div>
-
-            </div>
-            
-            <div id="11">
-            <div class="q-text">Питання 11. Що поверне вираз len({1, 2, 2, 3})?
-</div>
-            <div><input type="radio">3
- </div>
-<div><input type="radio">2
-</div>
-<div><input type="radio">4
-</div>
-<div><input type="radio">1
-</div>
-
-            </div>
-            
-            <div id="12">
-            <div class="q-text">Питання 12. Який тип даних можна додати до множини?
-</div>
-            <div><input type="radio">Список (list)
-</div>
-<div><input type="radio">Словник (dict)
-</div>
-<div><input type="radio">Число (int)
- </div>
-<div><input type="radio">Іншу множину (set)
-</div>
-
-            </div>
-            
-            <div id="13">
-            <div class="q-text">Питання 13. Який метод видаляє випадковий елемент із множини?
-</div>
-            <div><input type="radio">pop()
- </div>
-<div><input type="radio">delete()
+<div class="q-text">Питання 4. Який метод видаляє елемент із множини, але не викликає помилку, якщо елемента немає?
 </div>
 <div><input type="radio">discard()
-</div>
-<div><input type="radio">remove()
-</div>
+ </div>
+<div><input type="radio">delete()</div>
+<div><input type="radio">pop()</div>
+<div><input type="radio">remove()</div>
 
-            </div>
-            
+</div>
+            <div id="5">
+<div class="q-text">Питання 5. Яка операція повертає об'єднання двох множин?
+</div>
+<div><input type="radio">| або union()
+ </div>
+<div><input type="radio">^ або symmetric_difference()</div>
+<div><input type="radio">* або difference()</div>
+<div><input type="radio">& або intersection()</div>
+
+</div>
+            <div id="6">
+<div class="q-text">Питання 6. Яка операція повертає перетин (спільні елементи) двох множин?
+</div>
+<div><input type="radio">| або union()</div>
+<div><input type="radio">* або difference()</div>
+<div><input type="radio">^ або symmetric_difference()</div>
+<div><input type="radio">& або intersection()
+ </div>
+
+</div>
+            <div id="7">
+<div class="q-text">Питання 7. Яка операція повертає різницю множин (елементи, що є в першій, але немає в другій)?
+</div>
+<div><input type="radio">* або difference()
+ </div>
+<div><input type="radio">| або union()</div>
+<div><input type="radio">& або intersection()</div>
+<div><input type="radio">^ або symmetric_difference()</div>
+
+</div>
+            <div id="8">
+<div class="q-text">Питання 8. Яка операція повертає симетричну різницю (елементи, що є або в одній, або в іншій, але не в обох)?
+</div>
+<div><input type="radio">^ або symmetric_difference()
+ </div>
+<div><input type="radio">& або intersection()</div>
+<div><input type="radio">| або union()</div>
+<div><input type="radio">* або difference()</div>
+
+</div>
+            <div id="9">
+<div class="q-text">Питання 9. Чи можна отримати доступ до елемента множини за індексом?
+</div>
+<div><input type="radio">Так, за допомогою s.get(0)</div>
+<div><input type="radio">Так, але тільки для невеликих множин</div>
+<div><input type="radio">Ні, множини не впорядковані
+ </div>
+<div><input type="radio">Так, за допомогою s[0]</div>
+
+</div>
+            <div id="10">
+<div class="q-text">Питання 10. Який метод видаляє всі елементи з множини?
+</div>
+<div><input type="radio">clear()
+ </div>
+<div><input type="radio">remove_all()</div>
+<div><input type="radio">delete_all()</div>
+<div><input type="radio">empty()</div>
+
+</div>
+            <div id="11">
+<div class="q-text">Питання 11. Що поверне вираз len({1, 2, 2, 3})?
+</div>
+<div><input type="radio">3
+ </div>
+<div><input type="radio">2</div>
+<div><input type="radio">4</div>
+<div><input type="radio">1</div>
+
+</div>
+            <div id="12">
+<div class="q-text">Питання 12. Який тип даних можна додати до множини?
+</div>
+<div><input type="radio">Список (list)</div>
+<div><input type="radio">Словник (dict)</div>
+<div><input type="radio">Число (int)
+ </div>
+<div><input type="radio">Іншу множину (set)</div>
+
+</div>
+            <div id="13">
+<div class="q-text">Питання 13. Який метод видаляє випадковий елемент із множини?
+</div>
+<div><input type="radio">pop()
+ </div>
+<div><input type="radio">delete()</div>
+<div><input type="radio">discard()</div>
+<div><input type="radio">remove()</div>
+
+</div>
             <div id="14">
-            <div class="q-text">Питання 14. Як перевірити, чи є одна множина підмножиною іншої?
+<div class="q-text">Питання 14. Як перевірити, чи є одна множина підмножиною іншої?
 </div>
-            <div><input type="radio">is_contained()
-</div>
-<div><input type="radio">sub()
-</div>
+<div><input type="radio">is_contained()</div>
+<div><input type="radio">sub()</div>
 <div><input type="radio">issubset()
  </div>
-<div><input type="radio">ispart()
-</div>
+<div><input type="radio">ispart()</div>
 
-            </div>
-            
+</div>
             <div id="15">
-            <div class="q-text">Питання 15. Яка функція перетворює список `[1, 1, 2, 3]` у множину?
+<div class="q-text">Питання 15. Яка функція перетворює список `[1, 1, 2, 3]` у множину?
 </div>
-            <div><input type="radio">to_set([1, 1, 2, 3])
-</div>
-<div><input type="radio">list_to_set([1, 1, 2, 3])
-</div>
+<div><input type="radio">to_set([1, 1, 2, 3])</div>
+<div><input type="radio">list_to_set([1, 1, 2, 3])</div>
 <div><input type="radio">set([1, 1, 2, 3])
  </div>
-<div><input type="radio">{1, 1, 2, 3}
-</div>
+<div><input type="radio">{1, 1, 2, 3}</div>
 
-            </div>
-            
+</div>
             <div id="16">
-            <div class="q-text">Питання 16. Чим відрізняється метод remove() від discard()?
+<div class="q-text">Питання 16. Чим відрізняється метод remove() від discard()?
 </div>
-            <div><input type="radio">remove() викликає помилку KeyError, якщо елемента немає
+<div><input type="radio">remove() викликає помилку KeyError, якщо елемента немає
  </div>
-<div><input type="radio">discard() видаляє всі елементи
-</div>
-<div><input type="radio">remove() працює швидше
-</div>
-<div><input type="radio">discard() викликає помилку, якщо елемента немає
-</div>
+<div><input type="radio">discard() видаляє всі елементи</div>
+<div><input type="radio">remove() працює швидше</div>
+<div><input type="radio">discard() викликає помилку, якщо елемента немає</div>
 
-            </div>
-            
+</div>
             <div id="17">
-            <div class="q-text">Питання 17. Що таке frozenset?
+<div class="q-text">Питання 17. Що таке frozenset?
 </div>
-            <div><input type="radio">Заморожений список
-</div>
-<div><input type="radio">Тип даних для зберігання тільки чисел
-</div>
-<div><input type="radio">Множина, яку не можна вивести на екран
-</div>
+<div><input type="radio">Заморожений список</div>
+<div><input type="radio">Тип даних для зберігання тільки чисел</div>
+<div><input type="radio">Множина, яку не можна вивести на екран</div>
 <div><input type="radio">Незмінна (immutable) версія множини
  </div>
 
-            </div>
-            
+</div>
             <div id="18">
-            <div class="q-text">Питання 18. Який метод оновлює множину елементами з іншої послідовності (наприклад, списку)?
+<div class="q-text">Питання 18. Який метод оновлює множину елементами з іншої послідовності (наприклад, списку)?
 </div>
-            <div><input type="radio">join()
-</div>
-<div><input type="radio">add_all()
-</div>
-<div><input type="radio">extend()
-</div>
+<div><input type="radio">join()</div>
+<div><input type="radio">add_all()</div>
+<div><input type="radio">extend()</div>
 <div><input type="radio">update()
  </div>
 
-            </div>
-            
+</div>
             <div id="19">
-            <div class="q-text">Питання 19. Який оператор перевіряє, чи належить елемент множині?
+<div class="q-text">Питання 19. Який оператор перевіряє, чи належить елемент множині?
 </div>
-            <div><input type="radio">has
-</div>
-<div><input type="radio">contains
-</div>
+<div><input type="radio">has</div>
+<div><input type="radio">contains</div>
 <div><input type="radio">in
  </div>
-<div><input type="radio">exists
-</div>
+<div><input type="radio">exists</div>
 
-            </div>
-            
+</div>
             <div id="20">
-            <div class="q-text">Питання 20. Чи можна змінити порядок елементів у множині вручну?
+<div class="q-text">Питання 20. Чи можна змінити порядок елементів у множині вручну?
 </div>
-            <div><input type="radio">Так, за допомогою методу sort()
-</div>
+<div><input type="radio">Так, за допомогою методу sort()</div>
 <div><input type="radio">Так, за допомогою індексів</div>
 <div><input type="radio">Ні, Python автоматично керує порядком для оптимізації
  </div>
-<div><input type="radio">Так, за допомогою методу reorder()
-</div>
+<div><input type="radio">Так, за допомогою методу reorder()</div>
 
-            </div>
+</div>
             
+</main>
+
 <script>
 const optionBoxes = document.querySelectorAll(
-  'body > div:not(#progress-wrap) > div:not(.q-text)'
+  'main > div:not(#progress-wrap) > div:not(.q-text)'
 );
 
 optionBoxes.forEach(box => {

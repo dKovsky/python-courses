@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 2: Списки</title>
+  <title>Тест 1: Основи синтаксису</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -31,12 +31,16 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 680px;
+      /* max-width: 680px; */
       margin: 30px auto;
       padding: 0 15px;
       line-height: 1.5;
     }
-
+    
+    main#content {
+      overflow: visible;
+      display: block;
+    }
     /* Блок прогресу */
     #progress-wrap {
       background: var(--bg-card);
@@ -47,8 +51,11 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      
+      /* FIXES */
       position: sticky;
-      top: 0;
+      top: 10px;       /* Keeps it pinned 10px from the top of its scroll view */
+      z-index: 999;    /* Pulls it safely above the question cards' transition layers */
     }
     #progress-bar-outer {
       flex-grow: 1;
@@ -59,7 +66,7 @@
     }
     #progress-bar-inner {
       background: var(--accent);
-      width: 10%; /* Тимчасово, для візуалізації */
+      width: 0%; /* Тимчасово, для візуалізації */
       height: 100%;
       border-radius: 5px;
     }
@@ -71,7 +78,7 @@
     }
 
     /* Контейнер картки питання (генерація з id="{i}") */
-    body > div:not(#progress-wrap) {
+    body main > div:not(#progress-wrap) {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -81,7 +88,7 @@
     }
 
     /* Текст питання */
-    .q-text {
+    main .q-text {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-head);
@@ -91,7 +98,7 @@
     }
 
     /* Контейнери варіантів відповідей (div навколо input) */
-    body > div:not(#progress-wrap) > div:not(.q-text) {
+    body main > div:not(#progress-wrap) > div:not(.q-text) {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -102,13 +109,13 @@
       cursor: pointer;
       transition: background-color 0.15s, border-color 0.15s;
     }
-    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+    body main > div:not(#progress-wrap) > div:not(.q-text):hover {
       background-color: var(--bg-hover);
       border-color: var(--text-dim);
     }
 
     /* Стилізація радіо-кнопок */
-    input[type="radio"] {
+    main input[type="radio"] {
       appearance: none;
       -webkit-appearance: none;
       background-color: transparent;
@@ -124,7 +131,7 @@
       cursor: pointer;
       transition: border-color 0.15s;
     }
-    input[type="radio"]::before {
+    main input[type="radio"]::before {
       content: "";
       width: 10px;
       height: 10px;
@@ -133,13 +140,13 @@
       transition: 120ms transform ease-in-out;
       background-color: var(--accent);
     }
-    input[type="radio"]:checked::before {
+    main input[type="radio"]:checked::before {
       transform: scale(1);
     }
-    input[type="radio"]:checked {
+    main input[type="radio"]:checked {
       border-color: var(--accent);
     }
-    input[type="radio"]:disabled {
+    main input[type="radio"]:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
@@ -162,298 +169,224 @@
   <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 <body>
-  
+
+
   <nav id="nav-global" class="global"></nav>
+
+
+<main id="content">
 
 <div id="progress-wrap">
   <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
   <span id="progress-label">0 / 20</span>
 </div>
 
-
-            <div id="1">
-            <div class="q-text">Питання 1: Як правильно створити порожній список у Python?
+<div id="1">
+<div class="q-text">Питання 1: Як правильно створити порожній список у Python?
 </div>
-            <div><input type="radio">my_list = ()
-</div>
-<div><input type="radio">my_list = ""
-</div>
+<div><input type="radio">my_list = ()</div>
+<div><input type="radio">my_list = ""</div>
 <div><input type="radio">my_list = []
  </div>
-<div><input type="radio">my_list = {}
-</div>
+<div><input type="radio">my_list = {}</div>
 
-            </div>
-            
+</div>
             <div id="2">
-            <div class="q-text">Питання 2: Який індекс має перший елемент списку?
+<div class="q-text">Питання 2: Який індекс має перший елемент списку?
 </div>
-            <div><input type="radio">-1
-</div>
+<div><input type="radio">-1</div>
 <div><input type="radio">0
  </div>
-<div><input type="radio">2
-</div>
-<div><input type="radio">1
-</div>
+<div><input type="radio">2</div>
+<div><input type="radio">1</div>
 
-            </div>
-            
+</div>
             <div id="3">
-            <div class="q-text">Питання 3: Як отримати третій елемент зі списку my_list?
+<div class="q-text">Питання 3: Як отримати третій елемент зі списку my_list?
 </div>
-            <div><input type="radio">my_list[1]
-</div>
+<div><input type="radio">my_list[1]</div>
 <div><input type="radio">my_list[2]
  </div>
-<div><input type="radio">my_list(3)
-</div>
-<div><input type="radio">my_list[3]
-</div>
+<div><input type="radio">my_list(3)</div>
+<div><input type="radio">my_list[3]</div>
 
-            </div>
-            
+</div>
             <div id="4">
-            <div class="q-text">Питання 4: Що поверне функція len([10, 20, 30, 40])?
+<div class="q-text">Питання 4: Що поверне функція len([10, 20, 30, 40])?
 </div>
-            <div><input type="radio">10
-</div>
+<div><input type="radio">10</div>
 <div><input type="radio">4
  </div>
-<div><input type="radio">3
-</div>
-<div><input type="radio">40
-</div>
+<div><input type="radio">3</div>
+<div><input type="radio">40</div>
 
-            </div>
-            
+</div>
             <div id="5">
-            <div class="q-text">Питання 5: Який метод додає один елемент у самий кінець списку?
+<div class="q-text">Питання 5: Який метод додає один елемент у самий кінець списку?
 </div>
-            <div><input type="radio">append()
+<div><input type="radio">append()
  </div>
-<div><input type="radio">push()
-</div>
-<div><input type="radio">add()
-</div>
-<div><input type="radio">insert()
-</div>
+<div><input type="radio">push()</div>
+<div><input type="radio">add()</div>
+<div><input type="radio">insert()</div>
 
-            </div>
-            
+</div>
             <div id="6">
-            <div class="q-text">Питання 6: Як звернутися до останнього елемента списку за допомогою від'ємного індексу?
+<div class="q-text">Питання 6: Як звернутися до останнього елемента списку за допомогою від'ємного індексу?
 </div>
-            <div><input type="radio">my_list[-0]
-</div>
-<div><input type="radio">my_list[len-1]
-</div>
-<div><input type="radio">my_list[0]
-</div>
+<div><input type="radio">my_list[-0]</div>
+<div><input type="radio">my_list[len-1]</div>
+<div><input type="radio">my_list[0]</div>
 <div><input type="radio">my_list[-1]
  </div>
 
-            </div>
-            
+</div>
             <div id="7">
-            <div class="q-text">Питання 7: Що зробить метод insert(1, 'apple') зі списком ['banana', 'cherry']?
+<div class="q-text">Питання 7: Що зробить метод insert(1, 'apple') зі списком ['banana', 'cherry']?
 </div>
-            <div><input type="radio">Додасть 'apple' на місце з індексом 1 (між banana і cherry)
+<div><input type="radio">Додасть 'apple' на місце з індексом 1 (між banana і cherry)
  </div>
-<div><input type="radio">Замінить 'banana' на 'apple'
-</div>
-<div><input type="radio">Додасть 'apple' в кінець списку
-</div>
-<div><input type="radio">Видалить 'apple' зі списку
-</div>
+<div><input type="radio">Замінить 'banana' на 'apple'</div>
+<div><input type="radio">Додасть 'apple' в кінець списку</div>
+<div><input type="radio">Видалить 'apple' зі списку</div>
 
-            </div>
-            
+</div>
             <div id="8">
-            <div class="q-text">Питання 8: Який метод видаляє перший знайдений елемент зі списку за його значенням?
+<div class="q-text">Питання 8: Який метод видаляє перший знайдений елемент зі списку за його значенням?
 </div>
-            <div><input type="radio">clear()
-</div>
-<div><input type="radio">pop()
-</div>
+<div><input type="radio">clear()</div>
+<div><input type="radio">pop()</div>
 <div><input type="radio">remove()
  </div>
-<div><input type="radio">delete()
-</div>
+<div><input type="radio">delete()</div>
 
-            </div>
-            
+</div>
             <div id="9">
-            <div class="q-text">Питання 9: Що робить метод pop() у списку, якщо його викликати без аргументів?
+<div class="q-text">Питання 9: Що робить метод pop() у списку, якщо його викликати без аргументів?
 </div>
-            <div><input type="radio">Повертає перший елемент списку
-</div>
-<div><input type="radio">Повертає випадковий елемент списку
-</div>
-<div><input type="radio">Видаляє весь список
-</div>
+<div><input type="radio">Повертає перший елемент списку</div>
+<div><input type="radio">Повертає випадковий елемент списку</div>
+<div><input type="radio">Видаляє весь список</div>
 <div><input type="radio">Видаляє та повертає останній елемент списку
  </div>
 
-            </div>
-            
+</div>
             <div id="10">
-            <div class="q-text">Питання 10: Як об'єднати два списки list1 і list2 в один новий список?
+<div class="q-text">Питання 10: Як об'єднати два списки list1 і list2 в один новий список?
 </div>
-            <div><input type="radio">list1 + list2
+<div><input type="radio">list1 + list2
  </div>
-<div><input type="radio">list1 & list2
-</div>
-<div><input type="radio">list1 * list2
-</div>
-<div><input type="radio">list1 - list2
-</div>
+<div><input type="radio">list1 & list2</div>
+<div><input type="radio">list1 * list2</div>
+<div><input type="radio">list1 - list2</div>
 
-            </div>
-            
+</div>
             <div id="11">
-            <div class="q-text">Питання 11: Що поверне вираз [1, 2] * 3?
+<div class="q-text">Питання 11: Що поверне вираз [1, 2] * 3?
 </div>
-            <div><input type="radio">[1, 2, 3]
-</div>
+<div><input type="radio">[1, 2, 3]</div>
 <div><input type="radio">[1, 2, 1, 2, 1, 2]
  </div>
-<div><input type="radio">Викличе помилку (Error)
-</div>
-<div><input type="radio">[3, 6]
-</div>
+<div><input type="radio">Викличе помилку (Error)</div>
+<div><input type="radio">[3, 6]</div>
 
-            </div>
-            
+</div>
             <div id="12">
-            <div class="q-text">Питання 12: Як перевірити, чи міститься число 5 у списку my_list?
+<div class="q-text">Питання 12: Як перевірити, чи міститься число 5 у списку my_list?
 </div>
-            <div><input type="radio">my_list.contains(5)
-</div>
-<div><input type="radio">my_list.has(5)
-</div>
+<div><input type="radio">my_list.contains(5)</div>
+<div><input type="radio">my_list.has(5)</div>
 <div><input type="radio">5 in my_list
  </div>
-<div><input type="radio">5 == my_list
-</div>
+<div><input type="radio">5 == my_list</div>
 
-            </div>
-            
+</div>
             <div id="13">
-            <div class="q-text">Питання 13: Що робить метод sort()?
+<div class="q-text">Питання 13: Що робить метод sort()?
 </div>
-            <div><input type="radio">Сортує елементи оригінального списку на місці (змінює сам список)
+<div><input type="radio">Сортує елементи оригінального списку на місці (змінює сам список)
  </div>
-<div><input type="radio">Перевертає список задом наперед
-</div>
-<div><input type="radio">Видаляє дублікати зі списку
-</div>
-<div><input type="radio">Повертає новий відсортований список, не змінюючи оригінальний
-</div>
+<div><input type="radio">Перевертає список задом наперед</div>
+<div><input type="radio">Видаляє дублікати зі списку</div>
+<div><input type="radio">Повертає новий відсортований список, не змінюючи оригінальний</div>
 
-            </div>
-            
+</div>
             <div id="14">
-            <div class="q-text">Питання 14: Як отримати зріз списку з 2-го по 4-й елемент включно (індекси 1, 2, 3) для my_list?
+<div class="q-text">Питання 14: Як отримати зріз списку з 2-го по 4-й елемент включно (індекси 1, 2, 3) для my_list?
 </div>
-            <div><input type="radio">my_list[2:4]
-</div>
-<div><input type="radio">my_list[2:5]
-</div>
+<div><input type="radio">my_list[2:4]</div>
+<div><input type="radio">my_list[2:5]</div>
 <div><input type="radio">my_list[1:4]
  </div>
-<div><input type="radio">my_list[1:3]
-</div>
+<div><input type="radio">my_list[1:3]</div>
 
-            </div>
-            
+</div>
             <div id="15">
-            <div class="q-text">Питання 15: Що поверне зріз списку my_list[::-1]?
+<div class="q-text">Питання 15: Що поверне зріз списку my_list[::-1]?
 </div>
-            <div><input type="radio">Останній елемент списку
-</div>
-<div><input type="radio">Перший елемент списку
-</div>
+<div><input type="radio">Останній елемент списку</div>
+<div><input type="radio">Перший елемент списку</div>
 <div><input type="radio">Новий список з елементами у зворотному порядку
  </div>
-<div><input type="radio">Порожній список
-</div>
+<div><input type="radio">Порожній список</div>
 
-            </div>
-            
+</div>
             <div id="16">
-            <div class="q-text">Питання 16: Який метод очищає список, видаляючи з нього всі елементи?
+<div class="q-text">Питання 16: Який метод очищає список, видаляючи з нього всі елементи?
 </div>
-            <div><input type="radio">remove_all()
-</div>
-<div><input type="radio">flush()
-</div>
-<div><input type="radio">empty()
-</div>
+<div><input type="radio">remove_all()</div>
+<div><input type="radio">flush()</div>
+<div><input type="radio">empty()</div>
 <div><input type="radio">clear()
  </div>
 
-            </div>
-            
+</div>
             <div id="17">
-            <div class="q-text">Питання 17: Що повертає метод index('x')?
+<div class="q-text">Питання 17: Що повертає метод index('x')?
 </div>
-            <div><input type="radio">Кількість елементів 'x' у списку
-</div>
-<div><input type="radio">Самий елемент 'x'
-</div>
+<div><input type="radio">Кількість елементів 'x' у списку</div>
+<div><input type="radio">Самий елемент 'x'</div>
 <div><input type="radio">Індекс першого входження елемента 'x' у списку
  </div>
-<div><input type="radio">Значення True або False
-</div>
+<div><input type="radio">Значення True або False</div>
 
-            </div>
-            
+</div>
             <div id="18">
-            <div class="q-text">Питання 18: Яким методом можна порахувати кількість елементів 'a' у списку?
+<div class="q-text">Питання 18: Яким методом можна порахувати кількість елементів 'a' у списку?
 </div>
-            <div><input type="radio">count('a')
+<div><input type="radio">count('a')
  </div>
-<div><input type="radio">len('a')
-</div>
-<div><input type="radio">sum('a')
-</div>
-<div><input type="radio">total('a')
-</div>
+<div><input type="radio">len('a')</div>
+<div><input type="radio">sum('a')</div>
+<div><input type="radio">total('a')</div>
 
-            </div>
-            
+</div>
             <div id="19">
-            <div class="q-text">Питання 19: Що буде виведено на екран після виконання коду: a = [1, 2]; b = a; b[0] = 99; print(a[0])?
+<div class="q-text">Питання 19: Що буде виведено на екран після виконання коду: a = [1, 2]; b = a; b[0] = 99; print(a[0])?
 </div>
-            <div><input type="radio">99
+<div><input type="radio">99
  </div>
-<div><input type="radio">1
-</div>
-<div><input type="radio">2
-</div>
-<div><input type="radio">Викличе помилку
-</div>
+<div><input type="radio">1</div>
+<div><input type="radio">2</div>
+<div><input type="radio">Викличе помилку</div>
 
-            </div>
-            
+</div>
             <div id="20">
-            <div class="q-text">Питання 20: Як правильно створити незалежну копію списку my_list, щоб зміни в копії не впливали на оригінал?
+<div class="q-text">Питання 20: Як правильно створити незалежну копію списку my_list, щоб зміни в копії не впливали на оригінал?
 </div>
-            <div><input type="radio">my_list.clone()
-</div>
+<div><input type="radio">my_list.clone()</div>
 <div><input type="radio">my_list.copy()
  </div>
-<div><input type="radio">my_list.duplicate()
-</div>
-<div><input type="radio">copy_list = my_list
-</div>
+<div><input type="radio">my_list.duplicate()</div>
+<div><input type="radio">copy_list = my_list</div>
 
-            </div>
+</div>
             
+</main>
+
 <script>
 const optionBoxes = document.querySelectorAll(
-  'body > div:not(#progress-wrap) > div:not(.q-text)'
+  'main > div:not(#progress-wrap) > div:not(.q-text)'
 );
 
 optionBoxes.forEach(box => {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 6: Обробка помилок (Exceptions)</title>
+  <title>Тест 1: Основи синтаксису</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -31,12 +31,16 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 680px;
+      /* max-width: 680px; */
       margin: 30px auto;
       padding: 0 15px;
       line-height: 1.5;
     }
-
+    
+    main#content {
+      overflow: visible;
+      display: block;
+    }
     /* Блок прогресу */
     #progress-wrap {
       background: var(--bg-card);
@@ -47,8 +51,11 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      
+      /* FIXES */
       position: sticky;
-      top: 0;
+      top: 10px;       /* Keeps it pinned 10px from the top of its scroll view */
+      z-index: 999;    /* Pulls it safely above the question cards' transition layers */
     }
     #progress-bar-outer {
       flex-grow: 1;
@@ -59,7 +66,7 @@
     }
     #progress-bar-inner {
       background: var(--accent);
-      width: 10%; /* Тимчасово, для візуалізації */
+      width: 0%; /* Тимчасово, для візуалізації */
       height: 100%;
       border-radius: 5px;
     }
@@ -71,7 +78,7 @@
     }
 
     /* Контейнер картки питання (генерація з id="{i}") */
-    body > div:not(#progress-wrap) {
+    body main > div:not(#progress-wrap) {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -81,7 +88,7 @@
     }
 
     /* Текст питання */
-    .q-text {
+    main .q-text {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-head);
@@ -91,7 +98,7 @@
     }
 
     /* Контейнери варіантів відповідей (div навколо input) */
-    body > div:not(#progress-wrap) > div:not(.q-text) {
+    body main > div:not(#progress-wrap) > div:not(.q-text) {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -102,13 +109,13 @@
       cursor: pointer;
       transition: background-color 0.15s, border-color 0.15s;
     }
-    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+    body main > div:not(#progress-wrap) > div:not(.q-text):hover {
       background-color: var(--bg-hover);
       border-color: var(--text-dim);
     }
 
     /* Стилізація радіо-кнопок */
-    input[type="radio"] {
+    main input[type="radio"] {
       appearance: none;
       -webkit-appearance: none;
       background-color: transparent;
@@ -124,7 +131,7 @@
       cursor: pointer;
       transition: border-color 0.15s;
     }
-    input[type="radio"]::before {
+    main input[type="radio"]::before {
       content: "";
       width: 10px;
       height: 10px;
@@ -133,13 +140,13 @@
       transition: 120ms transform ease-in-out;
       background-color: var(--accent);
     }
-    input[type="radio"]:checked::before {
+    main input[type="radio"]:checked::before {
       transform: scale(1);
     }
-    input[type="radio"]:checked {
+    main input[type="radio"]:checked {
       border-color: var(--accent);
     }
-    input[type="radio"]:disabled {
+    main input[type="radio"]:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
@@ -162,297 +169,224 @@
   <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 <body>
-  
+
+
   <nav id="nav-global" class="global"></nav>
+
+
+<main id="content">
 
 <div id="progress-wrap">
   <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
   <span id="progress-label">0 / 20</span>
 </div>
 
-
-            <div id="1">
-            <div class="q-text">Питання 1. Який ключовий блок використовується для перехоплення помилок у Python?
+<div id="1">
+<div class="q-text">Питання 1. Який ключовий блок використовується для перехоплення помилок у Python?
 </div>
-            <div><input type="radio">try
+<div><input type="radio">try
  </div>
-<div><input type="radio">catch
-</div>
-<div><input type="radio">handle
-</div>
-<div><input type="radio">error
-</div>
+<div><input type="radio">catch</div>
+<div><input type="radio">handle</div>
+<div><input type="radio">error</div>
 
-            </div>
-            
+</div>
             <div id="2">
-            <div class="q-text">Питання 2. Яке ключове слово використовується для обробки спійманої помилки?
+<div class="q-text">Питання 2. Яке ключове слово використовується для обробки спійманої помилки?
 </div>
-            <div><input type="radio">else
-</div>
+<div><input type="radio">else</div>
 <div><input type="radio">except
  </div>
-<div><input type="radio">finally
-</div>
-<div><input type="radio">try
-</div>
+<div><input type="radio">finally</div>
+<div><input type="radio">try</div>
 
-            </div>
-            
+</div>
             <div id="3">
-            <div class="q-text">Питання 3. Що виконується у блоці finally?
+<div class="q-text">Питання 3. Що виконується у блоці finally?
 </div>
-            <div><input type="radio">Тільки код, якщо сталася помилка
-</div>
+<div><input type="radio">Тільки код, якщо сталася помилка</div>
 <div><input type="radio">Код, який виконується завжди, незалежно від наявності помилки
  </div>
-<div><input type="radio">Тільки код, якщо помилки не було
-</div>
-<div><input type="radio">Код, який замінює блок except
-</div>
+<div><input type="radio">Тільки код, якщо помилки не було</div>
+<div><input type="radio">Код, який замінює блок except</div>
 
-            </div>
-            
+</div>
             <div id="4">
-            <div class="q-text">Питання 4. Який блок виконується лише тоді, коли в блоці try не виникло жодної помилки?
+<div class="q-text">Питання 4. Який блок виконується лише тоді, коли в блоці try не виникло жодної помилки?
 </div>
-            <div><input type="radio">except
-</div>
-<div><input type="radio">finally
-</div>
+<div><input type="radio">except</div>
+<div><input type="radio">finally</div>
 <div><input type="radio">else
  </div>
-<div><input type="radio">try
-</div>
+<div><input type="radio">try</div>
 
-            </div>
-            
+</div>
             <div id="5">
-            <div class="q-text">Питання 5. Який клас є базовим для всіх вбудованих виключень у Python?
+<div class="q-text">Питання 5. Який клас є базовим для всіх вбудованих виключень у Python?
 </div>
-            <div><input type="radio">BaseException
+<div><input type="radio">BaseException
  </div>
-<div><input type="radio">ExceptionBase
-</div>
-<div><input type="radio">Error
-</div>
-<div><input type="radio">RootError
-</div>
+<div><input type="radio">ExceptionBase</div>
+<div><input type="radio">Error</div>
+<div><input type="radio">RootError</div>
 
-            </div>
-            
+</div>
             <div id="6">
-            <div class="q-text">Питання 6. Яке ключове слово використовується для примусового виклику (генерації) помилки?
+<div class="q-text">Питання 6. Яке ключове слово використовується для примусового виклику (генерації) помилки?
 </div>
-            <div><input type="radio">trigger
-</div>
-<div><input type="radio">force
-</div>
-<div><input type="radio">throw
-</div>
+<div><input type="radio">trigger</div>
+<div><input type="radio">force</div>
+<div><input type="radio">throw</div>
 <div><input type="radio">raise
  </div>
 
-            </div>
-            
+</div>
             <div id="7">
-            <div class="q-text">Питання 7. Яка помилка виникає при спробі ділення числа на нуль?
+<div class="q-text">Питання 7. Яка помилка виникає при спробі ділення числа на нуль?
 </div>
-            <div><input type="radio">ZeroDivisionError
+<div><input type="radio">ZeroDivisionError
  </div>
-<div><input type="radio">MathError
-</div>
-<div><input type="radio">DivisionByZeroError
-</div>
-<div><input type="radio">ArithmeticError
-</div>
+<div><input type="radio">MathError</div>
+<div><input type="radio">DivisionByZeroError</div>
+<div><input type="radio">ArithmeticError</div>
 
-            </div>
-            
+</div>
             <div id="8">
-            <div class="q-text">Питання 8. Яка помилка виникає при спробі звернутися до змінної, яка ще не була визначена?
+<div class="q-text">Питання 8. Яка помилка виникає при спробі звернутися до змінної, яка ще не була визначена?
 </div>
-            <div><input type="radio">NameError
+<div><input type="radio">NameError
  </div>
-<div><input type="radio">UndefinedError
-</div>
-<div><input type="radio">VariableError
-</div>
-<div><input type="radio">ReferenceError
-</div>
+<div><input type="radio">UndefinedError</div>
+<div><input type="radio">VariableError</div>
+<div><input type="radio">ReferenceError</div>
 
-            </div>
-            
+</div>
             <div id="9">
-            <div class="q-text">Питання 9. Яка помилка виникає при спробі додати рядок до цілого числа?
+<div class="q-text">Питання 9. Яка помилка виникає при спробі додати рядок до цілого числа?
 </div>
-            <div><input type="radio">ValueError
-</div>
-<div><input type="radio">SyntaxError
-</div>
-<div><input type="radio">AttributeError
-</div>
+<div><input type="radio">ValueError</div>
+<div><input type="radio">SyntaxError</div>
+<div><input type="radio">AttributeError</div>
 <div><input type="radio">TypeError
  </div>
 
-            </div>
-            
+</div>
             <div id="10">
-            <div class="q-text">Питання 10. Яка помилка виникає при спробі перетворити рядок "abc" на число за допомогою int()?
+<div class="q-text">Питання 10. Яка помилка виникає при спробі перетворити рядок "abc" на число за допомогою int()?
 </div>
-            <div><input type="radio">TypeError
-</div>
-<div><input type="radio">FormatError
-</div>
-<div><input type="radio">CastError
-</div>
+<div><input type="radio">TypeError</div>
+<div><input type="radio">FormatError</div>
+<div><input type="radio">CastError</div>
 <div><input type="radio">ValueError
  </div>
 
-            </div>
-            
+</div>
             <div id="11">
-            <div class="q-text">Питання 11. Як перехопити кілька типів помилок в одному блоці except?
+<div class="q-text">Питання 11. Як перехопити кілька типів помилок в одному блоці except?
 </div>
-            <div><input type="radio">except [TypeError, ValueError]:
-</div>
-<div><input type="radio">except {TypeError, ValueError}:
-</div>
-<div><input type="radio">except TypeError, ValueError:
-</div>
+<div><input type="radio">except [TypeError, ValueError]:</div>
+<div><input type="radio">except {TypeError, ValueError}:</div>
+<div><input type="radio">except TypeError, ValueError:</div>
 <div><input type="radio">except (TypeError, ValueError):
  </div>
 
-            </div>
-            
+</div>
             <div id="12">
-            <div class="q-text">Питання 12. Як зберегти опис помилки у змінну всередині блоку except?
+<div class="q-text">Питання 12. Як зберегти опис помилки у змінну всередині блоку except?
 </div>
-            <div><input type="radio">except Exception as e:
+<div><input type="radio">except Exception as e:
  </div>
-<div><input type="radio">except Exception -> e:
-</div>
-<div><input type="radio">except Exception = e:
-</div>
-<div><input type="radio">except Exception e:
-</div>
+<div><input type="radio">except Exception -> e:</div>
+<div><input type="radio">except Exception = e:</div>
+<div><input type="radio">except Exception e:</div>
 
-            </div>
-            
+</div>
             <div id="13">
-            <div class="q-text">Питання 13. Яка помилка виникає, якщо індекс списку виходить за межі допустимого діапазону?
+<div class="q-text">Питання 13. Яка помилка виникає, якщо індекс списку виходить за межі допустимого діапазону?
 </div>
-            <div><input type="radio">OutOfRangeError
-</div>
+<div><input type="radio">OutOfRangeError</div>
 <div><input type="radio">IndexError
  </div>
-<div><input type="radio">ListError
+<div><input type="radio">ListError</div>
+<div><input type="radio">KeyError</div>
+
+</div>
+            <div id="14">
+<div class="q-text">Питання 14. Яка помилка виникає при спробі отримати доступ до неіснуючого ключа у словнику?
 </div>
 <div><input type="radio">KeyError
-</div>
-
-            </div>
-            
-            <div id="14">
-            <div class="q-text">Питання 14. Яка помилка виникає при спробі отримати доступ до неіснуючого ключа у словнику?
-</div>
-            <div><input type="radio">KeyError
  </div>
-<div><input type="radio">AttributeError
-</div>
-<div><input type="radio">IndexError
-</div>
-<div><input type="radio">ValueKeyError
-</div>
+<div><input type="radio">AttributeError</div>
+<div><input type="radio">IndexError</div>
+<div><input type="radio">ValueKeyError</div>
 
-            </div>
-            
+</div>
             <div id="15">
-            <div class="q-text">Питання 15. Чи можна використовувати кілька блоків except для одного try?
+<div class="q-text">Питання 15. Чи можна використовувати кілька блоків except для одного try?
 </div>
-            <div><input type="radio">Так, можна для обробки різних типів виключень
+<div><input type="radio">Так, можна для обробки різних типів виключень
  </div>
-<div><input type="radio">Ні, тільки один
-</div>
-<div><input type="radio">Тільки для помилок типу Exception
-</div>
-<div><input type="radio">Так, але тільки вкладеними
-</div>
+<div><input type="radio">Ні, тільки один</div>
+<div><input type="radio">Тільки для помилок типу Exception</div>
+<div><input type="radio">Так, але тільки вкладеними</div>
 
-            </div>
-            
+</div>
             <div id="16">
-            <div class="q-text">Питання 16. Що станеться, якщо помилка виникла, але не була перехоплена жодним блоком except?
+<div class="q-text">Питання 16. Що станеться, якщо помилка виникла, але не була перехоплена жодним блоком except?
 </div>
-            <div><input type="radio">Програма зупиниться і виведе Traceback
+<div><input type="radio">Програма зупиниться і виведе Traceback
  </div>
-<div><input type="radio">Python автоматично створить нову змінну з помилкою
-</div>
-<div><input type="radio">Виконається блок finally (якщо він є) і програма продовжить роботу
-</div>
-<div><input type="radio">Програма проігнорує помилку
-</div>
+<div><input type="radio">Python автоматично створить нову змінну з помилкою</div>
+<div><input type="radio">Виконається блок finally (якщо він є) і програма продовжить роботу</div>
+<div><input type="radio">Програма проігнорує помилку</div>
 
-            </div>
-            
+</div>
             <div id="17">
-            <div class="q-text">Питання 17. Яка помилка виникає, якщо в коді допущено помилку синтаксису (наприклад, пропущена дужка)?
+<div class="q-text">Питання 17. Яка помилка виникає, якщо в коді допущено помилку синтаксису (наприклад, пропущена дужка)?
 </div>
-            <div><input type="radio">RuntimeError
-</div>
-<div><input type="radio">IndentError
-</div>
-<div><input type="radio">TypeError
-</div>
+<div><input type="radio">RuntimeError</div>
+<div><input type="radio">IndentError</div>
+<div><input type="radio">TypeError</div>
 <div><input type="radio">SyntaxError
  </div>
 
-            </div>
-            
+</div>
             <div id="18">
-            <div class="q-text">Питання 18. Який блок найчастіше використовується для закриття файлів або з'єднань з базою даних, щоб гарантувати їх звільнення?
+<div class="q-text">Питання 18. Який блок найчастіше використовується для закриття файлів або з'єднань з базою даних, щоб гарантувати їх звільнення?
 </div>
-            <div><input type="radio">else
-</div>
-<div><input type="radio">try
-</div>
-<div><input type="radio">except
-</div>
+<div><input type="radio">else</div>
+<div><input type="radio">try</div>
+<div><input type="radio">except</div>
 <div><input type="radio">finally
  </div>
 
-            </div>
-            
+</div>
             <div id="19">
-            <div class="q-text">Питання 19. Що означає тип помилки ImportError?
+<div class="q-text">Питання 19. Що означає тип помилки ImportError?
 </div>
-            <div><input type="radio">Помилка при читанні файлу
-</div>
-<div><input type="radio">Помилка синтаксису в імпортованому модулі
-</div>
+<div><input type="radio">Помилка при читанні файлу</div>
+<div><input type="radio">Помилка синтаксису в імпортованому модулі</div>
 <div><input type="radio">Помилка при спробі імпортувати модуль, якого не існує
  </div>
-<div><input type="radio">Помилка імпорту файлу
-</div>
+<div><input type="radio">Помилка імпорту файлу</div>
 
-            </div>
-            
+</div>
             <div id="20">
-            <div class="q-text">Питання 20. Чи можна в блоці except перехопити всі можливі виключення, написавши просто except:?
+<div class="q-text">Питання 20. Чи можна в блоці except перехопити всі можливі виключення, написавши просто except:?
 </div>
-            <div><input type="radio">Так, це можливо, але не рекомендується
+<div><input type="radio">Так, це можливо, але не рекомендується
  </div>
-<div><input type="radio">Так, це найкраща практика
-</div>
+<div><input type="radio">Так, це найкраща практика</div>
 <div><input type="radio">Тільки якщо вказано ім'я виключення</div>
-<div><input type="radio">Ні, це заборонено
-</div>
+<div><input type="radio">Ні, це заборонено</div>
 
-            </div>
+</div>
             
+</main>
+
 <script>
 const optionBoxes = document.querySelectorAll(
-  'body > div:not(#progress-wrap) > div:not(.q-text)'
+  'main > div:not(#progress-wrap) > div:not(.q-text)'
 );
 
 optionBoxes.forEach(box => {

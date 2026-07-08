@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 15: Робота з базами даних за допомогою SQL Server і PostgreSQL</title>
+  <title>Тест 1: Основи синтаксису</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -31,12 +31,16 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 680px;
+      /* max-width: 680px; */
       margin: 30px auto;
       padding: 0 15px;
       line-height: 1.5;
     }
-
+    
+    main#content {
+      overflow: visible;
+      display: block;
+    }
     /* Блок прогресу */
     #progress-wrap {
       background: var(--bg-card);
@@ -47,8 +51,11 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      
+      /* FIXES */
       position: sticky;
-      top: 0;
+      top: 10px;       /* Keeps it pinned 10px from the top of its scroll view */
+      z-index: 999;    /* Pulls it safely above the question cards' transition layers */
     }
     #progress-bar-outer {
       flex-grow: 1;
@@ -59,7 +66,7 @@
     }
     #progress-bar-inner {
       background: var(--accent);
-      width: 10%; /* Тимчасово, для візуалізації */
+      width: 0%; /* Тимчасово, для візуалізації */
       height: 100%;
       border-radius: 5px;
     }
@@ -71,7 +78,7 @@
     }
 
     /* Контейнер картки питання (генерація з id="{i}") */
-    body > div:not(#progress-wrap) {
+    body main > div:not(#progress-wrap) {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -81,7 +88,7 @@
     }
 
     /* Текст питання */
-    .q-text {
+    main .q-text {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-head);
@@ -91,7 +98,7 @@
     }
 
     /* Контейнери варіантів відповідей (div навколо input) */
-    body > div:not(#progress-wrap) > div:not(.q-text) {
+    body main > div:not(#progress-wrap) > div:not(.q-text) {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -102,13 +109,13 @@
       cursor: pointer;
       transition: background-color 0.15s, border-color 0.15s;
     }
-    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+    body main > div:not(#progress-wrap) > div:not(.q-text):hover {
       background-color: var(--bg-hover);
       border-color: var(--text-dim);
     }
 
     /* Стилізація радіо-кнопок */
-    input[type="radio"] {
+    main input[type="radio"] {
       appearance: none;
       -webkit-appearance: none;
       background-color: transparent;
@@ -124,7 +131,7 @@
       cursor: pointer;
       transition: border-color 0.15s;
     }
-    input[type="radio"]::before {
+    main input[type="radio"]::before {
       content: "";
       width: 10px;
       height: 10px;
@@ -133,13 +140,13 @@
       transition: 120ms transform ease-in-out;
       background-color: var(--accent);
     }
-    input[type="radio"]:checked::before {
+    main input[type="radio"]:checked::before {
       transform: scale(1);
     }
-    input[type="radio"]:checked {
+    main input[type="radio"]:checked {
       border-color: var(--accent);
     }
-    input[type="radio"]:disabled {
+    main input[type="radio"]:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
@@ -162,297 +169,224 @@
   <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 <body>
-  
+
+
   <nav id="nav-global" class="global"></nav>
+
+
+<main id="content">
 
 <div id="progress-wrap">
   <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
   <span id="progress-label">0 / 20</span>
 </div>
 
-
-            <div id="1">
-            <div class="q-text">Питання 1. Яка бібліотека є стандартом де-факто для роботи з PostgreSQL у Python?
+<div id="1">
+<div class="q-text">Питання 1. Яка бібліотека є стандартом де-факто для роботи з PostgreSQL у Python?
 </div>
-            <div><input type="radio">sql-postgres
-</div>
-<div><input type="radio">pgpy
-</div>
+<div><input type="radio">sql-postgres</div>
+<div><input type="radio">pgpy</div>
 <div><input type="radio">psycopg2
  </div>
-<div><input type="radio">psql-driver
-</div>
+<div><input type="radio">psql-driver</div>
 
-            </div>
-            
+</div>
             <div id="2">
-            <div class="q-text">Питання 2. Який метод використовується для створення з'єднання з БД PostgreSQL?
+<div class="q-text">Питання 2. Який метод використовується для створення з'єднання з БД PostgreSQL?
 </div>
-            <div><input type="radio">psycopg2.establish()
-</div>
+<div><input type="radio">psycopg2.establish()</div>
 <div><input type="radio">psycopg2.connect()
  </div>
-<div><input type="radio">psycopg2.connection()
-</div>
-<div><input type="radio">psycopg2.open()
-</div>
+<div><input type="radio">psycopg2.connection()</div>
+<div><input type="radio">psycopg2.open()</div>
 
-            </div>
-            
+</div>
             <div id="3">
-            <div class="q-text">Питання 3. Як у psycopg2 реалізовано автоматичне завершення транзакції?
+<div class="q-text">Питання 3. Як у psycopg2 реалізовано автоматичне завершення транзакції?
 </div>
-            <div><input type="radio">cursor.save()
-</div>
-<div><input type="radio">transaction.end()
-</div>
+<div><input type="radio">cursor.save()</div>
+<div><input type="radio">transaction.end()</div>
 <div><input type="radio">connection.commit()
  </div>
-<div><input type="radio">connection.apply()
-</div>
+<div><input type="radio">connection.apply()</div>
 
-            </div>
-            
+</div>
             <div id="4">
-            <div class="q-text">Питання 4. Який символ використовується для параметризованих запитів у psycopg2?
+<div class="q-text">Питання 4. Який символ використовується для параметризованих запитів у psycopg2?
 </div>
-            <div><input type="radio">%s
+<div><input type="radio">%s
  </div>
-<div><input type="radio">?
-</div>
-<div><input type="radio">:name
-</div>
-<div><input type="radio">$1
-</div>
+<div><input type="radio">?</div>
+<div><input type="radio">:name</div>
+<div><input type="radio">$1</div>
 
-            </div>
-            
+</div>
             <div id="5">
-            <div class="q-text">Питання 5. Який об'єкт дозволяє зручно звертатися до стовпців результату за їх іменами (а не індексами)?
+<div class="q-text">Питання 5. Який об'єкт дозволяє зручно звертатися до стовпців результату за їх іменами (а не індексами)?
 </div>
-            <div><input type="radio">psycopg2.RowCursor
-</div>
-<div><input type="radio">psycopg2.DictResult
-</div>
-<div><input type="radio">psycopg2.NameCursor
-</div>
+<div><input type="radio">psycopg2.RowCursor</div>
+<div><input type="radio">psycopg2.DictResult</div>
+<div><input type="radio">psycopg2.NameCursor</div>
 <div><input type="radio">psycopg2.extras.DictCursor
  </div>
 
-            </div>
-            
+</div>
             <div id="6">
-            <div class="q-text">Питання 6. Який тип виключення виникає при помилках підключення до Postgres?
+<div class="q-text">Питання 6. Який тип виключення виникає при помилках підключення до Postgres?
 </div>
-            <div><input type="radio">psycopg2.ConnectError
-</div>
+<div><input type="radio">psycopg2.ConnectError</div>
 <div><input type="radio">psycopg2.OperationalError
  </div>
-<div><input type="radio">psycopg2.DBError
-</div>
-<div><input type="radio">psycopg2.Error
-</div>
+<div><input type="radio">psycopg2.DBError</div>
+<div><input type="radio">psycopg2.Error</div>
 
-            </div>
-            
+</div>
             <div id="7">
-            <div class="q-text">Питання 7. Який метод psycopg2 найефективніший для вставки великих обсягів даних?
+<div class="q-text">Питання 7. Який метод psycopg2 найефективніший для вставки великих обсягів даних?
 </div>
-            <div><input type="radio">cursor.copy_from()
-</div>
-<div><input type="radio">insert_many()
-</div>
+<div><input type="radio">cursor.copy_from()</div>
+<div><input type="radio">insert_many()</div>
 <div><input type="radio">execute_values()
  </div>
-<div><input type="radio">bulk_insert()
-</div>
+<div><input type="radio">bulk_insert()</div>
 
-            </div>
-            
+</div>
             <div id="8">
-            <div class="q-text">Питання 8. Чи підтримує psycopg2 асинхронні операції?
+<div class="q-text">Питання 8. Чи підтримує psycopg2 асинхронні операції?
 </div>
-            <div><input type="radio">Ні, тільки синхронні
-</div>
-<div><input type="radio">Тільки через сторонні бібліотеки
-</div>
-<div><input type="radio">Так, але тільки для запису
-</div>
+<div><input type="radio">Ні, тільки синхронні</div>
+<div><input type="radio">Тільки через сторонні бібліотеки</div>
+<div><input type="radio">Так, але тільки для запису</div>
 <div><input type="radio">Так, через окремі модулі
  </div>
 
-            </div>
-            
+</div>
             <div id="9">
-            <div class="q-text">Питання 9. Яка властивість курсора повертає статус останнього запиту (наприклад, "INSERT 0 1")?
+<div class="q-text">Питання 9. Яка властивість курсора повертає статус останнього запиту (наприклад, "INSERT 0 1")?
 </div>
-            <div><input type="radio">last_result
-</div>
+<div><input type="radio">last_result</div>
 <div><input type="radio">statusmessage
  </div>
-<div><input type="radio">query_info
-</div>
-<div><input type="radio">rowcount
-</div>
+<div><input type="radio">query_info</div>
+<div><input type="radio">rowcount</div>
 
-            </div>
-            
+</div>
             <div id="10">
-            <div class="q-text">Питання 10. Що потрібно зробити після виконання змін (UPDATE/DELETE) в psycopg2, щоб зміни збереглися?
+<div class="q-text">Питання 10. Що потрібно зробити після виконання змін (UPDATE/DELETE) в psycopg2, щоб зміни збереглися?
 </div>
-            <div><input type="radio">Виконати cursor.execute('SAVE')
-</div>
+<div><input type="radio">Виконати cursor.execute('SAVE')</div>
 <div><input type="radio">Викликати connection.commit()
  </div>
-<div><input type="radio">Нічого, зміни зберігаються автоматично
-</div>
-<div><input type="radio">Виконати cursor.close()
-</div>
+<div><input type="radio">Нічого, зміни зберігаються автоматично</div>
+<div><input type="radio">Виконати cursor.close()</div>
 
-            </div>
-            
+</div>
             <div id="11">
-            <div class="q-text">Питання 11. Яка бібліотека найчастіше використовується для підключення до MS SQL Server?
+<div class="q-text">Питання 11. Яка бібліотека найчастіше використовується для підключення до MS SQL Server?
 </div>
-            <div><input type="radio">pyodbc
+<div><input type="radio">pyodbc
  </div>
-<div><input type="radio">odbc-driver
-</div>
-<div><input type="radio">py-msql
-</div>
-<div><input type="radio">sqlserver-py
-</div>
+<div><input type="radio">odbc-driver</div>
+<div><input type="radio">py-msql</div>
+<div><input type="radio">sqlserver-py</div>
 
-            </div>
-            
+</div>
             <div id="12">
-            <div class="q-text">Питання 12. Що обов'язково потрібно мати в системі для роботи pyodbc?
+<div class="q-text">Питання 12. Що обов'язково потрібно мати в системі для роботи pyodbc?
 </div>
-            <div><input type="radio">Відкритий порт 1433
-</div>
+<div><input type="radio">Відкритий порт 1433</div>
 <div><input type="radio">ODBC-драйвер для SQL Server
  </div>
-<div><input type="radio">Бібліотеку pypyodbc
-</div>
-<div><input type="radio">Встановлений SQL Server Management Studio
-</div>
+<div><input type="radio">Бібліотеку pypyodbc</div>
+<div><input type="radio">Встановлений SQL Server Management Studio</div>
 
-            </div>
-            
+</div>
             <div id="13">
-            <div class="q-text">Питання 13. Який параметр зазвичай містить рядок підключення до SQL Server?
+<div class="q-text">Питання 13. Який параметр зазвичай містить рядок підключення до SQL Server?
 </div>
-            <div><input type="radio">connection_string
+<div><input type="radio">connection_string
  </div>
-<div><input type="radio">url
-</div>
-<div><input type="radio">dsn
-</div>
-<div><input type="radio">host + dbname
-</div>
+<div><input type="radio">url</div>
+<div><input type="radio">dsn</div>
+<div><input type="radio">host + dbname</div>
 
-            </div>
-            
+</div>
             <div id="14">
-            <div class="q-text">Питання 14. Який символ використовується для параметризованих запитів у pyodbc?
+<div class="q-text">Питання 14. Який символ використовується для параметризованих запитів у pyodbc?
 </div>
-            <div><input type="radio">?
+<div><input type="radio">?
  </div>
-<div><input type="radio">:name
-</div>
-<div><input type="radio">@name
-</div>
-<div><input type="radio">%s
-</div>
+<div><input type="radio">:name</div>
+<div><input type="radio">@name</div>
+<div><input type="radio">%s</div>
 
-            </div>
-            
+</div>
             <div id="15">
-            <div class="q-text">Питання 15. Який метод дозволяє виконати запит і одразу отримати результат у вигляді ітератора?
+<div class="q-text">Питання 15. Який метод дозволяє виконати запит і одразу отримати результат у вигляді ітератора?
 </div>
-            <div><input type="radio">cursor.execute()
+<div><input type="radio">cursor.execute()
  </div>
-<div><input type="radio">cursor.stream()
-</div>
-<div><input type="radio">cursor.query()
-</div>
-<div><input type="radio">cursor.fetchall()
-</div>
+<div><input type="radio">cursor.stream()</div>
+<div><input type="radio">cursor.query()</div>
+<div><input type="radio">cursor.fetchall()</div>
 
-            </div>
-            
+</div>
             <div id="16">
-            <div class="q-text">Питання 16. Що потрібно вимкнути або налаштувати в pyodbc, щоб транзакції не підтверджувалися автоматично?
+<div class="q-text">Питання 16. Що потрібно вимкнути або налаштувати в pyodbc, щоб транзакції не підтверджувалися автоматично?
 </div>
-            <div><input type="radio">connection.set_manual()
-</div>
+<div><input type="radio">connection.set_manual()</div>
 <div><input type="radio">connection.autocommit = False
  </div>
-<div><input type="radio">cursor.commit = False
-</div>
-<div><input type="radio">connection.transaction = 'manual'
-</div>
+<div><input type="radio">cursor.commit = False</div>
+<div><input type="radio">connection.transaction = 'manual'</div>
 
-            </div>
-            
+</div>
             <div id="17">
-            <div class="q-text">Питання 17. Як отримати список усіх доступних ODBC-драйверів у системі через pyodbc?
+<div class="q-text">Питання 17. Як отримати список усіх доступних ODBC-драйверів у системі через pyodbc?
 </div>
-            <div><input type="radio">pyodbc.odbc_data_sources()
-</div>
+<div><input type="radio">pyodbc.odbc_data_sources()</div>
 <div><input type="radio">pyodbc.drivers()
  </div>
-<div><input type="radio">pyodbc.list_drivers()
-</div>
-<div><input type="radio">pyodbc.get_drivers()
-</div>
+<div><input type="radio">pyodbc.list_drivers()</div>
+<div><input type="radio">pyodbc.get_drivers()</div>
 
-            </div>
-            
+</div>
             <div id="18">
-            <div class="q-text">Питання 18. Який метод pyodbc використовується для закриття з'єднання?
+<div class="q-text">Питання 18. Який метод pyodbc використовується для закриття з'єднання?
 </div>
-            <div><input type="radio">connection.close()
+<div><input type="radio">connection.close()
  </div>
-<div><input type="radio">connection.exit()
-</div>
-<div><input type="radio">del connection
-</div>
-<div><input type="radio">connection.finish()
-</div>
+<div><input type="radio">connection.exit()</div>
+<div><input type="radio">del connection</div>
+<div><input type="radio">connection.finish()</div>
 
-            </div>
-            
+</div>
             <div id="19">
-            <div class="q-text">Питання 19. Яка помилка виникне, якщо передати невірний рядок підключення в pyodbc?
+<div class="q-text">Питання 19. Яка помилка виникне, якщо передати невірний рядок підключення в pyodbc?
 </div>
-            <div><input type="radio">pyodbc.OperationalError
-</div>
+<div><input type="radio">pyodbc.OperationalError</div>
 <div><input type="radio">pyodbc.InterfaceError
  </div>
-<div><input type="radio">pyodbc.ProgrammingError
-</div>
-<div><input type="radio">pyodbc.DataError
-</div>
+<div><input type="radio">pyodbc.ProgrammingError</div>
+<div><input type="radio">pyodbc.DataError</div>
 
-            </div>
-            
+</div>
             <div id="20">
-            <div class="q-text">Питання 20. Чи можна використовувати with (context manager) для об'єкта підключення в pyodbc?
+<div class="q-text">Питання 20. Чи можна використовувати with (context manager) для об'єкта підключення в pyodbc?
 </div>
-            <div><input type="radio">Так, це гарантує закриття з'єднання
+<div><input type="radio">Так, це гарантує закриття з'єднання
  </div>
-<div><input type="radio">Ні, тільки для курсорів
-</div>
-<div><input type="radio">Тільки в нових версіях
-</div>
+<div><input type="radio">Ні, тільки для курсорів</div>
+<div><input type="radio">Тільки в нових версіях</div>
 <div><input type="radio">Це залежить від драйвера</div>
 
-            </div>
+</div>
             
+</main>
+
 <script>
 const optionBoxes = document.querySelectorAll(
-  'body > div:not(#progress-wrap) > div:not(.q-text)'
+  'main > div:not(#progress-wrap) > div:not(.q-text)'
 );
 
 optionBoxes.forEach(box => {

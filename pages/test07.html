@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест 7: Модуль os</title>
+  <title>Тест 1: Основи синтаксису</title>
   <link rel="icon" type="image/png" href="../favicon.ico">
 <style>
     :root {
@@ -31,12 +31,16 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 680px;
+      /* max-width: 680px; */
       margin: 30px auto;
       padding: 0 15px;
       line-height: 1.5;
     }
-
+    
+    main#content {
+      overflow: visible;
+      display: block;
+    }
     /* Блок прогресу */
     #progress-wrap {
       background: var(--bg-card);
@@ -47,8 +51,11 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      
+      /* FIXES */
       position: sticky;
-      top: 0;
+      top: 10px;       /* Keeps it pinned 10px from the top of its scroll view */
+      z-index: 999;    /* Pulls it safely above the question cards' transition layers */
     }
     #progress-bar-outer {
       flex-grow: 1;
@@ -59,7 +66,7 @@
     }
     #progress-bar-inner {
       background: var(--accent);
-      width: 10%; /* Тимчасово, для візуалізації */
+      width: 0%; /* Тимчасово, для візуалізації */
       height: 100%;
       border-radius: 5px;
     }
@@ -71,7 +78,7 @@
     }
 
     /* Контейнер картки питання (генерація з id="{i}") */
-    body > div:not(#progress-wrap) {
+    body main > div:not(#progress-wrap) {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -81,7 +88,7 @@
     }
 
     /* Текст питання */
-    .q-text {
+    main .q-text {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-head);
@@ -91,7 +98,7 @@
     }
 
     /* Контейнери варіантів відповідей (div навколо input) */
-    body > div:not(#progress-wrap) > div:not(.q-text) {
+    body main > div:not(#progress-wrap) > div:not(.q-text) {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -102,13 +109,13 @@
       cursor: pointer;
       transition: background-color 0.15s, border-color 0.15s;
     }
-    body > div:not(#progress-wrap) > div:not(.q-text):hover {
+    body main > div:not(#progress-wrap) > div:not(.q-text):hover {
       background-color: var(--bg-hover);
       border-color: var(--text-dim);
     }
 
     /* Стилізація радіо-кнопок */
-    input[type="radio"] {
+    main input[type="radio"] {
       appearance: none;
       -webkit-appearance: none;
       background-color: transparent;
@@ -124,7 +131,7 @@
       cursor: pointer;
       transition: border-color 0.15s;
     }
-    input[type="radio"]::before {
+    main input[type="radio"]::before {
       content: "";
       width: 10px;
       height: 10px;
@@ -133,13 +140,13 @@
       transition: 120ms transform ease-in-out;
       background-color: var(--accent);
     }
-    input[type="radio"]:checked::before {
+    main input[type="radio"]:checked::before {
       transform: scale(1);
     }
-    input[type="radio"]:checked {
+    main input[type="radio"]:checked {
       border-color: var(--accent);
     }
-    input[type="radio"]:disabled {
+    main input[type="radio"]:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
@@ -162,297 +169,224 @@
   <link rel="stylesheet" href="../assets/css/mystyle.css">
 </head>
 <body>
-  
+
+
   <nav id="nav-global" class="global"></nav>
+
+
+<main id="content">
 
 <div id="progress-wrap">
   <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
   <span id="progress-label">0 / 20</span>
 </div>
 
-
-            <div id="1">
-            <div class="q-text">Питання 1. Яка функція модуля os повертає поточну робочу директорію?
+<div id="1">
+<div class="q-text">Питання 1. Яка функція модуля os повертає поточну робочу директорію?
 </div>
-            <div><input type="radio">os.getcwd()
+<div><input type="radio">os.getcwd()
  </div>
-<div><input type="radio">os.pwd()
-</div>
-<div><input type="radio">os.current_dir()
-</div>
-<div><input type="radio">os.getdir()
-</div>
+<div><input type="radio">os.pwd()</div>
+<div><input type="radio">os.current_dir()</div>
+<div><input type="radio">os.getdir()</div>
 
-            </div>
-            
+</div>
             <div id="2">
-            <div class="q-text">Питання 2. Яка функція дозволяє змінити поточну робочу директорію?
+<div class="q-text">Питання 2. Яка функція дозволяє змінити поточну робочу директорію?
 </div>
-            <div><input type="radio">os.changedir()
-</div>
+<div><input type="radio">os.changedir()</div>
 <div><input type="radio">os.chdir()
  </div>
-<div><input type="radio">os.movedir()
-</div>
-<div><input type="radio">os.setcwd()
-</div>
+<div><input type="radio">os.movedir()</div>
+<div><input type="radio">os.setcwd()</div>
 
-            </div>
-            
+</div>
             <div id="3">
-            <div class="q-text">Питання 3. Яка функція використовується для переліку всіх файлів та папок у вказаній директорії?
+<div class="q-text">Питання 3. Яка функція використовується для переліку всіх файлів та папок у вказаній директорії?
 </div>
-            <div><input type="radio">os.listfiles()
-</div>
+<div><input type="radio">os.listfiles()</div>
 <div><input type="radio">os.listdir()
  </div>
-<div><input type="radio">os.getdircontent()
-</div>
-<div><input type="radio">os.showdir()
-</div>
+<div><input type="radio">os.getdircontent()</div>
+<div><input type="radio">os.showdir()</div>
 
-            </div>
-            
+</div>
             <div id="4">
-            <div class="q-text">Питання 4. Яка функція створює нову папку?
+<div class="q-text">Питання 4. Яка функція створює нову папку?
 </div>
-            <div><input type="radio">os.createdir()
-</div>
+<div><input type="radio">os.createdir()</div>
 <div><input type="radio">os.mkdir()
  </div>
-<div><input type="radio">os.makedir()
-</div>
-<div><input type="radio">os.newdir()
-</div>
+<div><input type="radio">os.makedir()</div>
+<div><input type="radio">os.newdir()</div>
 
-            </div>
-            
+</div>
             <div id="5">
-            <div class="q-text">Питання 5. Яка функція видаляє порожню папку?
+<div class="q-text">Питання 5. Яка функція видаляє порожню папку?
 </div>
-            <div><input type="radio">os.deletedir()
-</div>
-<div><input type="radio">os.removedir()
-</div>
-<div><input type="radio">os.deldir()
-</div>
+<div><input type="radio">os.deletedir()</div>
+<div><input type="radio">os.removedir()</div>
+<div><input type="radio">os.deldir()</div>
 <div><input type="radio">os.rmdir()
  </div>
 
-            </div>
-            
+</div>
             <div id="6">
-            <div class="q-text">Питання 6. Яка функція видаляє файл?
+<div class="q-text">Питання 6. Яка функція видаляє файл?
 </div>
-            <div><input type="radio">os.erase()
-</div>
-<div><input type="radio">os.unlinkfile()
-</div>
+<div><input type="radio">os.erase()</div>
+<div><input type="radio">os.unlinkfile()</div>
 <div><input type="radio">os.remove()
  </div>
-<div><input type="radio">os.delete()
-</div>
+<div><input type="radio">os.delete()</div>
 
-            </div>
-            
+</div>
             <div id="7">
-            <div class="q-text">Питання 7. Як перевірити, чи існує шлях (файл або папка)?
+<div class="q-text">Питання 7. Як перевірити, чи існує шлях (файл або папка)?
 </div>
-            <div><input type="radio">os.exists()
-</div>
-<div><input type="radio">os.is_path()
-</div>
-<div><input type="radio">os.check_path()
-</div>
+<div><input type="radio">os.exists()</div>
+<div><input type="radio">os.is_path()</div>
+<div><input type="radio">os.check_path()</div>
 <div><input type="radio">os.path.exists()
  </div>
 
-            </div>
-            
+</div>
             <div id="8">
-            <div class="q-text">Питання 8. Який модуль всередині os призначений для маніпуляцій зі шляхами?
+<div class="q-text">Питання 8. Який модуль всередині os призначений для маніпуляцій зі шляхами?
 </div>
-            <div><input type="radio">os.dirtools
-</div>
-<div><input type="radio">os.pathutils
-</div>
-<div><input type="radio">os.paths
-</div>
+<div><input type="radio">os.dirtools</div>
+<div><input type="radio">os.pathutils</div>
+<div><input type="radio">os.paths</div>
 <div><input type="radio">os.path
  </div>
 
-            </div>
-            
+</div>
             <div id="9">
-            <div class="q-text">Питання 9. Яка функція перевіряє, чи є шлях файлом?
+<div class="q-text">Питання 9. Яка функція перевіряє, чи є шлях файлом?
 </div>
-            <div><input type="radio">os.path.exists_file()
-</div>
+<div><input type="radio">os.path.exists_file()</div>
 <div><input type="radio">os.path.isfile()
  </div>
-<div><input type="radio">os.isfile()
-</div>
-<div><input type="radio">os.path.is_file()
-</div>
+<div><input type="radio">os.isfile()</div>
+<div><input type="radio">os.path.is_file()</div>
 
-            </div>
-            
+</div>
             <div id="10">
-            <div class="q-text">Питання 10. Яка функція перевіряє, чи є шлях папкою (директорією)?
+<div class="q-text">Питання 10. Яка функція перевіряє, чи є шлях папкою (директорією)?
 </div>
-            <div><input type="radio">os.isdir()
-</div>
-<div><input type="radio">os.path.is_dir()
-</div>
+<div><input type="radio">os.isdir()</div>
+<div><input type="radio">os.path.is_dir()</div>
 <div><input type="radio">os.path.isdir()
  </div>
-<div><input type="radio">os.path.folder()
-</div>
+<div><input type="radio">os.path.folder()</div>
 
-            </div>
-            
+</div>
             <div id="11">
-            <div class="q-text">Питання 11. Яка функція розділяє шлях до файлу на ім'я папки та ім'я самого файлу?
+<div class="q-text">Питання 11. Яка функція розділяє шлях до файлу на ім'я папки та ім'я самого файлу?
 </div>
-            <div><input type="radio">os.split()
-</div>
-<div><input type="radio">os.path.divide()
-</div>
-<div><input type="radio">os.path.partition()
-</div>
+<div><input type="radio">os.split()</div>
+<div><input type="radio">os.path.divide()</div>
+<div><input type="radio">os.path.partition()</div>
 <div><input type="radio">os.path.split()
  </div>
 
-            </div>
-            
+</div>
             <div id="12">
-            <div class="q-text">Питання 12. Як з'єднати декілька частин шляху в один рядок, коректний для вашої ОС?
+<div class="q-text">Питання 12. Як з'єднати декілька частин шляху в один рядок, коректний для вашої ОС?
 </div>
-            <div><input type="radio">os.path.merge()
-</div>
-<div><input type="radio">os.path.combine()
-</div>
-<div><input type="radio">os.path.connect()
-</div>
+<div><input type="radio">os.path.merge()</div>
+<div><input type="radio">os.path.combine()</div>
+<div><input type="radio">os.path.connect()</div>
 <div><input type="radio">os.path.join()
  </div>
 
-            </div>
-            
+</div>
             <div id="13">
-            <div class="q-text">Питання 13. Яка функція повертає розмір файлу в байтах?
+<div class="q-text">Питання 13. Яка функція повертає розмір файлу в байтах?
 </div>
-            <div><input type="radio">os.getfilesize()
-</div>
+<div><input type="radio">os.getfilesize()</div>
 <div><input type="radio">os.path.getsize()
  </div>
-<div><input type="radio">os.path.size()
-</div>
-<div><input type="radio">os.path.bytes()
-</div>
+<div><input type="radio">os.path.size()</div>
+<div><input type="radio">os.path.bytes()</div>
 
-            </div>
-            
+</div>
             <div id="14">
-            <div class="q-text">Питання 14. Як отримати назву операційної системи (наприклад, 'posix' або 'nt')?
+<div class="q-text">Питання 14. Як отримати назву операційної системи (наприклад, 'posix' або 'nt')?
 </div>
-            <div><input type="radio">os.name
+<div><input type="radio">os.name
  </div>
-<div><input type="radio">os.os_type
-</div>
-<div><input type="radio">os.platform()
-</div>
-<div><input type="radio">os.system_name
-</div>
+<div><input type="radio">os.os_type</div>
+<div><input type="radio">os.platform()</div>
+<div><input type="radio">os.system_name</div>
 
-            </div>
-            
+</div>
             <div id="15">
-            <div class="q-text">Питання 15. Яка функція видаляє файл або порожню папку (більш сучасний метод)?
+<div class="q-text">Питання 15. Яка функція видаляє файл або порожню папку (більш сучасний метод)?
 </div>
-            <div><input type="radio">os.delete_all()
-</div>
+<div><input type="radio">os.delete_all()</div>
 <div><input type="radio">os.unlink()
  </div>
-<div><input type="radio">os.kill()
-</div>
-<div><input type="radio">os.erase_path()
-</div>
+<div><input type="radio">os.kill()</div>
+<div><input type="radio">os.erase_path()</div>
 
-            </div>
-            
+</div>
             <div id="16">
-            <div class="q-text">Питання 16. Яка змінна середовища в os дозволяє отримати доступ до змінних оточення (наприклад, PATH)?
+<div class="q-text">Питання 16. Яка змінна середовища в os дозволяє отримати доступ до змінних оточення (наприклад, PATH)?
 </div>
-            <div><input type="radio">os.environment
-</div>
-<div><input type="radio">os.env
-</div>
-<div><input type="radio">os.get_env()
-</div>
+<div><input type="radio">os.environment</div>
+<div><input type="radio">os.env</div>
+<div><input type="radio">os.get_env()</div>
 <div><input type="radio">os.environ
  </div>
 
-            </div>
-            
+</div>
             <div id="17">
-            <div class="q-text">Питання 17. Яка функція дозволяє виконати системну команду безпосередньо з Python?
+<div class="q-text">Питання 17. Яка функція дозволяє виконати системну команду безпосередньо з Python?
 </div>
-            <div><input type="radio">os.execute()
-</div>
-<div><input type="radio">os.run()
-</div>
+<div><input type="radio">os.execute()</div>
+<div><input type="radio">os.run()</div>
 <div><input type="radio">os.system()
  </div>
-<div><input type="radio">os.cmd()
-</div>
+<div><input type="radio">os.cmd()</div>
 
-            </div>
-            
+</div>
             <div id="18">
-            <div class="q-text">Питання 18. Яка функція повертає абсолютний шлях до файлу?
+<div class="q-text">Питання 18. Яка функція повертає абсолютний шлях до файлу?
 </div>
-            <div><input type="radio">os.path.abspath()
+<div><input type="radio">os.path.abspath()
  </div>
-<div><input type="radio">os.path.abs()
-</div>
-<div><input type="radio">os.absolute()
-</div>
-<div><input type="radio">os.path.getabsolute()
-</div>
+<div><input type="radio">os.path.abs()</div>
+<div><input type="radio">os.absolute()</div>
+<div><input type="radio">os.path.getabsolute()</div>
 
-            </div>
-            
+</div>
             <div id="19">
-            <div class="q-text">Питання 19. Яка функція створює дерево папок (включаючи проміжні)?
+<div class="q-text">Питання 19. Яка функція створює дерево папок (включаючи проміжні)?
 </div>
-            <div><input type="radio">os.tree()
-</div>
-<div><input type="radio">os.mkdir_all()
-</div>
+<div><input type="radio">os.tree()</div>
+<div><input type="radio">os.mkdir_all()</div>
 <div><input type="radio">os.makedirs()
  </div>
-<div><input type="radio">os.create_all()
-</div>
+<div><input type="radio">os.create_all()</div>
 
-            </div>
-            
+</div>
             <div id="20">
-            <div class="q-text">Питання 20. Яка функція повертає лише ім'я файлу з повного шляху (шлях до директорії відсікається)?
+<div class="q-text">Питання 20. Яка функція повертає лише ім'я файлу з повного шляху (шлях до директорії відсікається)?
 </div>
-            <div><input type="radio">os.path.name()
-</div>
+<div><input type="radio">os.path.name()</div>
 <div><input type="radio">os.path.basename()
  </div>
 <div><input type="radio">os.path.splitname()</div>
-<div><input type="radio">os.path.filename()
-</div>
+<div><input type="radio">os.path.filename()</div>
 
-            </div>
+</div>
             
+</main>
+
 <script>
 const optionBoxes = document.querySelectorAll(
-  'body > div:not(#progress-wrap) > div:not(.q-text)'
+  'main > div:not(#progress-wrap) > div:not(.q-text)'
 );
 
 optionBoxes.forEach(box => {
