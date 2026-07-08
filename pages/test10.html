@@ -182,203 +182,203 @@
 </div>
 
 <div id="1">
-<div class="q-text">Питання 1. Як правильно створити порожню множину в Python?
+<div class="q-text">Питання 1. Який стандартний модуль у Python використовується для роботи з JSON?
 </div>
-<div><input type="radio">dict()</div>
-<div><input type="radio">set()
+<div><input type="radio">serialize</div>
+<div><input type="radio">json
  </div>
-<div><input type="radio">set([])</div>
-<div><input type="radio">{}</div>
+<div><input type="radio">pyjson</div>
+<div><input type="radio">json_lib</div>
 
 </div>
             <div id="2">
-<div class="q-text">Питання 2. Яка головна особливість елементів у множині set?
+<div class="q-text">Питання 2. Який метод використовується для перетворення об'єкта Python (наприклад, словника) у рядок JSON?
 </div>
-<div><input type="radio">Елементи мають індекси</div>
-<div><input type="radio">Елементи зберігаються у визначеному порядку</div>
-<div><input type="radio">Усі елементи є унікальними
+<div><input type="radio">json.dump()</div>
+<div><input type="radio">json.serialize()</div>
+<div><input type="radio">json.dumps()
  </div>
-<div><input type="radio">Множини можуть містити змінні списки</div>
+<div><input type="radio">json.to_json()</div>
 
 </div>
             <div id="3">
-<div class="q-text">Питання 3. Який метод використовується для додавання одного елемента до множини?
+<div class="q-text">Питання 3. Який метод використовується для запису об'єкта Python безпосередньо у файл у форматі JSON?
 </div>
-<div><input type="radio">add()
+<div><input type="radio">json.dump()
  </div>
-<div><input type="radio">push()</div>
-<div><input type="radio">append()</div>
-<div><input type="radio">insert()</div>
+<div><input type="radio">json.save()</div>
+<div><input type="radio">json.write()</div>
+<div><input type="radio">json.dumps()</div>
 
 </div>
             <div id="4">
-<div class="q-text">Питання 4. Який метод видаляє елемент із множини, але не викликає помилку, якщо елемента немає?
+<div class="q-text">Питання 4. Який метод використовується для зчитування JSON-даних із рядка і перетворення їх у об'єкт Python?
 </div>
-<div><input type="radio">discard()
+<div><input type="radio">json.loads()
  </div>
-<div><input type="radio">delete()</div>
-<div><input type="radio">pop()</div>
-<div><input type="radio">remove()</div>
+<div><input type="radio">json.parse()</div>
+<div><input type="radio">json.from_json()</div>
+<div><input type="radio">json.load()</div>
 
 </div>
             <div id="5">
-<div class="q-text">Питання 5. Яка операція повертає об'єднання двох множин?
+<div class="q-text">Питання 5. Який метод використовується для зчитування JSON-файлу і перетворення його у словник чи список Python?
 </div>
-<div><input type="radio">| або union()
+<div><input type="radio">json.load()
  </div>
-<div><input type="radio">^ або symmetric_difference()</div>
-<div><input type="radio">* або difference()</div>
-<div><input type="radio">& або intersection()</div>
+<div><input type="radio">json.parse_file()</div>
+<div><input type="radio">json.read()</div>
+<div><input type="radio">json.loads()</div>
 
 </div>
             <div id="6">
-<div class="q-text">Питання 6. Яка операція повертає перетин (спільні елементи) двох множин?
+<div class="q-text">Питання 6. Який тип даних у Python відповідає об'єкту в JSON?
 </div>
-<div><input type="radio">| або union()</div>
-<div><input type="radio">* або difference()</div>
-<div><input type="radio">^ або symmetric_difference()</div>
-<div><input type="radio">& або intersection()
+<div><input type="radio">list</div>
+<div><input type="radio">tuple</div>
+<div><input type="radio">str</div>
+<div><input type="radio">dict
  </div>
 
 </div>
             <div id="7">
-<div class="q-text">Питання 7. Яка операція повертає різницю множин (елементи, що є в першій, але немає в другій)?
+<div class="q-text">Питання 7. Який тип даних у Python відповідає масиву (array) в JSON?
 </div>
-<div><input type="radio">* або difference()
+<div><input type="radio">list
  </div>
-<div><input type="radio">| або union()</div>
-<div><input type="radio">& або intersection()</div>
-<div><input type="radio">^ або symmetric_difference()</div>
+<div><input type="radio">set</div>
+<div><input type="radio">dict</div>
+<div><input type="radio">tuple</div>
 
 </div>
             <div id="8">
-<div class="q-text">Питання 8. Яка операція повертає симетричну різницю (елементи, що є або в одній, або в іншій, але не в обох)?
+<div class="q-text">Питання 8. Що станеться, якщо спробувати конвертувати кортеж (tuple) в JSON за допомогою json.dumps()?
 </div>
-<div><input type="radio">^ або symmetric_difference()
+<div><input type="radio">Він буде перетворений у список (list)
  </div>
-<div><input type="radio">& або intersection()</div>
-<div><input type="radio">| або union()</div>
-<div><input type="radio">* або difference()</div>
+<div><input type="radio">Виникне помилка TypeError</div>
+<div><input type="radio">Він залишиться кортежем</div>
+<div><input type="radio">Він буде видалений</div>
 
 </div>
             <div id="9">
-<div class="q-text">Питання 9. Чи можна отримати доступ до елемента множини за індексом?
+<div class="q-text">Питання 9. Який параметр у методах dump/dumps дозволяє зробити JSON-рядок читабельним з відступами?
 </div>
-<div><input type="radio">Так, за допомогою s.get(0)</div>
-<div><input type="radio">Так, але тільки для невеликих множин</div>
-<div><input type="radio">Ні, множини не впорядковані
+<div><input type="radio">padding</div>
+<div><input type="radio">pretty</div>
+<div><input type="radio">indent
  </div>
-<div><input type="radio">Так, за допомогою s[0]</div>
+<div><input type="radio">spaces</div>
 
 </div>
             <div id="10">
-<div class="q-text">Питання 10. Який метод видаляє всі елементи з множини?
+<div class="q-text">Питання 10. Яке кодування рекомендується використовувати при відкритті файлів для запису JSON, щоб уникнути проблем з кирилицею?
 </div>
-<div><input type="radio">clear()
+<div><input type="radio">encoding='utf-8'
  </div>
-<div><input type="radio">remove_all()</div>
-<div><input type="radio">delete_all()</div>
-<div><input type="radio">empty()</div>
+<div><input type="radio">encoding='cp1251'</div>
+<div><input type="radio">encoding='latin-1'</div>
+<div><input type="radio">encoding='ascii'</div>
 
 </div>
             <div id="11">
-<div class="q-text">Питання 11. Що поверне вираз len({1, 2, 2, 3})?
+<div class="q-text">Питання 11. Що таке JSON?
 </div>
-<div><input type="radio">3
+<div><input type="radio">Формат обміну даними на основі тексту
  </div>
-<div><input type="radio">2</div>
-<div><input type="radio">4</div>
-<div><input type="radio">1</div>
+<div><input type="radio">Спеціальна бібліотека Python</div>
+<div><input type="radio">Тип бази даних</div>
+<div><input type="radio">Версія мови JavaScript</div>
 
 </div>
             <div id="12">
-<div class="q-text">Питання 12. Який тип даних можна додати до множини?
+<div class="q-text">Питання 12. Чи підтримує формат JSON коментарі?
 </div>
-<div><input type="radio">Список (list)</div>
-<div><input type="radio">Словник (dict)</div>
-<div><input type="radio">Число (int)
+<div><input type="radio">Так</div>
+<div><input type="radio">Тільки однорядкові</div>
+<div><input type="radio">Ні
  </div>
-<div><input type="radio">Іншу множину (set)</div>
+<div><input type="radio">Тільки багаторядкові</div>
 
 </div>
             <div id="13">
-<div class="q-text">Питання 13. Який метод видаляє випадковий елемент із множини?
+<div class="q-text">Питання 13. Яка помилка виникне, якщо спробувати розпарсити (load) некоректний JSON-рядок?
 </div>
-<div><input type="radio">pop()
+<div><input type="radio">json.JSONDecodeError
  </div>
-<div><input type="radio">delete()</div>
-<div><input type="radio">discard()</div>
-<div><input type="radio">remove()</div>
+<div><input type="radio">TypeError</div>
+<div><input type="radio">SyntaxError</div>
+<div><input type="radio">ValueError</div>
 
 </div>
             <div id="14">
-<div class="q-text">Питання 14. Як перевірити, чи є одна множина підмножиною іншої?
+<div class="q-text">Питання 14. Чи може JSON містити значення None?
 </div>
-<div><input type="radio">is_contained()</div>
-<div><input type="radio">sub()</div>
-<div><input type="radio">issubset()
+<div><input type="radio">Це викликає помилку</div>
+<div><input type="radio">Так, воно залишається як None</div>
+<div><input type="radio">Так, воно відображається як null
  </div>
-<div><input type="radio">ispart()</div>
+<div><input type="radio">Ні, JSON не підтримує значення None</div>
 
 </div>
             <div id="15">
-<div class="q-text">Питання 15. Яка функція перетворює список `[1, 1, 2, 3]` у множину?
+<div class="q-text">Питання 15. Як змінити порядок ключів у JSON-рядку при серіалізації?
 </div>
-<div><input type="radio">to_set([1, 1, 2, 3])</div>
-<div><input type="radio">list_to_set([1, 1, 2, 3])</div>
-<div><input type="radio">set([1, 1, 2, 3])
+<div><input type="radio">sorted=True</div>
+<div><input type="radio">order_keys=True</div>
+<div><input type="radio">sort_keys=True
  </div>
-<div><input type="radio">{1, 1, 2, 3}</div>
+<div><input type="radio">reorder=True</div>
 
 </div>
             <div id="16">
-<div class="q-text">Питання 16. Чим відрізняється метод remove() від discard()?
+<div class="q-text">Питання 16. Що станеться, якщо спробувати серіалізувати об'єкт, який не підтримується JSON (наприклад, об'єкт класу)?
 </div>
-<div><input type="radio">remove() викликає помилку KeyError, якщо елемента немає
+<div><input type="radio">Виникне помилка TypeError
  </div>
-<div><input type="radio">discard() видаляє всі елементи</div>
-<div><input type="radio">remove() працює швидше</div>
-<div><input type="radio">discard() викликає помилку, якщо елемента немає</div>
+<div><input type="radio">Він буде ігноруватися</div>
+<div><input type="radio">Він буде автоматично перетворений у рядок</div>
+<div><input type="radio">Він перетвориться на None</div>
 
 </div>
             <div id="17">
-<div class="q-text">Питання 17. Що таке frozenset?
+<div class="q-text">Питання 17. Що робить параметр `ensure_ascii=False` у методах dump/dumps?
 </div>
-<div><input type="radio">Заморожений список</div>
-<div><input type="radio">Тип даних для зберігання тільки чисел</div>
-<div><input type="radio">Множина, яку не можна вивести на екран</div>
-<div><input type="radio">Незмінна (immutable) версія множини
+<div><input type="radio">Пришвидшує роботу функції</div>
+<div><input type="radio">Видаляє всі спеціальні символи</div>
+<div><input type="radio">Перетворює все у формат ASCII</div>
+<div><input type="radio">Дозволяє коректне відображення не-ASCII символів (наприклад, кирилиці)
  </div>
 
 </div>
             <div id="18">
-<div class="q-text">Питання 18. Який метод оновлює множину елементами з іншої послідовності (наприклад, списку)?
+<div class="q-text">Питання 18. Який символ використовується для розділення ключів і значень у форматі JSON?
 </div>
-<div><input type="radio">join()</div>
-<div><input type="radio">add_all()</div>
-<div><input type="radio">extend()</div>
-<div><input type="radio">update()
+<div><input type="radio">=></div>
+<div><input type="radio">-></div>
+<div><input type="radio"><-></div>
+<div><input type="radio">:
  </div>
 
 </div>
             <div id="19">
-<div class="q-text">Питання 19. Який оператор перевіряє, чи належить елемент множині?
+<div class="q-text">Питання 19. Яка структура даних JSON є коректною?
 </div>
-<div><input type="radio">has</div>
-<div><input type="radio">contains</div>
-<div><input type="radio">in
+<div><input type="radio">(key: value)</div>
+<div><input type="radio">{key: value}</div>
+<div><input type="radio">{"key": "value"}
  </div>
-<div><input type="radio">exists</div>
+<div><input type="radio">{'key': 'value'}</div>
 
 </div>
             <div id="20">
-<div class="q-text">Питання 20. Чи можна змінити порядок елементів у множині вручну?
+<div class="q-text">Питання 20. Чи можна вкладати списки всередину словників у JSON?
 </div>
-<div><input type="radio">Так, за допомогою методу sort()</div>
-<div><input type="radio">Так, за допомогою індексів</div>
-<div><input type="radio">Ні, Python автоматично керує порядком для оптимізації
+<div><input type="radio">Ні</div>
+<div><input type="radio">Тільки якщо список порожній</div>
+<div><input type="radio">Так
  </div>
-<div><input type="radio">Так, за допомогою методу reorder()</div>
+<div><input type="radio">Тільки один рівень вкладеності</div>
 
 </div>
             
