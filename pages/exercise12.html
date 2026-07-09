@@ -33,11 +33,15 @@
     <h2>Завдання № 1.</h2>
     <p class="exercise-description">Отримайте поточні дату та час (об'єкт datetime).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 # YOUR CODE HERE
 
 print(current_now)
-    `, document.querySelector('[id="1"]'));
+`
+, String.raw``
+, document.querySelector('[id="1"]')
+);
     </script>
 </section>
 </section>
@@ -47,11 +51,15 @@ print(current_now)
     <h2>Завдання № 2.</h2>
     <p class="exercise-description">Отримайте лише поточну дату (без годин та секунд).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 from datetime import date
 today_date = # YOUR CODE HERE
 print(today_date)
-    `, document.querySelector('[id="2"]'));
+`
+, String.raw``
+, document.querySelector('[id="2"]')
+);
     </script>
 </section>
 </section>
@@ -61,12 +69,16 @@ print(today_date)
     <h2>Завдання № 3.</h2>
     <p class="exercise-description">Отримайте окремо значення поточного року як ціле число.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 from datetime import datetime
 now = datetime.now()
 current_year = # YOUR CODE HERE
 print(current_year)
-    `, document.querySelector('[id="3"]'));
+`
+, String.raw``
+, document.querySelector('[id="3"]')
+);
     </script>
 </section>
 </section>
@@ -76,11 +88,15 @@ print(current_year)
     <h2>Завдання № 4.</h2>
     <p class="exercise-description">Створіть об'єкт datetime для конкретної дати: 7 липня 2026 року.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 from datetime import date
 target_date = # YOUR CODE HERE
 print(target_date)
-    `, document.querySelector('[id="4"]'));
+`
+, String.raw``
+, document.querySelector('[id="4"]')
+);
     </script>
 </section>
 </section>
@@ -90,12 +106,16 @@ print(target_date)
     <h2>Завдання № 5.</h2>
     <p class="exercise-description">Перетворіть (розпарсіть) рядок із датою у повноцінний об'єкт datetime.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 from datetime import datetime
 date_str = "2026-07-07 14:30:00"
 parsed_date = # YOUR CODE HERE
 print(type(parsed_date))
-    `, document.querySelector('[id="5"]'));
+`
+, String.raw``
+, document.querySelector('[id="5"]')
+);
     </script>
 </section>
 </section>
@@ -105,12 +125,16 @@ print(type(parsed_date))
     <h2>Завдання № 6.</h2>
     <p class="exercise-description">Перетворіть об'єкт datetime у текстовий рядок у форматі ДД.ММ.РРРР.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 from datetime import datetime
 event_date = datetime(2026, 7, 7)
 formatted_str = # YOUR CODE HERE
 print(formatted_str)
-    `, document.querySelector('[id="6"]'));
+`
+, String.raw``
+, document.querySelector('[id="6"]')
+);
     </script>
 </section>
 </section>
@@ -120,11 +144,15 @@ print(formatted_str)
     <h2>Завдання № 7.</h2>
     <p class="exercise-description">Додайте до поточної дати рівно 14 днів за допомогою часового зсуву.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 # YOUR CODE HERE
 
 print(future_date)
-    `, document.querySelector('[id="7"]'));
+`
+, String.raw``
+, document.querySelector('[id="7"]')
+);
     </script>
 </section>
 </section>
@@ -134,13 +162,17 @@ print(future_date)
     <h2>Завдання № 8.</h2>
     <p class="exercise-description">Знайдіть кількість днів між двома датами.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 from datetime import date
 start_date = date(2026, 6, 1)
 end_date = date(2026, 7, 7)
 delta_days = # YOUR CODE HERE
 print(delta_days)
-    `, document.querySelector('[id="8"]'));
+`
+, String.raw``
+, document.querySelector('[id="8"]')
+);
     </script>
 </section>
 </section>
@@ -150,12 +182,16 @@ print(delta_days)
     <h2>Завдання № 9.</h2>
     <p class="exercise-description">Перетворіть поточний час у UNIX-timestamp (кількість секунд з 1 січня 1970 року).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 from datetime import datetime
 now = datetime.now()
 timestamp = # YOUR CODE HERE
 print(timestamp)
-    `, document.querySelector('[id="9"]'));
+`
+, String.raw``
+, document.querySelector('[id="9"]')
+);
     </script>
 </section>
 </section>
@@ -165,12 +201,16 @@ print(timestamp)
     <h2>Завдання № 10.</h2>
     <p class="exercise-description">Перетворіть числове значення UNIX-timestamp назад в об'єкт дати й часу.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 from datetime import datetime
 ts = 1783424400.0
 readable_date = # YOUR CODE HERE
 print(readable_date)
-    `, document.querySelector('[id="10"]'));
+`
+, String.raw``
+, document.querySelector('[id="10"]')
+);
     </script>
 </section>
 </section>

@@ -33,11 +33,15 @@
     <h2>Завдання № 1.</h2>
     <p class="exercise-description">Створіть множину зі списку</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 raw_ids = [4002, 4005, 4002, 4009, 4005]
 unique_ids = # YOUR CODE HERE
 print(unique_ids)
-    `, document.querySelector('[id="1"]'));
+`
+, String.raw``
+, document.querySelector('[id="1"]')
+);
     </script>
 </section>
 </section>
@@ -47,13 +51,17 @@ print(unique_ids)
     <h2>Завдання № 2.</h2>
     <p class="exercise-description">Додайте один новий елемент "DuckDB" до множини.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 databases = {"Oracle", "PostgreSQL"}
 
 # YOUR CODE HERE
 
 print(databases)
-    `, document.querySelector('[id="2"]'));
+`
+, String.raw``
+, document.querySelector('[id="2"]')
+);
     </script>
 </section>
 </section>
@@ -63,14 +71,18 @@ print(databases)
     <h2>Завдання № 3.</h2>
     <p class="exercise-description">Додайте одразу кілька елементів з іншої колекції (списку) до існуючої множини.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 tools = {"Playwright", "Scrapy"}
 new_tools = ["BeautifulSoup", "Selenium"]
 
 # YOUR CODE HERE
 
 print(tools)
-    `, document.querySelector('[id="3"]'));
+`
+, String.raw``
+, document.querySelector('[id="3"]')
+);
     </script>
 </section>
 </section>
@@ -80,14 +92,18 @@ print(tools)
     <h2>Завдання № 4.</h2>
     <p class="exercise-description">Безпечно видаліть елемент з множини так, щоб не виникала помилка KeyError, якщо цього елемента там раптом немає.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 active_users = {"user_1", "user_2", "user_3"}
 delete_user = "user_1000"
 
 # YOUR CODE HERE
 
 print(active_users)
-    `, document.querySelector('[id="4"]'));
+`
+, String.raw``
+, document.querySelector('[id="4"]')
+);
     </script>
 </section>
 </section>
@@ -97,12 +113,16 @@ print(active_users)
     <h2>Завдання № 5.</h2>
     <p class="exercise-description">Знайдіть спільні елементи для двох множин (перетин множин) за допомогою методу.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 frontend_skills = {"HTML", "CSS", "JavaScript"}
 backend_skills = {"Python", "PostgreSQL", "JavaScript"}
 common_skills = # YOUR CODE HERE
 print(common_skills)
-    `, document.querySelector('[id="5"]'));
+`
+, String.raw``
+, document.querySelector('[id="5"]')
+);
     </script>
 </section>
 </section>
@@ -112,12 +132,16 @@ print(common_skills)
     <h2>Завдання № 6.</h2>
     <p class="exercise-description">Об'єднайте дві множини за допомогою оператора (символу), щоб отримати повний перелік усіх унікальних елементів.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 dev_stack = {"Python", "Git"}
 ops_stack = {"Docker", "Git"}
 full_stack = # YOUR CODE HERE
 print(full_stack)
-    `, document.querySelector('[id="6"]'));
+`
+, String.raw``
+, document.querySelector('[id="6"]')
+);
     </script>
 </section>
 </section>
@@ -127,12 +151,16 @@ print(full_stack)
     <h2>Завдання № 7.</h2>
     <p class="exercise-description">Знайдіть елементи, які є в першій множині, але відсутні в другій (різниця множин за допомогою оператора).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 all_tasks = {"task_1", "task_2", "task_3", "task_4"}
 done_tasks = {"task_1", "task_3"}
 pending_tasks = # YOUR CODE HERE
 print(pending_tasks)
-    `, document.querySelector('[id="7"]'));
+`
+, String.raw``
+, document.querySelector('[id="7"]')
+);
     </script>
 </section>
 </section>
@@ -142,12 +170,16 @@ print(pending_tasks)
     <h2>Завдання № 8.</h2>
     <p class="exercise-description">Знайдіть елементи, які є в кожній з множин, але не в обох одночасно (симетрична різниця за допомогою оператора).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 group_a = {"cat", "dog"}
 group_b = {"dog", "parrot"}
 unique_to_each = # YOUR CODE HERE
 print(unique_to_each)
-    `, document.querySelector('[id="8"]'));
+`
+, String.raw``
+, document.querySelector('[id="8"]')
+);
     </script>
 </section>
 </section>
@@ -157,12 +189,16 @@ print(unique_to_each)
     <h2>Завдання № 9.</h2>
     <p class="exercise-description">Перевірте, чи є один елемент частиною множини (повертає True/False).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 user_roles = {"user", "manager", "admin"}
 search_role = "admin"
 is_admin =  ?
 print(is_admin)
-    `, document.querySelector('[id="9"]'));
+`
+, String.raw``
+, document.querySelector('[id="9"]')
+);
     </script>
 </section>
 </section>
@@ -172,12 +208,16 @@ print(is_admin)
     <h2>Завдання № 10.</h2>
     <p class="exercise-description">Перевірте, чи є перша множина підмножиною другої (чи всі її елементи містяться в іншій множині).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 required_keys = {"id", "status"}
 received_keys = {"id", "status", "timestamp", "payload"}
 is_subset = # YOUR CODE HERE
 print(is_subset)
-    `, document.querySelector('[id="10"]'));
+`
+, String.raw``
+, document.querySelector('[id="10"]')
+);
     </script>
 </section>
 </section>

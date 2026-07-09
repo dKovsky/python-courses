@@ -33,11 +33,15 @@
     <h2>Завдання № 1.</h2>
     <p class="exercise-description">Отримайте поточну робочу директорію (повний шлях до папки, де запускається скрипт).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import os
 current_dir = # YOUR CODE HERE
 print(current_dir)
-    `, document.querySelector('[id="1"]'));
+`
+, String.raw`os.getcwd()`
+, document.querySelector('[id="1"]')
+);
     </script>
 </section>
 </section>
@@ -47,11 +51,15 @@ print(current_dir)
     <h2>Завдання № 2.</h2>
     <p class="exercise-description">Отримайте список усіх файлів та папок у поточній директорії.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import os
 contents = # YOUR CODE HERE
 print(contents)
-    `, document.querySelector('[id="2"]'));
+`
+, String.raw`os.listdir()`
+, document.querySelector('[id="2"]')
+);
     </script>
 </section>
 </section>
@@ -61,13 +69,17 @@ print(contents)
     <h2>Завдання № 3.</h2>
     <p class="exercise-description">Об'єднайте назву папки та ім'я файлу в один шлях.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import os
 folder = "projects"
 filename = "app.py"
 full_path = # YOUR CODE HERE
 print(full_path)
-    `, document.querySelector('[id="3"]'));
+`
+, String.raw`os.path.join(folder, filename)`
+, document.querySelector('[id="3"]')
+);
     </script>
 </section>
 </section>
@@ -77,12 +89,16 @@ print(full_path)
     <h2>Завдання № 4.</h2>
     <p class="exercise-description">Перевірте, чи існує файл або папка за вказаним шляхом (результат має бути True або False).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import os
 path_to_check = "config.json"
 exists = # YOUR CODE HERE
 print(exists)
-    `, document.querySelector('[id="4"]'));
+`
+, String.raw`os.path.exists(path_to_check)`
+, document.querySelector('[id="4"]')
+);
     </script>
 </section>
 </section>
@@ -92,10 +108,16 @@ print(exists)
     <h2>Завдання № 5.</h2>
     <p class="exercise-description">Створіть нову папку з назвою archive у поточній директорії.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import os
 new_folder = "archive"
-    `, document.querySelector('[id="5"]'));
+
+# YOUR CODE HERE
+`
+, String.raw`os.makedir(new_folder)`
+, document.querySelector('[id="5"]')
+);
     </script>
 </section>
 </section>
@@ -105,12 +127,16 @@ new_folder = "archive"
     <h2>Завдання № 6.</h2>
     <p class="exercise-description">Отримайте лише ім'я файлу.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import os
 full_path = "/data/2026/task.txt"
 file_name = # YOUR CODE HERE
 print(file_name)
-    `, document.querySelector('[id="6"]'));
+`
+, String.raw`os.path.basename(full_path)`
+, document.querySelector('[id="6"]')
+);
     </script>
 </section>
 </section>
@@ -120,12 +146,16 @@ print(file_name)
     <h2>Завдання № 7.</h2>
     <p class="exercise-description">Отримайте лише шлях до папки.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import os
 full_path = "/data/2026/task.txt"
 folder_path = # YOUR CODE HERE
 print(folder_path)
-    `, document.querySelector('[id="7"]'));
+`
+, String.raw`os.path.dirname(full_path)`
+, document.querySelector('[id="7"]')
+);
     </script>
 </section>
 </section>

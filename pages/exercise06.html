@@ -33,13 +33,17 @@
     <h2>Завдання № 1.</h2>
     <p class="exercise-description">Обробіть можливе ділення на нуль, щоб скрипт не падав, а повертав 0.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 try:
     result = 100 / 0
 except ?:
     result = 0
 print(result)
-    `, document.querySelector('[id="1"]'));
+`
+, String.raw``
+, document.querySelector('[id="1"]')
+);
     </script>
 </section>
 </section>
@@ -49,13 +53,17 @@ print(result)
     <h2>Завдання № 2.</h2>
     <p class="exercise-description">Перехопіть помилку конвертації рядка у число та виведіть повідомлення "Тип даних не є числом".</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 bad_input = "тридцять"
 try:
     value = int(bad_input)
 except ?:
     print("Тип даних не є числом")
-    `, document.querySelector('[id="2"]'));
+`
+, String.raw``
+, document.querySelector('[id="2"]')
+);
     </script>
 </section>
 </section>
@@ -65,12 +73,16 @@ except ?:
     <h2>Завдання № 3.</h2>
     <p class="exercise-description">Отримайте доступ до самого об'єкта помилки (екземпляра винятку) та виведіть його текст у консоль.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 try:
     result = "25" + 5
 except TypeError as ?:
     print(f"Сталася помилка: {?}")
-    `, document.querySelector('[id="3"]'));
+`
+, String.raw``
+, document.querySelector('[id="3"]')
+);
     </script>
 </section>
 </section>
@@ -80,7 +92,8 @@ except TypeError as ?:
     <h2>Завдання № 4.</h2>
     <p class="exercise-description">Додайте блок, який виконається обов'язково (наприклад, для закриття ресурсів або з'єднань), незалежно від того, чи виникла помилка.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 try:
     db_connected = True
     result = 10 / 0
@@ -89,7 +102,10 @@ except ZeroDivisionError:
 ?:
     db_connected = False
     print("З'єднання закрите")
-    `, document.querySelector('[id="4"]'));
+`
+, String.raw``
+, document.querySelector('[id="4"]')
+);
     </script>
 </section>
 </section>
@@ -99,7 +115,8 @@ except ZeroDivisionError:
     <h2>Завдання № 5.</h2>
     <p class="exercise-description">Додайте блок, який виконається лише у випадку, якщо код у блоці try пройшов успішно й без жодних помилок.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 try:
     config_value = int("2026")
 except ValueError:
@@ -107,7 +124,10 @@ except ValueError:
 ?:
     status = "success"
 print(status)
-    `, document.querySelector('[id="5"]'));
+`
+, String.raw``
+, document.querySelector('[id="5"]')
+);
     </script>
 </section>
 </section>
@@ -117,11 +137,15 @@ print(status)
     <h2>Завдання № 6.</h2>
     <p class="exercise-description">Згенеруйте (викиньте) помилку ValueError з текстом "Некоректний ліміт", якщо передане значення менше або дорівнює нулю.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 limit = -10
 if limit <= 0:
     ? ValueError("Некоректний ліміт")
-    `, document.querySelector('[id="6"]'));
+`
+, String.raw``
+, document.querySelector('[id="6"]')
+);
     </script>
 </section>
 </section>

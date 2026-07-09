@@ -33,12 +33,16 @@
     <h2>Завдання № 1.</h2>
     <p class="exercise-description">Створіть функцію <code>greet</code>, яка виводить рядок <code>"Hello world!"</code>.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 # YOUR CODE HERE
 
 
 greet()
-    `, document.querySelector('[id="1"]'));
+`
+, String.raw``
+, document.querySelector('[id="1"]')
+);
     </script>
 </section>
 </section>
@@ -53,13 +57,17 @@ greet()
 <code>Мій вік {age}.</code><br>
 .<br></p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 # YOUR CODE HERE
 
 
 show_user_info('Анна', 22)
 show_user_info('Данило', 35)
-    `, document.querySelector('[id="2"]'));
+`
+, String.raw``
+, document.querySelector('[id="2"]')
+);
     </script>
 </section>
 </section>
@@ -71,7 +79,8 @@ show_user_info('Данило', 35)
 яка приймає аргумент <code>mobile</code>,<br>
 та повертає значення відформатованого номера у форматі +380.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 # YOUR CODE HERE
 
 
@@ -83,7 +92,10 @@ print(f'{mobile1} - відформатований мобільний, ориг�
 
 mobile2 = format_mobile(m2)
 print(f'{mobile2} - відформатований мобільний, оригінальне значення {m2}')
-    `, document.querySelector('[id="3"]'));
+`
+, String.raw``
+, document.querySelector('[id="3"]')
+);
     </script>
 </section>
 </section>
@@ -95,12 +107,16 @@ print(f'{mobile2} - відформатований мобільний, ориг�
 яка приймає довільну кількість аргументів.<br>
 Функція має вивести у консоль кількість переданих аргументів, та кожне значення аргумента з нового рядка.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 # YOUR CODE HERE
 
 
 count_args(1, 2, 'abc', ['hello', 'world'])
-    `, document.querySelector('[id="4"]'));
+`
+, String.raw``
+, document.querySelector('[id="4"]')
+);
     </script>
 </section>
 </section>

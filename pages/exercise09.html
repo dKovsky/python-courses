@@ -33,11 +33,15 @@
     <h2>Завдання № 1.</h2>
     <p class="exercise-description">Отримайте значення за ключем <code>"host"</code> зі словника.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 db_config = {"host": "127.0.0.1", "port": 1521}
 server_ip = # YOUR CODE HERE
 print(server_ip)
-    `, document.querySelector('[id="1"]'));
+`
+, String.raw``
+, document.querySelector('[id="1"]')
+);
     </script>
 </section>
 </section>
@@ -47,13 +51,17 @@ print(server_ip)
     <h2>Завдання № 2.</h2>
     <p class="exercise-description">Використайте метод безпечного отримання значення за ключем, щоб уникнути помилки KeyError. Якщо ключа "disk_io" немає, поверніть 0.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 metrics = {"cpu_usage": 45, "memory": 80}
 
 # YOUR CODE HERE
 
 print(disk_io)
-    `, document.querySelector('[id="2"]'));
+`
+, String.raw``
+, document.querySelector('[id="2"]')
+);
     </script>
 </section>
 </section>
@@ -63,13 +71,17 @@ print(disk_io)
     <h2>Завдання № 3.</h2>
     <p class="exercise-description">Додайте нову пару ключ-значення ("company": "OKKO") у існуючий словник.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 profile = {"id": 1, "name": "Oleg", "birthdate": '2002-02-02'}
 
 # YOUR CODE HERE
 
 print(profile)
-    `, document.querySelector('[id="3"]'));
+`
+, String.raw``
+, document.querySelector('[id="3"]')
+);
     </script>
 </section>
 </section>
@@ -79,11 +91,15 @@ print(profile)
     <h2>Завдання № 4.</h2>
     <p class="exercise-description">Оновіть значення для вже існуючого ключа "status" на "completed".</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 task = {"task_id": 8421, "status": "pending"}
 ? = "completed"
 print(task)
-    `, document.querySelector('[id="4"]'));
+`
+, String.raw``
+, document.querySelector('[id="4"]')
+);
     </script>
 </section>
 </section>
@@ -93,11 +109,15 @@ print(task)
     <h2>Завдання № 5.</h2>
     <p class="exercise-description">Отримайте всі ключі словника.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 pet_registry = {"animal_id": 9931, "type": "cat", "chipped": True}
 all_keys = # YOUR CODE HERE
 print(all_keys)
-    `, document.querySelector('[id="5"]'));
+`
+, String.raw``
+, document.querySelector('[id="5"]')
+);
     </script>
 </section>
 </section>
@@ -107,11 +127,15 @@ print(all_keys)
     <h2>Завдання № 6.</h2>
     <p class="exercise-description">Отримайте всі значення словника.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 pet_registry = {"animal_id": 9931, "type": "cat", "chipped": True}
 all_values = # YOUR CODE HERE
 print(all_values)
-    `, document.querySelector('[id="6"]'));
+`
+, String.raw``
+, document.querySelector('[id="6"]')
+);
     </script>
 </section>
 </section>
@@ -121,11 +145,15 @@ print(all_values)
     <h2>Завдання № 7.</h2>
     <p class="exercise-description">Пройдіться циклом for по словнику, отримуючи одночасно і ключ, і його значення.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 oracle_stats = {"sessions": 150, "active_queries": 12}
 
 # YOUR CODE HERE
-    `, document.querySelector('[id="7"]'));
+`
+, String.raw``
+, document.querySelector('[id="7"]')
+);
     </script>
 </section>
 </section>
@@ -135,11 +163,15 @@ oracle_stats = {"sessions": 150, "active_queries": 12}
     <h2>Завдання № 8.</h2>
     <p class="exercise-description">Видаліть елемент зі словника за ключем <code>"token"</code> та збережіть видалене значення у змінну.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 auth_data = {"user": "admin", "token": "x-890-xyz", "timeout": 30}
 extracted_token = # YOUR CODE HERE
 print(extracted_token)
-    `, document.querySelector('[id="8"]'));
+`
+, String.raw``
+, document.querySelector('[id="8"]')
+);
     </script>
 </section>
 </section>
@@ -149,11 +181,15 @@ print(extracted_token)
     <h2>Завдання № 9.</h2>
     <p class="exercise-description">Перевірте, чи існує ключ <code>"target_url"</code> у словнику (результат має бути <code>True</code> або <code>False</code>).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 scrape_params = {"target_url": "https://example.com", "delay": 2}
 has_url = # YOUR CODE HERE
 print(has_url)
-    `, document.querySelector('[id="9"]'));
+`
+, String.raw``
+, document.querySelector('[id="9"]')
+);
     </script>
 </section>
 </section>
@@ -163,13 +199,17 @@ print(has_url)
     <h2>Завдання № 10.</h2>
     <p class="exercise-description">Очистіть словник повністю, видаливши з нього всі елементи.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 temp_results = {"result_1": 100, "result_2": 200}
 
 # YOUR CODE HERE
 
 print(temp_results)
-    `, document.querySelector('[id="10"]'));
+`
+, String.raw``
+, document.querySelector('[id="10"]')
+);
     </script>
 </section>
 </section>

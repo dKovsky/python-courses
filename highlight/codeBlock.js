@@ -1,5 +1,35 @@
 let codeCounter = 0; // Counter for unique IDs
 
+
+function hide_nav_global() {
+  const nav_global_element = document.getElementById(id="nav-global")
+
+  if (nav_global_element) {
+    if (nav_global_element.style.display === 'none') {
+      nav_global_element.style.display = 'block';
+    } else {
+      nav_global_element.style.display = 'none'; 
+    }
+  }
+  window.dispatchEvent(new Event('resize'));
+
+}
+
+function hide_nav_local() {
+  const nav_local_element = document.getElementById(id="nav-local")
+
+  if (nav_local_element) {
+    if (nav_local_element.style.display === 'none') {
+      nav_local_element.style.display = 'block';
+    } else {
+      nav_local_element.style.display = 'none'; 
+    }
+  }
+  window.dispatchEvent(new Event('resize'));
+
+}
+
+
 // Function to create a code block
 function createCodeBlock(code, element) {
     codeCounter++;
@@ -114,17 +144,17 @@ function create_code_with_answear(code, answear, element) {
 function show_answear(id, btn) {
     const code_element = document.getElementById(id);
     var code = code_element.textContent;
-    console.log(code)
+    // console.log(code)
 
     // 1. Find the answer div inside the same container as the clicked button
     const answearDiv = btn.parentElement.parentElement.querySelector('.code_answear');
 
     // 2. Use textContent to read the text (works perfectly even with display: none)
     const hiddenText = answearDiv.textContent;
-    console.log("Hidden text successfully read:", hiddenText);
+    // console.log("Hidden text successfully read:", hiddenText);
 
     code = code.replace('# YOUR CODE HERE', hiddenText.slice(1, -1));
-    console.log(code);
+    // console.log(code);
 
     code_element.textContent = code;
 

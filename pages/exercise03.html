@@ -33,14 +33,20 @@
     <h2>Завдання № 1.</h2>
     <p class="exercise-description">Запишіть у файл <code>my_file.txt</code> вказаний текст</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 filename = 'my_file.txt'
 text = r"¯\_(ツ)_/¯"
 
 # YOUR CODE HERE
 
 print(f'Збережено файл {filename}')
-    `, document.querySelector('[id="1"]'));
+`
+, String.raw`f = open(filename, 'w', encoding='utf-8')
+f.write(text)
+f.close()`
+, document.querySelector('[id="1"]')
+);
     </script>
 </section>
 </section>
@@ -50,15 +56,21 @@ print(f'Збережено файл {filename}')
     <h2>Завдання № 2.</h2>
     <p class="exercise-description">Виведіть текст з файлу <code>test.txt</code> у консоль.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 filename = 'test.txt'
-with open('test.txt', 'w', encoding='utf-8') as f:
+with open(filename, 'w', encoding='utf-8') as f:
 	f.write('Hello world!')
 
 # YOUR CODE HERE
 
 print('↑ текст у файлі {filename}')
-    `, document.querySelector('[id="2"]'));
+`
+, String.raw`with open(filename, 'r', encoding='utf-8') as f:
+	text = f.read()
+print(text)`
+, document.querySelector('[id="2"]')
+);
     </script>
 </section>
 </section>
@@ -68,7 +80,8 @@ print('↑ текст у файлі {filename}')
     <h2>Завдання № 3.</h2>
     <p class="exercise-description">Добавте у файл <code>data.csv</code> додатковий текст.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 filename = 'data.csv'
 
 with open(filename, 'w', encoding='utf-8') as f:
@@ -86,7 +99,11 @@ additional_text = """
 # YOUR CODE HERE
 
 print('Внесено зміни у файл {filename}')
-    `, document.querySelector('[id="3"]'));
+`
+, String.raw`with open(filename, 'a', encoding='utf-8') as f:
+	f.write(additional_text)`
+, document.querySelector('[id="3"]')
+);
     </script>
 </section>
 </section>
@@ -94,9 +111,10 @@ print('Внесено зміни у файл {filename}')
 <section class="exercise-card">
 <section id="4">
     <h2>Завдання № 4.</h2>
-    <p class="exercise-description">Зчитайте всі рядки з файлу <code>colors.txt</code> Результатом має бути змінна тупу список.</p>
+    <p class="exercise-description">Зчитайте всі рядки з файлу <code>colors.txt</code>. Результатом має бути змінна, тип - список.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 filename = 'colors.txt'
 with open(filename, 'w', encoding='utf-8') as f:
 	f.write("Червоний\nЗелений\nСиній")
@@ -104,7 +122,12 @@ with open(filename, 'w', encoding='utf-8') as f:
 # YOUR CODE HERE
 
 print('↑ список кольорів')
-    `, document.querySelector('[id="4"]'));
+`
+, String.raw`with open(filename, 'r', encoding='utf-8') as f:
+	colors = f.readlines()
+print(f'{colors = }')`
+, document.querySelector('[id="4"]')
+);
     </script>
 </section>
 </section>
@@ -114,7 +137,8 @@ print('↑ список кольорів')
     <h2>Завдання № 5.</h2>
     <p class="exercise-description">Зчитайте лише перший рядок з файлу <code>config.txt</code> у змінну <code>first_line</code>.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 filename = 'config.txt'
 with open(filename, 'w', encoding='utf-8') as f:
 	f.write("host=localhost\nport=8080")
@@ -122,7 +146,13 @@ with open(filename, 'w', encoding='utf-8') as f:
 # YOUR CODE HERE
 
 print('↑ перший рядок')
-    `, document.querySelector('[id="5"]'));
+`
+, String.raw`with open(filename, 'r', encoding='utf-8') as f:
+    first_line = f.readline()
+
+print(first_line)`
+, document.querySelector('[id="5"]')
+);
     </script>
 </section>
 </section>
@@ -132,7 +162,8 @@ print('↑ перший рядок')
     <h2>Завдання № 6.</h2>
     <p class="exercise-description">Зчитайте перші 5 символів з файлу <code>secret.txt</code> у змінну <code>code_part</code>.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 filename = 'secret.txt'
 with open(filename, 'w', encoding='utf-8') as f:
 	f.write("1234567890")
@@ -140,7 +171,13 @@ with open(filename, 'w', encoding='utf-8') as f:
 # YOUR CODE HERE
 
 print('↑ перші 5 символів')
-    `, document.querySelector('[id="6"]'));
+`
+, String.raw`with open(filename, 'r', encoding='utf-8') as f:
+	code_part = f.read(5)
+
+print(code_part)`
+, document.querySelector('[id="6"]')
+);
     </script>
 </section>
 </section>
@@ -150,14 +187,19 @@ print('↑ перші 5 символів')
     <h2>Завдання № 7.</h2>
     <p class="exercise-description">Запишіть список текстів у файл <code>log.txt</code>.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 filename = 'log.txt'
 log_entries = ["INFO: Start\n", "WARNING: Low memory\n", "ERROR: Crash\n"]
 
 # YOUR CODE HERE
 
 print(f'Записи додано у файл {filename}')
-    `, document.querySelector('[id="7"]'));
+`
+, String.raw`with open(filename, 'w', encoding='utf-8') as f:
+	f.writelines(log_entries)`
+, document.querySelector('[id="7"]')
+);
     </script>
 </section>
 </section>

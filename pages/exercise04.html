@@ -33,7 +33,8 @@
     <h2>Завдання № 1.</h2>
     <p class="exercise-description">Вивести чи введене ціле число парне чи не парне, у змінній <code>result</code> має бути відповідно значення <code>'Парне'</code>, <code>'Не парне'</code>.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 input_number = int(input("Введіть ціле число:\n"))
 
 
@@ -41,7 +42,13 @@ input_number = int(input("Введіть ціле число:\n"))
 
 
 print(result)
-    `, document.querySelector('[id="1"]'));
+`
+, String.raw`if input_number % 2 == 0:
+    result = 'Парне'
+else:
+    result = 'Не парне'`
+, document.querySelector('[id="1"]')
+);
     </script>
 </section>
 </section>
@@ -53,7 +60,8 @@ print(result)
 <code>f</code>, <code>F</code>, <code>Female</code> - вивести <code>1) Жінка</code>,<br>
 <code>m</code>, <code>M</code>, <code>Male</code> - вивести <code>2) Чоловік</code>.<br></p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 input_gender = input("Введіть закодовану стать:\n"))
 
 
@@ -61,7 +69,13 @@ input_gender = input("Введіть закодовану стать:\n"))
 
 
 print(gender_category)
-    `, document.querySelector('[id="2"]'));
+`
+, String.raw`if input_gender in ('f', 'F', 'Female'):
+    gender_category = '1) Жінка'
+elif input_gender in ('m', 'M', 'Male'):
+    gender_category = '2) Чоловік'`
+, document.querySelector('[id="2"]')
+);
     </script>
 </section>
 </section>
@@ -77,7 +91,8 @@ print(gender_category)
 5) 55 - 64<br>
 6) 65+<br></p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 age = int(input("Введіть вік:\n"))
 
 
@@ -85,7 +100,21 @@ age = int(input("Введіть вік:\n"))
 
 
 print(f'Для віку {age} - вікова група {age_category}')
-    `, document.querySelector('[id="3"]'));
+`
+, String.raw`if age <= 24:
+    age_category = "1) 18 - 24"
+elif age <= 34:
+    age_category = "2) 25 - 34"
+elif age <= 44:
+    age_category = "3) 35 - 44"
+elif age <= 54:
+    age_category = "4) 45 - 54"
+elif age <= 64:
+    age_category = "5) 55 - 64"
+else:
+    age_category = "6) 65+"`
+, document.querySelector('[id="3"]')
+);
     </script>
 </section>
 </section>
@@ -100,7 +129,8 @@ print(f'Для віку {age} - вікова група {age_category}')
 <code>Аудіо</code>           -   <code>mp3</code>, <code>ogg</code>;<br>
 <code>Не відомо</code>       -   для усіх інших розширеннь.<br></p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 file_extension = input("Введіть тип розширення:\n")
 
 
@@ -108,7 +138,19 @@ file_extension = input("Введіть тип розширення:\n")
 
 
 print(f'[Тип {file_type}] {file_extension}')
-    `, document.querySelector('[id="4"]'));
+`
+, String.raw`if ext in ["txt", "json"]:
+    file_type = "Текст"
+elif ext in ["png", "jpg"]:
+    file_type = "Зображення"
+elif ext in ["mp4", "mkv", "avi"]:
+    file_type = "Відео"
+elif ext in ["mp3", "ogg"]:
+    file_type = "Аудіо"
+else:
+    file_type = "Не відомо"`
+, document.querySelector('[id="4"]')
+);
     </script>
 </section>
 </section>
@@ -119,7 +161,8 @@ print(f'[Тип {file_type}] {file_extension}')
     <p class="exercise-description">Якщо слово є у списку <code>prompt_negative</code> вивести <code>'negative'</code>.<br>
 Якщо слово є у списку <code>prompt_positive</code> вивести <code>'positive'</code>.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 keyword = input("Введіть слово:\n")
 print(f'{keyword = }')
 
@@ -127,7 +170,13 @@ prompt_positive = ['grayscale', 'cute', 'hd']
 prompt_negative = ['grayscale', 'watermark', 'username', 'artist name']
 
 # YOUR CODE HERE
-    `, document.querySelector('[id="5"]'));
+`
+, String.raw`if keyword in prompt_negative:
+    print('negative')
+if keyword in prompt_positive:
+    print('positive')`
+, document.querySelector('[id="5"]')
+);
     </script>
 </section>
 </section>

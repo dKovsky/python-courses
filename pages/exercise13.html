@@ -33,10 +33,14 @@
     <h2>Завдання № 1.</h2>
     <p class="exercise-description">Створіть кортеж із одного єдиного елемента (числа 42). Пам'ятайте про синтаксичну особливість для одного елемента, щоб тип змінної визначився саме як кортеж.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 single_item = # YOUR CODE HERE
 print(type(single_item))
-    `, document.querySelector('[id="1"]'));
+`
+, String.raw``
+, document.querySelector('[id="1"]')
+);
     </script>
 </section>
 </section>
@@ -46,11 +50,15 @@ print(type(single_item))
     <h2>Завдання № 2.</h2>
     <p class="exercise-description">Отримайте другий елемент (значення довготи) з кортежу гео-координат.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 lviv_coordinates = (49.84, 24.02, 338)
 longitude = # YOUR CODE HERE
 print(longitude)
-    `, document.querySelector('[id="2"]'));
+`
+, String.raw``
+, document.querySelector('[id="2"]')
+);
     </script>
 </section>
 </section>
@@ -60,11 +68,15 @@ print(longitude)
     <h2>Завдання № 3.</h2>
     <p class="exercise-description">Спробуйте змінити перший елемент кортежу на інше число, щоб викликати виняток TypeError.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 immutable_data = (1, 2, 3)
 
 # YOUR CODE HERE
-    `, document.querySelector('[id="3"]'));
+`
+, String.raw``
+, document.querySelector('[id="3"]')
+);
     </script>
 </section>
 </section>
@@ -74,11 +86,15 @@ immutable_data = (1, 2, 3)
     <h2>Завдання № 4.</h2>
     <p class="exercise-description">Розпакуйте кортеж з даними користувача у три окремі змінні в один рядок.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 user_profile = ("Andrew", 31, "CEO")
 name, age, role = # YOUR CODE HERE
 print(name, age, role)
-    `, document.querySelector('[id="4"]'));
+`
+, String.raw``
+, document.querySelector('[id="4"]')
+);
     </script>
 </section>
 </section>
@@ -88,11 +104,15 @@ print(name, age, role)
     <h2>Завдання № 5.</h2>
     <p class="exercise-description">Порахуйте, скільки разів число 7 зустрічається в кортежі.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 numbers = (7, 1, 4, 7, 3, 7, 2)
 count_seven = # YOUR CODE HERE
 print(count_seven)
-    `, document.querySelector('[id="5"]'));
+`
+, String.raw``
+, document.querySelector('[id="5"]')
+);
     </script>
 </section>
 </section>
@@ -102,11 +122,15 @@ print(count_seven)
     <h2>Завдання № 6.</h2>
     <p class="exercise-description">Знайдіть індекс (позицію) першого входження елемента "PostgreSQL".</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 db_tuple = ("Oracle", "PostgreSQL", "DuckDB", "PostgreSQL")
 index_pg = # YOUR CODE HERE
 print(index_pg)
-    `, document.querySelector('[id="6"]'));
+`
+, String.raw``
+, document.querySelector('[id="6"]')
+);
     </script>
 </section>
 </section>
@@ -116,12 +140,16 @@ print(index_pg)
     <h2>Завдання № 7.</h2>
     <p class="exercise-description">Об'єднайте два кортежі в один новий за допомогою оператора.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 part_1 = (10, 20)
 part_2 = (30, 40)
 full_tuple = # YOUR CODE HERE
 print(full_tuple)
-    `, document.querySelector('[id="7"]'));
+`
+, String.raw``
+, document.querySelector('[id="7"]')
+);
     </script>
 </section>
 </section>
@@ -131,11 +159,15 @@ print(full_tuple)
     <h2>Завдання № 8.</h2>
     <p class="exercise-description">Перевірте, чи є значення "admin" у кортежі дозволених ролей (результат True/False).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 allowed_roles = ("user", "manager", "admin")
 is_allowed = # YOUR CODE HERE
 print(is_allowed)
-    `, document.querySelector('[id="8"]'));
+`
+, String.raw``
+, document.querySelector('[id="8"]')
+);
     </script>
 </section>
 </section>
@@ -145,11 +177,15 @@ print(is_allowed)
     <h2>Завдання № 9.</h2>
     <p class="exercise-description">Перетворіть існуючий динамічний список на незмінний кортеж.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 tech_list = ["Python", "Git", "Docker"]
 tech_tuple = # YOUR CODE HERE
 print(type(tech_tuple))
-    `, document.querySelector('[id="9"]'));
+`
+, String.raw``
+, document.querySelector('[id="9"]')
+);
     </script>
 </section>
 </section>

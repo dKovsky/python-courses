@@ -33,11 +33,15 @@
     <h2>Завдання № 1.</h2>
     <p class="exercise-description">Зробіть список порожнім.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 empty_list = [1, 2, 3]
 empty_list = # YOUR CODE HERE
 print(empty_list)
-    `, document.querySelector('[id="1"]'));
+`
+, String.raw`[]`
+, document.querySelector('[id="1"]')
+);
     </script>
 </section>
 </section>
@@ -47,13 +51,17 @@ print(empty_list)
     <h2>Завдання № 2.</h2>
     <p class="exercise-description">Добавте у кінець списку число 5.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 my_list = [1, 2, 3, 4]
 
 # YOUR CODE HERE
 
 print(my_list)
-    `, document.querySelector('[id="2"]'));
+`
+, String.raw`my_list.append(5)`
+, document.querySelector('[id="2"]')
+);
     </script>
 </section>
 </section>
@@ -63,13 +71,17 @@ print(my_list)
     <h2>Завдання № 3.</h2>
     <p class="exercise-description">Добавте на початок списку число 1.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 new_list = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # YOUR CODE HERE
 
 print(new_list)
-    `, document.querySelector('[id="3"]'));
+`
+, String.raw`new_list.insert(0, 1)`
+, document.querySelector('[id="3"]')
+);
     </script>
 </section>
 </section>
@@ -79,13 +91,17 @@ print(new_list)
     <h2>Завдання № 4.</h2>
     <p class="exercise-description">Добавте на сьому позицію списку число 8.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 mark_list = [1, 2, 3, 4, 5, 6, 7, 9, 10]
 
 # YOUR CODE HERE
 
 print(mark_list)
-    `, document.querySelector('[id="4"]'));
+`
+, String.raw`mark_list.insert(6, 8)`
+, document.querySelector('[id="4"]')
+);
     </script>
 </section>
 </section>
@@ -95,13 +111,17 @@ print(mark_list)
     <h2>Завдання № 5.</h2>
     <p class="exercise-description">Видаліть усі елементи у списку.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 clean_list = ['a', 'b', 'c']
 
 # YOUR CODE HERE
 
 print(clean_list)
-    `, document.querySelector('[id="5"]'));
+`
+, String.raw`clean_list.clear()`
+, document.querySelector('[id="5"]')
+);
     </script>
 </section>
 </section>
@@ -109,15 +129,19 @@ print(clean_list)
 <section class="exercise-card">
 <section id="6">
     <h2>Завдання № 6.</h2>
-    <p class="exercise-description">Видаліть усі елементи у списку.</p>
+    <p class="exercise-description">Замініть третій елемент у списку на число 3.</p>
     <script>
-        createCodeBlock(String.raw`
-clean_list = ['a', 'b', 'c']
+        create_code_with_answear(
+  String.raw`
+number_list = [1, 2, '3', 4, 5, 6, 7, 8, 9, 10]
 
 # YOUR CODE HERE
 
-print(clean_list)
-    `, document.querySelector('[id="6"]'));
+print(number_list)
+`
+, String.raw`number_list[2] = 3`
+, document.querySelector('[id="6"]')
+);
     </script>
 </section>
 </section>
@@ -125,15 +149,19 @@ print(clean_list)
 <section class="exercise-card">
 <section id="7">
     <h2>Завдання № 7.</h2>
-    <p class="exercise-description">Замініть третій елемент у списку на число 3.</p>
+    <p class="exercise-description">Видаліть зі списку слово Асгард.</p>
     <script>
-        createCodeBlock(String.raw`
-number_list = [1, 2, '3', 4, 5, 6, 7, 8, 9, 10]
+        create_code_with_answear(
+  String.raw`
+city_list = ['Броди', 'Львів', 'Асгард', 'Київ']
 
 # YOUR CODE HERE
 
-print(number_list)
-    `, document.querySelector('[id="7"]'));
+print(city_list)
+`
+, String.raw`city_list.remove('Асгард')`
+, document.querySelector('[id="7"]')
+);
     </script>
 </section>
 </section>
@@ -141,15 +169,17 @@ print(number_list)
 <section class="exercise-card">
 <section id="8">
     <h2>Завдання № 8.</h2>
-    <p class="exercise-description">Видаліть зі списку слово Асгард.</p>
+    <p class="exercise-description">Виведіть перший елемент зі списку.</p>
     <script>
-        createCodeBlock(String.raw`
-city_list = ['Броди', 'Львів', 'Асгард', 'Київ']
-
-# YOUR CODE HERE
-
-print(city_list)
-    `, document.querySelector('[id="8"]'));
+        create_code_with_answear(
+  String.raw`
+fruits = ["apple", "banana", "ananas"]
+first_item = # YOUR CODE HERE
+print(first_item)
+`
+, String.raw`fruits.pop(0)`
+, document.querySelector('[id="8"]')
+);
     </script>
 </section>
 </section>
@@ -157,13 +187,17 @@ print(city_list)
 <section class="exercise-card">
 <section id="9">
     <h2>Завдання № 9.</h2>
-    <p class="exercise-description">Виведіть перший елемент зі списку.</p>
+    <p class="exercise-description">Виведіть останній елемент зі списку, використовуючи від'ємний індекс.</p>
     <script>
-        createCodeBlock(String.raw`
-fruits = ["apple", "banana", "ananas"]
-first_item = # YOUR CODE HERE
-print(first_item)
-    `, document.querySelector('[id="9"]'));
+        create_code_with_answear(
+  String.raw`
+databases = ["Oracle", "SQL Server", "MySQL", "PostgreSQL", "DuckDB"]
+last_item = # YOUR CODE HERE
+print(last_item)
+`
+, String.raw`databases[-1]`
+, document.querySelector('[id="9"]')
+);
     </script>
 </section>
 </section>
@@ -171,13 +205,17 @@ print(first_item)
 <section class="exercise-card">
 <section id="10">
     <h2>Завдання № 10.</h2>
-    <p class="exercise-description">Виведіть останній елемент зі списку, використовуючи від'ємний індекс.</p>
+    <p class="exercise-description">Виведіть останній елемент зі списку, не використовуючи від'ємний індекс.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 databases = ["Oracle", "SQL Server", "MySQL", "PostgreSQL", "DuckDB"]
 last_item = # YOUR CODE HERE
 print(last_item)
-    `, document.querySelector('[id="10"]'));
+`
+, String.raw`databases[len(databases) - 1]`
+, document.querySelector('[id="10"]')
+);
     </script>
 </section>
 </section>
@@ -185,27 +223,17 @@ print(last_item)
 <section class="exercise-card">
 <section id="11">
     <h2>Завдання № 11.</h2>
-    <p class="exercise-description">Виведіть останній елемент зі списку, не використовуючи від'ємний індекс.</p>
-    <script>
-        createCodeBlock(String.raw`
-databases = ["Oracle", "SQL Server", "MySQL", "PostgreSQL", "DuckDB"]
-last_item = # YOUR CODE HERE
-print(last_item)
-    `, document.querySelector('[id="11"]'));
-    </script>
-</section>
-</section>
-
-<section class="exercise-card">
-<section id="12">
-    <h2>Завдання № 12.</h2>
     <p class="exercise-description">Створіть новий список без першого та останнього елемента.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 data = ["id", "year", "count", "sum", "avg", "updated"]
 new_list = # YOUR CODE HERE
 print(f'{new_list = }')
-    `, document.querySelector('[id="12"]'));
+`
+, String.raw`data[1:-1]`
+, document.querySelector('[id="11"]')
+);
     </script>
 </section>
 </section>

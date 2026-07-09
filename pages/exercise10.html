@@ -33,12 +33,16 @@
     <h2>Завдання № 1.</h2>
     <p class="exercise-description">Перетворіть словник у рядок формату JSON.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import json
 user_data = {"name": "Oleg", "role": "user"}
 json_string = # YOUR CODE HERE
 print(type(json_string))
-    `, document.querySelector('[id="1"]'));
+`
+, String.raw``
+, document.querySelector('[id="1"]')
+);
     </script>
 </section>
 </section>
@@ -48,12 +52,16 @@ print(type(json_string))
     <h2>Завдання № 2.</h2>
     <p class="exercise-description">Перетворіть рядок формату JSON назад у словник Python.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import json
 json_data = '{"animal_id": 9931, "type": "cat"}'
 parsed_dict = # YOUR CODE HERE
 print(parsed_dict["type"])
-    `, document.querySelector('[id="2"]'));
+`
+, String.raw``
+, document.querySelector('[id="2"]')
+);
     </script>
 </section>
 </section>
@@ -63,13 +71,17 @@ print(parsed_dict["type"])
     <h2>Завдання № 3.</h2>
     <p class="exercise-description">Запишіть Python-словник безпосередньо у файл <code>config.json</code>.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import json
 config = {"host": "127.0.0.1", "port": 5432}
 json_file = "config.json"
 
 # YOUR CODE HERE
-    `, document.querySelector('[id="3"]'));
+`
+, String.raw``
+, document.querySelector('[id="3"]')
+);
     </script>
 </section>
 </section>
@@ -79,7 +91,8 @@ json_file = "config.json"
     <h2>Завдання № 4.</h2>
     <p class="exercise-description">Прочитайте дані з файлу <code>config.json</code> та перетворіть їх на словник Python.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import json
 filename = "config.json"
 with open(filename, 'w', encoding='utf-8') as f:
@@ -88,7 +101,10 @@ with open(filename, 'w', encoding='utf-8') as f:
 # YOUR CODE HERE
 
 print(data)
-    `, document.querySelector('[id="4"]'));
+`
+, String.raw``
+, document.querySelector('[id="4"]')
+);
     </script>
 </section>
 </section>
@@ -98,12 +114,16 @@ print(data)
     <h2>Завдання № 5.</h2>
     <p class="exercise-description">Перетворіть словник у JSON-рядок із гарним форматуванням (відступами у 4 пробіли).</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import json
 payload = {"status": "success", "code": 200}
 pretty_json = # YOUR CODE HERE
 print(pretty_json)
-    `, document.querySelector('[id="5"]'));
+`
+, String.raw``
+, document.querySelector('[id="5"]')
+);
     </script>
 </section>
 </section>
@@ -113,12 +133,16 @@ print(pretty_json)
     <h2>Завдання № 6.</h2>
     <p class="exercise-description">Збережіть кириличні символи (наприклад, назву міста) у вихідному вигляді, щоб уникнути їхнього кодування у формат \uXXXX.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import json
 local_data = {"city": "Львів"}
 json_str = # YOUR CODE HERE
 print(json_str)
-    `, document.querySelector('[id="6"]'));
+`
+, String.raw``
+, document.querySelector('[id="6"]')
+);
     </script>
 </section>
 </section>
@@ -128,11 +152,15 @@ print(json_str)
     <h2>Завдання № 7.</h2>
     <p class="exercise-description">Обробіть специфічну помилку, яка виникає при спробі розпарсити некоректний JSON-рядок.</p>
     <script>
-        createCodeBlock(String.raw`
+        create_code_with_answear(
+  String.raw`
 import json
 invalid_json = "{'status': 'active'}"  # одинарні лапки є помилкою для JSON
 ?
-    `, document.querySelector('[id="7"]'));
+`
+, String.raw``
+, document.querySelector('[id="7"]')
+);
     </script>
 </section>
 </section>
